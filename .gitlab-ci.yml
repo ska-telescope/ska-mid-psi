@@ -4,6 +4,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   MINIKUBE: "false"
 stages:
+  - lint
   - on_demand_psi
   - build
   - deploy
