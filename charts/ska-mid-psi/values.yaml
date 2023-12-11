@@ -1,0 +1,76 @@
+display: ":0"
+xauthority: "~/.Xauthority"
+
+global:
+  minikube: false
+  operator: true
+  exposeAllDS: true
+  annotations:
+    app.gitlab.com/app: ska-mid-psi
+    app.gitlab.com/env: ska
+  taranta_auth_enabled: false
+  taranta_dashboard_enabled: true
+  sub-system:
+    tango-base:
+      enabled: false
+    ska-tango-base:
+      enabled: false
+    ska-taranta:
+      enabled: false
+  retry:
+    - "--sleep=3"
+    - "--tries=100"
+  tango_host: databaseds-tango-base:10000
+  device_server_port: 45450
+  cluster_domain: cluster.local
+
+ska-tango-base:
+  enabled: true
+  vnc:
+    replicas: 1
+    enabled: true
+  tangorest:
+    enabled: true
+    replicas: 1
+  tangodb:
+    use_pv: true
+
+ska-taranta:
+  legacy_compatibility: true
+  enabled: true
+
+
+#telescope control
+## mid-cbf
+ska-mid-cbf-mcs:
+  signalVerificationVersion: 0.2.7
+  engineeringConsoleVersion: 0.9.5
+  hostInfo:
+    environment: "mid-psi"
+  enabled: true
+  global:
+    minikube: false
+# Uncomment the section below to use custom MCS image
+  # midcbf:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+  #     image: ska-mid-cbf-mcs
+  #     tag: <Image tag from MCS pipeline>
+  #     pullPolicy: IfNotPresent
+
+ska-mid-cbf-tmleafnode:
+  enabled: true
+
+ska-tango-archiver:
+  legacy_compatibility: true
+  enabled: false
+  telescope: SKA-mid
+  telescope_environment: MID_PSI
+  hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
+  dbname: default_timescaledb
+  dbuser: admin
+  dbpassword: admin
+  port: 5432
+  configuration_manager: mid-eda/cm/01
+  event_subscriber: mid-eda/es/01
+  archwizard_config: MyHDB=tango://databaseds-tango-base.{{.Release.Name}}.svc.cluster.local:10000/mid-eda/cm/01
