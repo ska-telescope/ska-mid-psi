@@ -103,8 +103,6 @@ psi-mid-on-demand-destroy:
   extends:
     - .cleanup
     - .psi_mid_on_demand
-  needs:
-    - psi-log-collector
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: delayed
