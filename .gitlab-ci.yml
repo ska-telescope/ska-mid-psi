@@ -10,6 +10,7 @@ stages:
   - deploy
   - join-reports
   - pages
+  - publish
   - scan
   - cleanup
   
