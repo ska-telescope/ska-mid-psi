@@ -38,3 +38,7 @@ dependencies:
     version: 2.6.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-archiver.enabled
+  - name: ska-csp-lmc-mid 
+    version: 0.17.2
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-csp-lmc-mid.enabled
