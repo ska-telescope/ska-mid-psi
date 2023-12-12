@@ -79,3 +79,9 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   legacy_compatibility: true
   enabled: true
+
+## tmc
+tmc-mid:
+  legacy_compatibility: true
+  enabled: true
+  telescope: SKA-mid
