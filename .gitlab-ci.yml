@@ -6,6 +6,7 @@ variables:
 stages:
   - lint
   - on_demand_psi
+  - deploy-spfrx
   - build
   - deploy
   - join-reports
@@ -14,6 +15,24 @@ stages:
   - scan
   - cleanup
   
+
+spfrx-deployer:
+  stage: deploy-spfrx
+  extends:
+    - .mid
+  variables:
+    KUBE_NAMESPACE: "ci-ska-mid-cbf-sys-tests-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
+    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
+  tags:
+    - k8srunner-psi-mid
+  script:
+    - git clone https://gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console.git
+    - sleep 60
+  rules:
+    - when: manual
+  needs:
+    - job: psi-mid-on-demand-deploy
+
 
 include:
 
