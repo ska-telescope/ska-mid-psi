@@ -26,7 +26,7 @@ spfrx-deployer:
   tags:
     - k8srunner-psi-mid
   script:
-    - git clone https://gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console.git
+    - git clone --recursive https://gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console.git
     - cd ska-mid-dish-spfrx-talondx-console
     - make generate-spfrx-config
     - sleep 240
