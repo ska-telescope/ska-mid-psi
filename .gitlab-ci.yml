@@ -27,7 +27,9 @@ spfrx-deployer:
     - k8srunner-psi-mid
   script:
     - git clone https://gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console.git
-    - sleep 60
+    - cd ska-mid-dish-spfrx-talondx-console
+    - make generate-spfrx-config
+    - sleep 240
   rules:
     - when: manual
   needs:
