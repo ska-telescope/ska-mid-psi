@@ -41,7 +41,7 @@ spfrx-start:
     - TANGO_HOSTNAME=$(echo $TANGO_HOST | cut -d':' -f1)
     - TANGO_PORT=$(echo $TANGO_HOST | cut -d':' -f2)
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.$CLUSTER_DOMAIN:$TANGO_PORT" "$SPFRX_IP" "$SPFRX_LOCAL_BIN" "$TANGO_INSTANCE" "$SPFRX_LOGGING_LEVEL" &
-    - sleep 10
+    - sleep 30
   rules:
     - when: manual
   needs:
