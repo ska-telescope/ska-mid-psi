@@ -29,6 +29,8 @@ spfrx-start:
   script:
     - cat spfrx_pod.yaml | sed -e "s/TANGO_HOST_VALUE/$TANGO_HOST/" > spfrx_pod_temp.yaml
     - kubectl apply -f spfrx_pod_temp.yaml -n $KUBE_NAMESPACE
+    - sleep 5
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-stop.sh "192.168.8.200" "/usr/local/bin"
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --generate-spfrx-config
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --config-db
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- apt update
