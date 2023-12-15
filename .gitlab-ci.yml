@@ -27,6 +27,7 @@ spfrx-deployer:
     - k8srunner-psi-mid
   script:
     - git clone --recursive https://gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console.git
+    - sleep 600
     - cd ska-mid-dish-spfrx-talondx-console
     - make generate-spfrx-config
     - make config-db SPFRX_TANGO_HOST=databaseds-tango-base.$KUBE_NAMESPACE.svc.cluster.local:10000
