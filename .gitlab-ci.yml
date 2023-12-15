@@ -4,6 +4,11 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   MINIKUBE: "false"
   TANGO_HOST: databaseds-tango-base:10000
+  CLUSTER_DOMAIN: cluster.local
+  SPFRX_IP: 192.168.8.200
+  TANGO_INSTANCE: spfrx-20
+  SPFRX_LOCAL_BIN: /usr/local/bin
+  SPFRX_LOGGING_LEVEL: 4
 stages:
   - lint
   - on_demand_psi
@@ -29,16 +34,13 @@ spfrx-start:
   script:
     - cat spfrx_pod.yaml | sed -e "s/TANGO_HOST_VALUE/$TANGO_HOST/" > spfrx_pod_temp.yaml
     - kubectl apply -f spfrx_pod_temp.yaml -n $KUBE_NAMESPACE
-    - sleep 5
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-stop.sh "192.168.8.200" "/usr/local/bin"
+    - kubectl wait --for=condition=Ready -n $KUBE_NAMESPACE pod/spfrx-deployer
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-stop.sh "$SPFRX_IP" "/usr/local/bin"
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --generate-spfrx-config
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --config-db
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- apt update
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- apt install -y ssh-client
     - TANGO_HOSTNAME=$(echo $TANGO_HOST | cut -d':' -f1)
     - TANGO_PORT=$(echo $TANGO_HOST | cut -d':' -f2)
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.cluster.local:$TANGO_PORT" "192.168.8.200" "/usr/local/bin" "spfrx-20" "4" &
-    - sleep 240
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.$CLUSTER_DOMAIN:$TANGO_PORT" "$SPFRX_IP" "$SPFRX_LOCAL_BIN" "$TANGO_INSTANCE" "$SPFRX_LOGGING_LEVEL" &
   rules:
     - when: manual
   needs:
