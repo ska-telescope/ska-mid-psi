@@ -31,7 +31,11 @@ spfrx-start:
     - kubectl apply -f spfrx_pod_temp.yaml -n $KUBE_NAMESPACE
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --generate-spfrx-config
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --config-db
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOST" "192.168.8.200" "/usr/local/bin" "spfrx-20" "4" &
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- apt update
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- apt install -y ssh-client
+    - TANGO_HOSTNAME=$(echo $TANGO_HOST | cut -d':' -f1)
+    - TANGO_PORT=$(echo $TANGO_HOST | cut -d':' -f2)
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.cluster.local:$TANGO_PORT" "192.168.8.200" "/usr/local/bin" "spfrx-20" "4" &
     - sleep 240
   rules:
     - when: manual
