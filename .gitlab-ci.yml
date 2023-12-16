@@ -5,10 +5,12 @@ variables:
   MINIKUBE: "false"
   TANGO_HOST: databaseds-tango-base:10000
   CLUSTER_DOMAIN: cluster.local
-  SPFRX_IP: 192.168.8.200
+  SPFRX_ADDRESS: 192.168.8.200
   TANGO_INSTANCE: spfrx-20
-  SPFRX_LOCAL_BIN: /usr/local/bin
+  SPFRX_BIN: /usr/local/bin
+  SPFRX_LOCAL_DIR: artifacts
   SPFRX_LOGGING_LEVEL: 4
+  SPFRX_SCRIPTS_DIR: scripts
 stages:
   - lint
   - on_demand_psi
@@ -37,10 +39,12 @@ spfrx-start:
     - kubectl wait --timeout=120s --for=condition=Ready -n $KUBE_NAMESPACE pod/spfrx-deployer
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-stop.sh "$SPFRX_IP" "/usr/local/bin"
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --generate-spfrx-config
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --download-artifacts
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- python3 spfrx_deployer.py --config-db
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-deploy-artifacts.sh $SPFRX_ADDRESS $SPFRX_LOCAL_DIR $SPFRX_BIN $SPFRX_SCRIPTS_DIR
     - TANGO_HOSTNAME=$(echo $TANGO_HOST | cut -d':' -f1)
     - TANGO_PORT=$(echo $TANGO_HOST | cut -d':' -f2)
-    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.$CLUSTER_DOMAIN:$TANGO_PORT" "$SPFRX_IP" "$SPFRX_LOCAL_BIN" "$TANGO_INSTANCE" "$SPFRX_LOGGING_LEVEL" &
+    - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-start.sh "$TANGO_HOSTNAME.$KUBE_NAMESPACE.svc.$CLUSTER_DOMAIN:$TANGO_PORT" "$SPFRX_ADDRESS" "$SPFRX_LOCAL_BIN" "$TANGO_INSTANCE" "$SPFRX_LOGGING_LEVEL" &
     - sleep 30
   rules:
     - when: manual
