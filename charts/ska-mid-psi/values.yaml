@@ -80,3 +80,6 @@ ska-csp-lmc-mid:
 
 ska-sdp:
   enabled: true
+  ska-tango-base:
+    enabled: false
+
