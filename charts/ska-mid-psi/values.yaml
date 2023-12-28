@@ -78,3 +78,5 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   enabled: true
 
+ska-sdp:
+  enabled: true
