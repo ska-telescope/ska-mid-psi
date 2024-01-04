@@ -23,6 +23,7 @@ global:
   tango_host: databaseds-tango-base:10000
   device_server_port: 45450
   cluster_domain: cluster.local
+  data-product-pvc-name: test-sdp-pvc
 
 ska-tango-base:
   enabled: true
@@ -82,4 +83,13 @@ ska-sdp:
   enabled: true
   ska-tango-base:
     enabled: false
-
+  data-pvc:
+    create:
+      enabled: true
+      size: 5Gi
+      storageClassName: nfss1
+  networking:
+    setup:
+      network-attachment-definition:
+        name: sdn
+        namespace: kube-system
