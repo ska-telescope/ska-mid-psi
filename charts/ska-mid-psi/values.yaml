@@ -93,5 +93,5 @@ ska-sdp:
       network-attachment-definition:
         name: sdn
         namespace: kube-system
-        available-ipv4-network: 10.50.1.32/28
-        allocate-subnets-cidr-bits: 28
+      available-ipv4-network: 10.50.1.32/28
+      allocate-subnets-cidr-bits: 28
