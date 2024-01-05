@@ -83,11 +83,18 @@ ska-sdp:
   enabled: true
   ska-tango-base:
     enabled: false
+  helmdeploy:
+    enableNADClusterRole: true
   data-pvc:
     create:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
+  networking:
+    setup:
+      network-attachment-definition:
+        name: sdn
+        namespace: kube-system
 networking:
   setup:
     network-attachment-definition:
