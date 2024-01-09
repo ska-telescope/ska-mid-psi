@@ -90,17 +90,3 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  networking:
-    setup:
-      network-attachment-definition:
-        name: sdn
-        namespace: kube-system
-      allocated-subnets:
-      - 10.50.1.32/28
-networking:
-  setup:
-    network-attachment-definition:
-      name: sdn
-      namespace: kube-system
-    allocated-subnets:
-      - 10.50.1.32/28
