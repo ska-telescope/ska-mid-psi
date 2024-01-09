@@ -45,7 +45,7 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.7
-  engineeringConsoleVersion: 0.9.7
+  engineeringConsoleVersion: 0.9.8
   hostInfo:
     environment: "mid-psi"
   enabled: true
