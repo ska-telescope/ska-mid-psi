@@ -59,7 +59,7 @@ ska-mid-cbf-mcs:
   #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
-  enabled: true
+  enabled: false
 
 ska-tango-archiver:
   legacy_compatibility: true
