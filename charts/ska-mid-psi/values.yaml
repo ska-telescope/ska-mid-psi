@@ -80,8 +80,15 @@ ska-csp-lmc-mid:
   legacy_compatibility: true
   enabled: true
 
-## tmc
+## tmc-mid
 tmc-mid:
   legacy_compatibility: true
   enabled: true
   telescope: SKA-mid
+  deviceServers:
+    mocks:
+      enabled: true
+      is_simulated:
+        dish: true
+        csp: false
+        sdp: true
