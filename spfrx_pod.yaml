@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: spfrx-deployer
-    image: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console/ska-mid-dish-spfrx-talondx-console-deploy:0.0.6-dev.c922682f1
+    image: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console/ska-mid-dish-spfrx-talondx-console-deploy:SPFRX_CONSOLE_VER
     env:
       - name: TANGO_HOST
         value: TANGO_HOST_VALUE

@@ -11,6 +11,7 @@ variables:
   SPFRX_LOCAL_DIR: artifacts
   SPFRX_LOGGING_LEVEL: 4
   SPFRX_SCRIPTS_DIR: scripts
+  SPFRX_CONSOLE_VER: 0.0.6
 stages:
   - lint
   - on_demand_psi
@@ -34,7 +35,7 @@ spfrx-start:
   tags:
     - k8srunner-psi-mid
   script:
-    - cat spfrx_pod.yaml | sed -e "s/TANGO_HOST_VALUE/$TANGO_HOST/" > spfrx_pod_temp.yaml
+    - cat spfrx_pod.yaml | sed -e "s/TANGO_HOST_VALUE/$TANGO_HOST/" -e "s/SPFRX_CONSOLE_VER/$SPFRX_CONSOLE_VER/"  > spfrx_pod_temp.yaml
     - kubectl apply -f spfrx_pod_temp.yaml -n $KUBE_NAMESPACE
     - kubectl wait --timeout=120s --for=condition=Ready -n $KUBE_NAMESPACE pod/spfrx-deployer
     - kubectl exec -n $KUBE_NAMESPACE spfrx-deployer -- /bin/bash scripts/spfrx-remote-stop.sh "$SPFRX_ADDRESS" "$SPFRX_BIN"
