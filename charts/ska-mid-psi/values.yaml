@@ -84,7 +84,7 @@ ska-sdp:
   ska-tango-base:
     enabled: false
   helmdeploy:
-    enableNADClusterRole: true
+    enableNADClusterRole: false
   data-pvc:
     create:
       enabled: true
