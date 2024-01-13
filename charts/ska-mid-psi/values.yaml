@@ -83,6 +83,8 @@ ska-csp-lmc-mid:
 tmc-mid:
   enabled: true
   telescope: SKA-mid
+  ska-tango-base:
+    enabled: false
   deviceServers:
     mocks:
       enabled: true
