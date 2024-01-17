@@ -17,19 +17,11 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-mcs
-<<<<<<< HEAD
-    version: 0.12.13
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-mid-cbf-mcs.enabled
-  - name: ska-mid-cbf-tmleafnode
-    version: 0.12.13
-=======
     version: 0.12.15
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-mcs.enabled
   - name: ska-mid-cbf-tmleafnode
     version: 0.12.15
->>>>>>> map-20-add-tmc-csp-lmc
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-tmleafnode.enabled
 
@@ -52,17 +44,6 @@ dependencies:
     version: 2.6.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-archiver.enabled
-<<<<<<< HEAD
-  - name: ska-csp-lmc-mid
-    version: 0.17.2
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-csp-lmc-mid.enabled
-  - name: ska-sdp
-    version: 0.18.0
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-sdp.enabled
-
-=======
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
@@ -76,4 +57,3 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
->>>>>>> map-20-add-tmc-csp-lmc
