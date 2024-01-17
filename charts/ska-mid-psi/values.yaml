@@ -23,6 +23,7 @@ global:
   tango_host: databaseds-tango-base:10000
   device_server_port: 45450
   cluster_domain: cluster.local
+  data-product-pvc-name: test-sdp-pvc
 
 ska-tango-base:
   enabled: true
@@ -44,7 +45,7 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.7
-  engineeringConsoleVersion: 0.9.5
+  engineeringConsoleVersion: 0.9.8
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -74,3 +75,18 @@ ska-tango-archiver:
   configuration_manager: mid-eda/cm/01
   event_subscriber: mid-eda/es/01
   archwizard_config: MyHDB=tango://databaseds-tango-base.{{.Release.Name}}.svc.cluster.local:10000/mid-eda/cm/01
+
+ska-csp-lmc-mid:
+  enabled: true
+
+ska-sdp:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  helmdeploy:
+    enableNADClusterRole: true
+  data-pvc:
+    create:
+      enabled: true
+      size: 5Gi
+      storageClassName: nfss1
