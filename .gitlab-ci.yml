@@ -11,7 +11,7 @@ variables:
   SPFRX_LOCAL_DIR: artifacts
   SPFRX_LOGGING_LEVEL: 4
   SPFRX_SCRIPTS_DIR: scripts
-  SPFRX_CONSOLE_VER: 0.0.6
+  SPFRX_CONSOLE_VER: 0.0.7
   DISH_ID: ska001
 stages:
   - lint
