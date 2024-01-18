@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spfrx-deployer
+spec:
+  containers:
+  - name: spfrx-deployer
+    image: artefact.skao.int/ska-mid-dish-spfrx-talondx-console-deploy:SPFRX_CONSOLE_VER
+    env:
+      - name: TANGO_HOST
+        value: TANGO_HOST_VALUE
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/bash","-c"]
+    args: ["tail -f /dev/null"]
+
