@@ -38,6 +38,10 @@ dependencies:
     version: 2.6.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-archiver.enabled
+  - name: ska-tango-alarmhandler
+    version: 0.3.3
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-tango-alarmhandler.enabled
   - name: ska-csp-lmc-mid
     version: 0.17.2
     repository: https://artefact.skao.int/repository/helm-internal
