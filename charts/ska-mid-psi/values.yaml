@@ -51,12 +51,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-  midcbf:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-      image: ska-mid-cbf-mcs
-      tag: 0.12.16-dev.c3709f493
-      pullPolicy: IfNotPresent
+#  midcbf:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+#      image: ska-mid-cbf-mcs
+#      tag: 0.12.16-dev.c3709f493
+#      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: false
