@@ -9,6 +9,10 @@ spec:
     env:
       - name: TANGO_HOST
         value: TANGO_HOST_VALUE
+      - name: RAW_USER_ACCOUNT
+        value: ""
+      - name: RAW_USER_PASS
+        value: ""
     imagePullPolicy: IfNotPresent
     command: ["/bin/bash","-c"]
     args: ["tail -f /dev/null"]
