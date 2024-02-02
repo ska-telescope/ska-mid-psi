@@ -80,7 +80,7 @@ ska-csp-lmc-mid:
   enabled: true
 
 ## tmc-mid
-tmc-mid:
+ska-tmc-mid:
   enabled: true
   telescope: SKA-mid
   ska-tango-base:
