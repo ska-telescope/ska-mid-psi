@@ -86,8 +86,6 @@ ska-tmc-mid:
   ska-tango-base:
     enabled: false
   deviceServers:
-    centralnode:
-      subarray_count: 3
     mocks:
       enabled: true
       is_simulated:
