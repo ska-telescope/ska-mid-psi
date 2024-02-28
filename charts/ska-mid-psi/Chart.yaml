@@ -17,6 +17,10 @@ dependencies:
     version: 0.12.13
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-mcs.enabled
+  - name: ska-mid-cbf-engineering-console
+    version: 0.9.12-dev.cd222f7e1
+    repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/api/dev/charts
+    condition: ska-mid-cbf-engineering-console.enabled
   - name: ska-mid-cbf-tmleafnode
     version: 0.12.13
     repository: https://artefact.skao.int/repository/helm-internal

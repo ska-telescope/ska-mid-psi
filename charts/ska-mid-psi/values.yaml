@@ -58,6 +58,14 @@ ska-mid-cbf-mcs:
   #     image: ska-mid-cbf-mcs
   #     tag: <Image tag from MCS pipeline>
   #     pullPolicy: IfNotPresent
+  
+ska-mid-cbf-engineering-console:  
+  enabled: true
+  engineeringconsole:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+      image: ska-mid-cbf-engineering-console
+      tag: 0.9.12-dev.cd222f7e1
 
 ska-mid-cbf-tmleafnode:
   enabled: true
