@@ -55,7 +55,7 @@ ska-mid-cbf-mcs:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
 #      image: ska-mid-cbf-mcs
-#      tag: 0.12.16-dev.c3709f493
+#      tag: <Image tag from MCS pipeline>
 #      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
