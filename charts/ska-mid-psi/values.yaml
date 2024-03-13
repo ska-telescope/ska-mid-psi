@@ -44,20 +44,20 @@ ska-taranta:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.7
-  engineeringConsoleVersion: 0.9.8
+  signalVerificationVersion: 0.2.16
+  engineeringConsoleVersion: 0.9.19
   hostInfo:
     environment: "mid-psi"
   enabled: true
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-  # midcbf:
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-  #     image: ska-mid-cbf-mcs
-  #     tag: <Image tag from MCS pipeline>
-  #     pullPolicy: IfNotPresent
+#  midcbf:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+#      image: ska-mid-cbf-mcs
+#      tag: <Image tag from MCS pipeline>
+#      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
@@ -76,17 +76,20 @@ ska-tango-archiver:
   event_subscriber: mid-eda/es/01
   archwizard_config: MyHDB=tango://databaseds-tango-base.{{.Release.Name}}.svc.cluster.local:10000/mid-eda/cm/01
 
+## mid-csp
 ska-csp-lmc-mid:
   enabled: true
 
-ska-sdp:
-  enabled: false
+## tmc-mid
+ska-tmc-mid:
+  enabled: true
+  telescope: SKA-mid
   ska-tango-base:
     enabled: false
-  helmdeploy:
-    enableNADClusterRole: true
-  data-pvc:
-    create:
+  deviceServers:
+    mocks:
       enabled: true
-      size: 5Gi
-      storageClassName: nfss1
+      is_simulated:
+        dish: true
+        csp: false
+        sdp: true
