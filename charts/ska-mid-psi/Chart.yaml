@@ -57,3 +57,8 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
+
+  # Alarm Handler
+  - name: ska-tango-alarmhandler
+    repository: https://aretfact.skao.int/repository/helm-internal
+    condition: ska-tango-alarmhandler.enabled

@@ -93,3 +93,7 @@ ska-tmc-mid:
         dish: true
         csp: false
         sdp: true
+
+# Alarm Handler
+ska-tango-alarmhandler:
+  enabled: true
