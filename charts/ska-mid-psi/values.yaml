@@ -45,7 +45,7 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.16
-  engineeringConsoleVersion: 0.9.19
+  engineeringConsoleVersion: 0.9.23
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -57,6 +57,16 @@ ska-mid-cbf-mcs:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
 #      image: ska-mid-cbf-mcs
 #      tag: <Image tag from MCS pipeline>
+#      pullPolicy: IfNotPresent
+
+ska-mid-cbf-engineering-console:
+  enabled: true
+# Uncomment the section below to use custom MCS image
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-console
+#      image: ska-mid-cbf-engineering-console
+#      tag: <Image tag from EC pipeline>
 #      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
