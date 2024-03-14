@@ -62,6 +62,9 @@ ska-mid-cbf-mcs:
 ska-mid-cbf-tmleafnode:
   enabled: true
 
+ska-mid-cbf-engineering-console:
+  enabled: true
+  
 ska-tango-archiver:
   legacy_compatibility: true
   enabled: false
