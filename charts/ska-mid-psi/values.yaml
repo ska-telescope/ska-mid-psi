@@ -62,15 +62,6 @@ ska-mid-cbf-mcs:
 ska-mid-cbf-tmleafnode:
   enabled: true
 
-ska-mid-cbf-engineering-console:
-  enabled: true
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      image: ska-mid-cbf-engineering-console
-      tag: 0.9.23
-      pullPolicy: IfNotPresent
-
 ska-tango-archiver:
   legacy_compatibility: true
   enabled: false
@@ -91,7 +82,7 @@ ska-csp-lmc-mid:
 
 ## tmc-mid
 ska-tmc-mid:
-  enabled: true
+  enabled: false
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
