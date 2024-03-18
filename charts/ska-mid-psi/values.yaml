@@ -93,3 +93,17 @@ ska-tmc-mid:
         dish: true
         csp: false
         sdp: true
+
+## sdp
+ska-sdp:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  helmdeploy:
+    enableNADClusterRole: true
+  data-pvc:
+    create:
+      enabled: true
+      size: 5Gi
+      storageClassName: nfss1
+
