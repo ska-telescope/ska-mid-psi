@@ -61,6 +61,8 @@ ska-mid-cbf-mcs:
 
 ska-mid-cbf-engineering-console:
   enabled: true
+  ska-tango-base:
+    enabled: false
 # Uncomment the section below to use custom MCS image
 #  engineeringconsole:
 #    image:
@@ -68,12 +70,11 @@ ska-mid-cbf-engineering-console:
 #      image: ska-mid-cbf-engineering-console
 #      tag: <Image tag from EC pipeline>
 #      pullPolicy: IfNotPresent
-  ska-tango-base:
-    enabled: false
 
 ska-mid-cbf-tmleafnode:
   enabled: true
 
+## EDA
 ska-tango-archiver:
   legacy_compatibility: true
   enabled: false
