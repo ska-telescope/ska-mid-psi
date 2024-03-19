@@ -45,7 +45,6 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.16
-  engineeringConsoleVersion: 0.9.23
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -60,7 +59,7 @@ ska-mid-cbf-mcs:
 #      pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
-  enabled: false
+  enabled: true
   ska-tango-base:
     enabled: false
 # Uncomment the section below to use custom MCS image
