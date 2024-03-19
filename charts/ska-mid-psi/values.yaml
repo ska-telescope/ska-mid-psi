@@ -60,7 +60,7 @@ ska-mid-cbf-mcs:
 #      pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
-  enabled: true
+  enabled: false
   ska-tango-base:
     enabled: false
 # Uncomment the section below to use custom MCS image
