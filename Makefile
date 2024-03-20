@@ -91,6 +91,9 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
+	--set spfrx.enabled=$(SPFRX_ENABLED) \
+	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
+	--set ska-sdp.enabled=$(SDP_ENABLED) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
