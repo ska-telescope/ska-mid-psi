@@ -107,3 +107,15 @@ ska-sdp:
       size: 5Gi
       storageClassName: nfss1
 
+# SPFRx
+spfrx:
+  enabled: true
+  console:
+    version: 0.1.2 # Edit in Gitlab Environment
+  address: 192.168.8.200
+  bin: /usr/local/bin
+  local_dir: artifacts
+  scripts_dir: scripts
+  instance: spfrx-20
+  logging_level: 4
+
