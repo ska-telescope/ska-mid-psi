@@ -36,6 +36,8 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 
+DISH_ID ?= ska001
+
 # include OCI Images support
 include .make/oci.mk
 
@@ -77,6 +79,7 @@ endif
 
 CI_JOB_ID ?= local##pipeline job id
 TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango DS
+TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
 
@@ -91,6 +94,13 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
+	--set spfrx.enabled=$(SPFRX_ENABLED) \
+	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
+	--set ska-sdp.enabled=$(SDP_ENABLED) \
+	--set spfrx.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set spfrx.tango_host=$(TANGO_HOST) \
+	--set spfrx.tangodb_port=10000 \
+	--set spfrx.dish_id=$(DISH_ID) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
