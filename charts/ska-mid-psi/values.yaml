@@ -70,7 +70,7 @@ ska-tango-archiver:
   hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
   dbname: default_timescaledb
   dbuser: admin
-  dbpassword: TfqQuRxku4aYTRpk
+  dbpassword: admin
   port: 5432
   configuration_manager: mid-eda/cm/01
   event_subscriber: mid-eda/es/01
