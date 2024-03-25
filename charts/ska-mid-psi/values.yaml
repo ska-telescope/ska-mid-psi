@@ -59,9 +59,24 @@ ska-mid-cbf-mcs:
 #      tag: <Image tag from MCS pipeline>
 #      pullPolicy: IfNotPresent
 
+ska-mid-cbf-engineering-console:
+  enabled: true
+  tango-base:
+    enabled: false
+  ska-tango-base:
+    enabled: false
+# Uncomment the section below to use custom Engineering Console image
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+#      image: ska-mid-cbf-engineering-console
+#      tag: <Image tag from EC pipeline>
+#      pullPolicy: IfNotPresent
+
 ska-mid-cbf-tmleafnode:
   enabled: true
 
+## EDA
 ska-tango-archiver:
   legacy_compatibility: true
   enabled: false
