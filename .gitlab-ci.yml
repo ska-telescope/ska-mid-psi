@@ -26,6 +26,10 @@ stages:
   - cleanup
   
 
+helm-chart-lint:
+  tags:
+    - k8srunner-psi-mid
+
 spfrx-start:
   stage: deploy-spfrx
   extends:
