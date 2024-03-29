@@ -97,3 +97,4 @@ ska-tmc-mid:
 # Alarm Handler
 ska-tango-alarmhandler:
   enabled: true
+  legacy_compatibility: false
