@@ -35,6 +35,8 @@ ska-tango-base:
     replicas: 1
   tangodb:
     use_pv: true
+  itango:
+    enabled: true
 
 ska-taranta:
   legacy_compatibility: true
