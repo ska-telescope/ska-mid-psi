@@ -45,7 +45,7 @@ patch-metadata.sh
 .vscode/settings.json
 .vscode/settings.json
 *.devcontainer
-
+configs/spfrx/mnt*
 manifests.yaml
 
 
