@@ -14,7 +14,7 @@ variables:
   SPFRX_CONSOLE_VER: 0.1.0
   DISH_ID: ska001
   SDP_ENABLED: False
-  TMC_ENABLED: True
+  TMC_ENABLED: False
   SPFRX_ENABLED: false
 stages:
   - lint
