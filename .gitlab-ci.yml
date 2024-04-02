@@ -13,8 +13,8 @@ variables:
   SPFRX_SCRIPTS_DIR: scripts
   SPFRX_CONSOLE_VER: 0.1.0
   DISH_ID: ska001
-  SDP_ENABLED: False
-  TMC_ENABLED: False
+  SDP_ENABLED: false
+  TMC_ENABLED: false
   SPFRX_ENABLED: false
 stages:
   - lint
