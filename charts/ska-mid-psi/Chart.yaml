@@ -43,26 +43,26 @@ dependencies:
   - name: ska-tango-archiver
     version: 2.6.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-tango-archiver.enabled
+    condition: false
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
     version: 0.18.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-csp-lmc-mid.enabled
+    condition: false
 
   # TMC
   - name: ska-tmc-mid
     version: 0.15.7
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-tmc-mid.enabled
+    condition: false
     alias: tmc-mid
 
   # SDP
   - name: ska-sdp
     version: 0.19.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-sdp.enabled
+    condition: false
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
