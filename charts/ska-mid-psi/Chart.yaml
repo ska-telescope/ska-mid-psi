@@ -29,15 +29,15 @@ dependencies:
   - name: ska-tango-taranta
     version: 2.6.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-taranta.enabled
+    condition: false
   - name: ska-tango-tangogql
     version: 1.3.10
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-taranta.enabled
+    condition: false
   - name: ska-tango-taranta-auth
     version: 0.2.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: global.taranta_auth_enabled
+    condition: false
 
     # EDA
   - name: ska-tango-archiver
