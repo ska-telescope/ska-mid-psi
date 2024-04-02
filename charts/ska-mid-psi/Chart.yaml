@@ -21,8 +21,8 @@ dependencies:
     repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
     condition: ska-mid-cbf-mcs.enabled
   - name: ska-mid-cbf-tmleafnode
-    version: 0.12.26
-    repository: https://artefact.skao.int/repository/helm-internal
+    version: 0.13.2-dev.ca53a2211
+    repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
     condition: ska-mid-cbf-tmleafnode.enabled
 
   # TARANTA SUITE
