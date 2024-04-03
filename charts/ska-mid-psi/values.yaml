@@ -101,6 +101,8 @@ ska-sdp:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
+  lmc:
+    loadBalancer: true
   data-pvc:
     create:
       enabled: true
