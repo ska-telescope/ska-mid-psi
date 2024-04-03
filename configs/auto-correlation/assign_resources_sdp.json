@@ -3,7 +3,7 @@
  
     "resources": {
        "csp_links": [ 1, 2, 3, 4 ],
-       "receptors": ["SKA001","SKA036"],
+       "receptors": ["SKA001"],
        "receive_nodes": 1
     },
  
