@@ -109,6 +109,10 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
+  ska-sdp-qa:
+    display:
+      container: nginx
+      version: latest
 
 # SPFRx
 spfrx:
