@@ -45,7 +45,7 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.17
-  engineeringConsoleVersion: 0.9.24
+  engineeringConsoleVersion: 0.10.1
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -70,7 +70,7 @@ ska-mid-cbf-engineering-console:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       image: ska-mid-cbf-engineering-console
-      tag: 0.10.1-dev.c33f1983d
+      tag: 0.10.1-dev.ce2a418e0
       pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
