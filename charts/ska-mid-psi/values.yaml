@@ -121,3 +121,9 @@ spfrx:
 
 ska-icams-alarmhandler:
   enabled: true
+  backend:
+    mongodb:
+      persistence:
+        enabled: true
+        storageClass: "nfss1"
+        size: "8Gi"

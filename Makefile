@@ -101,6 +101,11 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set spfrx.tango_host=$(TANGO_HOST) \
 	--set spfrx.tangodb_port=10000 \
 	--set spfrx.dish_id=$(DISH_ID) \
+	--set ska-icams-alarmhandler.backend.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.tangods.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
+
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
