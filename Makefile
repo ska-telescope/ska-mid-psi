@@ -105,7 +105,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.tangods.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
-
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
