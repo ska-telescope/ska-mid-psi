@@ -120,6 +120,7 @@ endif
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
+	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@kubectl create secret docker-registry regcred --docker-server=registry.gitlab.com --docker-username=SKA_ACCESS_TOKEN --docker-password=glpat-Eyk9-vUKYacezWyLXgV8 -n $(KUBE_NAMESPACE)
 
 k8s-pre-install-chart-car:
