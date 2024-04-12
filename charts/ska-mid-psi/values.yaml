@@ -103,7 +103,9 @@ ska-tmc-mid:
       is_simulated:
         dish: true
         csp: false
-        sdp: true
+        sdp: false
+    dishleafnode:
+      enabled: true
 
 ## sdp
 ska-sdp:
