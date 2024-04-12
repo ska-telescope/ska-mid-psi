@@ -109,9 +109,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.backend.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set ska-icams-alarmhandler.frontend.config.icams_api=http://test-$(CI_PIPELINE_ID)-backend.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):3010 \
 	--set ska-icams-alarmhandler.frontend.ingress.enabled=true \
-	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=test-$(CI_PIPELINE_ID)-frontend \
-	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/$(KUBE_NAMESPACE)/icams \
-	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=ImplementationSpecific \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/ \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
