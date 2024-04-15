@@ -25,6 +25,7 @@ global:
   cluster_domain: cluster.local
   data-product-pvc-name: test-sdp-pvc
   dishes: ["001", "036", "063", "100"]
+  dish_devices: ["dishmaster", "dishleafnode"]
 
 ska-tango-base:
   enabled: true
