@@ -52,12 +52,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-#  midcbf:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-#      image: ska-mid-cbf-mcs
-#      tag: <Image tag from MCS pipeline>
-#      pullPolicy: IfNotPresent
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+      image: ska-mid-cbf-mcs
+      tag: 0.13.3-dev.cd4995c37
+      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
@@ -120,7 +120,7 @@ spfrx:
   logging_level: 4
 
 ska-icams-alarmhandler:
-  enabled: true
+  enabled: false
   backend:
     mongodb:
       persistence:
