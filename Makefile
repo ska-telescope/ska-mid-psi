@@ -5,7 +5,7 @@ PROJECT = ska-mid-psi
 # using Helm.  If this does not already exist it will be created
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
-
+SECRET_DIR ?= ./secrets/
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -128,7 +128,7 @@ k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-	@kubectl apply -f s2secret.yaml -n $(KUBE_NAMESPACE)
+	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
