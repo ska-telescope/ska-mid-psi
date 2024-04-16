@@ -120,7 +120,7 @@ spfrx:
   logging_level: 4
 
 ska-icams-alarmhandler:
-  enabled: false
+  enabled: true
   backend:
     mongodb:
       persistence:
