@@ -72,7 +72,7 @@ dependencies:
     # condition: spfrx.enabled
   
   - name: ska-icams-alarmhandler
-    version: 0.1.0-dev.c641b1e8d
+    version: 0.1.0-dev.c6c3592af
     repository: https://gitlab.com/api/v4/projects/56649674/packages/helm/dev
     condition: ska-icams-alarmhandler.enabled
 
