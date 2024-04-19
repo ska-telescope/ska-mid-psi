@@ -112,6 +112,8 @@ ska-sdp:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
+  lmc:
+    prefix: mid
   data-pvc:
     create:
       enabled: true
