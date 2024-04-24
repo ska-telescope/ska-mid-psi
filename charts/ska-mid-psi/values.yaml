@@ -70,7 +70,7 @@ ska-mid-cbf-engineering-console:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       image: ska-mid-cbf-engineering-console
-      tag: 0.10.1-dev.ce324c13d
+      tag: 0.10.1-dev.cf0100bb7
       pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
