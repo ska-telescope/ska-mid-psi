@@ -56,11 +56,11 @@ ska-mid-cbf-mcs:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
       image: ska-mid-cbf-mcs
-      tag: 0.14.2-dev.cbe0d686a
+      tag: 0.14.2-dev.cc315f3c9
       pullPolicy: IfNotPresent
 
-ska-mid-cbf-engineering-console:
-  enabled: true
+# ska-mid-cbf-engineering-console:
+#   enabled: true
 # Uncomment the section below to use custom Engineering Console image
 #  engineeringconsole:
 #    image:
