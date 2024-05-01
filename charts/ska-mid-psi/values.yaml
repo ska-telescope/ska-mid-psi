@@ -24,6 +24,11 @@ global:
   device_server_port: 45450
   cluster_domain: cluster.local
   data-product-pvc-name: test-sdp-pvc
+  tangodb_fqdn: localhost
+  tangodb_port: 10000
+  raw_user_account: bond
+  raw_user_pass: jamesbond
+
 
 ska-tango-base:
   enabled: true
