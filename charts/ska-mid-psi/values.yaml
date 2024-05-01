@@ -122,7 +122,7 @@ ska-sdp:
 spfrx:
   enabled: true
   console:
-    version: 0.2.2
+    version: 0.2.5
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
