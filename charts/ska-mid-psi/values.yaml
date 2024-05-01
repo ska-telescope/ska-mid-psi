@@ -26,6 +26,8 @@ global:
   data-product-pvc-name: test-sdp-pvc
   tangodb_fqdn: localhost
   tangodb_port: 10000
+  raw_user_account: ""
+  raw_user_pass: ""
 
 
 ska-tango-base:
