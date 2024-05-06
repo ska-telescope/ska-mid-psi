@@ -72,7 +72,7 @@ dependencies:
     condition: spfrx.enabled
   
   - name: ska-mid-cbf-engineering-console
-    version: 0.10.6-dev.c141813a6
+    version: 0.10.6-dev.c052d6bc6
     repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
 
