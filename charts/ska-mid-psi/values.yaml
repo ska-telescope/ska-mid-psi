@@ -24,6 +24,8 @@ global:
   device_server_port: 45450
   cluster_domain: cluster.local
   data-product-pvc-name: test-sdp-pvc
+  dishes: ["001", "036", "063", "100"]
+  dish_devices: ["dishmaster", "dishleafnode"]
 
 ska-tango-base:
   enabled: true
@@ -66,7 +68,7 @@ ska-mid-cbf-engineering-console:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       image: ska-mid-cbf-engineering-console
-      tag: 0.10.6-dev.cb16e32d3
+      tag: 0.10.6-dev.c7ba08281
       pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
@@ -92,7 +94,7 @@ ska-csp-lmc-mid:
   enabled: true
 
 ## tmc-mid
-ska-tmc-mid:
+tmc-mid:
   enabled: true
   telescope: SKA-mid
   ska-tango-base:
