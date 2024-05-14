@@ -66,7 +66,7 @@ ska-mid-cbf-engineering-console:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       image: ska-mid-cbf-engineering-console
-      tag: 0.10.6-dev.ce494cd8e
+      tag: 0.10.6-dev.cb16e32d3
       pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
@@ -100,10 +100,9 @@ ska-tmc-mid:
   deviceServers:
     mocks:
       enabled: true
-      is_simulated:
-        dish: true
-        csp: false
-        sdp: true
+      dish: true
+      csp: false
+      sdp: true
 
 ## sdp
 ska-sdp:
