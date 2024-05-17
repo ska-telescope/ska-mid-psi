@@ -29,7 +29,6 @@ global:
   raw_user_account: ""
   raw_user_pass: ""
 
-
 ska-tango-base:
   enabled: true
   vnc:
@@ -71,7 +70,7 @@ ska-mid-cbf-engineering-console:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
 #      image: ska-mid-cbf-engineering-console
-#      tag: <Image tag from MCS pipeline>
+#      tag: <Image tag from EC pipeline>
 #      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
