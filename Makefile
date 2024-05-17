@@ -97,10 +97,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
-	--set spfrx.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
-	--set spfrx.tango_host=$(TANGO_HOST) \
-	--set spfrx.tangodb_port=10000 \
-	--set spfrx.dish_id=$(DISH_ID) \
+	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set global.tango_host=$(TANGO_HOST) \
+	--set global.tangodb_port=10000 \
+	--set global.dish_id=$(DISH_ID) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
