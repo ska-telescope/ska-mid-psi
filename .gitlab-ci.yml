@@ -16,6 +16,7 @@ variables:
   SDP_ENABLED: false
   TMC_ENABLED: false
   SPFRX_ENABLED: false
+  SKA_TANGO_ARCHIVER_ENABLED: false
 stages:
   - lint
   - on_demand_psi
@@ -56,6 +57,22 @@ spfrx-start:
     - when: manual
   needs:
     - job: psi-mid-on-demand-deploy
+
+archive:
+  stage: eda-archiving
+  extends:
+    - .mid
+  variables:
+    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
+    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
+  script:
+    - echo "inside stage"
+    - cat archiver/archive_template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
+    - cat archive_configuration.yaml
+  rules:
+    - if: $SKA_TANGO_ARCHIVER_ENABLED == true
+      needs:
+        - job: psi-mid-on-demand-deploy
 
 
 include:
