@@ -21,6 +21,7 @@ stages:
   - lint
   - on_demand_psi
   - deploy-spfrx
+  - eda-archiving
   - build
   - deploy
   - join-reports
