@@ -59,6 +59,7 @@ spfrx-start:
   needs:
     - job: psi-mid-on-demand-deploy
 
+
 archive:
   stage: eda-archiving
   extends:
@@ -70,10 +71,12 @@ archive:
     - echo "inside stage"
     - cat archiver/archive_template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
     - cat archive_configuration.yaml
+  needs:
+    - job: psi-mid-on-demand-deploy
   rules:
     - if: $SKA_TANGO_ARCHIVER_ENABLED == true
-      needs:
-        - job: psi-mid-on-demand-deploy
+      when: manual
+  allow_failure: true
 
 
 include:
