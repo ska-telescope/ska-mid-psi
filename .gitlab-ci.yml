@@ -73,11 +73,10 @@ archive:
     - echo "inside stage"
     - cat archiver/template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
     - cat archive_configuration.yaml
-  rules:
-    - if: $SKA_TANGO_ARCHIVER_ENABLED == true
-      when: manual
   needs:
     - job: psi-mid-on-demand-deploy
+  rules:
+    - if: $SKA_TANGO_ARCHIVER
   allow_failure: true
 
 
