@@ -71,14 +71,14 @@ archive:
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
   tags:
     - k8srunner-psi-mid
+  rules:
+    - if: $SKA_TANGO_ARCHIVER == 'true' # Only execute if SKA_TANGO_ARCHIVER is enabled
   script:
     - cat archiver/template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
     - cat archive_configuration.yaml
     - configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
-    - echo "configurator_ip == $configurator_ip"
-    - echo "Loading configuration file into the Configurator for archiving to the EDA..."
-    - echo "CURL_HEADERS == $CURL_HEADERS"
-    - echo "curl -X 'POST' 'http://${configurator_ip}:8003/configure-archiver ${CURL_HEADERS} -F 'file=@archive_configuration.yaml;type=application/x-yaml' -F 'option=add_update'"    
+    - echo "Loading configuration file into the Configurator (IP = ${configurator_ip}) for archiving to the EDA..."
+    - curl -X 'POST' 'http://${configurator_ip}:8003/configure-archiver ${CURL_HEADERS} -F 'file=@archive_configuration.yaml;type=application/x-yaml' -F 'option=add_update'
     - echo "Deleting archive_configuration.yaml..."
     - rm archive_configuration.yaml
   needs:
