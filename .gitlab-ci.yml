@@ -70,13 +70,16 @@ archive:
   tags:
     - k8srunner-psi-mid
   script:
-    - echo "inside stage"
     - cat archiver/template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
     - cat archive_configuration.yaml
+    - configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
+    - echo "configurator_ip == $configurator_ip"
+    - echo "Loading configuration file into the Configurator for archiving to the EDA..."
+    - echo "curl -X 'POST' 'http://${configurator_ip}:8003/configure-archiver' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'file=@archive_configuration.yaml;type=application/x-yaml' -F 'option=add_update'"
+    - echo "Deleting archive_configuration.yaml..."
+    - rm archive_configuration.yaml
   needs:
     - job: psi-mid-on-demand-deploy
-  # rules:
-  #   - if: $SKA_TANGO_ARCHIVER
   allow_failure: true
 
 
