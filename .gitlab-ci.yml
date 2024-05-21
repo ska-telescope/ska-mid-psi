@@ -16,7 +16,6 @@ variables:
   SDP_ENABLED: false
   TMC_ENABLED: false
   SPFRX_ENABLED: false
-  SKA_TANGO_ARCHIVER: false
   CURL_HEADERS: "-H 'accept: application/json' -H 'Content-Type: multipart/form-data'"
 
 stages:
