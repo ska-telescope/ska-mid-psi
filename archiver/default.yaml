@@ -1,6 +1,7 @@
 db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
 manager: mid-eda/cm/01
 archiver: mid-eda/es/01
+
 configuration:
   - class: TalonBoard
     attributes:

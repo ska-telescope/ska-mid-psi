@@ -2,8 +2,9 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 -n <KUBE_NAMESPACE> -f <ARCHIVE_CONFIG_FILE> [-f <ARCHIVE_CONFIG_FILE> ...] -a <ACTION>"
-    echo "ACTION can be either 'add_update' or 'remove'"
+    echo -e "\nUsage: $0 -n <KUBE_NAMESPACE> [-f <CONFIG_FILE> ...] -a <ACTION>"
+    echo "  where ACTION can be either 'add_update' or 'remove'"
+    echo -e "\nIf no template files are provided, 'default.yaml' will be used by default.\n"
     exit 1
 }
 
@@ -18,7 +19,7 @@ check_namespace() {
     fi
 }
 
-ARCHIVE_CONFIG_FILES=()
+CONFIG_FILES=()
 
 # Parse command-line arguments
 while getopts "n:f:a:" opt; do
@@ -27,7 +28,7 @@ while getopts "n:f:a:" opt; do
             KUBE_NAMESPACE=${OPTARG}
             ;;
         f)
-            ARCHIVE_CONFIG_FILES+=("${OPTARG}")
+            CONFIG_FILES+=("${OPTARG}")
             ;;
         a)
             ACTION=${OPTARG}
@@ -46,9 +47,9 @@ fi
 # Check that the namespace is active
 check_namespace $KUBE_NAMESPACE
 
-# Check if at least one archive config file is provided
-if [ ${#ARCHIVE_CONFIG_FILES[@]} -eq 0 ]; then
-    usage
+# If no template files are provided, use the default template file
+if [ ${#CONFIG_FILES[@]} -eq 0 ]; then
+    CONFIG_FILES=("archiver/default.yaml")
 fi
 
 # Check if action is provided and valid
@@ -59,10 +60,7 @@ elif [[  "${ACTION}" != "add_update" && "${ACTION}" != "remove" ]]; then
     usage
 fi
 
-
 # Define variables
-headers=""
-#headers="-H 'accept: application/json' -H 'Content-Type: multipart/form-data'"
 configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
 if [  "${ACTION}" == "add_update" ]; then
     action_str="\nLoading the following configuration into the Configurator:\n"
@@ -70,12 +68,12 @@ else
     action_str="\nRemoving the following configuration from the Configurator:\n"
 fi
 
-# Display namespace and config filename
+# Display namespace, config files
 echo -e "\nUsing Kubernetes Namespace: $KUBE_NAMESPACE"
-echo "Using Archive Configuration Files: ${ARCHIVE_CONFIG_FILES[*]}"
+echo "Using Archive Configuration Files: ${CONFIG_FILES[*]}"
 
-for file in "${ARCHIVE_CONFIG_FILES[@]}"; do 
-    temp_config_file=temp_$file
+temp_config_file="archiver/temp_config.yaml"
+for file in "${CONFIG_FILES[@]}"; do 
 
     # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
     cat $file | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
@@ -84,18 +82,11 @@ for file in "${ARCHIVE_CONFIG_FILES[@]}"; do
 
     # Load in the config file to the Configurator via its external IP
     echo -e "\nExecuting:"
-    echo "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" $headers -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\""
+    echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" $headers -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
     curl -X "POST" "http://$configurator_ip:8003/configure-archiver" $headers -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
-
-    # Clean up temp file
-    # echo -e "\nDeleting $temp_config_file..."
-    # rm $temp_config_file
     echo ""
 done
 
-# if [ $? -ne 0 ]; then
-#     echo -e "Action \"$ACTION\" failed.\n"
-#     exit 1
-# else
-#     echo -e "Action \"$ACTION\" succeeded.\n"
-# fi
+# Clean up temp file
+rm $temp_config_file
+echo -e "\nDeleted $temp_config_file\n"
