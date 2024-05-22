@@ -144,6 +144,11 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
+eda-add-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f ${CONFIG_FILE} 
+
+eda-remove-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f ${CONFIG_FILE}
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
