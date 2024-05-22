@@ -72,7 +72,7 @@ archive:
   # rules:
   #   - if: $SKA_TANGO_ARCHIVER == 'true' # Only execute if SKA_TANGO_ARCHIVER is enabled
   script:
-    - ./archiver/configure.sh -n $KUBE_NAMESPACE -f ./archiver/template.yaml -a add_update
+    - ./archiver/configure.sh -n $KUBE_NAMESPACE -a add_update
   needs:
     - job: psi-mid-on-demand-deploy
   allow_failure: true
