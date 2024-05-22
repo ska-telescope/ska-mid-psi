@@ -3,43 +3,30 @@ manager: mid-eda/cm/01
 archiver: mid-eda/es/01
 configuration:
   - class: TalonBoard
-    filtering:
-      device:
-      - mid_csp_cbf/talon_board/001
-      - mid_csp_cbf/talon_board/002
     attributes:
       State:
         code_push_event: true
-      healthState:
-        archive_period: 6000
-        polling_period: 3000
-      adminMode:
-        archive_period: 6000
-        polling_period: 3000
       simulationMode:
-        archive_period: 6000
-        polling_period: 3000
-      testMode:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       FpgaDieTemperature:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       HumiditySensorTemperature:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       DIMMTemperatures:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       MboTxTemperatures:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       MboTxVccVoltages:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       MboRxVccVoltages:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000
       FansFault:
-        archive_period: 6000
-        polling_period: 3000
+        archive_period: 60000
+        polling_period: 30000

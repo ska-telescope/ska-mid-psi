@@ -16,7 +16,6 @@ variables:
   SDP_ENABLED: false
   TMC_ENABLED: false
   SPFRX_ENABLED: false
-  CURL_HEADERS: "-H 'accept: application/json' -H 'Content-Type: multipart/form-data'"
 
 stages:
   - lint
@@ -73,13 +72,7 @@ archive:
   # rules:
   #   - if: $SKA_TANGO_ARCHIVER == 'true' # Only execute if SKA_TANGO_ARCHIVER is enabled
   script:
-    - cat archiver/template.yaml | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > archive_configuration.yaml
-    - cat archive_configuration.yaml
-    - configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
-    - echo "Loading configuration file into the Configurator (IP = ${configurator_ip}) for archiving to the EDA..."
-    - curl -X 'POST' "http://${configurator_ip}:8003/configure-archiver" ${CURL_HEADERS} -F 'file=@archive_configuration.yaml;type=application/x-yaml' -F 'option=add_update'
-    - echo "Deleting archive_configuration.yaml..."
-    - rm archive_configuration.yaml
+    - ./archiver/configure.sh -n $KUBE_NAMESPACE -f ./archiver/template.yaml -a add_update
   needs:
     - job: psi-mid-on-demand-deploy
   allow_failure: true
