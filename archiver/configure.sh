@@ -2,9 +2,11 @@
 
 # Function to display usage
 usage() {
-    echo -e "\nUsage: $0 -n <KUBE_NAMESPACE> [-f <CONFIG_FILE> ...] -a <ACTION>"
-    echo "  where ACTION can be either 'add_update' or 'remove'"
-    echo -e "\nIf no template files are provided, 'default.yaml' will be used by default.\n"
+    echo -e "\nUsage: $0 -n <KUBE_NAMESPACE> -a <ACTION> [-f <CONFIG_FILE>]\n"
+    echo "where ACTION can be 'add_update' to add/update attributes for archiving,"
+    echo "                    'remove' to remove attributes from archiving, or"
+    echo "                     'get' to get the list of attributes currently being archived."
+    echo -e "\nIf no config file is provided, 'default.yaml' will be used by default.\n"
     exit 1
 }
 
@@ -19,19 +21,46 @@ check_namespace() {
     fi
 }
 
-CONFIG_FILES=()
+get_attributes() {
+    echo -e "curl -X \"GET\" \"http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01\" -H \"accept: application/json\""
+    echo ""
+    curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" -H "accept: application/json"
+}
+
+add_remove_attributes(){
+    echo "Using Archive Configuration Files: ${CONFIG_FILE}"
+
+    temp_config_file="archiver/temp_config.yaml"
+    
+    # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
+    cat $CONFIG_FILE | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
+    echo -e $action_str
+    cat $temp_config_file
+
+    # Load in the config file to the Configurator via its external IP
+    echo -e "\nExecuting:"
+    echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" $headers -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
+    echo ""
+    curl -X "POST" "http://$configurator_ip:8003/configure-archiver" $headers -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
+    echo ""
+
+    # Clean up temp file
+    rm $temp_config_file
+    echo -e "\nDeleted $temp_config_file\n"
+    echo "DONE"
+}
 
 # Parse command-line arguments
-while getopts "n:f:a:" opt; do
+while getopts "n:a:f:" opt; do
     case ${opt} in
         n)
             KUBE_NAMESPACE=${OPTARG}
             ;;
-        f)
-            CONFIG_FILES+=("${OPTARG}")
-            ;;
         a)
             ACTION=${OPTARG}
+            ;;
+        f)
+            CONFIG_FILE=${OPTARG}
             ;;
         *)
             usage
@@ -47,46 +76,40 @@ fi
 # Check that the namespace is active
 check_namespace $KUBE_NAMESPACE
 
-# If no template files are provided, use the default template file
-if [ ${#CONFIG_FILES[@]} -eq 0 ]; then
-    CONFIG_FILES=("archiver/default.yaml")
+# If no config file is provided, use the default file
+if [ -z "${CONFIG_FILE}" ]; then
+    CONFIG_FILE="archiver/default.yaml"
 fi
 
 # Check if action is provided and valid
 if [ -z "${ACTION}" ]; then
     usage
-elif [[  "${ACTION}" != "add_update" && "${ACTION}" != "remove" ]]; then
+elif [[  "${ACTION}" != "add_update" && "${ACTION}" != "remove" && "${ACTION}" != "get" ]]; then
     echo "Aborting due to invalid action: ${ACTION}"
     usage
 fi
 
-# Define variables
+# Check that Configurator is deployed
 configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
-if [  "${ACTION}" == "add_update" ]; then
-    action_str="\nLoading the following configuration into the Configurator:\n"
-else
-    action_str="\nRemoving the following configuration from the Configurator:\n"
+if [ -z "${configurator_ip}" ]; then
+    echo "Aborting: the EDA has not been enabled."
+    exit 1
 fi
 
 # Display namespace, config files
 echo -e "\nUsing Kubernetes Namespace: $KUBE_NAMESPACE"
-echo "Using Archive Configuration Files: ${CONFIG_FILES[*]}"
 
-temp_config_file="archiver/temp_config.yaml"
-for file in "${CONFIG_FILES[@]}"; do 
+# Add/Remove/Get attributes
+if [  "${ACTION}" == "add_update" ]; then
+    action_str="\nLoading the following configuration into the Configurator:\n"
+    add_remove_attributes
+elif [  "${ACTION}" == "remove" ]; then
+    action_str="\nRemoving the following configuration from the Configurator:\n"
+    add_remove_attributes
+else
+    echo -e "\nRetrieving the list of attributes being archived:"
+    get_attributes
+fi
 
-    # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
-    cat $file | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
-    echo -e $action_str
-    cat $temp_config_file
 
-    # Load in the config file to the Configurator via its external IP
-    echo -e "\nExecuting:"
-    echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" $headers -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
-    curl -X "POST" "http://$configurator_ip:8003/configure-archiver" $headers -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
-    echo ""
-done
 
-# Clean up temp file
-rm $temp_config_file
-echo -e "\nDeleted $temp_config_file\n"
