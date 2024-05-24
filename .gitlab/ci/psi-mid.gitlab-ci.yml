@@ -31,7 +31,7 @@
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Get attributes from EDA"
-        make eda-add-attributes CONFIG_FILE=${CONFIG_FILE}
+        make eda-add-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} CONFIG_FILE=${CONFIG_FILE}
       fi
 
 .info:
@@ -62,7 +62,7 @@
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Remove attributes from EDA"
-        make eda-remove-attributes CONFIG_FILE=${CONFIG_FILE}
+        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} CONFIG_FILE=${CONFIG_FILE}
     - fi
     - make k8s-uninstall-chart || true
     - |
