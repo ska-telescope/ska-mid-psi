@@ -40,7 +40,7 @@ add_remove_attributes(){
     ls
     echo -e $action_str
     ls $temp_config_file
-    cat "temp config file == $temp_config_file"
+    echo "temp config file == $temp_config_file"
 
 
     # Load in the config file to the Configurator via its external IP
