@@ -29,7 +29,8 @@
     - echo "Wait namespace resources"
     - make k8s-wait
   after_script:
-    - if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+    - |
+      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Get attributes from EDA"
         echo "KUBE_NAMESPACE == $KUBE_NAMESPACE"
         echo "CONFIG_FILE == $CONFIG_FILE"
