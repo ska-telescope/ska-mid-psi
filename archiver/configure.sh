@@ -30,12 +30,14 @@ get_attributes() {
 add_remove_attributes(){
     echo "Using Archive Configuration Files: $CONFIG_FILE"
 
-    temp_config_file="archiver/temp_config.yaml"
+    temp_config_file="temp_config.yaml"
     
     # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
     cat $CONFIG_FILE | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
     echo -e $action_str
+    ls $temp_config_file
     cat "temp config file == $temp_config_file"
+
 
     # Load in the config file to the Configurator via its external IP
     echo -e "\nExecuting:"
