@@ -34,6 +34,10 @@ add_remove_attributes(){
     
     # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
     cat $CONFIG_FILE | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
+    echo "cat CONFIG_FILE"
+    cat $CONFIG_FILE
+    echo "ls"
+    ls
     echo -e $action_str
     ls $temp_config_file
     cat "temp config file == $temp_config_file"
