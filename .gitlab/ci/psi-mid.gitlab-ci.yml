@@ -27,6 +27,12 @@
     - make k8s-get
     - echo "Wait namespace resources"
     - make k8s-wait
+  after_script:
+    - |
+      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+        echo "Get attributes from EDA"
+        make eda-add-attributes CONFIG_FILE=${CONFIG_FILE}
+      fi
 
 .info:
   stage: deploy
@@ -53,6 +59,11 @@
   script: &cleanup_script
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
+    - |
+      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+        echo "Remove attributes from EDA"
+        make eda-remove-attributes CONFIG_FILE=${CONFIG_FILE}
+    - fi
     - make k8s-uninstall-chart || true
     - |
       if [ "$KEEP_NAMESPACE" != "true" ]; then
