@@ -45,8 +45,8 @@ add_remove_attributes(){
     echo ""
 
     # Clean up temp file
-    rm $temp_config_file
-    echo -e "\nDeleted $temp_config_file\n"
+    #rm $temp_config_file
+    #echo -e "\nDeleted $temp_config_file\n"
     echo "DONE"
 }
 

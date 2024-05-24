@@ -33,7 +33,6 @@
         echo "Get attributes from EDA"
         echo "KUBE_NAMESPACE == $KUBE_NAMESPACE"
         echo "CONFIG_FILE == $CONFIG_FILE"
-        kubectl get namespace $KUBE_NAMESPACE -o jsonpath='{.status.phase}'
         make eda-add-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} CONFIG_FILE=${CONFIG_FILE}
       else
         echo "SKA_TANGO_ARCHIVER is false"

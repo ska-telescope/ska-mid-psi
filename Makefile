@@ -146,13 +146,13 @@ endif
 
 CONFIG_FILE = "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:
-	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f ${CONFIG_FILE} 
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(CONFIG_FILE) 
 
 eda-get-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a get
 
 eda-remove-attributes:
-	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f ${CONFIG_FILE}
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(CONFIG_FILE)
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
