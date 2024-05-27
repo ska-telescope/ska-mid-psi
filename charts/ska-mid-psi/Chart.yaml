@@ -17,12 +17,12 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-mcs
-    version: 0.14.2
-    repository: https://artefact.skao.int/repository/helm-internal
+    version: 0.15.0-dev.c8574e8e9
+    repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
     condition: ska-mid-cbf-mcs.enabled
   - name: ska-mid-cbf-tmleafnode
-    version: 0.14.2
-    repository: https://artefact.skao.int/repository/helm-internal
+    version: 0.15.0-dev.c8574e8e9
+    repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
     condition: ska-mid-cbf-tmleafnode.enabled
 
   # TARANTA SUITE
@@ -72,7 +72,7 @@ dependencies:
     condition: spfrx.enabled
   
   - name: ska-mid-cbf-engineering-console
-    version: 0.10.6-dev.cb02237f2
+    version: 0.10.7-dev.cd22744f6
     repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
 
