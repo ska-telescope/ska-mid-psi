@@ -49,29 +49,29 @@ ska-taranta:
 ## mid-cbf
 ska-mid-cbf-mcs:
   signalVerificationVersion: 0.2.21
-  engineeringConsoleVersion: 0.10.7
+  engineeringConsoleVersion: 0.10.8
   hostInfo:
     environment: "mid-psi"
   enabled: true
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
- midcbf:
-   image:
-     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-     image: ska-mid-cbf-mcs
-     tag: 0.15.0-dev.cd2612d40
-     pullPolicy: IfNotPresent
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+      image: ska-mid-cbf-mcs
+      tag: 0.15.0-dev.cd2612d40
+      pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
 # Uncomment the section below to use custom Engineering Console image
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      image: ska-mid-cbf-engineering-console
-      tag: 0.10.7-dev.c2b610320
-      pullPolicy: IfNotPresent
+  # engineeringconsole:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+  #     image: ska-mid-cbf-engineering-console
+  #     tag: 0.10.8-dev.caa293d32
+  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
