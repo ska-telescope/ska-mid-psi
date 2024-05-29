@@ -62,8 +62,8 @@ ska-mid-cbf-mcs:
 #      tag: <Image tag from MCS pipeline>
 #      pullPolicy: IfNotPresent
 
-ska-mid-cbf-engineering-console:
-  enabled: true
+# ska-mid-cbf-engineering-console:
+#   enabled: true
 # Uncomment the section below to use custom Engineering Console image
 #  engineeringconsole:
 #    image:
