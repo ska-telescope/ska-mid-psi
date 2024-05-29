@@ -62,9 +62,6 @@ include .make/xray.mk
 # include your own private variables for custom deployment configuration
 -include PrivateRules.mak
 
-# ska-tango-archiver params for EDA deployment
-include archiver/archiver.mk 
-
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
@@ -103,9 +100,11 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.dish_id=$(DISH_ID) \
 	$(TARANTA_PARAMS)
 
+# ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
-	@echo "SKA_TANGO_ARCHIVER is ENABLED"
-	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
+include archiver/archiver.mk 
+@echo "SKA_TANGO_ARCHIVER is ENABLED"
+K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
 ifneq (,$(wildcard $(VALUES)))
