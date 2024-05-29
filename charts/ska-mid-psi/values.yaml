@@ -48,7 +48,7 @@ ska-taranta:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.21
+  signalVerificationVersion: 0.2.24
   hostInfo:
     environment: "mid-psi"
   enabled: true
