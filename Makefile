@@ -104,10 +104,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
-	echo "SKA_TANGO_ARCHIVER is ENABLED"
+	@echo "SKA_TANGO_ARCHIVER is ENABLED"
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
-else
-	echo "SKA_TANGO_ARCHIVER is DISABLED"
 endif
 
 ifneq (,$(wildcard $(VALUES)))
