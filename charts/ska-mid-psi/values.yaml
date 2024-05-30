@@ -80,7 +80,7 @@ ska-mid-cbf-tmleafnode:
 ## EDA
 ska-tango-archiver:
   legacy_compatibility: true
-  enabled: true
+  enabled: false
   telescope: SKA-mid
   telescope_environment: MID_PSI
   hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
