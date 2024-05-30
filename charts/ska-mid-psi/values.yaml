@@ -29,7 +29,6 @@ global:
   raw_user_account: ""
   raw_user_pass: ""
 
-
 ska-tango-base:
   enabled: true
   vnc:
@@ -49,8 +48,7 @@ ska-taranta:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.17
-  engineeringConsoleVersion: 0.10.2
+  signalVerificationVersion: 0.2.24
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -97,7 +95,7 @@ ska-csp-lmc-mid:
   enabled: true
 
 ## tmc-mid
-ska-tmc-mid:
+tmc-mid:
   enabled: true
   telescope: SKA-mid
   ska-tango-base:
@@ -105,10 +103,9 @@ ska-tmc-mid:
   deviceServers:
     mocks:
       enabled: true
-      is_simulated:
-        dish: true
-        csp: false
-        sdp: true
+      dish: true
+      csp: false
+      sdp: true
 
 ## sdp
 ska-sdp:
