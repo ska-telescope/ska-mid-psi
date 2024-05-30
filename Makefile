@@ -103,8 +103,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 # ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
 include archiver/archiver.mk 
-	@echo "SKA_TANGO_ARCHIVER is ENABLED"
-	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
+K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
 ifneq (,$(wildcard $(VALUES)))
