@@ -12,7 +12,7 @@
     K8S_AUTH_SERVICE_ACCOUNT: "ci-svc-psi-$CI_PIPELINE_ID"
     SKA_TANGO_ARCHIVER: "false"
     VALUES: values.yaml
-    CONFIG_FILE: "$CONFIG_FILE"
+    ARCHIVE_CONFIG: "$ARCHIVE_CONFIG"
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump"
@@ -32,12 +32,12 @@
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Get attributes from EDA"
-        echo "$CONFIG_FILE"
+        echo "$ARCHIVE_CONFIG"
         pwd
         ls
-        ls $CONFIG_FILE
-        echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE CONFIG_FILE=$CONFIG_FILE"
-        make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE CONFIG_FILE=$CONFIG_FILE
+        ls $ARCHIVE_CONFIG
+        echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG=$ARCHIVE_CONFIG"
+        make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG=$ARCHIVE_CONFIG
       else
         echo "SKA_TANGO_ARCHIVER is false"
       fi
@@ -64,14 +64,14 @@
     HELM_RELEASE: "test-$CI_PIPELINE_ID"
     KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
-    CONFIG_FILE: "$CONFIG_FILE"
+    ARCHIVE_CONFIG: "$ARCHIVE_CONFIG"
   script: &cleanup_script
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Remove attributes from EDA"
-        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} CONFIG_FILE=${CONFIG_FILE}
+        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} ARCHIVE_CONFIG=${ARCHIVE_CONFIG}
       else
         echo "SKA_TANGO_ARCHIVER is false"
     - fi

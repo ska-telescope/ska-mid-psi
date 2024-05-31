@@ -2,7 +2,7 @@
 
 # Function to display usage
 usage() {
-    echo -e "\nUsage: $0 -n <KUBE_NAMESPACE> -a <ACTION> [-f <CONFIG_FILE>]\n"
+    echo -e "\nUsage: $0 -n <KUBE_NAMESPACE> -a <ACTION> [-f <ARCHIVE_CONFIG>]\n"
     echo "where ACTION can be 'add_update' to add/update attributes for archiving,"
     echo "                    'remove' to remove attributes from archiving, or"
     echo "                     'get' to get the list of attributes currently being archived."
@@ -28,14 +28,14 @@ get_attributes() {
 }
 
 add_remove_attributes(){
-    echo "Using Archive Configuration Files: $CONFIG_FILE"
+    echo "Using Archive Configuration Files: $ARCHIVE_CONFIG"
 
     temp_config_file="temp_config.yaml"
     
     # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
-    cat $CONFIG_FILE | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
-    echo "cat CONFIG_FILE"
-    cat $CONFIG_FILE
+    cat $ARCHIVE_CONFIG | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
+    echo "cat ARCHIVE_CONFIG"
+    cat $ARCHIVE_CONFIG
     echo "ls"
     ls
     echo -e $action_str
@@ -66,7 +66,7 @@ while getopts "n:a:f:" opt; do
             ACTION=${OPTARG}
             ;;
         f)
-            CONFIG_FILE=${OPTARG}
+            ARCHIVE_CONFIG=${OPTARG}
             ;;
         *)
             usage
@@ -83,8 +83,8 @@ fi
 check_namespace $KUBE_NAMESPACE
 
 # If no config file is provided, use the default file
-if [ -z "${CONFIG_FILE}" ]; then
-    CONFIG_FILE="archiver/default.yaml"
+if [ -z "${ARCHIVE_CONFIG}" ]; then
+    ARCHIVE_CONFIG="archiver/default.yaml"
 fi
 
 # Check if action is provided and valid

@@ -110,15 +110,15 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
-CONFIG_FILE = "archiver/default.yaml" # can override the default config file for archiving
+ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:
-	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(CONFIG_FILE) 
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
 
 eda-get-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a get
 
 eda-remove-attributes:
-	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(CONFIG_FILE)
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(ARCHIVE_CONFIG)
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
