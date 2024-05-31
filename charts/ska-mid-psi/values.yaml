@@ -24,6 +24,10 @@ global:
   device_server_port: 45450
   cluster_domain: cluster.local
   data-product-pvc-name: test-sdp-pvc
+  tangodb_fqdn: localhost
+  tangodb_port: 10000
+  raw_user_account: ""
+  raw_user_pass: ""
 
 ska-tango-base:
   enabled: true
@@ -44,8 +48,7 @@ ska-taranta:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.17
-  engineeringConsoleVersion: 0.10.2
+  signalVerificationVersion: 0.2.24
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -59,9 +62,20 @@ ska-mid-cbf-mcs:
   #     tag: 0.13.3-dev.cd4995c37
   #     pullPolicy: IfNotPresent
 
+ska-mid-cbf-engineering-console:
+  enabled: true
+# Uncomment the section below to use custom Engineering Console image
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+#      image: ska-mid-cbf-engineering-console
+#      tag: <Image tag from EC pipeline>
+#      pullPolicy: IfNotPresent
+
 ska-mid-cbf-tmleafnode:
   enabled: true
 
+## EDA
 ska-tango-archiver:
   legacy_compatibility: true
   enabled: false
@@ -81,7 +95,7 @@ ska-csp-lmc-mid:
   enabled: true
 
 ## tmc-mid
-ska-tmc-mid:
+tmc-mid:
   enabled: true
   telescope: SKA-mid
   ska-tango-base:
@@ -89,10 +103,9 @@ ska-tmc-mid:
   deviceServers:
     mocks:
       enabled: true
-      is_simulated:
-        dish: true
-        csp: false
-        sdp: true
+      dish: true
+      csp: false
+      sdp: true
 
 ## sdp
 ska-sdp:
@@ -111,7 +124,7 @@ ska-sdp:
 spfrx:
   enabled: false
   console:
-    version: 0.2.2
+    version: 0.2.5
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
