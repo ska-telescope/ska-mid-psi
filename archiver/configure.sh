@@ -12,21 +12,37 @@ usage() {
 
 # Function to check if namespace is active
 check_namespace() {
-    local namespace=$1
-    status=$(kubectl get namespace $namespace -o jsonpath='{.status.phase}')
+    status=$(kubectl get namespace $KUBE_NAMESPACE -o jsonpath='{.status.phase}')
 
     if [ "$status" != "Active" ]; then
-        echo -e "\nAborting script: the namespace $namespace is not active"
+        echo -e "\nAborting script: the namespace $KUBE_NAMESPACE is not active"
         exit 1
     fi
 }
 
-get_attributes() {
-    echo -e "curl -X \"GET\" \"http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01\" -H \"accept: application/json\""
-    echo ""
-    curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" -H "accept: application/json"
+# Function to check if the configurator svc is running and get its IP
+configurator_deployed() {
+    configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
+
+    if [ -z "${configurator_ip}" ]; then
+        false
+    else
+        true
+    fi
 }
 
+# Function to get the attributes that have been archived, for a particular namespace that corresponds to the configurator_ip
+get_attributes() {
+    if configurator_deployed; then
+        echo -e "curl -X \"GET\" \"http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01\" -H \"accept: application/json\""
+        echo ""
+        curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" -H "accept: application/json"
+    else
+        echo -e "\nThe Configurator pod is not deployed"
+    fi
+}
+
+# Function to add/remove attributes to/from archiving, for a particular namespace that corresponds to the configurator_ip
 add_remove_attributes(){
     echo "Using Archive Configuration Files: $ARCHIVE_CONFIG"
 
@@ -34,26 +50,22 @@ add_remove_attributes(){
     
     # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
     cat $ARCHIVE_CONFIG | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
-    echo "cat ARCHIVE_CONFIG"
-    cat $ARCHIVE_CONFIG
-    echo "ls"
-    ls
-    echo -e $action_str
-    ls $temp_config_file
-    echo "temp config file == $temp_config_file"
 
+    if configurator_deployed; then
+        # Load in the config file to the Configurator via its external IP
+        echo -e "\nExecuting:"
+        echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
+        echo ""
+        curl -X "POST" "http://$configurator_ip:8003/configure-archiver" -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
+        echo ""
 
-    # Load in the config file to the Configurator via its external IP
-    echo -e "\nExecuting:"
-    echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" $headers -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
-    echo ""
-    curl -X "POST" "http://$configurator_ip:8003/configure-archiver" $headers -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
-    echo ""
-
-    # Clean up temp file
-    #rm $temp_config_file
-    #echo -e "\nDeleted $temp_config_file\n"
-    echo "DONE"
+        # Clean up temp file
+        rm $temp_config_file
+        echo -e "\nDeleted $temp_config_file\n"
+        echo "DONE"
+    else
+        echo -e "\nThe Configurator pod is not deployed"
+    fi
 }
 
 # Parse command-line arguments
@@ -80,7 +92,7 @@ if [ -z "${KUBE_NAMESPACE}" ]; then
 fi
 
 # Check that the namespace is active
-check_namespace $KUBE_NAMESPACE
+check_namespace
 
 # If no config file is provided, use the default file
 if [ -z "${ARCHIVE_CONFIG}" ]; then
@@ -93,13 +105,6 @@ if [ -z "${ACTION}" ]; then
 elif [[  "${ACTION}" != "add_update" && "${ACTION}" != "remove" && "${ACTION}" != "get" ]]; then
     echo "Aborting due to invalid action: ${ACTION}"
     usage
-fi
-
-# Check that Configurator is deployed
-configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
-if [ -z "${configurator_ip}" ]; then
-    echo "Aborting: the EDA has not been enabled."
-    exit 1
 fi
 
 # Display namespace, config files
@@ -116,6 +121,3 @@ else
     echo -e "\nRetrieving the list of attributes being archived:"
     get_attributes
 fi
-
-
-
