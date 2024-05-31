@@ -65,12 +65,12 @@ ska-mid-cbf-mcs:
 ska-mid-cbf-engineering-console:
   enabled: true
 # Uncomment the section below to use custom Engineering Console image
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      image: ska-mid-cbf-engineering-console
-      tag: <Image tag from EC pipeline>
-      pullPolicy: IfNotPresent
+  # engineeringconsole:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+  #     image: ska-mid-cbf-engineering-console
+  #     tag: <Image tag from EC pipeline>
+  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
