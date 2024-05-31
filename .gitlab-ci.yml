@@ -21,7 +21,6 @@ stages:
   - lint
   - on_demand_psi
   - deploy-spfrx
-  - eda-archiving
   - build
   - deploy
   - join-reports
@@ -58,22 +57,6 @@ spfrx-start:
     - when: manual
   needs:
     - job: psi-mid-on-demand-deploy
-
-
-# archive:
-#   stage: eda-archiving
-#   extends:
-#     - .mid
-#   variables:
-#     KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-#     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
-#   tags:
-#     - k8srunner-psi-mid
-#   script:
-#     - ./archiver/configure.sh -n $KUBE_NAMESPACE -a add_update
-#   needs:
-#     - job: psi-mid-on-demand-deploy
-#   allow_failure: true
 
 
 include:
