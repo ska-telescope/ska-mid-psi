@@ -64,7 +64,7 @@ add_remove_attributes(){
         echo -e "\nDeleted $temp_config_file\n"
         echo "DONE"
     else
-        echo -e "\nThe Configurator pod is not deployed"
+        echo -e "\nThe Configurator pod is not deployed."
     fi
 }
 
