@@ -1,18 +1,19 @@
 ## ska-tango-archiver parameters for TimeScale DB and Archiver
 TANGO_HOST_NAME?= $(shell echo $(TANGO_HOST) | cut -d ":" -f 1)
+CLUSTER_DOMAIN ?= cluster.local
 
 TELESCOPE ?= SKA-mid
 ARCHIVER_DBNAME ?= default_timescaledb
 TIMESCALE_POD_NAME ?= timescaledb
 TIMESCALE_DB_NAMESPACE ?= ska-eda-mid-db
+EVENT_SUBSCRIBER ?= "mid-eda/es/01"
+CONFIG_MANAGER ?= mid-eda/cm/01 #without quotes because used for ARCHWIZARD_CONFIG
 ARCHIVER_TIMESCALE_HOST_NAME ?= $(TIMESCALE_POD_NAME).$(TIMESCALE_DB_NAMESPACE).svc.$(CLUSTER_DOMAIN)
 ARCHIVER_TIMESCALE_PORT ?= 5432#for testing
 ARCHIVER_TIMESCALE_DB_USER ?= admin#for testing
 ARCHIVER_TIMESCALE_DB_PWD ?= TfqQuRxku4aYTRpk#for testing
 ARCHWIZARD_VIEW_DBNAME ?= MyHDB
 ARCHWIZARD_CONFIG ?= $(ARCHWIZARD_VIEW_DBNAME)=tango://$(TANGO_HOST_NAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):10000/$(CONFIG_MANAGER)
-EVENT_SUBSCRIBER ?= "mid-eda/es/01"
-CONFIG_MANAGER ?= mid-eda/cm/01 #without quotes because used for ARCHWIZARD_CONFIG
 TELESCOPE_ENVIRONMENT ?= MID_PSI
 SKA_TANGO_ARCHIVER_PARAMS = --set ska-tango-archiver.enabled=$(SKA_TANGO_ARCHIVER) \
 							--set ska-tango-archiver.telescope=$(TELESCOPE) \

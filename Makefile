@@ -62,9 +62,6 @@ include .make/xray.mk
 # include your own private variables for custom deployment configuration
 -include PrivateRules.mak
 
-# ska-tango-archiver params for EDA deployment
-include archiver/archiver.mk 
-
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
@@ -103,7 +100,9 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.dish_id=$(DISH_ID) \
 	$(TARANTA_PARAMS)
 
+# ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
+	include archiver/archiver.mk 
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
@@ -111,6 +110,15 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
+ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
+eda-add-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
+
+eda-get-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a get
+
+eda-remove-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(ARCHIVE_CONFIG)
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
