@@ -132,3 +132,6 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+# ODA
+ska-db-oda:
+  enabled: true
