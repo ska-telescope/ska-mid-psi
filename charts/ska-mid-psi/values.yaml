@@ -132,3 +132,17 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+ska-icams-alarmhandler:
+  enabled: true
+  icams:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-icams-alarmhandler
+      image: ska-icams-alarmhandler
+      tag: 0.1.0-dev.c292c12c6
+      pullPolicy: IfNotPresent
+  backend:
+    mongodb:
+      persistence:
+        enabled: true
+        storageClass: "nfss1"
+        size: "8Gi"
