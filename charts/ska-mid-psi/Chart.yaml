@@ -76,7 +76,7 @@ dependencies:
     condition: spfrx.enabled
 
   # ODA
-  - name: ska-db-oda
+  - name: ska-db-oda-umbrella
     version: 4.1.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-db-oda.enabled
