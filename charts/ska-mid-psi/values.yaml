@@ -40,10 +40,14 @@ ska-tango-base:
   tangodb:
     use_pv: true
 
-ska-taranta:
+ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
+ska-tango-tangogql:
+  enabled: true
+  ska-tango-base:
+    enabled: false
 
 #telescope control
 ## mid-cbf
