@@ -106,10 +106,10 @@ tmc-mid:
     enabled: false
   deviceServers:
     mocks:
-      enabled: true
-      dish: true
+      enabled: false
+      dish: false
       csp: false
-      sdp: true
+      sdp: false
 
 ## sdp
 ska-sdp:
@@ -128,7 +128,11 @@ ska-sdp:
 spfrx:
   enabled: true
   console:
-    version: 0.2.5
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+      image: ska-mid-dish-spfrx-talondx-console
+      tag: 0.2.6-dev.c575aca6d
+      pullPolicy: IfNotPresent
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
@@ -136,3 +140,7 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+ska-dish-lmc:
+  enabled: true
+  ska-tango-base:
+    enabled: true
