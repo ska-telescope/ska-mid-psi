@@ -143,4 +143,4 @@ spfrx:
 ska-dish-lmc:
   enabled: true
   ska-tango-base:
-    enabled: true
+    enabled: false
