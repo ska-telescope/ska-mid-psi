@@ -98,7 +98,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
 	--set global.dish_id=$(DISH_ID) \
-	--set global.dishes={036} \
+	--set global.dishes=$(DISH_ID) \
 	--set ska-mid-dish-simulators.enabled=false \
 	--set ska-mid-dish-simulators.deviceServers.spfdevice.enabled=false \
 	--set ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=false \
