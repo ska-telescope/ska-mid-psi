@@ -98,11 +98,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
 	--set global.dish_id=$(DISH_ID) \
-	--set global.dishes=036 \
+	--set global.dishes=001 \
 	--set ska-dish-lmc.ska-mid-dish-simulators.enabled=false \
 	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfdevice.enabled=false \
 	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=false \
-	--set ska-dish-lmc.ska-mid-dish-manager.ska-mid-dish-ds-manager.dishstructuremanager.dsc.fqdns={$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/ds-manager/SKAska001} \
 	$(TARANTA_PARAMS)
 
 # ska-tango-archiver params for EDA deployment
