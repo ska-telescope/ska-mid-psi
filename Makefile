@@ -66,6 +66,12 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
+DISH_PARAMS = --set global.dishes=001 \
+			  --set ska-dish-lmc.ska-mid-dish-simulators.enabled=false \
+			  --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfdevice.enabled=true \
+			  --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.dsOpcuaSimulator.enabled=true \
+			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
+
 ifneq ($(MINIKUBE),)
 ifneq ($(MINIKUBE),true)
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
@@ -98,10 +104,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
 	--set global.dish_id=$(DISH_ID) \
-	--set global.dishes=001 \
-	--set ska-dish-lmc.ska-mid-dish-simulators.enabled=false \
-	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfdevice.enabled=true \
-	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.dsOpcuaSimulator.enabled=true \
+	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
 # ska-tango-archiver params for EDA deployment

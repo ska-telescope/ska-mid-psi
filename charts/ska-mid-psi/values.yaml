@@ -102,6 +102,10 @@ ska-csp-lmc-mid:
 ## tmc-mid
 tmc-mid:
   enabled: true
+  global:
+    namespace_dish:
+      dish_names:
+      - mid-dish/dish-manager/SKA001
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
@@ -113,6 +117,15 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
+    centralnode:
+      DishIDs:
+      - SKA001
+    dishleafnode:
+      instances:
+      - '001'
+    subarraynode:
+      DishIDs:
+      - SKA001
 
 
 ## sdp
