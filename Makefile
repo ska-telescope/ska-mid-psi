@@ -102,7 +102,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-dish-lmc.ska-mid-dish-simulators.enabled=false \
 	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfdevice.enabled=false \
 	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=false \
-	--set ska-dish-lmc.ska-mid-dish-simulators.
 	--set ska-dish-lmc.ska-mid-dish-manager.ska-mid-dish-ds-manager.dishstructuremanager.dsc.fqdns={$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/ds-manager/SKAska001} \
 	$(TARANTA_PARAMS)
 
