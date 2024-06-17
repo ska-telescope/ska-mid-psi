@@ -101,6 +101,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.dishes=001 \
 	--set ska-dish-lmc.ska-mid-dish-simulators.enabled=false \
 	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfdevice.enabled=true \
+	--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.dsOpcuaSimulator.enabled=true \
 	$(TARANTA_PARAMS)
 
 # ska-tango-archiver params for EDA deployment
