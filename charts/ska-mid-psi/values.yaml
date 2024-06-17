@@ -5,6 +5,7 @@ global:
   minikube: false
   operator: true
   exposeAllDS: true
+  dish_suffix: "elt/master"
   annotations:
     app.gitlab.com/app: ska-mid-psi
     app.gitlab.com/env: ska
@@ -110,6 +111,9 @@ tmc-mid:
       dish: false
       csp: false
       sdp: false
+    dishleafnode:
+      enabled: true
+
 
 ## sdp
 ska-sdp:
