@@ -36,7 +36,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 
-DISH_ID ?= ska001
+DISH_ID ?= ska036
 
 # include OCI Images support
 include .make/oci.mk
@@ -98,6 +98,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
 	--set global.dish_id=$(DISH_ID) \
+	--set global.dishes={036} \
+	--set ska-mid-dish-simulators.enabled=false \
+	--set ska-mid-dish-simulators.deviceServers.spfdevice.enabled=false \
+	--set ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=false \
 	$(TARANTA_PARAMS)
 
 # ska-tango-archiver params for EDA deployment
