@@ -161,3 +161,7 @@ ska-dish-lmc:
   enabled: true
   ska-tango-base:
     enabled: false
+  ska-mid-dish-manager:
+    dishmanager:
+      spfrx:
+        fqdn: "ska001/spfrxpu/controller"
