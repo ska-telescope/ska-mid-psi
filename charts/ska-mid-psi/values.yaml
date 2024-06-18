@@ -161,6 +161,14 @@ ska-dish-lmc:
   enabled: true
   ska-tango-base:
     enabled: false
+  ska-mid-dish-simulators:
+    deviceServers:
+      spfdevice:
+        enabled: true
+      spfrxdevice:
+        enabled: false
+    dsOpcuaSimulator:
+      enabled: true
   # ska-mid-dish-manager:
   #   dishmanager:
   #     spfrx:
