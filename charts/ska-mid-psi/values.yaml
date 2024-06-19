@@ -102,6 +102,7 @@ ska-csp-lmc-mid:
 ## tmc-mid
 tmc-mid:
   enabled: true
+  telescope: SKA-mid
   global:
     namespace_dish:
       dish_names:
@@ -169,7 +170,3 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
-  # ska-mid-dish-manager:
-  #   dishmanager:
-  #     spfrx:
-  #       fqdn: "ska001/spfrxpu/controller"
