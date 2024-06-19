@@ -102,7 +102,6 @@ ska-csp-lmc-mid:
 ## tmc-mid
 tmc-mid:
   enabled: true
-  telescope: SKA-mid
   global:
     namespace_dish:
       dish_names:
