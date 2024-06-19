@@ -115,12 +115,11 @@ tmc-mid:
       dish: false
       csp: false
       sdp: false
-    dishleafnode:
-      enabled: true
     centralnode:
       DishIDs:
       - SKA001
     dishleafnode:
+      enabled: true
       instances:
       - '001'
     subarraynode:
