@@ -63,7 +63,7 @@ ska-mid-cbf-mcs:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
       image: ska-mid-cbf-mcs
-      tag: 0.15.1-dev.cc8bf489d
+      tag: 0.15.1-dev.c9f098b54
       pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
