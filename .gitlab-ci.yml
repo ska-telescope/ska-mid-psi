@@ -15,7 +15,7 @@ variables:
   DISH_ID: ska001
   SDP_ENABLED: true
   TMC_ENABLED: true
-  SPFRX_ENABLED: false
+  SPFRX_ENABLED: true
 
 stages:
   - lint

@@ -167,6 +167,6 @@ ska-dish-lmc:
       spfdevice:
         enabled: true
       spfrxdevice:
-        enabled: true
+        enabled: false
     dsOpcuaSimulator:
       enabled: true
