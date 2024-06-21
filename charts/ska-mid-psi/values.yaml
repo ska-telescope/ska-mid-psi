@@ -145,12 +145,6 @@ ska-sdp:
 # SPFRx
 spfrx:
   enabled: true
-  console:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-      image: ska-mid-dish-spfrx-talondx-console
-      tag: 0.2.6-dev.c575aca6d
-      pullPolicy: IfNotPresent
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
