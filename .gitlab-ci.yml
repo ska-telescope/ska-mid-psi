@@ -13,7 +13,7 @@ variables:
   SPFRX_SCRIPTS_DIR: scripts
   SPFRX_CONSOLE_VER: 0.1.0
   DISH_ID: ska001
-  SDP_ENABLED: false
+  SDP_ENABLED: true
   TMC_ENABLED: true
   SPFRX_ENABLED: true
 
