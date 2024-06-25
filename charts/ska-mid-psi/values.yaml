@@ -140,5 +140,6 @@ spfrx:
 ska-dish-lmc:
   enabled: true
 
+# DISH CONSOLE
 dish-console:
   enabled: true
