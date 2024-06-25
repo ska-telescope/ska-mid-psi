@@ -136,3 +136,9 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+# DISH LMC
+ska-dish-lmc:
+  enabled: true
+
+dish-console:
+  enabled: true

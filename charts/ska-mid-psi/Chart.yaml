@@ -75,3 +75,15 @@ dependencies:
     alias: spfrx
     condition: spfrx.enabled
 
+  # DISH LMC
+  - name: ska-dish-lmc
+    version: 3.3.0
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-dish-lmc.enabled
+
+  # DISH CONSOLE
+  - name: ska-mid-dish-spfrx-talondx-console
+    version: 3.1.0
+    repository: https://artefact.skao.int/repository/helm-internal
+    alias: dish-console
+    condition: dish-console.enabled
