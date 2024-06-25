@@ -56,7 +56,7 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 0.20.0
+    version: 0.20.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -78,4 +78,9 @@ dependencies:
     version: 3.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
+
+  - name: ska-icams-alarmhandler
+    version: 0.1.0-dev.c50f182bf
+    repository: https://gitlab.com/api/v4/projects/56649674/packages/helm/dev
+    condition: ska-icams-alarmhandler.enabled
 
