@@ -5,6 +5,7 @@ PROJECT = ska-mid-psi
 # using Helm.  If this does not already exist it will be created
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
+CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
@@ -35,7 +36,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-
+SECRET_DIR ?= ./secrets/
 DISH_ID ?= ska036
 
 # include OCI Images support
@@ -102,6 +103,21 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-icams-alarmhandler.backend.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.pyalarm.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmhandler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.populatealarms.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmmail.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmnotify.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.backend.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.frontend.config.icams_api=http://test-$(CI_PIPELINE_ID)-backend.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):3010 \
+	--set ska-icams-alarmhandler.frontend.ingress.enabled=true \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
 	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
@@ -128,6 +144,9 @@ eda-remove-attributes:
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
+	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
+	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
+
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"

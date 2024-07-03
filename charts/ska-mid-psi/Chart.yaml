@@ -78,3 +78,8 @@ dependencies:
     version: 3.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
+  
+  - name: ska-icams-alarmhandler
+    version: 
+    repository: https://gitlab.com/api/v4/projects/56649674/packages/helm/dev
+    condition: ska-icams-alarmhandler.enabled
