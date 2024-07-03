@@ -75,3 +75,8 @@ dependencies:
     alias: spfrx
     condition: spfrx.enabled
 
+  # PST
+  - name: ska-pst-test-parent
+    version: 0.12.0
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-pst.enabled

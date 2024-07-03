@@ -136,3 +136,6 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+# PST
+ska-pst:
+  enabled: true
