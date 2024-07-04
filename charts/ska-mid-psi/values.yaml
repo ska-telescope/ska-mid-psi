@@ -60,12 +60,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-  midcbf:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-      image: ska-mid-cbf-mcs
-      tag: 0.15.1-dev.cb82477d3
-      pullPolicy: IfNotPresent
+  # midcbf:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+  #     image: ska-mid-cbf-mcs
+  #     tag: 0.15.1-dev.cb82477d3
+  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
@@ -164,18 +164,3 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
-
-ska-icams-alarmhandler:
-  enabled: true
-  icams:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-icams-alarmhandler
-      image: ska-icams-alarmhandler
-      tag: 0.1.0-dev.c50f182bf
-      pullPolicy: IfNotPresent
-  backend:
-    mongodb:
-      persistence:
-        enabled: true
-        storageClass: "nfss1"
-        size: "8Gi"
