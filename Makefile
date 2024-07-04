@@ -6,6 +6,7 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
+
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -36,6 +37,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 SECRET_DIR ?= ./secrets/
+DISH_ID ?= ska036
 
 # include OCI Images support
 include .make/oci.mk
@@ -66,6 +68,7 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
 DISH_PARAMS = --set global.dishes=001 \
+			  --set global.dish_id=$(DISH_ID) \
 			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
 			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
 
@@ -82,6 +85,7 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
+
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
@@ -93,13 +97,27 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
+	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
-	--set ska-dish-lmc.enabled=$(DISH_LMC_DEPLOYED) \
-	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-icams-alarmhandler.backend.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.pyalarm.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmhandler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.populatealarms.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmmail.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmnotify.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.backend.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.frontend.config.icams_api=http://test-$(CI_PIPELINE_ID)-backend.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):3010 \
+	--set ska-icams-alarmhandler.frontend.ingress.enabled=true \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
 	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
@@ -128,6 +146,7 @@ k8s-pre-install-chart:
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
+
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
