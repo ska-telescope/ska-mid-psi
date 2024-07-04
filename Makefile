@@ -7,6 +7,12 @@ KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
 
+ifeq ($(DISH_LMC_DEPLOYED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=$(DISH_LMC_DEPLOYED)
+else ifeq (($(DISH_LMC_DEPLOYED),false))
+	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
+endif
+
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -83,10 +89,6 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
-ifeq ($(DISH_LMC_DEPLOYED),true)
-	SPFRX_ENABLED = true
-endif
-
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
@@ -98,7 +100,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
-	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
 	--set ska-dish-lmc.enabled=$(DISH_LMC_DEPLOYED) \
@@ -148,7 +149,6 @@ k8s-pre-install-chart:
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
-	@echo $(SPFRX_ENABLED)
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
