@@ -84,7 +84,7 @@ TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
 ifeq ($(DISH_LMC_DEPLOYED),true)
-	SPFRX_ENABLED=true
+	$(SPFRX_ENABLED)=true
 endif
 
 K8S_EXTRA_PARAMS ?=
