@@ -84,7 +84,7 @@ TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
 ifeq ($(DISH_LMC_DEPLOYED),true)
-	SPFRX_ENABLED ?= true
+	SPFRX_ENABLED = true
 endif
 
 K8S_EXTRA_PARAMS ?=
@@ -148,7 +148,7 @@ k8s-pre-install-chart:
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
-
+	@echo $(SPFRX_ENABLED)
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
