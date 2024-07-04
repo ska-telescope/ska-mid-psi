@@ -6,7 +6,7 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
-
+SPFRX_ENABLED ?= false
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
