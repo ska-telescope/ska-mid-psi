@@ -129,7 +129,7 @@ ifneq (,$(wildcard $(VALUES)))
 endif
 
 ifeq ($(DISH_LMC_DEPLOYED),true)
-	K8S_CHART_PARAMS += --set spfrx.enabled=$(DISH_LMC_DEPLOYED)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true
 else ifeq ($(DISH_LMC_DEPLOYED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
 endif
