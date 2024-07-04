@@ -97,7 +97,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
-	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
 	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
@@ -115,6 +114,12 @@ endif
 
 ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
+endif
+
+ifeq ($(DISH_LMC_ENABLED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true
+else ifeq ($(DISH_LMC_ENABLED),false)
+	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
