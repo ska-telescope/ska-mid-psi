@@ -6,7 +6,6 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
-SPFRX_ENABLED ?= false
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -89,7 +88,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.cluster_domain=$(CLUSTER_DOMAIN) \
 	--set global.operator=$(SKA_TANGO_OPERATOR) \
-	--set spfrx-console.enabled=$(SPFRX_ENABLED) \
+	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-sdp.helmdeploy.namespace=$(KUBE_NAMESPACE_SDP) \
 	--set ska-sdp.ska-sdp-qa.zookeeper.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
@@ -113,12 +112,6 @@ endif
 ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
-
-# ifeq ($(DISH_LMC_DEPLOYED),true)
-# 	K8S_CHART_PARAMS += --set spfrx-console.enabled=true
-# else ifeq ($(DISH_LMC_DEPLOYED),false)
-# 	K8S_CHART_PARAMS += --set spfrx-console.enabled=$(SPFRX_ENABLED)
-# endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:

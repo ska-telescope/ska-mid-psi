@@ -143,7 +143,7 @@ ska-sdp:
       storageClassName: nfss1
 
 # SPFRx
-spfrx-console:
+spfrx:
   enabled: true
   address: 192.168.8.200
   bin: /usr/local/bin
