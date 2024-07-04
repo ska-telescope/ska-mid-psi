@@ -9,7 +9,7 @@ CI_PIPELINE_ID ?= unknown
 
 ifeq ($(DISH_LMC_DEPLOYED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=$(DISH_LMC_DEPLOYED)
-else ifeq (($(DISH_LMC_DEPLOYED),false))
+else ifeq ($(DISH_LMC_DEPLOYED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
 endif
 
