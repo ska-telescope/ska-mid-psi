@@ -89,6 +89,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.cluster_domain=$(CLUSTER_DOMAIN) \
 	--set global.operator=$(SKA_TANGO_OPERATOR) \
+	--set spfrx-console.enabled=$(SPFRX_ENABLED) \
 	--set ska-sdp.helmdeploy.namespace=$(KUBE_NAMESPACE_SDP) \
 	--set ska-sdp.ska-sdp-qa.zookeeper.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
@@ -113,11 +114,11 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
-ifeq ($(DISH_LMC_DEPLOYED),true)
-	K8S_CHART_PARAMS += --set spfrx-console.enabled=true
-else ifeq ($(DISH_LMC_DEPLOYED),false)
-	K8S_CHART_PARAMS += --set spfrx-console.enabled=$(SPFRX_ENABLED)
-endif
+# ifeq ($(DISH_LMC_DEPLOYED),true)
+# 	K8S_CHART_PARAMS += --set spfrx-console.enabled=true
+# else ifeq ($(DISH_LMC_DEPLOYED),false)
+# 	K8S_CHART_PARAMS += --set spfrx-console.enabled=$(SPFRX_ENABLED)
+# endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:
