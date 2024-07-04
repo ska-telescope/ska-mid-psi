@@ -37,7 +37,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 SECRET_DIR ?= ./secrets/
-DISH_ID ?= ska036
+DISH_ID ?= ska001
 
 # include OCI Images support
 include .make/oci.mk
