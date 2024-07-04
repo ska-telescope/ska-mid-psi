@@ -114,9 +114,9 @@ ifneq (,$(wildcard $(VALUES)))
 endif
 
 ifeq ($(DISH_LMC_DEPLOYED),true)
-	K8S_CHART_PARAMS += --set spfrx.enabled=true
+	K8S_CHART_PARAMS += --set spfrx-console.enabled=true
 else ifeq ($(DISH_LMC_DEPLOYED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
+	K8S_CHART_PARAMS += --set spfrx-console.enabled=$(SPFRX_ENABLED)
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving

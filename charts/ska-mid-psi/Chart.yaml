@@ -71,8 +71,8 @@ dependencies:
   - name: ska-mid-dish-spfrx-talondx-console
     version: 0.3.2
     repository: https://artefact.skao.int/repository/helm-internal
-    alias: spfrx
-    condition: spfrx.enabled
+    alias: spfrx-console
+    condition: spfrx-console.enabled
 
   - name: ska-dish-lmc
     version: 3.3.0
