@@ -15,7 +15,7 @@ variables:
   DISH_ID: ska001
   SDP_ENABLED: false
   TMC_ENABLED: false
-  LMC_ENABLED: false
+  DISH_LMC_DEPLOYED: false
   SPFRX_ENABLED: false
 
 stages:

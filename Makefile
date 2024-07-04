@@ -37,7 +37,6 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 SECRET_DIR ?= ./secrets/
-DISH_ID ?= ska036
 
 # include OCI Images support
 include .make/oci.mk
@@ -68,7 +67,6 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
 DISH_PARAMS = --set global.dishes=001 \
-			  --set global.dish_id=$(DISH_ID) \
 			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
 			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
 
@@ -85,6 +83,9 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
+ifeq($(DISH_LMC_DEPLOYED),true)
+	SPFRX_ENABLED=true
+endif
 
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
@@ -100,7 +101,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
-	--set ska-dish-lmc.enabled=$(LMC_ENABLED) \
+	--set ska-dish-lmc.enabled=$(DISH_LMC_DEPLOYED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
