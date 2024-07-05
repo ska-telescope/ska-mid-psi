@@ -116,6 +116,7 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
+# Logic for DishLMC and SPFRx
 ifeq ($(DISH_LMC_ENABLED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true
 else ifeq ($(DISH_LMC_ENABLED),false)
