@@ -97,8 +97,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
-	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
-	--set ska-sdp.enabled=$(SDP_ENABLED) \
 	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
@@ -120,7 +118,9 @@ endif
 ifeq ($(DISH_LMC_ENABLED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
+	K8S_CHART_PARAMS += --set spfrx.enabled=false \
+						--set tmc-mid.deviceServers.mocks.enabled=true \
+						--set tmc-mid.deviceServers.mocks.dish=true
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
