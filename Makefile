@@ -6,6 +6,8 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 SECRET_DIR ?= ./secrets/
+CI_PIPELINE_ID ?= unknown
+
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -35,7 +37,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-
+SECRET_DIR ?= ./secrets/
 DISH_ID ?= ska001
 
 # include OCI Images support
@@ -69,6 +71,11 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
+DISH_PARAMS = --set global.dishes=001 \
+			  --set global.dish_id=$(DISH_ID) \
+			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
+			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
+
 ifneq ($(MINIKUBE),)
 ifneq ($(MINIKUBE),true)
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
@@ -94,9 +101,9 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
-	--set spfrx.enabled=$(SPFRX_ENABLED) \
 	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
 	--set ska-sdp.enabled=$(SDP_ENABLED) \
+	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
@@ -116,6 +123,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
+	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
@@ -126,6 +134,22 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
+# Logic for DishLMC and SPFRx
+ifeq ($(DISH_LMC_ENABLED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true
+else ifeq ($(DISH_LMC_ENABLED),false)
+	K8S_CHART_PARAMS += --set spfrx.enabled=$(SPFRX_ENABLED)
+endif
+
+ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
+eda-add-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
+
+eda-get-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a get
+
+eda-remove-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(ARCHIVE_CONFIG)
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"

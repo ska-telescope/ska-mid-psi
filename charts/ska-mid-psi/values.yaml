@@ -5,6 +5,7 @@ global:
   minikube: false
   operator: true
   exposeAllDS: true
+  dish_suffix: "elt/master"
   annotations:
     app.gitlab.com/app: ska-mid-psi
     app.gitlab.com/env: ska
@@ -40,10 +41,14 @@ ska-tango-base:
   tangodb:
     use_pv: true
 
-ska-taranta:
+ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
+ska-tango-tangogql:
+  enabled: true
+  ska-tango-base:
+    enabled: false
 
 #telescope control
 ## mid-cbf
@@ -55,12 +60,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-#  midcbf:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-#      image: ska-mid-cbf-mcs
-#      tag: <Image tag from MCS pipeline>
-#      pullPolicy: IfNotPresent
+  # midcbf:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+  #     image: ska-mid-cbf-mcs
+  #     tag: 0.15.1-dev.cb82477d3
+  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
@@ -97,15 +102,30 @@ ska-csp-lmc-mid:
 ## tmc-mid
 tmc-mid:
   enabled: true
+  global:
+    namespace_dish:
+      dish_names:
+      - mid-dish/dish-manager/SKA001
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
   deviceServers:
     mocks:
-      enabled: true
-      dish: true
+      enabled: false
+      dish: false
       csp: false
-      sdp: true
+      sdp: false
+    centralnode:
+      DishIDs:
+      - SKA001
+    dishleafnode:
+      enabled: true
+      instances:
+      - '001'
+    subarraynode:
+      DishIDs:
+      - SKA001
+
 
 ## sdp
 ska-sdp:
@@ -114,6 +134,8 @@ ska-sdp:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
+  lmc:
+    prefix: mid
   data-pvc:
     create:
       enabled: true
@@ -123,8 +145,6 @@ ska-sdp:
 # SPFRx
 spfrx:
   enabled: true
-  console:
-    version: 0.2.5
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
@@ -146,3 +166,16 @@ ska-icams-alarmhandler:
         enabled: true
         storageClass: "nfss1"
         size: "8Gi"
+        
+ska-dish-lmc:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  ska-mid-dish-simulators:
+    deviceServers:
+      spfdevice:
+        enabled: true
+      spfrxdevice:
+        enabled: false
+    dsOpcuaSimulator:
+      enabled: true
