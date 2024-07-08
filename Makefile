@@ -120,7 +120,19 @@ ifeq ($(DISH_LMC_ENABLED),true)
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false \
 						--set tmc-mid.deviceServers.mocks.enabled=true \
-						--set tmc-mid.deviceServers.mocks.dish=true
+						--set tmc-mid.deviceServers.mocks.dish=true \
+						--set tmc-mid.centralnode.DishIDs[0]=001 \
+						--set tmc-mid.centralnode.DishIDs[1]=036 \
+						--set tmc-mid.centralnode.DishIDs[2]=063 \
+						--set tmc-mid.centralnode.DishIDs[3]=100 \
+						--set tmc-mid.dishleafnode.instances[0]=001 \
+						--set tmc-mid.dishleafnode.instances[1]=036 \
+						--set tmc-mid.dishleafnode.instances[2]=063 \
+						--set tmc-mid.dishleafnode.instances[3]=100 \
+						--set tmc-mid.subarraynode.DishIDs[0]=001 \
+						--set tmc-mid.subarraynode.DishIDs[1]=036 \
+						--set tmc-mid.subarraynode.DishIDs[2]=063 \
+						--set tmc-mid.subarraynode.DishIDs[3]=100
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
