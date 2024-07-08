@@ -13,3 +13,5 @@ ska-tmc-mid:
       dish: true
       csp: false
       sdp: false
+    dishleafnode:
+      enabled: true
