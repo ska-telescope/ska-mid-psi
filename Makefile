@@ -101,7 +101,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
-	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
 # ska-tango-archiver params for EDA deployment
@@ -116,7 +115,8 @@ endif
 
 # Logic for DishLMC and SPFRx
 ifeq ($(DISH_LMC_ENABLED),true)
-	K8S_CHART_PARAMS += --set spfrx.enabled=true
+	K8S_CHART_PARAMS += --set spfrx.enabled=true \
+						$(DISH_PARAMS)
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false \
 						--set tmc-mid.deviceServers.mocks.enabled=true \
