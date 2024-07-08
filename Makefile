@@ -115,9 +115,10 @@ endif
 
 ifeq ($(DISH_LMC_ENABLED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true \
-						$(DISH_PARAMS)
+						$(DISH_PARAMS) \
+						-f charts/ska-mid-psi/tmc-dish-lmc-values.yaml
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false
+	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
@@ -164,9 +165,3 @@ links:
 		echo "ERROR: http://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/start/ unreachable"; \
 		exit 10; \
 	fi
-#Logic for DishLMC and SPFRx
-ifeq ($(DISH_LMC_ENABLED),true)
-	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
-else ifeq ($(DISH_LMC_ENABLED),false)
-	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-mock-values.yaml -n $(KUBE_NAMESPACE)
-endif
