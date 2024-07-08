@@ -13,7 +13,7 @@ variables:
   SPFRX_SCRIPTS_DIR: scripts
   SPFRX_CONSOLE_VER: 0.1.0
   DISH_ID: ska001
-  DISH_LMC_ENABLED: false
+  DISH_LMC_ENABLED: true
 
 stages:
   - lint
