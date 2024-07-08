@@ -129,6 +129,16 @@ k8s-pre-install-chart:
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
 
+#Logic for DishLMC and SPFRx
+	ifeq ($(DISH_LMC_ENABLED),true)
+	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
+		K8S_CHART_PARAMS += --set spfrx.enabled=true \
+							$(DISH_PARAMS)
+	else ifeq ($(DISH_LMC_ENABLED),false)
+		K8S_CHART_PARAMS += --set spfrx.enabled=false
+	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-mock-values.yaml -n $(KUBE_NAMESPACE)
+	endif
+
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
@@ -158,13 +168,3 @@ links:
 		echo "ERROR: http://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/start/ unreachable"; \
 		exit 10; \
 	fi
-
-# Logic for DishLMC and SPFRx
-ifeq ($(DISH_LMC_ENABLED),true)
-	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
-	K8S_CHART_PARAMS += --set spfrx.enabled=true \
-						$(DISH_PARAMS)
-else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false
-	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-mock-values.yaml -n $(KUBE_NAMESPACE)
-endif
