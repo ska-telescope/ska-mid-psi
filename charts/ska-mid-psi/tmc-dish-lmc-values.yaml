@@ -1,4 +1,6 @@
 ## tmc-mid
+display: ":0"
+xauthority: "~/.Xauthority"
 global:
   dishes: ["001"]
 
