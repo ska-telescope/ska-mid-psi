@@ -4,7 +4,7 @@ xauthority: "~/.Xauthority"
 
 global:
   dishes: ["001", "036", "063", "100"]
-ska-tmc-mid:
+tmc-mid:
   enabled: true
   telescope: SKA-mid
   ska-tango-base:
@@ -17,3 +17,14 @@ ska-tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
+      instances:
+      - '001'
+      - '036'
+      - '063'
+      - '100'
+    subarraynode:
+      DishIDs:
+      - SKA001
+      - SKA036
+      - SKA063
+      - SKA100
