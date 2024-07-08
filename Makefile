@@ -117,27 +117,10 @@ endif
 ifeq ($(DISH_LMC_ENABLED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true \
 						$(DISH_PARAMS)
+	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false \
-						--set tmc-mid.deviceServers.mocks.enabled=true \
-						--set tmc-mid.deviceServers.mocks.dish=true \
-						--set tmc-mid.global.namespace_dish.dish_names[0]=ska001/elt/master \
-						--set tmc-mid.global.namespace_dish.dish_names[1]=ska036/elt/master \
-						--set tmc-mid.global.namespace_dish.dish_names[2]=ska063/elt/master \
-						--set tmc-mid.global.namespace_dish.dish_names[3]=ska100/elt/master \
-						--set tmc-mid.centralnode.DishIDs[0]="001" \
-						--set tmc-mid.centralnode.DishIDs[1]="036" \
-						--set tmc-mid.centralnode.DishIDs[2]="063" \
-						--set tmc-mid.centralnode.DishIDs[3]="100" \
-						--set tmc-mid.dishleafnode.instances[0]="001" \
-						--set tmc-mid.dishleafnode.instances[1]="036" \
-						--set tmc-mid.dishleafnode.instances[2]="063" \
-						--set tmc-mid.dishleafnode.instances[3]="100" \
-						--set tmc-mid.subarraynode.DishIDs[0]="001" \
-						--set tmc-mid.subarraynode.DishIDs[1]="036" \
-						--set tmc-mid.subarraynode.DishIDs[2]="063" \
-						--set tmc-mid.subarraynode.DishIDs[3]="100" \
-						--set global.dishes=["001", "036", "063", "100"]
+	K8S_CHART_PARAMS += --set spfrx.enabled=false
+	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-mock-values.yaml -n $(KUBE_NAMESPACE)
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving

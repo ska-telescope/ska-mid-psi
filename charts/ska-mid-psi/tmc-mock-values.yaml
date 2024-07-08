@@ -1,0 +1,41 @@
+## tmc-mid
+global:
+  dishes: ["001", "036", "063", "100"]
+
+tmc-mid:
+  enabled: true
+  global:
+    namespace_dish:
+      dish_names:
+      - ska001/elt/master
+      - ska036/elt/master
+      - ska063/elt/master
+      - ska100/elt/master
+  telescope: SKA-mid
+  ska-tango-base:
+    enabled: false
+  deviceServers:
+    mocks:
+      enabled: true
+      dish: true
+      csp: false
+      sdp: false
+    centralnode:
+      DishIDs:
+      - SKA001
+      - SKA036
+      - SKA063
+      - SKA100
+    dishleafnode:
+      enabled: true
+      instances:
+      - '001'
+      - '036'
+      - '063'
+      - '100'
+    subarraynode:
+      DishIDs:
+      - SKA001
+      - SKA036
+      - SKA063
+      - SKA100
