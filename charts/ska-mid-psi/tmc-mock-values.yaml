@@ -2,6 +2,8 @@
 display: ":0"
 xauthority: "~/.Xauthority"
 
+global:
+  dishes: ["001", "036", "063", "100"]
 ska-tmc-mid:
   enabled: true
   telescope: SKA-mid
