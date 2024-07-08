@@ -121,7 +121,10 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false \
 						--set tmc-mid.deviceServers.mocks.enabled=true \
 						--set tmc-mid.deviceServers.mocks.dish=true \
-						--set tmc-mid.centralnode.DishIDs[0]=001 \
+						--set tmc-mid.global.namespace_dish.dish_names[0]=ska001/elt/master \
+						--set tmc-mid.global.namespace_dish.dish_names[1]=ska036/elt/master \
+						--set tmc-mid.global.namespace_dish.dish_names[2]=ska063/elt/master \
+						--set tmc-mid.global.namespace_dish.dish_names[3]=ska100/elt/master \
 						--set tmc-mid.centralnode.DishIDs[1]=036 \
 						--set tmc-mid.centralnode.DishIDs[2]=063 \
 						--set tmc-mid.centralnode.DishIDs[3]=100 \
