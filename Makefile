@@ -137,10 +137,7 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 						--set tmc-mid.subarraynode.DishIDs[1]="036" \
 						--set tmc-mid.subarraynode.DishIDs[2]="063" \
 						--set tmc-mid.subarraynode.DishIDs[3]="100" \
-						--set global.dishes[0]="001" \
-						--set global.dishes[1]="036" \
-						--set global.dishes[2]="063" \
-						--set global.dishes[3]="100"
+						--set global.dishes=["001", "036", "063", "100"]
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
