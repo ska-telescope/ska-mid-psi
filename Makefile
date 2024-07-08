@@ -115,12 +115,12 @@ endif
 
 # Logic for DishLMC and SPFRx
 ifeq ($(DISH_LMC_ENABLED),true)
+	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true \
 						$(DISH_PARAMS)
-	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-dish-lmc-values.yaml -n $(KUBE_NAMESPACE)
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false
 	@kubectl apply -f $(UMBRELLA_CHART_PATH)/tmc-mock-values.yaml -n $(KUBE_NAMESPACE)
+	K8S_CHART_PARAMS += --set spfrx.enabled=false
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
