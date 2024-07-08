@@ -4,7 +4,7 @@ xauthority: "~/.Xauthority"
 global:
   dishes: ["001"]
 
-tmc-mid:
+ska-tmc-mid:
   enabled: true
   global:
     namespace_dish:
