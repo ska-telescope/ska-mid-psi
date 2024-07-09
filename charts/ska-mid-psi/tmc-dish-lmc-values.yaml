@@ -2,7 +2,7 @@
 display: ":0"
 xauthority: "~/.Xauthority"
 global:
-  dishes: ["001"]
+  dishes: "001"
 
 tmc-mid:
   enabled: true
