@@ -37,7 +37,6 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-SECRET_DIR ?= ./secrets/
 DISH_ID ?= ska001
 
 # include OCI Images support
@@ -132,14 +131,12 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
-# Logic for DishLMC and SPFRx
 ifeq ($(DISH_LMC_ENABLED),true)
 	K8S_CHART_PARAMS += --set spfrx.enabled=true \
-						$(DISH_PARAMS)
+						$(DISH_PARAMS) \
+						-f charts/ska-mid-psi/tmc-dish-lmc-values.yaml
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false \
-						--set tmc-mid.deviceServers.mocks.enabled=true \
-						--set tmc-mid.deviceServers.mocks.dish=true
+	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
 ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
@@ -156,7 +153,6 @@ k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
