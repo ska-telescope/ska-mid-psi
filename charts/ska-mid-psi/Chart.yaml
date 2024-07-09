@@ -23,6 +23,7 @@ dependencies:
   - name: ska-mid-cbf-tmleafnode
     version: 0.15.1
     repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-mid-cbf-tmleafnode.enabled
   - name: ska-mid-cbf-engineering-console
     version: 0.10.8
     repository: https://artefact.skao.int/repository/helm-internal

@@ -5,13 +5,6 @@ variables:
   MINIKUBE: "false"
   TANGO_HOST: databaseds-tango-base:10000
   CLUSTER_DOMAIN: cluster.local
-  SPFRX_ADDRESS: 192.168.8.200
-  TANGO_INSTANCE: spfrx-20
-  SPFRX_BIN: /usr/local/bin
-  SPFRX_LOCAL_DIR: artifacts
-  SPFRX_LOGGING_LEVEL: 4
-  SPFRX_SCRIPTS_DIR: scripts
-  SPFRX_CONSOLE_VER: 0.1.0
   DISH_ID: ska001
   DISH_LMC_ENABLED: false
 
