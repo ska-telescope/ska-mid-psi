@@ -37,7 +37,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-DISH_ID ?= ska001
+DISH_ID ?= 'ska001'
 
 # include OCI Images support
 include .make/oci.mk
