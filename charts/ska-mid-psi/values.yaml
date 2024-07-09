@@ -110,7 +110,7 @@ tmc-mid:
       enabled: true
       dish: true
       csp: false
-      sdp: true
+      sdp: false
 
 ## sdp
 ska-sdp:
@@ -119,6 +119,8 @@ ska-sdp:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
+  lmc:
+    prefix: mid
   data-pvc:
     create:
       enabled: true
