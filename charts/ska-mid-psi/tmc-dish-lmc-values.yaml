@@ -1,8 +1,6 @@
 ## tmc-mid
 display: ":0"
 xauthority: "~/.Xauthority"
-global:
-  dishes: ["001"]
 
 tmc-mid:
   enabled: true
@@ -19,13 +17,5 @@ tmc-mid:
       dish: false
       csp: false
       sdp: false
-    centralnode:
-      DishIDs:
-      - SKA001
     dishleafnode:
       enabled: true
-      instances:
-      - '001'
-    subarraynode:
-      DishIDs:
-      - SKA001
