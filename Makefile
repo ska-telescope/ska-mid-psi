@@ -157,6 +157,7 @@ k8s-pre-install-chart:
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
+	@kubectl apply -f secrets/s2secret.yaml -n $(KUBE_NAMESPACE)
 
 k8s-pre-uninstall-chart:
 	@echo "k8s-post-uninstall-chart: deleting the SDP namespace $(KUBE_NAMESPACE_SDP)"
