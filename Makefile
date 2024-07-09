@@ -37,7 +37,7 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-DISH_ID ?= 'ska001'
+DISH_ID ?= ska001
 
 # include OCI Images support
 include .make/oci.mk
@@ -120,7 +120,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
-	$(DISH_PARAMS) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
