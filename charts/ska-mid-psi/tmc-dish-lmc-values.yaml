@@ -1,0 +1,21 @@
+## tmc-mid
+display: ":0"
+xauthority: "~/.Xauthority"
+
+tmc-mid:
+  enabled: true
+  global:
+    namespace_dish:
+      dish_names:
+      - mid-dish/dish-manager/SKA001
+  telescope: SKA-mid
+  ska-tango-base:
+    enabled: false
+  deviceServers:
+    mocks:
+      enabled: false
+      dish: false
+      csp: false
+      sdp: false
+    dishleafnode:
+      enabled: true
