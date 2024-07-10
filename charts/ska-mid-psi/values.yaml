@@ -136,3 +136,18 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+ska-icams-alarmhandler:
+  enabled: true
+  icams:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-icams-alarmhandler
+      image: ska-icams-alarmhandler
+      tag: 0.1.0-dev.c50f182bf
+      pullPolicy: IfNotPresent
+  backend:
+    mongodb:
+      persistence:
+        enabled: true
+        storageClass: "nfss1"
+        size: "8Gi"

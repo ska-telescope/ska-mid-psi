@@ -5,12 +5,13 @@ PROJECT = ska-mid-psi
 # using Helm.  If this does not already exist it will be created
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
+SECRET_DIR ?= ./secrets/
 CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
-
+CI_PIPELINE_ID ?= unknown
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -62,6 +63,9 @@ include .make/xray.mk
 # include your own private variables for custom deployment configuration
 -include PrivateRules.mak
 
+# ska-tango-archiver params for EDA deployment
+include archiver/archiver.mk 
+
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
@@ -100,11 +104,25 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set global.dish_id=$(DISH_ID) \
+	--set ska-icams-alarmhandler.backend.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.scheduler.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.pyalarm.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmhandler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.populatealarms.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmmail.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.alarmnotify.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.backend.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set ska-icams-alarmhandler.frontend.config.icams_api=http://test-$(CI_PIPELINE_ID)-backend.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):3010 \
+	--set ska-icams-alarmhandler.frontend.ingress.enabled=true \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
+	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
 	$(TARANTA_PARAMS)
 
-# ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
-	include archiver/archiver.mk 
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
@@ -134,7 +152,8 @@ k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-
+	@kubectl apply -f $(SECRET_DIR)/s2secret.yaml -n $(KUBE_NAMESPACE)
+	
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
