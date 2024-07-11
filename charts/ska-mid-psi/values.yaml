@@ -139,3 +139,6 @@ spfrx:
 # PST
 ska-pst:
   enabled: true
+  ska-pst-core:
+    primaryVolumeMount:
+      type: nfs
