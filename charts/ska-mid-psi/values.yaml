@@ -129,7 +129,7 @@ ska-db-oda:
   enabled: true
   pgadmin4:
     env: 
-      listenAddress: "0.0.0.0"
+      listenAddress: 0.0.0.0
 
 #  LMC
 ska-dish-lmc:
