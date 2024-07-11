@@ -137,3 +137,6 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+ska-tango-taranta-auth:
+  enabled: true

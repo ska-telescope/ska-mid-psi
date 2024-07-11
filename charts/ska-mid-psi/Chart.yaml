@@ -30,18 +30,24 @@ dependencies:
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
+  - name: ska-tango-taranta-dashboard
+    version: 1.6.2
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-tango-taranta-dashboard.enabled
+  - name: ska-tango-taranta-dashboard-pvc
+    version: 1.6.2
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-tango-taranta-dashboard.enabled
   - name: ska-tango-taranta
-    version: 2.10.1
+    version: 2.10.2
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-taranta.enabled
   - name: ska-tango-tangogql
-    version: 1.4.1
+    version: 1.4.3
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
-    version: 0.2.2
+    version: 0.2.3
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: global.taranta_auth_enabled
+    condition: ska-tango-taranta-auth.enabled
 
   # EDA
   - name: ska-tango-archiver
