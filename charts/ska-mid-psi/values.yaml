@@ -127,6 +127,11 @@ spfrx:
 # ODA
 ska-db-oda:
   enabled: true
+  pgadmin4:
+    env: 
+      listenAddress: "0.0.0.0"
+
+#  LMC
 ska-dish-lmc:
   enabled: true
   ska-tango-base:
@@ -139,10 +144,3 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
-
-# PGAdmin Service
-pgadmin4:
-  service:
-    port: 80
-  env: 
-    listenAddress: "0.0.0.0"
