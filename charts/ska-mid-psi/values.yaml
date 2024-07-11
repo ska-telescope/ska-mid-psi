@@ -144,3 +144,5 @@ ska-pst:
       dpdApiIntegration: false
     primaryVolumeMount:
       type: nfs
+    podAnnotations: | 
+      { "k8s.v1.cni.cncf.io/networks": "kube-system/sdn" }
