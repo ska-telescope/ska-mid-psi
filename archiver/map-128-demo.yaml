@@ -1,0 +1,33 @@
+db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
+manager: mid-eda/cm/01
+archiver: mid-eda/es/01
+configuration:
+
+  - class: SubarrayNodeMid
+    attributes:
+      obsState:
+        code_push_event: true
+
+  - class: CspSubarrayLeafNodeMid 
+    attributes:
+      cspSubarrayObsState:
+        code_push_event: true
+
+  - class: SdpSubarrayLeafNode
+    attributes:
+      sdpSubarrayObsState:
+        code_push_event: true
+
+  - class: DishManager
+    attributes:
+      dishmode:
+        code_push_event: true
+      pointingstate:
+        code_push_event: true
+
+  - class: DSManager
+    attributes:
+      powerstate:
+        code_push_event: true
+      pointingstate:
+        code_push_event: true
