@@ -140,5 +140,7 @@ spfrx:
 ska-pst:
   enabled: true
   ska-pst-core:
+    send:
+      dpdApiIntegration: false
     primaryVolumeMount:
       type: nfs
