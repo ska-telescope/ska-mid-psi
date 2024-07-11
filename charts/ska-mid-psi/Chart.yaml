@@ -44,10 +44,6 @@ dependencies:
   - name: ska-tango-tangogql
     version: 1.4.3
     repository: https://artefact.skao.int/repository/helm-internal
-  - name: ska-tango-taranta-auth
-    version: 0.2.3
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-tango-taranta-auth.enabled
 
   # EDA
   - name: ska-tango-archiver
