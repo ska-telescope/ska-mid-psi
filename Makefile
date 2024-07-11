@@ -5,6 +5,7 @@ PROJECT = ska-mid-psi
 # using Helm.  If this does not already exist it will be created
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
+CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
@@ -35,7 +36,6 @@ SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-
 DISH_ID ?= ska001
 
 # include OCI Images support
@@ -62,12 +62,14 @@ include .make/xray.mk
 # include your own private variables for custom deployment configuration
 -include PrivateRules.mak
 
-# ska-tango-archiver params for EDA deployment
-include archiver/archiver.mk 
-
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
+
+DISH_PARAMS = --set global.dishes=001 \
+			  --set global.dish_id=$(DISH_ID) \
+			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
+			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
 
 ifneq ($(MINIKUBE),)
 ifneq ($(MINIKUBE),true)
@@ -94,16 +96,15 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set global.labels.app=$(KUBE_APP) \
-	--set spfrx.enabled=$(SPFRX_ENABLED) \
-	--set ska-tmc-mid.enabled=$(TMC_ENABLED) \
-	--set ska-sdp.enabled=$(SDP_ENABLED) \
+	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
-	--set global.dish_id=$(DISH_ID) \
 	$(TARANTA_PARAMS)
 
+# ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
+	include archiver/archiver.mk 
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
@@ -111,10 +112,28 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
+ifeq ($(DISH_LMC_ENABLED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true \
+						$(DISH_PARAMS) \
+						-f charts/ska-mid-psi/tmc-dish-lmc-values.yaml
+else ifeq ($(DISH_LMC_ENABLED),false)
+	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
+endif
+
+ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
+eda-add-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
+
+eda-get-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a get
+
+eda-remove-attributes:
+	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a remove -f $(ARCHIVE_CONFIG)
 
 k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
+	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"

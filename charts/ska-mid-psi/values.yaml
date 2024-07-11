@@ -5,6 +5,7 @@ global:
   minikube: false
   operator: true
   exposeAllDS: true
+  dish_suffix: "elt/master"
   annotations:
     app.gitlab.com/app: ska-mid-psi
     app.gitlab.com/env: ska
@@ -40,10 +41,14 @@ ska-tango-base:
   tangodb:
     use_pv: true
 
-ska-taranta:
+ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
+ska-tango-tangogql:
+  enabled: true
+  ska-tango-base:
+    enabled: false
 
 #telescope control
 ## mid-cbf
@@ -55,12 +60,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-#  midcbf:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-#      image: ska-mid-cbf-mcs
-#      tag: <Image tag from MCS pipeline>
-#      pullPolicy: IfNotPresent
+  #midcbf:
+  #  image:
+  #    registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+  #    image: ska-mid-cbf-mcs
+  #    tag: <Image tag from MCS pipeline>
+  #    pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
@@ -84,7 +89,7 @@ ska-tango-archiver:
   hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
   dbname: default_timescaledb
   dbuser: admin
-  dbpassword: admin
+  dbpassword: TfqQuRxku4aYTRpk
   port: 5432
   configuration_manager: mid-eda/cm/01
   event_subscriber: mid-eda/es/01
@@ -94,19 +99,6 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   enabled: true
 
-## tmc-mid
-tmc-mid:
-  enabled: true
-  telescope: SKA-mid
-  ska-tango-base:
-    enabled: false
-  deviceServers:
-    mocks:
-      enabled: true
-      dish: true
-      csp: false
-      sdp: true
-
 ## sdp
 ska-sdp:
   enabled: true
@@ -114,6 +106,8 @@ ska-sdp:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
+  lmc:
+    prefix: mid
   data-pvc:
     create:
       enabled: true
@@ -123,8 +117,6 @@ ska-sdp:
 # SPFRx
 spfrx:
   enabled: true
-  console:
-    version: 0.2.5
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
@@ -135,7 +127,20 @@ spfrx:
 # ODA
 ska-db-oda:
   enabled: true
+ska-dish-lmc:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  ska-mid-dish-simulators:
+    deviceServers:
+      spfdevice:
+        enabled: true
+      spfrxdevice:
+        enabled: false
+    dsOpcuaSimulator:
+      enabled: true
 
+# PGAdmin Service
 pgadmin4:
   service:
     port: 80
