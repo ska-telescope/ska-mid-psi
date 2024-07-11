@@ -14,6 +14,9 @@ tmc-mid:
   ska-tango-base:
     enabled: false
   deviceServers:
+    centralnode:
+      DishIDs:
+      - SKA001
     mocks:
       enabled: false
       dish: false
