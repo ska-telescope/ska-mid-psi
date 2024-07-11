@@ -30,10 +30,6 @@ dependencies:
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
-  - name: ska-tango-taranta-dashboard
-    version: 1.6.2
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-tango-taranta-dashboard.enabled
   - name: ska-tango-taranta-dashboard-pvc
     version: 1.6.2
     repository: https://artefact.skao.int/repository/helm-internal
