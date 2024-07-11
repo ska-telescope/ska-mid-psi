@@ -57,7 +57,7 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 0.19.1
+    version: 0.21.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -70,7 +70,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 0.2.5
+    version: 0.3.2
     repository: https://artefact.skao.int/repository/helm-internal
     alias: spfrx
     condition: spfrx.enabled
@@ -81,3 +81,9 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     alias: ska-pst
     condition: ska-pst.enabled
+
+  # Dish LMC
+  - name: ska-dish-lmc
+    version: 3.4.0
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-dish-lmc.enabled
