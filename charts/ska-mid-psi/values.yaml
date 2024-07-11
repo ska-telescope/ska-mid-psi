@@ -144,3 +144,5 @@ ska-dish-lmc:
 pgadmin4:
   service:
     port: 80
+  env: 
+    listenAddress: "0.0.0.0"
