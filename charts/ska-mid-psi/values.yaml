@@ -125,7 +125,7 @@ spfrx:
   logging_level: 4
 
 # ODA
-ska-db-oda:
+ska-db-oda-umbrella:
   enabled: true
   pgadmin4:
     env: 
