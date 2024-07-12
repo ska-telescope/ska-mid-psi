@@ -138,7 +138,7 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
-ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
+ARCHIVE_CONFIG ?= "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
 

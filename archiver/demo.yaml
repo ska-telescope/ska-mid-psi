@@ -12,11 +12,13 @@ configuration:
     attributes:
       cspSubarrayObsState:
         code_push_event: true
+        polling_period: 3000
 
   - class: SdpSubarrayLeafNode
     attributes:
       sdpSubarrayObsState:
         code_push_event: true
+        polling_period: 3000
 
   - class: DishManager
     attributes:
