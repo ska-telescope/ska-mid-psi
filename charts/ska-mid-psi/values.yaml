@@ -52,7 +52,7 @@ ska-tango-tangogql:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.24-dev.ce2d55458
+  signalVerificationVersion: 0.2.24
   svImageRegistry: "registry.gitlab.com/ska-telescope/ska-mid-cbf-signal-verification"
   hostInfo:
     environment: "mid-psi"
@@ -60,22 +60,22 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-  midcbf:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-      image: ska-mid-cbf-mcs
-      tag: 0.15.1-dev.c3c7d9c60
-      pullPolicy: IfNotPresent
+#  midcbf:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+#      image: ska-mid-cbf-mcs
+#      tag: 0.15.1-dev.c3c7d9c60
+#      pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
 # Uncomment the section below to use custom Engineering Console image
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      image: ska-mid-cbf-engineering-console
-      tag: 0.10.8-dev.ccf8bb471
-      pullPolicy: IfNotPresent
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+#      image: ska-mid-cbf-engineering-console
+#      tag: 0.10.8-dev.ccf8bb471
+#      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
