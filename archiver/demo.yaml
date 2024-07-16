@@ -1,4 +1,4 @@
-db: databaseds-tango-base.ci-ska-mid-psi-1371584025-maecst.svc.cluster.local:10000
+db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
 manager: mid-eda/cm/01
 archiver: mid-eda/es/01
 configuration:
