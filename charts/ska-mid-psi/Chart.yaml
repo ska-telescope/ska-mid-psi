@@ -17,22 +17,16 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-mcs
-    # version: 0.15.1
-    # repository: https://artefact.skao.int/repository/helm-internal
-    version: 0.15.1-dev.c3c7d9c60
-    repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
+    version: 0.15.2
+    repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-mcs.enabled
   - name: ska-mid-cbf-tmleafnode
-    #version: 0.15.1
-    #repository: https://artefact.skao.int/repository/helm-internal
-    version: 0.15.1-dev.c3c7d9c60
-    repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
+    version: 0.15.2
+    repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-tmleafnode.enabled
   - name: ska-mid-cbf-engineering-console
-    #version: 0.10.8
-    #repository: https://artefact.skao.int/repository/helm-internal
-    version: 0.10.8-dev.ccf8bb471
-    repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
+    version: 0.10.9
+    repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
@@ -83,7 +77,7 @@ dependencies:
 
   # DISH LMC
   - name: ska-dish-lmc
-    version: 3.3.0
+    version: 3.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
 
