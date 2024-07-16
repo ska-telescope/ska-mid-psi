@@ -4,17 +4,26 @@ archiver: mid-eda/es/01
 configuration:
 
   - class: SubarrayNodeMid
+    filtering:
+      device:
+      - ska_mid/tm_subarray_node/1
     attributes:
       obsState:
         code_push_event: true
 
-  - class: CspSubarrayLeafNodeMid 
+  - class: CspSubarrayLeafNodeMid
+    filtering:
+      device:
+      - ska_mid/tm_leaf_node/csp_subarray01
     attributes:
       cspSubarrayObsState:
         archive_period: 3000
         polling_period: 3000
 
   - class: SdpSubarrayLeafNode
+    filtering:
+    device:
+    - ska_mid/tm_leaf_node/sdp_subarray01
     attributes:
       sdpSubarrayObsState:
         archive_period: 3000
@@ -27,9 +36,3 @@ configuration:
       pointingstate:
         code_push_event: true
 
-  - class: DSManager
-    attributes:
-      powerstate:
-        code_push_event: true
-      pointingstate:
-        code_push_event: true
