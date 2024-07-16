@@ -83,6 +83,6 @@ dependencies:
 
   # LMC
   - name: ska-dish-lmc
-    version: 4.0.0
+    version: 3.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
