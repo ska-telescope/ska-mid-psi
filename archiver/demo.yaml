@@ -31,8 +31,6 @@ configuration:
 
   - class: DishManager
     attributes:
-      dishmode:
-        code_push_event: true
       pointingstate:
         code_push_event: true
 
