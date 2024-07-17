@@ -7,6 +7,7 @@ variables:
   CLUSTER_DOMAIN: cluster.local
   DISH_ID: ska001
   DISH_LMC_ENABLED: false
+  PST_ENABLED: true
 
 stages:
   - lint
