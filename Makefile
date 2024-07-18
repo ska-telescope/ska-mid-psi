@@ -10,7 +10,6 @@ CI_PIPELINE_ID ?= unknown
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
-
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -103,9 +102,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	$(TARANTA_PARAMS)
 
-# ska-tango-archiver params for EDA deployment
 ifeq ($(SKA_TANGO_ARCHIVER),true)
-	include archiver/archiver.mk 
+	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
@@ -121,7 +119,7 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
-ARCHIVE_CONFIG = "archiver/default.yaml" # can override the default config file for archiving
+ARCHIVE_CONFIG ?= "archiver/default.yaml" # can override the default config file for archiving
 eda-add-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
 
@@ -135,7 +133,7 @@ k8s-pre-install-chart:
 	@echo "k8s-pre-install-chart: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-
+	
 k8s-pre-install-chart-car:
 	@echo "k8s-pre-install-chart-car: creating the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@make k8s-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP)
