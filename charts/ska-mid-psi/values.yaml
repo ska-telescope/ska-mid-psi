@@ -124,6 +124,22 @@ spfrx:
   instance: spfrx-20
   logging_level: 4
 
+
+# PST
+ska-pst:
+  enabled: true
+  ska-pst-core:
+    send:
+      dpdApiIntegration: false
+    primaryVolumeMount:
+      type: nfs
+    podAnnotations: 
+      k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
+    recv:
+      args:
+        - "-c"
+        - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+
 # ODA
 ska-db-oda-umbrella:
   enabled: true
@@ -131,7 +147,7 @@ ska-db-oda-umbrella:
     env: 
       listenAddress: 0.0.0.0
 
-#  LMC
+# Dish LMC
 ska-dish-lmc:
   enabled: true
   ska-tango-base:

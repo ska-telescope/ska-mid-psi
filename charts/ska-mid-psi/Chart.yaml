@@ -75,13 +75,20 @@ dependencies:
     alias: spfrx
     condition: spfrx.enabled
 
+  # PST
+  - name: ska-pst
+    version: 0.12.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    alias: ska-pst
+    condition: ska-pst.enabled
+
   # ODA
   - name: ska-db-oda-umbrella
     version: 5.2.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-db-oda-umbrella.enabled
 
-  # LMC
+  # Dish LMC
   - name: ska-dish-lmc
     version: 3.4.0
     repository: https://artefact.skao.int/repository/helm-internal
