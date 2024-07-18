@@ -6,7 +6,7 @@ variables:
   TANGO_HOST: databaseds-tango-base:10000
   CLUSTER_DOMAIN: cluster.local
   DISH_ID: ska001
-  DISH_LMC_ENABLED: true
+  DISH_LMC_ENABLED: false
 
 stages:
   - lint

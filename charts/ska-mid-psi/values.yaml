@@ -64,7 +64,7 @@ ska-mid-cbf-mcs:
   #   image:
   #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
   #     image: ska-mid-cbf-mcs
-  #     tag: 0.15.1-dev.c3b6d7811
+  #     tag: <Image tag from MCS pipeline>
   #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
@@ -136,18 +136,3 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
-
-ska-icams-alarmhandler:
-  enabled: true
-  icams:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-icams-alarmhandler
-      image: ska-icams-alarmhandler
-      tag: 0.1.0-dev.c50f182bf
-      pullPolicy: IfNotPresent
-  backend:
-    mongodb:
-      persistence:
-        enabled: true
-        storageClass: "nfss1"
-        size: "8Gi"
