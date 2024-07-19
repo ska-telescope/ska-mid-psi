@@ -8,7 +8,7 @@ variables:
   K8S_TIMEOUT: 800s
   DISH_ID: ska001
   DISH_LMC_ENABLED: false
-  PST_ENABLED: true
+  PST_ENABLED: false
 
 stages:
   - lint
