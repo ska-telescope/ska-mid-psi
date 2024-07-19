@@ -51,7 +51,7 @@ configuration:
         code_push_event: true
 
   - class: CspSubarrayLeafNodeMid
-      filtering:
+    filtering:
       device:
       - ska_mid/tm_subarray_node/1
     attributes:
@@ -172,7 +172,6 @@ configuration:
         polling_period: 6000
 
 ### SDP ###
-configuration:
   - class: SDPSubarray
     attributes:
       versionId:
