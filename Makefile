@@ -30,7 +30,7 @@ endif
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
+SKA_TANGO_ARCHIVER ?= true ## Set to true to deploy EDA
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -119,7 +119,7 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
-ARCHIVE_CONFIG ?= "archiver/default.yaml" # can override the default config file for archiving
+ARCHIVE_CONFIG ?= "archiver/map-90-test.yaml" # can override the default config file for archiving
 eda-add-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
 

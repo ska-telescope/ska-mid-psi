@@ -1,0 +1,222 @@
+db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
+manager: mid-eda/cm/01
+archiver: mid-eda/es/01
+
+configuration:
+
+
+###  Dish.LMC ###
+  - class: DishManager
+    attributes:
+      pointingstate:
+        code_push_event: true
+
+### TMC ###
+  - class: CentralNodeMid
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      telescopestate:
+        code_push_event: true
+      telescopeHealthState:
+        code_push_event: true
+      DishVccValidationStatus:
+        code_push_event: true
+      telescopeAvailability:
+        code_push_event: true
+
+  - class: SubarrayNodeMid
+    filtering:
+      device:
+      - ska_mid/tm_subarray_node/1
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      obsState:
+        code_push_event: true
+      isSubarrayAvailable:
+        code_push_event: true
+
+  - class: CspMasterLeafNodeMid
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      isSubsystemAvailable:
+        code_push_event: true
+
+  - class: CspSubarrayLeafNodeMid
+      filtering:
+      device:
+      - ska_mid/tm_subarray_node/1
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      isSubsystemAvailable:
+        code_push_event: true
+      delayModel:
+        code_push_event: true
+      cspSubarrayObsState:
+        archive_period: 3000
+        polling_period: 3000
+        
+  - class: SdpMasterLeafNode
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      isSubsystemAvailable:
+        code_push_event: true
+
+  - class: SdpSubarrayLeafNode
+    filtering:
+      device:
+      - ska_mid/tm_leaf_node/sdp_subarray01
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      isSubsystemAvailable:
+        code_push_event: true
+      sdpSubarrayObsState:
+        archive_period: 3000
+        polling_period: 3000
+
+  - class: DishLeafNode
+    attributes:
+      state:
+      code_push_event: true
+      healthState:
+        code_push_event: true
+      isSubsystemAvailable:
+        code_push_event: true
+      kValueValidationResult:
+        code_push_event: true
+      kValue:
+        code_push_event: true
+
+### CSP.LMC ###
+  - class: MidCspController
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      adminmode:
+        code_push_event: true
+      cspCbfState:
+        code_push_event: true
+      cspCbfHealthState:
+        code_push_event: true
+      cspCbfAdminMode:
+        code_push_event: true
+
+  - class: MidCspSubarray
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      adminmode:
+        code_push_event: true
+      obsstate:
+        code_push_event: true
+      cbfSubarrayState:
+          code_push_event: true
+      cbfSubarrayHealthState:
+          code_push_event: true
+      cbfSubarrayAdminMode:
+          code_push_event: true
+      cbfSubarrayObsState:
+          code_push_event: true
+      assignedResources:
+        code_push_event: true
+
+### CBF ###
+  - class: TalonBoard
+    filtering:
+      device:
+      - mid_csp_cbf/talon_board/002
+    attributes:
+      State:
+        code_push_event: true
+      FpgaDieTemperature:
+        archive_period: 6000
+        polling_period: 6000
+      HumiditySensorTemperature:
+        archive_period: 6000
+        polling_period: 6000
+      DIMMTemperatures:
+        archive_period: 6000
+        polling_period: 6000
+      MboTxTemperatures:
+        archive_period: 6000
+        polling_period: 6000
+      MboTxVccVoltages:
+        archive_period: 6000
+        polling_period: 6000
+      MboRxVccVoltages:
+        archive_period: 6000
+        polling_period: 6000
+      FansFault:
+        archive_period: 6000
+        polling_period: 6000
+
+### SDP ###
+configuration:
+  - class: SDPSubarray
+    attributes:
+      versionId:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      adminMode:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      healthState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      obsState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      resources:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      ebID:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      receiveAddresses:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      scanType:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      scanID:
+        code_push_event: true
+        archive_strategy: ALWAYS
+
+  - class: SDPController
+    attributes:
+      versionId:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      adminMode:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      healthState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      components:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      sdpVersion:
+        code_push_event: true
+        archive_strategy: ALWAYS
