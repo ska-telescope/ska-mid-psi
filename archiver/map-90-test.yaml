@@ -1,15 +1,7 @@
 db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
 manager: mid-eda/cm/01
 archiver: mid-eda/es/01
-
 configuration:
-
-
-###  Dish.LMC ###
-  - class: DishManager
-    attributes:
-      pointingstate:
-        code_push_event: true
 
 ### TMC ###
   - class: CentralNodeMid
@@ -94,7 +86,7 @@ configuration:
   - class: DishLeafNode
     attributes:
       state:
-      code_push_event: true
+        code_push_event: true
       healthState:
         code_push_event: true
       isSubsystemAvailable:
@@ -131,13 +123,13 @@ configuration:
       obsstate:
         code_push_event: true
       cbfSubarrayState:
-          code_push_event: true
+        code_push_event: true
       cbfSubarrayHealthState:
-          code_push_event: true
+        code_push_event: true
       cbfSubarrayAdminMode:
-          code_push_event: true
+        code_push_event: true
       cbfSubarrayObsState:
-          code_push_event: true
+        code_push_event: true
       assignedResources:
         code_push_event: true
 
