@@ -66,8 +66,8 @@
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Remove attributes from being archived in EDA"
-        echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} ARCHIVE_CONFIG=${ARCHIVE_CONFIG}"
-        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} ARCHIVE_CONFIG=${ARCHIVE_CONFIG}
+        echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE}"
+        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE}
       else
         echo "SKA_TANGO_ARCHIVER is false"
     - fi
