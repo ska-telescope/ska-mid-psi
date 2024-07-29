@@ -93,3 +93,8 @@ dependencies:
     version: 3.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
+  
+  - name: ska-tango-alarmhandler
+    version: 0.4.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-tango-alarmhandler.enabled
