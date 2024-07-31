@@ -153,6 +153,10 @@ ska-dish-lmc:
   ska-tango-base:
     enabled: false
   ska-mid-dish-simulators:
+    enabled: true
+    dishsimulators:
+      image:
+        tag: 3.1.1
     deviceServers:
       spfdevice:
         enabled: true
@@ -160,3 +164,10 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+tmc-mid:
+  dishleafnode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+      tag: 0.14.4-dev.c5a4762cc
+
