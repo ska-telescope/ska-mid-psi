@@ -118,7 +118,7 @@ ska-sdp:
 spfrx:
   enabled: true
   console:
-    registry: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
+    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
     version: 0.3.2-dev.cc9c46278
   address: 192.168.8.200
   bin: /usr/local/bin
