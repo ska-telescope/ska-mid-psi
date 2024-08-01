@@ -137,7 +137,7 @@ configuration:
   - class: TalonBoard
     filtering:
       device:
-      - mid_csp_cbf/talon_board/002
+      - mid_csp_cbf/talon_board/001
     attributes:
       State:
         code_push_event: true
