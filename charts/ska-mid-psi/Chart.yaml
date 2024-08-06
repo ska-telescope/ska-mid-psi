@@ -70,8 +70,8 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 0.3.2-dev.cc9c46278
-    repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
+    version: 0.3.3
+    repository: https://artefact.skao.int/repository/helm-internal
     alias: spfrx
     condition: spfrx.enabled
 
