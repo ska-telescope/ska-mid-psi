@@ -192,6 +192,7 @@ configuration:
         archive_strategy: ALWAYS
       scanID:
         code_push_event: true
+        archive_abs_change: 1
         archive_strategy: ALWAYS
 
   - class: SDPController
