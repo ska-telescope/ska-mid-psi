@@ -10,7 +10,7 @@ configuration:
         code_push_event: true
       healthState:
         code_push_event: true
-      telescopestate:
+      telescopeState:
         code_push_event: true
       telescopeHealthState:
         code_push_event: true
