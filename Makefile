@@ -116,7 +116,7 @@ ifeq ($(DISH_LMC_ENABLED),true)
 						$(DISH_PARAMS) \
 						-f charts/ska-mid-psi/tmc-dish-lmc-values.yaml
 else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false --set  -f ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true charts/ska-mid-psi/tmc-mock-values.yaml
+	K8S_CHART_PARAMS += --set spfrx.enabled=false --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
 ARCHIVE_CONFIG ?= "archiver/default.yaml" # can override the default config file for archiving
