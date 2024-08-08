@@ -158,6 +158,10 @@ ska-dish-lmc:
   ska-tango-base:
     enabled: false
   ska-mid-dish-simulators:
+    enabled: true
+    dishsimulators:
+      image:
+        tag: 3.1.2
     deviceServers:
       spfdevice:
         enabled: true
@@ -165,3 +169,4 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
