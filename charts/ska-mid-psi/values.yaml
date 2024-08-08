@@ -148,7 +148,7 @@ ska-db-oda-umbrella:
       listenAddress: 0.0.0.0
   ska-ser-skuid:
     ingress:
-      enabled: true
+      enabled: false
       nginx: true
       hostname: rmdskadevdu011.mda.ca
 
