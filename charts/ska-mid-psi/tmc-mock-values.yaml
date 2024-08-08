@@ -4,6 +4,8 @@ xauthority: "~/.Xauthority"
 
 global:
   dishes: ["001", "036", "063", "100"]
+  namespace_dish:
+    dish_names: ['mid-dish/dish-manager/SKA001','mid-dish/dish-manager/SKA036','mid-dish/dish-manager/SKA063','mid-dish/dish-manager/SKA100']
 tmc-mid:
   enabled: true
   telescope: SKA-mid
@@ -11,20 +13,8 @@ tmc-mid:
     enabled: false
   deviceServers:
     mocks:
-      enabled: true
-      dish: true
+      enabled: false
+      dish: false
       csp: false
       sdp: false
-    dishleafnode:
-      enabled: true
-      instances:
-      - '001'
-      - '036'
-      - '063'
-      - '100'
-    subarraynode:
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+      
