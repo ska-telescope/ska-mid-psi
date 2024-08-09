@@ -113,6 +113,9 @@ configuration:
         code_push_event: true
 
   - class: MidCspSubarray
+    filtering:
+      device:
+      - mid-csp/subarray/01
     attributes:
       state:
         code_push_event: true
@@ -138,6 +141,9 @@ configuration:
     filtering:
       device:
       - mid_csp_cbf/talon_board/001
+      - mid_csp_cbf/talon_board/002
+      - mid_csp_cbf/talon_board/003
+      - mid_csp_cbf/talon_board/004
     attributes:
       State:
         code_push_event: true
