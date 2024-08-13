@@ -165,8 +165,4 @@ ska-dish-lmc:
     dsOpcuaSimulator:
       enabled: true
 
-tmc-mid:
-  centralnode:
-    image:
-      tag: 0.15.0
 
