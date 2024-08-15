@@ -31,28 +31,56 @@ configurator_deployed() {
     fi
 }
 
-# Function to get the attributes that have been archived, for a particular namespace that corresponds to the configurator_ip
+# Function to get the attributes that have been archived, for a particular namespace $KUBE_NAMESPACE,
+# which corresponds to the configurator_ip.
+#
+# If $OUTPUT_FILE is set, the curl command will write the output to a file with that name.
+# Otherwise it will display to stdout.
 get_attributes() {
     if configurator_deployed; then
-        echo -e "curl -X \"GET\" \"http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01\" -H \"accept: application/json\""
-        echo ""
-        curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" -H "accept: application/json"
+        if [ -n "$OUTPUT_FILE" ]; then
+            curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" \
+                -H "accept: application/json" -o "$OUTPUT_FILE"
+        else
+            curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" \
+                -H "accept: application/json"
+        fi
     else
         echo -e "\nThe Configurator pod is not deployed"
     fi
 }
 
-# Function to add/remove attributes to/from archiving, for a particular namespace that corresponds to the configurator_ip
+# Function to add/remove attributes to/from archiving, for a particular namespace $KUBE_NAMESPACE,
+# which corresponds to the configurator_ip.
+#
+# If $OUTPUT_FILE is set, the get_attributes function is executed first to extract all the attributes that are 
+# currently loaded in and save that to a file with that name, and then remove all those attributes.
+# Otherwise it will remove only the attributes listed in the $ARCHIVE_CONFIG.
 add_remove_attributes(){
-    echo "Using Archive Configuration Files: $ARCHIVE_CONFIG"
-
-    temp_config_file="temp_config.yaml"
-    
-    # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
-    cat $ARCHIVE_CONFIG | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
 
     if configurator_deployed; then
-        # Load in the config file to the Configurator via its external IP
+
+        if [ -n "$OUTPUT_FILE" ]; then
+
+            # Set the $OUTPUT_FILE to a temp filename variable that can be cleaned up later
+            temp_config_file=$OUTPUT_FILE
+
+            echo -e "\nGetting attributes currently loaded in to the EDA and saving to file $temp_config_file, which will then be removed from the EDA\n"
+            get_attributes
+
+            # Update the manager to be "mid-eda/cm/01"
+            sed -i -e "s/'...'/mid-eda\/cm\/01/" $temp_config_file
+
+        else
+            echo -e "\nRemoving attributes from the ARCHIVE_CONFIG $ARCHIVE_CONFIG from the EDA\n"
+
+            temp_config_file="temp_config.yaml"
+
+            # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
+            cat $ARCHIVE_CONFIG | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
+        fi
+
+        # Load in the temp config file to the Configurator via its external IP
         echo -e "\nExecuting:"
         echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
         echo ""
@@ -69,7 +97,7 @@ add_remove_attributes(){
 }
 
 # Parse command-line arguments
-while getopts "n:a:f:" opt; do
+while getopts "n:a:f:o:" opt; do
     case ${opt} in
         n)
             KUBE_NAMESPACE=${OPTARG}
@@ -79,6 +107,9 @@ while getopts "n:a:f:" opt; do
             ;;
         f)
             ARCHIVE_CONFIG=${OPTARG}
+            ;;
+        o)
+            OUTPUT_CONFIG=${OPTARG}
             ;;
         *)
             usage
