@@ -65,27 +65,37 @@ add_remove_attributes(){
             # Set the $OUTPUT_FILE to a temp filename variable that can be cleaned up later
             temp_config_file=$OUTPUT_FILE
 
-            echo -e "\nGetting attributes currently loaded in to the EDA and saving to file $temp_config_file, which will then be removed from the EDA\n"
+            # Get attribute currently loaded into the EDA and save to $temp_config file
             get_attributes
 
             # Update the manager to be "mid-eda/cm/01"
             sed -i -e "s/'...'/mid-eda\/cm\/01/" $temp_config_file
 
+            cat $temp_config_file | grep "no attributes are archived"
+
         else
-            echo -e "\nRemoving attributes from the ARCHIVE_CONFIG $ARCHIVE_CONFIG from the EDA\n"
+            # set a temp copy of the $ARCHIVE_CONFIG file as the temp filename variable
+            # so that the kube namespace can be updated in the next step
+            # without modifying the original that gets CM'd in Git
+            temp_config_file=$ARCHIVE_CONFIG.temp
 
-            temp_config_file="temp_config.yaml"
-
-            # Copy config file to a temp file and replace the {{Release.Namespace}} with the actual namespace
+            # Using the $ARCHIVE_CONFIG FILE, replace the {{Release.Namespace}} with the actual namespace and save output to $temp_config_file
             cat $ARCHIVE_CONFIG | sed -e "s/{{Release.Namespace}}/$KUBE_NAMESPACE/" > $temp_config_file
         fi
 
-        # Load in the temp config file to the Configurator via its external IP
-        echo -e "\nExecuting:"
-        echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
-        echo ""
-        curl -X "POST" "http://$configurator_ip:8003/configure-archiver" -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
-        echo ""
+        no_attributes_found_str="no attributes are archived"
+
+        if grep -q "$no_attributes_found_str" $temp_config_file; then
+            echo -e "\nNo attributes are archived, so there is nothing to remove.\n"
+            exit
+        else
+            # Load in the temp config file to the Configurator via its external IP
+            echo -e "$action_str"
+            echo -e "curl -X \"POST\" \"http://$configurator_ip:8003/configure-archiver\" -F \"file=@$temp_config_file;type=application/x-yaml\" -F \"option=$ACTION\"\n"
+            echo ""
+            curl -X "POST" "http://$configurator_ip:8003/configure-archiver" -F "file=@$temp_config_file;type=application/x-yaml" -F "option=$ACTION"
+            echo ""
+        fi
 
         # Clean up temp file
         rm $temp_config_file
@@ -109,7 +119,7 @@ while getopts "n:a:f:o:" opt; do
             ARCHIVE_CONFIG=${OPTARG}
             ;;
         o)
-            OUTPUT_CONFIG=${OPTARG}
+            OUTPUT_FILE=${OPTARG}
             ;;
         *)
             usage
@@ -143,12 +153,12 @@ echo -e "\nUsing Kubernetes Namespace: $KUBE_NAMESPACE"
 
 # Add/Remove/Get attributes
 if [  "${ACTION}" == "add_update" ]; then
-    action_str="\nLoading the following configuration into the Configurator:\n"
+    action_str="\nLoading attributes into the Configurator:\n"
     add_remove_attributes
 elif [  "${ACTION}" == "remove" ]; then
-    action_str="\nRemoving the following configuration from the Configurator:\n"
+    action_str="\nRemoving the attributes from the Configurator:\n"
     add_remove_attributes
 else
-    echo -e "\nRetrieving the list of attributes being archived:"
+    echo -e "\nRetrieving the list of attributes being archived:\n"
     get_attributes
 fi
