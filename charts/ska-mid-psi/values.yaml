@@ -60,12 +60,12 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
-  # midcbf:
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-  #     image: ska-mid-cbf-mcs
-  #     tag: <Image tag from MCS pipeline>
-  #     pullPolicy: IfNotPresent
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+      image: ska-mid-cbf-mcs
+      tag: 0.15.2-dev.c068c137d
+      pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
@@ -98,10 +98,6 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
-  midcsplmc:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
-      tag: 0.23.1-dev.cbb7d9500
 
 ## sdp
 ska-sdp:
