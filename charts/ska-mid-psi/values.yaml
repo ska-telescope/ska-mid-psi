@@ -98,6 +98,10 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
+  midcsplmc:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
+      tag: 0.23.1-dev.cbb7d9500
 
 ## sdp
 ska-sdp:
