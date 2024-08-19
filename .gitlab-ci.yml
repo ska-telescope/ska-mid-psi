@@ -16,6 +16,7 @@ stages:
   - build
   - deploy
   - join-reports
+  - pages
   - publish
   - scan
   - cleanup
@@ -29,6 +30,10 @@ include:
   # .post step finalisers eg: badges
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
+
+  # Docs pages
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/docs.gitlab-ci.yml'
 
   # changelog release page
   - project: 'ska-telescope/templates-repository'
