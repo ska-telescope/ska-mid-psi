@@ -16,6 +16,7 @@ stages:
   - build
   - deploy
   - join-reports
+  - pages
   - publish
   - scan
   - cleanup
@@ -33,10 +34,6 @@ include:
   # changelog release page
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/changelog.gitlab-ci.yml'
-
-  # Docs pages
-  - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/pages.gitlab-ci.yml'
 
   # deploy steps to psi mid
   - local: "/.gitlab/ci/psi-mid.gitlab-ci.yml"
