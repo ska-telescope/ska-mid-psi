@@ -60,6 +60,10 @@ ska-mid-cbf-mcs:
   global:
     minikube: false
 # Uncomment the section below to use custom MCS image
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+      tag: 0.15.2-dev.c6289920f
 #  midcbf:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
@@ -98,6 +102,14 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
+  ################################################################
+  # TEMPORARY COMMIT: timeout issue on CSP proxy to CBF Controller
+  midcsplmc:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
+      tag: 0.23.1-dev.cd501c076
+  ################################################################
+
 
 ## sdp
 ska-sdp:
@@ -164,4 +176,24 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+tmc-mid:
+  ######################################################################################
+  # TEMPORARY COMMIT - SEE https://skao.slack.com/archives/C07855KJRM0/p1724007582221289
+  cspleafnodes:
+    registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-cspleafnodes
+    tag: 0.18.3-dev.cc929f0e0
+  ######################################################################################
+  ######################################################################################
+  # TEMPORARY COMMIT - SEE https://skao.slack.com/archives/C06H6ESMQNP/p1719498698255899
+  # PULLING ska-tmc-dishleafnode from Gitlab Registry:
+  # dishleafnode:
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+  #     tag: 0.14.4-dev.c5a4762cc
+  dishleafnode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+      tag: 0.17.1-dev.cde3f36a8
+  ######################################################################################
 
