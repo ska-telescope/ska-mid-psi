@@ -180,7 +180,7 @@ ska-dish-lmc:
 tmc-mid:
   ######################################################################################
   # TEMPORARY COMMIT - SEE https://skao.slack.com/archives/C07855KJRM0/p1724007582221289
-  cspleafnodes:
+  cspsubarrayleafnode:
     registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-cspleafnodes
     tag: 0.18.3-dev.cc929f0e0
   ######################################################################################
