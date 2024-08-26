@@ -40,14 +40,11 @@ get_attributes() {
 
     local output_file="${1:-$OUTPUT_FILE}"
 
-    echo -e "output_file = $output_file\n"
-
     if configurator_deployed; then
         if [ -n "$output_file" ]; then
             curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" \
                 -H "accept: application/json" -o "$output_file"
         else
-            echo "echoing to stdout"
             curl -X "GET" "http://$configurator_ip:8003/download-configuration/?eventsubscriber=mid-eda%2Fes%2F01" \
                 -H "accept: application/json"
         fi
@@ -100,7 +97,7 @@ add_remove_attributes(){
                 exit
             else
                 # otherwise, update the manager to be "mid-eda/cm/01". this will be used later to remove the loaded attributes.
-                echo -e "Updating the manager in the $temp_config_file" 
+                echo -e "\nUpdating the manager in the $temp_config_file" 
                 sed -i -e "s/'...'/mid-eda\/cm\/01/" $temp_config_file
             fi
 
