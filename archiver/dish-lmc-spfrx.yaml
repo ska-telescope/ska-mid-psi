@@ -86,7 +86,7 @@ configuration:
       archive_strategy: SERVICE
 
 ### SPFRx ###
-- class: SkaMidSpfrxController
+- class: SkaMidSpfrxControllerDs
   attributes:
     operatingMode:
       code_push_event: True
