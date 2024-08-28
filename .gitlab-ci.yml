@@ -7,8 +7,9 @@ variables:
   CLUSTER_DOMAIN: cluster.local
   K8S_TIMEOUT: 800s
   DISH_ID: ska001
-  DISH_LMC_ENABLED: false
+  DISH_LMC_ENABLED: true
   PST_ENABLED: false
+  SPRFX_ENABLED: false
 
 stages:
   - lint

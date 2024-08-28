@@ -1,0 +1,43 @@
+## tmc-mid
+display: ":0"
+xauthority: "~/.Xauthority"
+
+global:
+  dishes: ["001", "036", "063", "100"]
+tmc-mid:
+  enabled: true
+  global:
+    namespace_dish:
+      dish_names:
+      - mid-dish/dish-manager/SKA001
+      - mid-dish/dish-manager/SKA036
+      - mid-dish/dish-manager/SKA063
+      - mid-dish/dish-manager/SKA100
+  telescope: SKA-mid
+  ska-tango-base:
+    enabled: false
+  deviceServers:
+    centralnode:
+      DishIDs:
+      - SKA001
+      - SKA036
+      - SKA063
+      - SKA100
+    mocks:
+      enabled: true
+      dish: true
+      csp: false
+      sdp: false
+    dishleafnode:
+      enabled: true
+      instances:
+      - '001'
+      - '036'
+      - '063'
+      - '100'
+    subarraynode:
+      DishIDs:
+      - SKA001
+      - SKA036
+      - SKA063
+      - SKA100
