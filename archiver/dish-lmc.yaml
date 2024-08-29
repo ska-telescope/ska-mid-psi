@@ -241,18 +241,3 @@ configuration:
     trackProgramMode:
       code_push_event: True
       archive_strategy: SERVICE
-
-
-### SPFRx ###
-- class: SkaMidSpfrxControllerDs
-  attributes:
-    operatingMode:
-      code_push_event: True
-    configuredBand:
-      code_push_event: True
-    b1CapabilityState:
-      code_push_event: True
-    b2CapabilityState:
-      code_push_event: True
-    b3CapabilityState:
-      code_push_event: True
