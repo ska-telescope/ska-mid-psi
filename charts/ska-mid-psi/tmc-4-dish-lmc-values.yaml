@@ -1,4 +1,3 @@
-## tmc-mid
 display: ":0"
 xauthority: "~/.Xauthority"
 
@@ -24,8 +23,8 @@ tmc-mid:
       - SKA063
       - SKA100
     mocks:
-      enabled: true
-      dish: true
+      enabled: false
+      dish: false
       csp: false
       sdp: false
     dishleafnode:

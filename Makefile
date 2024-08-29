@@ -37,6 +37,9 @@ K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 DISH_ID ?= ska001
 
+DISH_LMC_ENABLED ?= true
+SPFRX_ENABLED ?= false
+
 # include OCI Images support
 include .make/oci.mk
 
