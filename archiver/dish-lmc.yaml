@@ -4,7 +4,6 @@ archiver: mid-eda/es/01
 
 configuration:
 
-### Dish.LMC ###
 - class: DishManager
   attributes:
     achievedpointing:

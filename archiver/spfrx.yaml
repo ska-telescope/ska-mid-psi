@@ -3,7 +3,6 @@ manager: mid-eda/cm/01
 archiver: mid-eda/es/01
 configuration:
 
-### SPFRx ###
   - class: SkaMidSpfrxControllerDs
     attributes:
       operatingMode:
