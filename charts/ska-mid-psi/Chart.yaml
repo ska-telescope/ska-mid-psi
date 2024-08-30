@@ -25,17 +25,17 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-tmleafnode.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 0.10.9
+    version: 0.10.10
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
   - name: ska-tango-taranta
-    version: 2.10.3
+    version: 2.11.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql
-    version: 1.4.4
+    version: 1.4.5
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
@@ -57,7 +57,7 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 0.21.0
+    version: 0.21.2
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -70,7 +70,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 0.3.2
+    version: 0.3.3
     repository: https://artefact.skao.int/repository/helm-internal
     alias: spfrx
     condition: spfrx.enabled
@@ -90,7 +90,7 @@ dependencies:
 
   # Dish LMC
   - name: ska-dish-lmc
-    version: 3.4.0
+    version: 4.1.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
 

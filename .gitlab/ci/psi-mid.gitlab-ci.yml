@@ -10,9 +10,8 @@
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     K8S_AUTH_NAMESPACES: "$KUBE_NAMESPACE $KUBE_NAMESPACE_SDP"
     K8S_AUTH_SERVICE_ACCOUNT: "ci-svc-psi-$CI_PIPELINE_ID"
-    SKA_TANGO_ARCHIVER: "false"
+    SKA_TANGO_ARCHIVER: false
     VALUES: values.yaml
-    ARCHIVE_CONFIG: "$ARCHIVE_CONFIG"
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump"
@@ -32,8 +31,12 @@
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Add attributes to EDA for archiving"
-        echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG=$ARCHIVE_CONFIG"
-        make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG=$ARCHIVE_CONFIG
+        echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE"
+        make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE
+        if [ "$DISH_LMC_ENABLED" == "true" ]; then
+          echo "Add attributes for Dish.LMC and SPFRx to EDA for archiving"
+          make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG="archiver/dish-lmc-spfrx.yaml"
+        fi
       else
         echo "SKA_TANGO_ARCHIVER is false"
       fi
@@ -60,15 +63,14 @@
     HELM_RELEASE: "test-$CI_PIPELINE_ID"
     KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
-    ARCHIVE_CONFIG: "$ARCHIVE_CONFIG"
   script: &cleanup_script
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
     - |
       if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
         echo "Remove attributes from being archived in EDA"
-        echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} ARCHIVE_CONFIG=${ARCHIVE_CONFIG}"
-        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} ARCHIVE_CONFIG=${ARCHIVE_CONFIG}
+        echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml"
+        make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml
       else
         echo "SKA_TANGO_ARCHIVER is false"
     - fi

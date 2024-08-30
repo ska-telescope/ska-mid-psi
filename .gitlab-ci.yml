@@ -2,13 +2,14 @@ image: $SKA_K8S_TOOLS_BUILD_DEPLOY
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  MINIKUBE: "false"
+  MINIKUBE: false
   TANGO_HOST: databaseds-tango-base:10000
   CLUSTER_DOMAIN: cluster.local
   K8S_TIMEOUT: 800s
   DISH_ID: ska001
-  DISH_LMC_ENABLED: false
+  DISH_LMC_ENABLED: true
   PST_ENABLED: false
+  SPFRX_ENABLED: false
 
 stages:
   - lint
@@ -49,7 +50,7 @@ include:
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
 
-docs-pages:
+pages:
   rules:
     - when: never
 

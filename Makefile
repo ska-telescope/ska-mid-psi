@@ -38,6 +38,9 @@ K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
 DISH_ID ?= ska001
 
+DISH_LMC_ENABLED ?= true
+SPFRX_ENABLED ?= false
+
 # include OCI Images support
 include .make/oci.mk
 
@@ -128,14 +131,18 @@ ifneq (,$(wildcard $(VALUES)))
 endif
 
 ifeq ($(DISH_LMC_ENABLED),true)
-	K8S_CHART_PARAMS += --set spfrx.enabled=true \
-						$(DISH_PARAMS) \
-						-f charts/ska-mid-psi/tmc-dish-lmc-values.yaml
+	ifeq ($(SPFRX_ENABLED),true)
+		K8S_CHART_PARAMS += --set spfrx.enabled=true \
+							$(DISH_PARAMS) \
+							-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
+	else ifeq ($(SPFRX_ENABLED),false)
+		K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
+	endif
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
-ARCHIVE_CONFIG ?= "archiver/default.yaml" # can override the default config file for archiving
+ARCHIVE_CONFIG ?= "archiver/mid-telescope.yaml" # can override the default config file for archiving
 eda-add-attributes:
 	@. archiver/configure.sh -n $(KUBE_NAMESPACE) -a add_update -f $(ARCHIVE_CONFIG) 
 
