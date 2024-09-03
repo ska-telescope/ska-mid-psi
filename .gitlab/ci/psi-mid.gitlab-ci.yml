@@ -34,8 +34,12 @@
         echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE"
         make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE
         if [ "$DISH_LMC_ENABLED" == "true" ]; then
-          echo "Add attributes for Dish.LMC and SPFRx to EDA for archiving"
-          make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG="archiver/dish-lmc-spfrx.yaml"
+          echo "And add attributes for Dish.LMC to EDA for archiving"
+          make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG="archiver/dish-lmc.yaml"
+          if [ "$SPFRX_ENABLED" == "true" ]; then
+            echo "And add attributes for SPFRx to EDA for archiving"
+            make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE ARCHIVE_CONFIG="archiver/spfrx.yaml"
+          fi
         fi
       else
         echo "SKA_TANGO_ARCHIVER is false"
