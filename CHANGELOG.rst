@@ -5,7 +5,7 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
-UNRELEASED
+2024-09-10
 ***********
 * MAP-171 Bump ska-dish-lmc version in chart.yaml from 4.1.0 to 4.2.0
 * MAP-170 Bump spfrx-talondx-console version in chart.yaml from 0.3.3 to 0.3.6
