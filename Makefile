@@ -120,7 +120,7 @@ ifeq ($(DISH_LMC_ENABLED),true)
 							$(DISH_PARAMS) \
 							-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
 	else ifeq ($(SPFRX_ENABLED),false)
-		K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
+		K8S_CHART_PARAMS += --set spfrx.enabled=false --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
 	endif
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
