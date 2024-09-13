@@ -14,12 +14,8 @@
     VALUES: values.yaml
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
-    - echo "----------------------------------------"
     - echo "Deploying using the following arguments:"
-    - echo "    TANGO ARCHIVER ENABLED = $SKA_TANGO_ARCHIVER"
-    - echo "    DISH LMC ENABLED = $DISH_LMC_ENABLED"
-    - echo "    SPFRX ENABLED = $SPFRX_ENABLED"
-    - echo "----------------------------------------"
+    - echo -e "    TANGO ARCHIVER ENABLED = $SKA_TANGO_ARCHIVER\n    DISH LMC ENABLED = $DISH_LMC_ENABLED\n    SPFRX ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
     - |
