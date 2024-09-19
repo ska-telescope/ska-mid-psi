@@ -51,13 +51,13 @@ dependencies:
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
-    version: 0.22.0
+    version: 0.23.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-csp-lmc-mid.enabled
 
   # TMC
   - name: ska-tmc-mid
-    version: 0.21.2
+    version: 0.22.2
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -70,7 +70,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 0.3.3
+    version: 0.3.6
     repository: https://artefact.skao.int/repository/helm-internal
     alias: spfrx
     condition: spfrx.enabled
@@ -84,13 +84,13 @@ dependencies:
 
   # ODA
   - name: ska-db-oda-umbrella
-    version: 5.3.0
+    version: 6.0.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-db-oda-umbrella.enabled
 
   # Dish LMC
   - name: ska-dish-lmc
-    version: 4.1.0
+    version: 4.2.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
 
