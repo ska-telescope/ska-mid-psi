@@ -32,6 +32,6 @@ tmc-mid:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-subarraynode
       image: ska-tmc-subarraynode
-      tag: 0.23.2-dev.cc15552c7
+      tag: 0.23.3-dev.ce088e6a9
       pullPolicy: IfNotPresent
 
