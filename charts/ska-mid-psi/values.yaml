@@ -102,7 +102,7 @@ ska-csp-lmc-mid:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
       image: ska-csp-lmc-mid
-      tag: 0.23.1-dev.cb3494180
+      tag: 0.23.1-dev.c8999bfe8
       pullPolicy: IfNotPresent
 
 
