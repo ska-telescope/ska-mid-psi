@@ -98,12 +98,12 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
-  midcsplmc:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
-      image: ska-csp-lmc-mid
-      tag: 0.23.1-dev.c8999bfe8
-      pullPolicy: IfNotPresent
+  #midcsplmc:
+  #  image:
+  #    registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
+  #    image: ska-csp-lmc-mid
+  #    tag: 0.23.1-dev.c8999bfe8
+  #    pullPolicy: IfNotPresent
 
 
 
@@ -162,6 +162,9 @@ ska-dish-lmc:
     enabled: false
   ska-mid-dish-simulators:
     enabled: true
+    dishsimulators:
+      image:
+        tag: 4.1.1
     deviceServers:
       spfdevice:
         enabled: true
