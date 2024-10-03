@@ -160,6 +160,10 @@ ska-dish-lmc:
   enabled: true
   ska-tango-base:
     enabled: false
+  ska-mid-dish-ds-manager:
+    dishstructuremanager:
+      image:
+        tag: 2.1.0
   ska-mid-dish-simulators:
     enabled: true
     dishsimulators:
