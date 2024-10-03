@@ -162,3 +162,8 @@ ska-dish-lmc:
     dsOpcuaSimulator:
       enabled: true
 
+ # Data Product Dashboard (DPD)
+ska-dataproduct-dashboard:
+  enabled: true
+  dataProductPVC:
+    name: test-sdp-pvc
