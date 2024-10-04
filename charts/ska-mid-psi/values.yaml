@@ -167,3 +167,9 @@ ska-dataproduct-dashboard:
   enabled: true
   dataProductPVC:
     name: test-sdp-pvc
+  dashboard:
+    vault:
+      useVault: false
+      client_id: MAPLE
+  config:
+    allowMockAuth: false
