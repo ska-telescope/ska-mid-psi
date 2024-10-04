@@ -27,6 +27,7 @@ LOADBALANCER_IP ?= $(shell minikube ip)
 INGRESS_HOST ?= $(LOADBALANCER_IP)
 INGRESS_PROTOCOL ?= http
 endif
+INGRESS_HOSTNAME = $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
@@ -90,19 +91,19 @@ CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
-	--set global.tango_host=$(TANGO_HOST) \
 	--set global.cluster_domain=$(CLUSTER_DOMAIN) \
 	--set global.operator=$(SKA_TANGO_OPERATOR) \
+	--set global.labels.app=$(KUBE_APP) \
+	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
+	--set global.tango_host=$(TANGO_HOST) \
+	--set global.tangodb_port=10000 \
 	--set ska-sdp.helmdeploy.namespace=$(KUBE_NAMESPACE_SDP) \
 	--set ska-sdp.ska-sdp-qa.zookeeper.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
-	--set global.labels.app=$(KUBE_APP) \
 	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
 	--set ska-pst.enabled=$(PST_ENABLED) \
-	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
-	--set global.tango_host=$(TANGO_HOST) \
-	--set global.tangodb_port=10000 \
+	--set ska-dataproduct-dashboard.ingress.hostname=$(INGRESS_HOSTNAME) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)

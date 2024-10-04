@@ -165,7 +165,5 @@ ska-dish-lmc:
  # Data Product Dashboard (DPD)
 ska-dataproduct-dashboard:
   enabled: true
-  ingress:
-    hostname: "https://142.73.34.170"
   dataProductPVC:
     name: test-sdp-pvc
