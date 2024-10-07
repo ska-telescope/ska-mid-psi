@@ -95,7 +95,7 @@ dependencies:
     condition: ska-dish-lmc.enabled
 
   # Data Product Dashboard (DPD)
-  - name: ska-dataproduct-dashboard
+  - name: ska-sdp-dataproduct-dashboard
     version: 0.10.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dataproduct-dashboard.enabled
