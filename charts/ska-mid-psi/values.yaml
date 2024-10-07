@@ -163,7 +163,7 @@ ska-dish-lmc:
       enabled: true
 
  # Data Product Dashboard (DPD)
-ska-sdp-dataproduct-dashboard:
+ska-dataproduct-dashboard:
   enabled: true
   dataProductPVC:
     name: test-sdp-pvc
