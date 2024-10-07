@@ -163,14 +163,16 @@ ska-dish-lmc:
       enabled: true
 
  # Data Product Dashboard (DPD)
-ska-dataproduct-dashboard:
+ska-sdp-dataproduct-dashboard:
   enabled: true
   dataProductPVC:
     name: test-sdp-pvc
+    create:
+      enabled: false
+      size: 5Gi
+      storageClassName: nfss1
   dashboard:
     vault:
       useVault: false
-      client_id: MAPLE
-      tenant_id: leaf
   config:
     allowMockAuth: true
