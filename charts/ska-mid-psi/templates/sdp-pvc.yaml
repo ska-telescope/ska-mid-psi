@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sdp-products
+  namespace: {{ .Release.Namespace }}
+spec:
+  storageClassName: ceph-cephfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sdp-products
+  namespace: {{ .Values.global.sdp.processingNamespace }}
+  labels:
+    skao.int/clone-pvc: sdp-products
+    skao.int/clone-pvc-namespace: {{ .Release.Namespace }}
+spec:
+  storageClassName: ceph-cephfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi

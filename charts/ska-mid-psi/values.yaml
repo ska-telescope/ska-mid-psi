@@ -24,7 +24,9 @@ global:
   tango_host: databaseds-tango-base:10000
   device_server_port: 45450
   cluster_domain: cluster.local
-  data-product-pvc-name: test-sdp-pvc
+  sdp:
+    processingNamespace: # required by sdp
+  data-product-pvc-name: sdp-products
   tangodb_fqdn: localhost
   tangodb_port: 10000
   raw_user_account: ""
@@ -110,9 +112,7 @@ ska-sdp:
     prefix: mid
   data-pvc:
     create:
-      enabled: true
-      size: 5Gi
-      storageClassName: nfss1
+      enabled: false
 
 # SPFRx
 spfrx:
@@ -166,13 +166,6 @@ ska-dish-lmc:
 ska-dataproduct-dashboard:
   enabled: true
   dataProductPVC:
-    name: test-sdp-pvc
+    name: sdp-products
     create:
       enabled: false
-      size: 5Gi
-      storageClassName: nfss1
-  dashboard:
-    vault:
-      useVault: false
-  config:
-    allowMockAuth: true
