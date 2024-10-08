@@ -4,7 +4,7 @@ metadata:
   name: sdp-products
   namespace: {{ .Release.Namespace }}
 spec:
-  storageClassName: nfss1
+  storageClassName: standard
   accessModes:
     - ReadWriteMany
   resources:
@@ -22,7 +22,7 @@ metadata:
     skao.int/clone-pvc: sdp-products
     skao.int/clone-pvc-namespace: {{ .Release.Namespace }}
 spec:
-  storageClassName: nfss1
+  storageClassName: standard
   accessModes:
     - ReadWriteMany
   resources:
