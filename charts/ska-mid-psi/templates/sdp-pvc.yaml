@@ -4,7 +4,7 @@ metadata:
   name: sdp-products
   namespace: {{ .Release.Namespace }}
 spec:
-  storageClassName: standard
+  storageClassName: ceph-cephfs
   accessModes:
     - ReadWriteMany
   resources:
@@ -22,7 +22,7 @@ metadata:
     skao.int/clone-pvc: sdp-products
     skao.int/clone-pvc-namespace: {{ .Release.Namespace }}
 spec:
-  storageClassName: standard
+  storageClassName: ceph-cephfs
   accessModes:
     - ReadWriteMany
   resources:
