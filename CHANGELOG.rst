@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2024-10-13
+***********
+* MAP-166 Bumping all versions to include mid product release candidates for more stable end-to-end
+
 2024-09-10
 ***********
 * MAP-170 Bump spfrx-talondx-console version in chart.yaml from 0.3.3 to 0.3.6
