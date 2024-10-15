@@ -20,7 +20,8 @@ tmc-mid:
       tag: 0.19.5
   deviceServers:
     cspsubarrayleafnode:
-      TelmodelSource: file:///app/mid-layout.json
+      TelmodelSource: file:///app/
+      TelmodelPath: mid-layout.json
     centralnode:
       DishIDs:
       - SKA001
