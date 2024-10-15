@@ -15,6 +15,9 @@ tmc-mid:
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
+  cspsubarrayleafnode:
+    image:
+      tag: 0.19.5
   deviceServers:
     cspsubarrayleafnode:
       TelmodelSource: file:///app/mid-layout.json
