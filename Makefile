@@ -106,6 +106,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	--set ska-icams-alarmhandler.backend.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
+	--set ska-icams-alarmhandler.achtung.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.scheduler.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.pyalarm.config.tango_host=$(TANGO_HOST) \
