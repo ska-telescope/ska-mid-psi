@@ -16,6 +16,8 @@ tmc-mid:
   ska-tango-base:
     enabled: false
   deviceServers:
+    cspsubarrayleafnode:
+      TelmodelSource: file:///app/mid-layout.json
     centralnode:
       DishIDs:
       - SKA001
