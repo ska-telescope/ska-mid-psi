@@ -168,7 +168,7 @@ ska-icams-alarmhandler:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-icams-alarmhandler
       image: ska-icams-alarmhandler
-      tag: 0.1.0-dev.c0f32c1b2
+      tag: 0.1.0-dev.ccaab314e
       pullPolicy: IfNotPresent
   backend:
     mongodb:
