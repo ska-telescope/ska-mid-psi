@@ -20,7 +20,7 @@ tmc-mid:
       tag: 0.19.5
   deviceServers:
     cspsubarrayleafnode:
-      TelmodelSource: "file:///app/"
+      TelmodelSource: "/app/"
       TelmodelPath: "mid-layout.json"
     centralnode:
       DishIDs:
