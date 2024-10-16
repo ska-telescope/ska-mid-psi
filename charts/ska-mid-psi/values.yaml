@@ -59,23 +59,9 @@ ska-mid-cbf-mcs:
   enabled: true
   global:
     minikube: false
-# Uncomment the section below to use custom MCS image
-  # midcbf:
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-  #     image: ska-mid-cbf-mcs
-  #     tag: <Image tag from MCS pipeline>
-  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
   enabled: true
-# Uncomment the section below to use custom Engineering Console image
-#  engineeringconsole:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      image: ska-mid-cbf-engineering-console
-#      tag: <Image tag from EC pipeline>
-#      pullPolicy: IfNotPresent
 
 ska-mid-cbf-tmleafnode:
   enabled: true
@@ -98,6 +84,8 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
+
+
 
 ## sdp
 ska-sdp:
