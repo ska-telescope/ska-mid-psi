@@ -5,6 +5,23 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2024-10-13
+***********
+* MAP-166 Bumping all versions to include mid product release candidates for more stable end-to-end
+
+2024-09-10
+***********
+* MAP-170 Bump spfrx-talondx-console version in chart.yaml from 0.3.3 to 0.3.6
+
+2024-09-06
+***********
+* MAP-150 Bump csp-lmc-mid version in chart.yaml from 0.22.0 to 0.23.1
+
+2024-09-05
+***********
+* MAP-151 Bump ska-db-oda-umbrella version in chart.yaml from 5.3.0 to 6.0.0
+* MAP-141 Bump csp-tmc-mid version in chart.yaml from 0.21.2 to 0.22.2
+
 2024-09-03
 ***********
 * MAP-139 Add separate `SPFRX_ENABLED` pipeline argument (defaults to false). Dish LMC and SPFRx components can now be spun up separately, but if `DISH_LMC_ENABLED` is false, `SPFRX_ENABLED` will also be false.
