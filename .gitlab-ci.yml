@@ -64,8 +64,8 @@ log-collector:
     - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
-  # needs:
-  #   - job: python-test
+  needs:
+    - job: python-test
   artifacts:
     paths:
     - logs/*.log
