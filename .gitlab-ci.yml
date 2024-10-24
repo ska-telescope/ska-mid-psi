@@ -13,9 +13,10 @@ variables:
 
 stages:
   - lint
-  - on_demand_psi
   - build
   - deploy
+  - on_demand_psi
+  - test
   - log-collector
   - join-reports
   - pages
@@ -24,6 +25,9 @@ stages:
   - cleanup
 
 include:
+  # Python packages build, lint, test and publish
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/python.gitlab-ci.yml'
 
   # Helm Charts
   - project: 'ska-telescope/templates-repository'
@@ -55,17 +59,38 @@ pages:
   rules:
     - when: never
 
+python-test:
+  image: $SKA_K8S_TOOLS_BUILD_DEPLOY
+  extends:
+    - .mid
+  needs:
+    - job: psi-mid-on-demand-deploy
+  before_script:
+    - mkdir -p build/reports
+    - echo "$CI_JOB_ID" >> build/reports/python_test_id.txt
+    - echo "$PYTEST_MARKER" >> build/reports/pytest_marker.txt
+  script:
+    - echo "testing python-test job"
+  artifacts:
+    paths:
+      # - build/reports/cucumber.json
+      # - build/reports/report.json
+      - build/reports/python_test_id.txt
+      - build/reports/pytest_marker.txt
+      # - results/*
+  allow_failure: true
+
 log-collector:
   stage: log-collector
   extends:
     - .mid
+  needs:
+    - job: python-test
   script:
     - mkdir -p logs
     - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
-  needs:
-    - job: python-test
   artifacts:
     paths:
     - logs/*.log
