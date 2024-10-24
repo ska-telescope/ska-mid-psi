@@ -150,3 +150,6 @@ ska-dish-lmc:
     dsOpcuaSimulator:
       enabled: true
 
+# FHS VCC
+ska-mid-cbf-fhs-vcc:
+  enabled: true
