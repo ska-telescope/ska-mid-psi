@@ -16,6 +16,7 @@ stages:
   - on_demand_psi
   - build
   - deploy
+  - log-collector
   - join-reports
   - pages
   - publish
@@ -54,4 +55,19 @@ pages:
   rules:
     - when: never
 
-
+log-collector:
+  stage: log-collector
+  extends:
+    - .mid
+  script:
+    - mkdir -p logs
+    - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+  # needs:
+  #   - job: python-test
+  artifacts:
+    paths:
+    - logs/*.log
+    - logs/log_collector_id.txt
+  allow_failure: true
