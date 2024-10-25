@@ -69,6 +69,8 @@ python-test:
     #   when: manual
   needs:
     - job: psi-mid-on-demand-deploy
+  tags:
+    - $RUNNER_TAG
   before_script:
     - mkdir -p build/reports
     - echo "$CI_JOB_ID" >> build/reports/python_test_id.txt
@@ -96,14 +98,9 @@ log-collector:
     - job: python-test
   script:
     - mkdir -p logs
-    - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
-    - echo "KUBE_NAMESPACE=${KUBE_NAMESPACE}"
-    - kubectl get pods -n $KUBE_NAMESPACE
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
-    - echo $POD_LIST
-#    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
     paths:
-#    - logs/*.log
-    - logs/log_collector_id.txt
+    - logs/*.log
   allow_failure: true
