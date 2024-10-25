@@ -87,15 +87,17 @@ log-collector:
   stage: log-collector
   extends:
     - .mid
+  variables:
+    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
   needs:
     - job: python-test
   script:
     - mkdir -p logs
 #    - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
     - echo "KUBE_NAMESPACE=${KUBE_NAMESPACE}"
-#    - kubectl get pods -n $KUBE_NAMESPACE
-#    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
-#    - echo $POD_LIST
+    - kubectl get pods -n $KUBE_NAMESPACE
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - echo $POD_LIST
 #    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
     paths:
