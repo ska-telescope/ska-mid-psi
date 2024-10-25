@@ -114,14 +114,15 @@ xray-publish:
   tags:
     - $RUNNER_TAG
   before_script:
+    - export DISH_LMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-dish-lmc").version)' $CHART_FILE)
+    - export SPFRX_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-dish-spfrx-talondx-console").version)' $CHART_FILE)
+    - export TMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-tmc-mid").version)' $CHART_FILE)
+    - export CSP_LMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-csp-lmc-mid").version)' $CHART_FILE)
     - export MCS_IMAGE_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-cbf-mcs").version)' $CHART_FILE)
-    - export EC_IMAGE_VER=$(kubectl describe pod/ds-deployer-deployer-0 -n $KUBE_NAMESPACE | grep 'Image:' | sed 's/.*\://')
-    - export SV_IMAGE_VER=$(kubectl describe pod/sv -n $KUBE_NAMESPACE | grep signal-verification | grep 'Image:' | sed 's/.*\://')
-    # - export TMC_VER=$(kubectl describe pod/ds-centralnode-01-0 -n $KUBE_NAMESPACE | grep signal-verification | grep 'Image:' | sed 's/.*\://')
-    # - export DISH_LMC_VER=$(kubectl describe pod/sv -n $KUBE_NAMESPACE | grep signal-verification | grep 'Image:' | sed 's/.*\://')
-    # - export CSP_LMC_VER=$(kubectl describe pod/sv -n $KUBE_NAMESPACE | grep signal-verification | grep 'Image:' | sed 's/.*\://')
-    # - export SDP_VER=$(kubectl describe pod/ska-sdp-console-0 -n $KUBE_NAMESPACE | grep chart | grep 'Image:' | sed 's/.*\://')
-    # - export SV_IMAGE_VER=$(kubectl describe pod/sv -n $KUBE_NAMESPACE | grep signal-verification | grep 'Image:' | sed 's/.*\://')
+    - export EC_IMAGE_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-cbf-engineering-console").version)' $CHART_FILE)
+    - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
+    - export SDP_VER=$(yq eval '(.dependencies[] | select(.name == "ska-sdp").version)' $CHART_FILE)
+    - export PST_VER=$(yq eval '(.dependencies[] | select(.name == "ska-pst").version)' $CHART_FILE)
     - export CI_PYTHON_TEST_ID=$(cat "build/reports/python_test_id.txt")
     # - export CI_LOG_COLLECTOR_ID=$(cat "logs/log_collector_id.txt")
     # - export PYTEST_MARKER=$(cat "build/reports/pytest_marker.txt")
@@ -132,11 +133,17 @@ xray-publish:
     # - export HW_CONFIG_USED=$HW_CONFIG_FILE
     # - export SLIM_FS_USED=$SLIM_FS_CONFIG_FILE
     # - export SLIM_VIS_CONFIG_USED=$SLIM_VIS_CONFIG_FILE
-    # - export INTERNAL_SCHEMAS_VER=$(cat "build/reports/internal_schemas_version.txt" | awk '/version/ { print $3 }')
-    # - export FPGA_BITSTREAMS_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
   script:
     - echo "testing xray-publish job"
+    - echo "DISH_LMC_VER = ${DISH_LMC_VER}"
+    - echo "SPFRX_VER = ${SPFRX_VER}"
+    - echo "TMC_VER = ${TMC_VER}"
+    - echo "CSP_LMC_VER = ${CSP_LMC_VER}"
     - echo "MCS_IMAGE_VER = ${MCS_IMAGE_VER}"
+    - echo "EC_IMAGE_VER = ${EC_IMAGE_VER}"
+    - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
+    - echo "SDP_VER = ${SDP_VER}"
+    - echo "PST_VER = ${PST_VER}"
   #  - make xray-publish TALON_LIST=$TALON_LIST KUBE_NAMESPACE=$KUBE_NAMESPACE PYTEST_MARKER=$PYTEST_MARKER
   dependencies:
     - python-test
