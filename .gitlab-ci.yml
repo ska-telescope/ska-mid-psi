@@ -10,6 +10,7 @@ variables:
   DISH_LMC_ENABLED: true
   PST_ENABLED: false
   SPFRX_ENABLED: false
+  RUNNER_TAG: k8srunner-psi-mid
 
 stages:
   - lint
@@ -89,11 +90,13 @@ log-collector:
     - .mid
   variables:
     KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
+  tags:
+    - $RUNNER_TAG
   needs:
     - job: python-test
   script:
     - mkdir -p logs
-#    - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
+    - echo "$CI_JOB_ID" >> logs/log_collector_id.txt
     - echo "KUBE_NAMESPACE=${KUBE_NAMESPACE}"
     - kubectl get pods -n $KUBE_NAMESPACE
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
