@@ -17,7 +17,7 @@ Feature: Telescope end-to-end observation scan using BITE in the Mid PSI
 		Given a SUT deployment in the Mid PSI
 		And the SUT is configured
 		When the telescope is turned on
-		And BITE data is generated and flowing
+		And BITE data is generated and replaying
 		And resources are assigned
 		And the subarray is configured for a scan
 		And scanning is executed for a scan duration of 30-45s
