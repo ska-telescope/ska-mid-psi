@@ -129,7 +129,6 @@ xray-publish:
     # - export REPORT_SUMMARY_URL="https://ska-telescope.gitlab.io/-/ska-mid-cbf-system-tests/-/jobs/$CI_PYTHON_TEST_ID/artifacts/results/reports/report_summary.html"
     # - export REPORTS_FOLDER_URL="https://gitlab.com/ska-telescope/ska-mid-cbf-system-tests/-/jobs/$CI_PYTHON_TEST_ID/artifacts/browse/results/reports/"
     # - export LOG_LEVEL_SUMMARY_URL="https://ska-telescope.gitlab.io/-/ska-mid-cbf-system-tests/-/jobs/$CI_LOG_COLLECTOR_ID/artifacts/logs/log_level_summary.txt"
-    # - export TARGET_SITE=$TARGET_SITE
     # - export HW_CONFIG_USED=$HW_CONFIG_FILE
     # - export SLIM_FS_USED=$SLIM_FS_CONFIG_FILE
     # - export SLIM_VIS_CONFIG_USED=$SLIM_VIS_CONFIG_FILE
@@ -144,7 +143,7 @@ xray-publish:
     - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
     - echo "SDP_VER = ${SDP_VER}"
     - echo "PST_VER = ${PST_VER}"
-  #  - make xray-publish TALON_LIST=$TALON_LIST KUBE_NAMESPACE=$KUBE_NAMESPACE PYTEST_MARKER=$PYTEST_MARKER
+    - make xray-publish
   dependencies:
     - python-test
     - log-collector
@@ -154,9 +153,8 @@ xray-publish:
   rules:
     - if: $CI_PIPELINE_SOURCE != 'schedule'
       when: manual
-    # - exists:
+    - exists:
     #     # - build/reports/cucumber.json
     #     # - build/reports/report.json
-    #     # - build/reports/internal_schemas_version.txt
-    #     - tests/xray-config.json
-    #   when: on_success
+        - tests/xray-config.json
+      when: on_success
