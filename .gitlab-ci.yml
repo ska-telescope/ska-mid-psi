@@ -75,6 +75,8 @@ python-test:
     - mkdir -p build/reports
     - echo "$CI_JOB_ID" >> build/reports/python_test_id.txt
 #    - echo "$PYTEST_MARKER" >> build/reports/pytest_marker.txt
+    - poetry config virtualenvs.create false
+    - poetry install
   script:
     - echo "testing python-test job"
     - make python-test KUBE_NAMESPACE=$KUBE_NAMESPACE
