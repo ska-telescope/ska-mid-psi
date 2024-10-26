@@ -27,3 +27,9 @@ pytest-repeat = "^0.9.1"
 pytest-timeout = "^2.1.0"
 pytest-xdist = "^2.5.0"
 pytest-ordering = "^0.6"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore::_pytest.warning_types.PytestUnknownMarkWarning"
+]
+addopts = "--show-capture=no"
