@@ -77,10 +77,11 @@ python-test:
 #    - echo "$PYTEST_MARKER" >> build/reports/pytest_marker.txt
   script:
     - echo "testing python-test job"
+    - make python-test KUBE_NAMESPACE=$KUBE_NAMESPACE
   artifacts:
     paths:
-      # - build/reports/cucumber.json
-      # - build/reports/report.json
+      - build/reports/cucumber.json
+      - build/reports/report.json
       - build/reports/python_test_id.txt
 #      - build/reports/pytest_marker.txt
       # - results/*
@@ -154,7 +155,7 @@ xray-publish:
     - if: $CI_PIPELINE_SOURCE != 'schedule'
       when: manual
     - exists:
-    #     # - build/reports/cucumber.json
-    #     # - build/reports/report.json
+        - build/reports/cucumber.json
+        - build/reports/report.json
         - tests/xray-config.json
       when: on_success
