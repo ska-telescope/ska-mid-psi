@@ -7,7 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
 2024-10-25
 ***********
-* MAP-206 Bump ska-mid-cbf-engineering-console from 0.10.11 to 0.10.12
+* MAP-206 Bump ska-mid-cbf-engineering-console from 0.10.11 to 0.10.12-rc.1
 
 2024-10-25
 ***********
