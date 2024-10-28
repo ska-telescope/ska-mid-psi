@@ -11,6 +11,11 @@ authors = ["Aditya Joshi", "Jared Murphy", "Alex Schell", "Mae Yee"]
 name = "nexus-internal"
 url = "https://artefact.skao.int/repository/pypi-internal/simple"
 
+
+[[tool.poetry.source]]
+name = "PyPI-public"
+url = 'https://pypi.org/simple'
+
 [tool.poetry.dependencies]
 python = "^3.10"
 ska-oso-pdm = { version = "^14.3.0", source = "nexus-internal" }
