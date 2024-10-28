@@ -93,8 +93,6 @@ log-collector:
   stage: log-collector
   extends:
     - .mid
-  variables:
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
   tags:
     - $RUNNER_TAG
   needs:
@@ -112,7 +110,6 @@ xray-publish:
   extends:
     - .mid
   variables:
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     CHART_FILE: "charts/ska-mid-psi/Chart.yaml"
   tags:
     - $RUNNER_TAG
