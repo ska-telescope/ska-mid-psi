@@ -62,14 +62,14 @@
       }
     ],
     "environment_variables": [
-      "CI_PIPELINE_URL",
-      "CI_COMMIT_TITLE",
-      "CI_JOB_STARTED_AT",
-      "KUBE_NAMESPACE",
+      "CI_PIPELINE_URL ",
+      "CI_COMMIT_TITLE ",
+      "CI_JOB_STARTED_AT ",
+      "KUBE_NAMESPACE ",
       "DISH_LMC_ENABLED ",
       "SPFRX_ENABLED ",
       "PST_ENABLED ",
-      "FPGA_BITSTREAM_VER"
+      "FPGA_BITSTREAM_VER "
     ]
   }
   
