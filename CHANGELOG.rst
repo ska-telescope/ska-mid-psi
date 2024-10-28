@@ -7,6 +7,10 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
 2024-10-25
 ***********
+* MAP-206 Bump ska-mid-cbf-engineering-console from 0.10.11 to 0.10.12
+
+2024-10-25
+***********
 * MAP-205 Bump ska-tmc-mid version in chart.yaml from 0.22.6 to 0.22.8
 
 2024-10-13
