@@ -52,11 +52,10 @@
 
 .info:
   stage: deploy
+  extends:
+    - .mid
   variables:
     K8S_CHART: "ska-$CONFIG"
-    HELM_RELEASE: "test-$CI_PIPELINE_ID"
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
   script:
     - echo "Get namespace resources"
     - make k8s-get
