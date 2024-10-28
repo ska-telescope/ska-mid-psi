@@ -4,7 +4,7 @@
     HELM_RELEASE: "test-$CI_PIPELINE_ID"
     KUBE_NAMESPACE: "ci-$CI_PROJECT_NAME-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
-    SKA_TANGO_ARCHIVER: false
+    ARCHIVING_ENABLED: false
 
 
 .deploy:
@@ -18,7 +18,7 @@
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Deploying using the following arguments:"
-    - echo -e "    TANGO ARCHIVER ENABLED = $SKA_TANGO_ARCHIVER\n    DISH LMC ENABLED = $DISH_LMC_ENABLED\n    SPFRX ENABLED = $SPFRX_ENABLED"
+    - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
     - |
@@ -34,7 +34,7 @@
     - echo "Wait namespace resources"
     - make k8s-wait
     - |
-      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+      if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Add attributes to EDA for archiving"
         echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE"
         make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE
@@ -47,7 +47,7 @@
           fi
         fi
       else
-        echo "SKA_TANGO_ARCHIVER is false"
+        echo "ARCHIVING_ENABLED is false"
       fi
 
 .info:
@@ -74,12 +74,12 @@
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
     - |
-      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+      if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Remove attributes from being archived in EDA"
         echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml"
         make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml
       else
-        echo "SKA_TANGO_ARCHIVER is false"
+        echo "ARCHIVING_ENABLED is false"
     - fi
     - make k8s-uninstall-chart || true
     - |

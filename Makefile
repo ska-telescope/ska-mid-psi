@@ -30,7 +30,7 @@ endif
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
+ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -105,7 +105,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	$(TARANTA_PARAMS)
 
-ifeq ($(SKA_TANGO_ARCHIVER),true)
+ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif

@@ -69,7 +69,7 @@
       "DISH_LMC_ENABLED",
       "SPFRX_ENABLED",
       "PST_ENABLED",
-      "SKA_TANGO_ARCHIVER",
+      "ARCHIVING_ENABLED",
       "FPGA_BITSTREAM_VER"
     ]
   }

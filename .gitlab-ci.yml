@@ -111,7 +111,7 @@ xray-publish:
     - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
     - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
     - echo "PST_ENABLED = ${PST_ENABLED}"
-    - echo "SKA_TANGO_ARCHIVER = ${SKA_TANGO_ARCHIVER}"
+    - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
     - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
     - make xray-publish
   dependencies:
