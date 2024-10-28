@@ -64,9 +64,9 @@ python-test:
   image: $SKA_K8S_TOOLS_BUILD_DEPLOY
   extends:
     - .mid
-  #rules:
-    # - if: $CI_PIPELINE_SOURCE != "schedule"
-    #   when: manual
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+      when: manual
   needs:
     - job: psi-mid-on-demand-deploy
   tags:
@@ -74,7 +74,7 @@ python-test:
   before_script:
     - mkdir -p build/reports
     - echo "$CI_JOB_ID" >> build/reports/python_test_id.txt
-#    - echo "$PYTEST_MARKER" >> build/reports/pytest_marker.txt
+    # - echo "$PYTEST_MARKER" >> build/reports/pytest_marker.txt
     - poetry config virtualenvs.create false
     - poetry install
   script:
@@ -85,7 +85,7 @@ python-test:
       - build/reports/cucumber.json
       - build/reports/report.json
       - build/reports/python_test_id.txt
-#      - build/reports/pytest_marker.txt
+      # - build/reports/pytest_marker.txt
       # - results/*
   allow_failure: true
 
@@ -114,16 +114,8 @@ xray-publish:
   tags:
     - $RUNNER_TAG
   before_script:
-    - export DISH_LMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-dish-lmc").version)' $CHART_FILE)
-    - export SPFRX_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-dish-spfrx-talondx-console").version)' $CHART_FILE)
-    - export TMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-tmc-mid").version)' $CHART_FILE)
-    - export CSP_LMC_VER=$(yq eval '(.dependencies[] | select(.name == "ska-csp-lmc-mid").version)' $CHART_FILE)
-    - export MCS_IMAGE_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-cbf-mcs").version)' $CHART_FILE)
-    - export EC_IMAGE_VER=$(yq eval '(.dependencies[] | select(.name == "ska-mid-cbf-engineering-console").version)' $CHART_FILE)
     - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
-    - export SDP_VER=$(yq eval '(.dependencies[] | select(.name == "ska-sdp").version)' $CHART_FILE)
-    - export PST_VER=$(yq eval '(.dependencies[] | select(.name == "ska-pst").version)' $CHART_FILE)
-    - export CI_PYTHON_TEST_ID=$(cat "build/reports/python_test_id.txt")
+    # - export CI_PYTHON_TEST_ID=$(cat "build/reports/python_test_id.txt")
     # - export CI_LOG_COLLECTOR_ID=$(cat "logs/log_collector_id.txt")
     # - export PYTEST_MARKER=$(cat "build/reports/pytest_marker.txt")
     # - export REPORT_SUMMARY_URL="https://ska-telescope.gitlab.io/-/ska-mid-cbf-system-tests/-/jobs/$CI_PYTHON_TEST_ID/artifacts/results/reports/report_summary.html"
@@ -133,16 +125,10 @@ xray-publish:
     # - export SLIM_FS_USED=$SLIM_FS_CONFIG_FILE
     # - export SLIM_VIS_CONFIG_USED=$SLIM_VIS_CONFIG_FILE
   script:
-    - echo "testing xray-publish job"
-    - echo "DISH_LMC_VER = ${DISH_LMC_VER}"
-    - echo "SPFRX_VER = ${SPFRX_VER}"
-    - echo "TMC_VER = ${TMC_VER}"
-    - echo "CSP_LMC_VER = ${CSP_LMC_VER}"
-    - echo "MCS_IMAGE_VER = ${MCS_IMAGE_VER}"
-    - echo "EC_IMAGE_VER = ${EC_IMAGE_VER}"
+    - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
+    - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
+    - echo "PST_ENABLED = ${PST_ENABLED}"
     - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
-    - echo "SDP_VER = ${SDP_VER}"
-    - echo "PST_VER = ${PST_VER}"
     - make xray-publish
   dependencies:
     - python-test
@@ -151,8 +137,6 @@ xray-publish:
     - job: python-test
     - job: log-collector
   rules:
-    - if: $CI_PIPELINE_SOURCE != 'schedule'
-      when: manual
     - exists:
         - build/reports/cucumber.json
         - build/reports/report.json
