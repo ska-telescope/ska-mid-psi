@@ -81,6 +81,7 @@ python-test:
     paths:
       - build/reports/cucumber.json
       - build/reports/report.json
+      - build/reports/deployment_variables.txt
   allow_failure: true
 
 log-collector:
@@ -106,6 +107,8 @@ xray-publish:
   tags:
     - $RUNNER_TAG
   before_script:
+    - ls build/reports/deployment_variables.txt
+    - cat build/reports/deployment_variables.txt
     - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
     - export DISH_LMC_ENABLED=$(grep '^DISH_LMC_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
     - export SPFRX_ENABLED=$(grep '^SPFRX_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
