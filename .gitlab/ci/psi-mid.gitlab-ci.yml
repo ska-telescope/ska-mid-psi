@@ -99,10 +99,6 @@
   dependencies:
     - psi-mid-on-demand-deploy
     - psi-mid-on-demand-redeploy
-  rules:
-    - exists:
-        - build/reports/deployment_variables.txt
-      when: on_success
 
 .redeploy:
   extends:
