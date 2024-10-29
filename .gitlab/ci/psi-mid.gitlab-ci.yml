@@ -20,6 +20,8 @@
     - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
     - echo "PST_ENABLED=$PST_ENABLED" >> build/reports/deployment_variables.txt
     - echo "ARCHIVING_ENABLED=$ARCHIVING_ENABLED" >> build/reports/deployment_variables.txt
+    - ls build/reports/deployment_variables.txt
+    - cat build/reports/deployment_variables.txt
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Deploying using the following arguments:"
