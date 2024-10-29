@@ -107,10 +107,10 @@ xray-publish:
     - $RUNNER_TAG
   before_script:
     - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
-    - 'export DISH_LMC_ENABLED=$(awk -F": " "/DISH_LMC_ENABLED/ {print $2}" /cat build/reports/deployment_variables.txt)'
-    - 'export SPFRX_ENABLED=$(awk -F": " "/SPFRX_ENABLED/ {print $2}" /cat build/reports/deployment_variables.txt)'
-    - 'export PST_ENABLED=$(awk -F": " "/PST_ENABLED/ {print $2}" /cat build/reports/deployment_variables.txt)'
-    - 'export ARCHIVING_ENABLED=$(awk -F": " "/ARCHIVING_ENABLED/ {print $2}" /cat build/reports/deployment_variables.txt)'
+    - export DISH_LMC_ENABLED=$(grep '^DISH_LMC_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export SPFRX_ENABLED=$(grep '^SPFRX_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export PST_ENABLED=$(grep '^PST_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
   script:
     - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
     - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
