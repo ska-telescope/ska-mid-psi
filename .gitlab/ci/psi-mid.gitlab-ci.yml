@@ -97,9 +97,7 @@
         make k8s-delete-namespace
       fi
   dependencies:
-  - .deploy
-  needs:
-    - job: .deploy
+    - .deploy
   rules:
     - exists:
         - build/reports/deployment_variables.txt
