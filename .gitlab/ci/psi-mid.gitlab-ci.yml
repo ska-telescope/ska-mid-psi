@@ -96,6 +96,8 @@
       if [ "$KEEP_NAMESPACE" != "true" ]; then
         make k8s-delete-namespace
       fi
+  dependencies:
+  - .deploy
   rules:
     - exists:
         - build/reports/deployment_variables.txt
