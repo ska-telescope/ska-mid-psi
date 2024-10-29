@@ -6,7 +6,6 @@
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     ARCHIVING_ENABLED: false
 
-
 .deploy:
   stage: deploy
   extends:
@@ -139,4 +138,3 @@ psi-mid-on-demand-redeploy:
     - .psi_mid_on_demand
   environment:
     name: psi-mid/ska-$CI_COMMIT_REF_NAME
-
