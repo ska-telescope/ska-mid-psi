@@ -98,6 +98,8 @@
       fi
   dependencies:
   - .deploy
+  needs:
+    - job: .deploy
   rules:
     - exists:
         - build/reports/deployment_variables.txt
