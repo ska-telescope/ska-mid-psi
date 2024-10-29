@@ -14,14 +14,6 @@
     K8S_AUTH_NAMESPACES: "$KUBE_NAMESPACE $KUBE_NAMESPACE_SDP"
     K8S_AUTH_SERVICE_ACCOUNT: "ci-svc-psi-$CI_PIPELINE_ID"
     VALUES: values.yaml
-  before_script:
-    - mkdir -p build/reports
-    - echo "DISH_LMC_ENABLED=$DISH_LMC_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "PST_ENABLED=$PST_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "ARCHIVING_ENABLED=$ARCHIVING_ENABLED" >> build/reports/deployment_variables.txt
-    - ls build/reports/deployment_variables.txt
-    - cat build/reports/deployment_variables.txt
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Deploying using the following arguments:"
@@ -40,6 +32,13 @@
     - make k8s-get
     - echo "Wait namespace resources"
     - make k8s-wait
+    - mkdir -p build/reports
+    - echo "DISH_LMC_ENABLED=$DISH_LMC_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "PST_ENABLED=$PST_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "ARCHIVING_ENABLED=$ARCHIVING_ENABLED" >> build/reports/deployment_variables.txt
+    - ls build/reports/deployment_variables.txt
+    - cat build/reports/deployment_variables.txt
     - |
       if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Add attributes to EDA for archiving"
