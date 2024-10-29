@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2024-10-29
+***********
+* MAP-190 Bump ska-mid-dish-spfrx-talondx-console from 0.3.6 to 0.3.8
+
 2024-10-25
 ***********
 * MAP-205 Bump ska-tmc-mid version in chart.yaml from 0.22.6 to 0.22.8
