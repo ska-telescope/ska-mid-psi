@@ -81,8 +81,8 @@
   script: &cleanup_script
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
-    # - ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
-    # - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
+    - ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
     - |
       if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Remove attributes from being archived in EDA"
@@ -96,14 +96,13 @@
       if [ "$KEEP_NAMESPACE" != "true" ]; then
         make k8s-delete-namespace
       fi
-  # dependencies:
-  #   - .deploy
-  # needs:
-  #   - job: .deploy
-  # rules:
-  #   - exists:
-  #       - build/reports/deployment_variables.txt
-  #     when: on_success
+  dependencies:
+    - psi-mid-on-demand-deploy
+    - psi-mid-on-demand-redeploy
+  rules:
+    - exists:
+        - build/reports/deployment_variables.txt
+      when: on_success
 
 .redeploy:
   extends:
