@@ -105,9 +105,9 @@ ska-sdp:
 # SPFRx
 spfrx:
   enabled: true
-  console:
-    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-    version: 0.3.8-dev.c9fe64116
+  # console:
+  #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+  #   version: 0.3.8-dev.c9fe64116
   address: 192.168.8.200
   bin: /usr/local/bin
   local_dir: artifacts
