@@ -55,7 +55,7 @@ ska-tango-tangogql:
 ska-mid-cbf-mcs:
   midcbf:
     image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs/
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
       tag: 1.1.0-rc.1-dev.c22c3cc7b
   signalVerificationVersion: 0.2.24
   hostInfo:
@@ -67,7 +67,7 @@ ska-mid-cbf-mcs:
 ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console/
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       tag: 0.10.12-dev.c1f957660
   enabled: true
 
