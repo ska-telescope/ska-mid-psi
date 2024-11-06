@@ -15,7 +15,7 @@ ARCHIVER_TIMESCALE_DB_PWD ?= TfqQuRxku4aYTRpk#for testing
 ARCHWIZARD_VIEW_DBNAME ?= MyHDB
 ARCHWIZARD_CONFIG ?= $(ARCHWIZARD_VIEW_DBNAME)=tango://$(TANGO_HOST_NAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):10000/$(CONFIG_MANAGER)
 TELESCOPE_ENVIRONMENT ?= MID_PSI
-SKA_TANGO_ARCHIVER_PARAMS = --set ska-tango-archiver.enabled=$(SKA_TANGO_ARCHIVER) \
+SKA_TANGO_ARCHIVER_PARAMS = --set ska-tango-archiver.enabled=$(ARCHIVING_ENABLED) \
 							--set ska-tango-archiver.telescope=$(TELESCOPE) \
 							--set ska-tango-archiver.hostname=$(ARCHIVER_TIMESCALE_HOST_NAME) \
 							--set ska-tango-archiver.dbname=$(ARCHIVER_DBNAME) \

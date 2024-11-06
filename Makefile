@@ -30,7 +30,7 @@ endif
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
+ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -86,7 +86,6 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
-
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
@@ -105,7 +104,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	$(TARANTA_PARAMS)
 
-ifeq ($(SKA_TANGO_ARCHIVER),true)
+ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
@@ -125,6 +124,8 @@ ifeq ($(DISH_LMC_ENABLED),true)
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
+
+PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 
 
 ARCHIVE_CONFIG ?= "archiver/mid-telescope.yaml" # can override the default config file for archiving
 eda-add-attributes:
