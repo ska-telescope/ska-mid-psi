@@ -1,3 +1,6 @@
 [submodule ".make"]
 	path = .make
 	url = https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git
+[submodule ".jupyter-notebooks"]
+	path = .jupyter-notebooks
+	url = https://gitlab.com/ska-telescope/ska-mid-jupyter-notebooks.git
