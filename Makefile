@@ -126,6 +126,9 @@ else ifeq ($(DISH_LMC_ENABLED),false)
 endif
 
 PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 
+PYTHON_LINT_TARGET = tests
+PYTHON_SWITCHES_FOR_FLAKE8 = --ignore=E501,F407,W503,D100,D103,D400,DAR101,D104,D101,D107,D401,FS002,D200,DAR201,D202,D403,N802,DAR401,E203
+PYTHON_SWITCHES_FOR_PYLINT = --disable=W0613,C0116,C0114,R0801,W0621,W1203,C0301,F0010,R1721,R1732,C2801,C0115,R0903,W0102,W0201,C0103
 
 ARCHIVE_CONFIG ?= "archiver/mid-telescope.yaml" # can override the default config file for archiving
 eda-add-attributes:
