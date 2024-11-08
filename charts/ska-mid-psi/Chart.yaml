@@ -95,6 +95,6 @@ dependencies:
     condition: ska-dish-lmc.enabled
 
   - name: ska-icams-alarmhandler
-    version: 0.1.0-dev.ce012fb35
+    version: 0.1.0-dev.cb19b6dba
     repository: https://gitlab.com/api/v4/projects/56649674/packages/helm/dev
     condition: ska-icams-alarmhandler.enabled
