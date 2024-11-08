@@ -95,3 +95,126 @@ configuration:
         code_push_event: true
       kValue:
         archive_abs_change: 1
+
+### CSP.LMC ###
+  - class: MidCspController
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      adminmode:
+        code_push_event: true
+      cspCbfState:
+        code_push_event: true
+      cspCbfHealthState:
+        code_push_event: true
+      cspCbfAdminMode:
+        code_push_event: true
+
+  - class: MidCspSubarray
+    filtering:
+      device:
+      - mid-csp/subarray/01
+    attributes:
+      state:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      adminmode:
+        code_push_event: true
+      obsstate:
+        code_push_event: true
+      cbfSubarrayState:
+        code_push_event: true
+      cbfSubarrayHealthState:
+        code_push_event: true
+      cbfSubarrayAdminMode:
+        code_push_event: true
+      cbfSubarrayObsState:
+        code_push_event: true
+      assignedResources:
+        code_push_event: true
+
+### CBF ###
+  - class: TalonBoard
+    filtering:
+      device:
+      - mid_csp_cbf/talon_board/001
+      - mid_csp_cbf/talon_board/002
+      - mid_csp_cbf/talon_board/003
+      - mid_csp_cbf/talon_board/004
+    attributes:
+      State:
+        code_push_event: true
+      FpgaDieTemperature:
+        archive_period: 6000
+        polling_period: 6000
+      HumiditySensorTemperature:
+        archive_period: 6000
+        polling_period: 6000
+      DIMMTemperatures:
+        archive_period: 6000
+        polling_period: 6000
+      MboTxTemperatures:
+        archive_period: 6000
+        polling_period: 6000
+      MboTxVccVoltages:
+        archive_period: 6000
+        polling_period: 6000
+      MboRxVccVoltages:
+        archive_period: 6000
+        polling_period: 6000
+      FansFault:
+        archive_period: 6000
+        polling_period: 6000
+
+### SDP ###
+  - class: SDPSubarray
+    attributes:
+      versionId:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      adminMode:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      healthState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      obsState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      resources:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      ebID:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      receiveAddresses:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      scanType:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      scanID:
+        code_push_event: true
+        archive_abs_change: 1
+        archive_strategy: ALWAYS
+
+  - class: SDPController
+    attributes:
+      versionId:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      adminMode:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      healthState:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      components:
+        code_push_event: true
+        archive_strategy: ALWAYS
+      sdpVersion:
+        code_push_event: true
+        archive_strategy: ALWAYS
