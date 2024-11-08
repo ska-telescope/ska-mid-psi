@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2024-11-08
+***********
+* SKB-434 Bump ska-tmc-mid from 0.22.8-rc1 to 0.22.8 and ska-tango-archiver from 2.8.0 to 2.8.1, to resolve errors found in the arhiver when monitoring the sdpSubarrayObState + cspSubarrayObState attributes. Also removes `archiver/default.yaml` and `archiver/demo.yaml` files as no longer needed.
+
 2024-10-29
 ***********
 * MAP-190 Bump ska-mid-dish-spfrx-talondx-console from 0.3.6 to 0.3.8
