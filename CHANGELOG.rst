@@ -12,6 +12,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 2024-10-29
 ***********
 * MAP-190 Bump ska-mid-dish-spfrx-talondx-console from 0.3.6 to 0.3.8
+* MAP-194 Add BDD and Xray infrastructure with stubbed out automated test
 
 2024-10-25
 ***********
