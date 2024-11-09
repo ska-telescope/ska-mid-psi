@@ -120,6 +120,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/icams \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
+	--set ska-icams-alarmhandler.tango-gql.config.tango_host=$(TANGO_HOST) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(SKA_TANGO_ARCHIVER),true)
