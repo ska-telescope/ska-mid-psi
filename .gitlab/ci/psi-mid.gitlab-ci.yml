@@ -20,6 +20,7 @@
     - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
+    # Override to allow install of dish-lmc, then allow regular instal from chart
     - |
       if [ "$K8S_INSTALL_FROM_CAR" != "true" ]; then
        echo "Install Skampi Charts"

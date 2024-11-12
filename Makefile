@@ -9,7 +9,9 @@ CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHART ?= ska-mid-psi
+DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
+LMC_CHART_PATH ?= charts/$(DISH_LMC_CHART)
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -149,6 +151,19 @@ k8s-pre-install-chart-car:
 k8s-pre-uninstall-chart:
 	@echo "k8s-post-uninstall-chart: deleting the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@if [ "$(KEEP_NAMESPACE)" != "true" ]; then make k8s-delete-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP); fi
+	
+k8s-do-install-chart:
+	@echo "k8s-do-install-chart: starting Dish LMC first".
+	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@make k8s-wait
+	@echo "k8s-do-install-chart: Installing umbrella chart".
+	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(UMBRELLA_CHART_PATH) --namespace $(KUBE_NAMESPACE)
 
 run-pylint:
 	pylint --output-format=parseable tests/ test_parameters/ | tee build/code_analysis.stdout
