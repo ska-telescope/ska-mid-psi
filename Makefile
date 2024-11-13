@@ -123,7 +123,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/ \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
-	--set ska-icams-alarmhandler.frontend.config.tangoGQL=http://test-$(CI_PIPELINE_ID)-tango-gql.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):5004
+	--set ska-icams-alarmhandler.frontend.config.tangoGQL=http://test-$(CI_PIPELINE_ID)-tango-gql.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):5004 \
 	--set ska-icams-alarmhandler.tango-gql.config.tango_host=$(TANGO_HOST) \
 	$(TARANTA_PARAMS)
 
