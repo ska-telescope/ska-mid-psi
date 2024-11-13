@@ -53,10 +53,10 @@ ska-tango-tangogql:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-  midcbf:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-      tag: 1.1.0-rc.2-dev.c0e6bfb3c
+#  midcbf:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+#      tag: 1.1.0-rc.2-dev.c0e6bfb3c
   signalVerificationVersion: 0.2.24
   hostInfo:
     environment: "mid-psi"
@@ -65,10 +65,10 @@ ska-mid-cbf-mcs:
     minikube: false
 
 ska-mid-cbf-engineering-console:
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 0.10.12-dev.c1f957660
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+#      tag: 0.10.12-dev.c1f957660
   enabled: true
 
 ska-mid-cbf-tmleafnode:
