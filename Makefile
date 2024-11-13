@@ -104,10 +104,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.achtung.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.scheduler.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.scheduler.config.mongo_db_host=test-$(CI_PIPELINE_ID)-mongodb.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
-	--set ska-icams-alarmhandler.ska-icams-alarmhandler.umbrella.global.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.pyalarm.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.alarmhandler.config.tango_host=$(TANGO_HOST) \
 	--set ska-icams-alarmhandler.populatealarms.config.tango_host=$(TANGO_HOST) \
@@ -123,6 +123,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].host=rmdskadevdu011.mda.ca \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].path=/ \
 	--set ska-icams-alarmhandler.frontend.ingress.hosts[0].paths[0].pathType=Prefix \
+	--set ska-icams-alarmhandler.frontend.config.tangoGQL=http://test-$(CI_PIPELINE_ID)-tango-gql.$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN):5004
 	--set ska-icams-alarmhandler.tango-gql.config.tango_host=$(TANGO_HOST) \
 	$(TARANTA_PARAMS)
 
