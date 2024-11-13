@@ -8,6 +8,7 @@ KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
+HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
 HELM_CHART ?= ska-mid-psi
 DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
@@ -154,6 +155,11 @@ k8s-pre-uninstall-chart:
 	
 k8s-do-install-chart:
 	@echo "k8s-do-install-chart: starting Dish LMC first".
+	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@make k8s-wait
 	@echo "k8s-do-install-chart: Installing umbrella chart".
 	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
 	helm upgrade --install $(HELM_RELEASE) \
