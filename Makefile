@@ -12,7 +12,7 @@ HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
 HELM_CHART ?= ska-mid-psi
 DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
 UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
-LMC_CHART_PATH ?= charts/$(DISH_LMC_CHART)
+LMC_CHART_PATH ?= charts/$(DISH_LMC_CHART)/
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
