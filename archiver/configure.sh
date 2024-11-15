@@ -6,7 +6,7 @@ usage() {
     echo "where ACTION can be 'add_update' to add/update attributes for archiving,"
     echo "                    'remove' to remove attributes from archiving, or"
     echo "                     'get' to get the list of attributes currently being archived."
-    echo -e "\nIf no config file is provided, 'default.yaml' will be used by default.\n"
+    echo -e "\nIf no config file is provided, 'mid-telescope.yaml' will be used by default.\n"
     exit 1
 }
 
@@ -155,7 +155,7 @@ check_namespace
 
 # If no config file is provided, use the default file
 if [ -z "${ARCHIVE_CONFIG}" ]; then
-    ARCHIVE_CONFIG="archiver/default.yaml"
+    ARCHIVE_CONFIG="archiver/mid-telescope.yaml"
 fi
 
 # Check if action is provided and valid

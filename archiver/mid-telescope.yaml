@@ -94,7 +94,7 @@ configuration:
       kValueValidationResult:
         code_push_event: true
       kValue:
-        code_push_event: true
+        archive_abs_change: 1
 
 ### CSP.LMC ###
   - class: MidCspController
