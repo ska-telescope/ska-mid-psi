@@ -9,7 +9,7 @@ CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
-HELM_CHART ?= ska-mid-psi
+HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
 DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
 UMBRELLA_CHART_PATH ?= ./charts/$(HELM_CHART)/
 LMC_CHART_PATH ?= ./charts/$(DISH_LMC_CHART)/
