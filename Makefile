@@ -159,12 +159,14 @@ k8s-do-install-chart:
 	helm upgrade --install $(HELM_RELEASE) \
 	$(K8S_CHART_PARAMS) \
 	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@make k8s-get
 	@make k8s-wait
 	@echo "k8s-do-install-chart: Installing umbrella chart".
 	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
 	helm upgrade --install $(HELM_RELEASE) \
 	$(K8S_CHART_PARAMS) \
 	$(UMBRELLA_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@make k8s-get
 	@make k8s-wait
 
 run-pylint:
