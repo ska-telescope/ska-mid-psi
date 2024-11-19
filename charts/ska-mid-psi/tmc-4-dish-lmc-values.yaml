@@ -4,6 +4,10 @@ xauthority: "~/.Xauthority"
 global:
   dishes: ["001", "036", "063", "100"]
 tmc-mid:
+  dishleafnode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+      tag: 0.18.1-dev.cbb476326
   enabled: true
   global:
     namespace_dish:
