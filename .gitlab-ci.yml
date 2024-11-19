@@ -10,12 +10,15 @@ variables:
   DISH_LMC_ENABLED: true
   PST_ENABLED: false
   SPFRX_ENABLED: false
+  RUNNER_TAG: k8srunner-psi-mid
 
 stages:
   - lint
-  - on_demand_psi
   - build
   - deploy
+  - on_demand_psi
+  - test
+  - log-collector
   - join-reports
   - pages
   - publish
@@ -23,6 +26,9 @@ stages:
   - cleanup
 
 include:
+  # Python packages build, lint, test and publish
+  # - project: 'ska-telescope/templates-repository'
+  #   file: 'gitlab-ci/includes/python.gitlab-ci.yml'
 
   # Helm Charts
   - project: 'ska-telescope/templates-repository'
@@ -54,4 +60,77 @@ pages:
   rules:
     - when: never
 
+python-test:
+  image: $SKA_K8S_TOOLS_BUILD_DEPLOY
+  extends:
+    - .mid
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+      when: manual
+  needs:
+    - job: psi-mid-on-demand-deploy
+  tags:
+    - $RUNNER_TAG
+  before_script:
+    - mkdir -p build/reports
+    - poetry config virtualenvs.create false
+    - poetry install
+  script:
+    - make python-test KUBE_NAMESPACE=$KUBE_NAMESPACE
+  artifacts:
+    paths:
+      - build/reports/cucumber.json
+      - build/reports/report.json
+      - build/reports/deployment_variables.txt
+  allow_failure: true
 
+log-collector:
+  stage: log-collector
+  extends:
+    - .mid
+  tags:
+    - $RUNNER_TAG
+  needs:
+    - job: python-test
+  script:
+    - mkdir -p logs
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+  artifacts:
+    paths:
+    - logs/*.log
+  allow_failure: true
+
+xray-publish:
+  extends:
+    - .mid
+  tags:
+    - $RUNNER_TAG
+  before_script:
+    - ls build/reports/deployment_variables.txt
+    - cat build/reports/deployment_variables.txt
+    - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
+    - export DISH_LMC_ENABLED=$(grep '^DISH_LMC_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export SPFRX_ENABLED=$(grep '^SPFRX_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export PST_ENABLED=$(grep '^PST_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+  script:
+    - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
+    - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
+    - echo "PST_ENABLED = ${PST_ENABLED}"
+    - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
+    - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
+    - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED
+  dependencies:
+    - python-test
+    - log-collector
+  needs:
+    - job: python-test
+    - job: log-collector
+  rules:
+    - exists:
+        - build/reports/cucumber.json
+        - build/reports/report.json
+        - build/reports/deployment_variables.txt
+        - tests/xray-config.json
+      when: on_success
