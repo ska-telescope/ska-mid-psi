@@ -148,26 +148,26 @@ configuration:
       State:
         code_push_event: true
       FpgaDieTemperature:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       HumiditySensorTemperature:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       DIMMTemperatures:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboTxTemperatures:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboTxVccVoltages:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboRxVccVoltages:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       FansFault:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
 
 ### SDP ###
   - class: SDPSubarray
