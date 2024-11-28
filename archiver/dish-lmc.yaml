@@ -201,9 +201,6 @@ configuration:
     configureTargetLock:
       code_push_event: True
       archive_strategy: SERVICE
-    connectionState:
-      code_push_event: True
-      archive_strategy: SERVICE
     currentPointing:
       code_push_event: True
       archive_strategy: SERVICE
