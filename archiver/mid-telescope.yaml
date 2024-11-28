@@ -174,47 +174,33 @@ configuration:
     attributes:
       versionId:
         code_push_event: true
-        archive_strategy: ALWAYS
       adminMode:
         code_push_event: true
-        archive_strategy: ALWAYS
       healthState:
         code_push_event: true
-        archive_strategy: ALWAYS
       obsState:
         code_push_event: true
-        archive_strategy: ALWAYS
       resources:
         code_push_event: true
-        archive_strategy: ALWAYS
       ebID:
         code_push_event: true
-        archive_strategy: ALWAYS
       receiveAddresses:
         code_push_event: true
-        archive_strategy: ALWAYS
       scanType:
         code_push_event: true
-        archive_strategy: ALWAYS
       scanID:
         code_push_event: true
         archive_abs_change: 1
-        archive_strategy: ALWAYS
 
   - class: SDPController
     attributes:
       versionId:
         code_push_event: true
-        archive_strategy: ALWAYS
       adminMode:
         code_push_event: true
-        archive_strategy: ALWAYS
       healthState:
         code_push_event: true
-        archive_strategy: ALWAYS
       components:
         code_push_event: true
-        archive_strategy: ALWAYS
       sdpVersion:
         code_push_event: true
-        archive_strategy: ALWAYS

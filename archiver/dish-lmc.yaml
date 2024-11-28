@@ -8,232 +8,156 @@ configuration:
   attributes:
     achievedpointing:
       code_push_event: True
-      archive_strategy: ALWAYS
     achievedtargetlock:
       code_push_event: True
-      archive_strategy: ALWAYS
     actStaticOffsetValueEl:
       code_push_event: True
-      archive_strategy: ALWAYS
     actStaticOffsetValueXel:
       code_push_event: True
-      archive_strategy: ALWAYS
     attenuationpolh:
       code_push_event: True
-      archive_strategy: ALWAYS
     attenuationpolv:
       code_push_event: True
-      archive_strategy: ALWAYS
     azimuthOverWrap:
       code_push_event: True
-      archive_strategy: ALWAYS
     b1capabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     b2capabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     b3capabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     b4capabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     b5acapabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     b5bcapabilitystate:
       code_push_event: True
-      archive_strategy: ALWAYS
     band1pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band1SamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     band2pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band2SamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     band3pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band3SamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     band4pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band4SamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     band5aSamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     band5bSamplerFrequency:
       code_push_event: True
-      archive_strategy: ALWAYS
     buildstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     capturing:
       code_push_event: True
-      archive_strategy: ALWAYS
     configuredband:
       code_push_event: True
-      archive_strategy: ALWAYS
     configureTargetLock:
       code_push_event: True
-      archive_strategy: ALWAYS
     desiredPointingAz:
       code_push_event: True
-      archive_strategy: ALWAYS
     desiredPointingEl:
       code_push_event: True
-      archive_strategy: ALWAYS
     dishmode:
       code_push_event: True
-      archive_strategy: ALWAYS
     dshMaxShortTermPower:
       code_push_event: True
-      archive_strategy: ALWAYS
     dshPowerCurtailment:
       code_push_event: True
-      archive_strategy: ALWAYS
     dsConnectionState:
       code_push_event: True
-      archive_strategy: ALWAYS
     frequencyResponse:
       code_push_event: True
-      archive_strategy: ALWAYS
     healthstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     ignoreSpf:
       code_push_event: True
-      archive_strategy: ALWAYS
     ignoreSpfrx:
       code_push_event: True
-      archive_strategy: ALWAYS
     kvalue:
       code_push_event: True
-      archive_strategy: ALWAYS
     lastCommandedMode:
       code_push_event: True
-      archive_strategy: ALWAYS
     noiseDiodeConfig:
       code_push_event: True
-      archive_strategy: ALWAYS
     noiseDiodeMode:
       code_push_event: True
-      archive_strategy: ALWAYS
     periodicNoiseDiodePars:
       code_push_event: True
-      archive_strategy: ALWAYS
     pointingBufferSize:
       code_push_event: True
-      archive_strategy: ALWAYS
     pointingstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     polyTrack:
       code_push_event: True
-      archive_strategy: ALWAYS
     programTrackTable:
       code_push_event: True
-      archive_strategy: ALWAYS
     pseudoRandomNoiseDiodePars:
       code_push_event: True
-      archive_strategy: ALWAYS
     scanID:
       code_push_event: True
-      archive_strategy: ALWAYS
     spfConnectionState:
       code_push_event: True
-      archive_strategy: ALWAYS
     spfrxConnectionState:
       code_push_event: True
-      archive_strategy: ALWAYS
     trackInterpolationMode:
       code_push_event: True
-      archive_strategy: ALWAYS
     trackProgramMode:
       code_push_event: True
-      archive_strategy: ALWAYS
     trackTableLoadMode:
       code_push_event: True
-      archive_strategy: ALWAYS
 
 - class: DSManager
   attributes:
     achievedpointing:
       code_push_event: True
-      archive_strategy: ALWAYS
     achievedTargetLock:
       code_push_event: True
-      archive_strategy: ALWAYS
     actStaticOffsetValueEl:
       code_push_event: True
-      archive_strategy: ALWAYS
     actStaticOffsetValueXel:
       code_push_event: True
-      archive_strategy: ALWAYS
     azimuthSpeed:
       code_push_event: True
-      archive_strategy: ALWAYS
     band1pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band2pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band3pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     band4pointingmodelparams:
       code_push_event: True
-      archive_strategy: ALWAYS
     buildstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     configureTargetLock:
       code_push_event: True
-      archive_strategy: ALWAYS
     currentPointing:
       code_push_event: True
-      archive_strategy: ALWAYS
     desiredpointingAz:
       code_push_event: True
-      archive_strategy: ALWAYS
     desiredpointingEl:
       code_push_event: True
-      archive_strategy: ALWAYS
     dscstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     elevationSpeed:
       code_push_event: True
-      archive_strategy: ALWAYS
     healthstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     indexerposition:
       code_push_event: True
-      archive_strategy: ALWAYS
     operatingmode:
       code_push_event: True
-      archive_strategy: ALWAYS
     pointingstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     powerstate:
       code_push_event: True
-      archive_strategy: ALWAYS
     trackInterpolationMode:
       code_push_event: True
-      archive_strategy: ALWAYS
     trackProgramMode:
       code_push_event: True
-      archive_strategy: ALWAYS
