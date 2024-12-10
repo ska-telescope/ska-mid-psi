@@ -161,7 +161,7 @@ k8s-do-install-chart:
 	$(K8S_CHART_PARAMS) \
 	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
 	@echo "Waiting for pods to start running..."
-	@echo "Getting resoruces"
+	@echo "Getting resources"
 	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
 	@echo "Done installing Dish LMC chart"
 	@echo "----------------------------------------------"
@@ -171,7 +171,7 @@ k8s-do-install-chart:
 	$(K8S_CHART_PARAMS) \
 	$(UMBRELLA_CHART_PATH) --namespace $(KUBE_NAMESPACE)
 	@echo "Waiting for rest of the pods to start running..."
-	@echo "Getting resoruces"
+	@echo "Getting resources"
 
 run-pylint:
 	pylint --output-format=parseable tests/ test_parameters/ | tee build/code_analysis.stdout
