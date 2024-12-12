@@ -1,0 +1,58 @@
+display: ":0"
+xauthority: "~/.Xauthority"
+
+global:
+  minikube: false
+  operator: true
+  exposeAllDS: true
+  dish_suffix: "elt/master"
+  annotations:
+    app.gitlab.com/app: ska-mid-psi
+    app.gitlab.com/env: ska
+  taranta_auth_enabled: false
+  taranta_dashboard_enabled: true
+  sub-system:
+    tango-base:
+      enabled: false
+    ska-tango-base:
+      enabled: false
+    ska-taranta:
+      enabled: false
+  retry:
+    - "--sleep=3"
+    - "--tries=100"
+  tango_host: databaseds-tango-base:10000
+  device_server_port: 45450
+  cluster_domain: cluster.local
+  data-product-pvc-name: test-sdp-pvc
+  tangodb_fqdn: localhost
+  tangodb_port: 10000
+  raw_user_account: ""
+  raw_user_pass: ""
+
+ska-tango-base:
+  enabled: true
+  vnc:
+    replicas: 1
+    enabled: true
+  tangorest:
+    enabled: true
+    replicas: 1
+  tangodb:
+    use_pv: true
+
+# Dish LMC
+ska-dish-lmc:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  ska-mid-dish-simulators:
+    enabled: true
+    deviceServers:
+      spfdevice:
+        enabled: true
+      spfrxdevice:
+        enabled: false
+    dsOpcuaSimulator:
+      enabled: true
+
