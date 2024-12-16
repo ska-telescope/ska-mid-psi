@@ -205,8 +205,6 @@ configuration:
         code_push_event: true
       MboTxFaultStatus:
         code_push_event: true
-      MboTxFaultStatus:
-        code_push_event: true
       MboTxLolStatus:
         code_push_event: true
       MboTxLosStatus:
