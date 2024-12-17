@@ -53,10 +53,10 @@ ska-tango-tangogql:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-mcs:
-#  midcbf:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-#      tag: 1.1.0-rc.2-dev.c0e6bfb3c
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
+      tag: 1.1.0-rc.2-dev.c4a7d40a0
   signalVerificationVersion: 0.2.24
   hostInfo:
     environment: "mid-psi"
