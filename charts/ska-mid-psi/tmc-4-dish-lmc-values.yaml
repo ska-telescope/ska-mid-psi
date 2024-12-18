@@ -5,6 +5,10 @@ global:
   dishes: ["001", "036", "063", "100"]
 tmc-mid:
   enabled: true
+  dishleafnode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+      tag: 0.19.1-dev.c58971816
   global:
     namespace_dish:
       dish_names:
