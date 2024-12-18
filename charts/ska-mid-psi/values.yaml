@@ -55,7 +55,7 @@ ska-tango-tangogql:
 ska-mid-cbf-mcs:
   lruTimeout: 90
   controllerTimeout: 90
-   midcbf:
+  midcbf:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
       tag: 1.1.0-dev.ceb89c4f9
