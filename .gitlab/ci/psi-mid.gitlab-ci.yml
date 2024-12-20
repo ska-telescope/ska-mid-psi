@@ -17,7 +17,7 @@
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Deploying using the following arguments:"
-    - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
+    - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"\n    ALARM_HANDLER_ENABLED = $ALARM_HANDLER_ENABLED"
     - echo "Make config dump"
     - make vars
     # Use overridden k8s-install-chart to allow for deployment of Dish LMC related pods before others.

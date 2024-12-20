@@ -32,10 +32,10 @@ INGRESS_HOST ?= $(LOADBALANCER_IP)
 INGRESS_PROTOCOL ?= http
 endif
 
-EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
+EXPOSE_All_DS ?= true## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
-ALARM_HANDLER_ENABLED ?= true ## Set to true to deploy AlarmHandler
+ARCHIVING_ENABLED ?= false## Set to true to deploy EDA
+ALARM_HANDLER_ENABLED ?= true# Set to true to deploy AlarmHandler
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -133,11 +133,11 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 
 ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
-	K8S_CHART_PARAMS += $(ALARM_HANDLER_PARAMS)
+	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
 
 ifeq ($(ALARM_HANDLER_ENABLED),true)
-	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
+	K8S_CHART_PARAMS += $(ALARM_HANDLER_PARAMS)
 endif
 
 ifneq (,$(wildcard $(VALUES)))
@@ -155,6 +155,12 @@ ifeq ($(DISH_LMC_ENABLED),true)
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
+
+echo-chart-params:
+	@echo "ALARM_HANDLER_ENABLED = $(ALARM_HANDLER_ENABLED)"
+	@echo "ifeq ($(ALARM_HANDLER_ENABLED),true)"
+	@echo "K8S_CHART_PARAMS = "
+	@echo "$(K8S_CHART_PARAMS)"
 
 PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 
 
