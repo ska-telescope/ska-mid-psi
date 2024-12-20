@@ -9,8 +9,11 @@ SECRET_DIR ?= ./secrets/
 CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
-HELM_CHART ?= ska-mid-psi
-UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
+HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
+HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
+DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
+UMBRELLA_CHART_PATH ?= ./charts/ska-mid-psi/
+LMC_CHART_PATH ?= ./charts/ska-mid-psi-dish-lmc/
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -172,6 +175,26 @@ k8s-pre-install-chart-car:
 k8s-pre-uninstall-chart:
 	@echo "k8s-post-uninstall-chart: deleting the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@if [ "$(KEEP_NAMESPACE)" != "true" ]; then make k8s-delete-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP); fi
+	
+k8s-do-install-chart:
+	@echo "----------------------------------------------"
+	@echo "k8s-do-install-chart: starting Dish LMC first".
+	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@echo "Waiting for pods to start running..."
+	@echo "Getting resources"
+	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
+	@echo "Done installing Dish LMC chart"
+	@echo "----------------------------------------------"
+	@echo "k8s-do-install-chart: Installing umbrella chart".
+	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(UMBRELLA_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@echo "Waiting for rest of the pods to start running..."
+	@echo "Getting resources"
 
 run-pylint:
 	pylint --output-format=parseable tests/ test_parameters/ | tee build/code_analysis.stdout
