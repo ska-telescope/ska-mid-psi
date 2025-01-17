@@ -30,7 +30,7 @@ for i in range(0,max_row):
     row = []
     for column in columns_to_use:
         # Special case for time as unix, trim to last few numbers as we we will only see change here
-        if column == 'TIME':
+        if column == 'TIME' or column == 'TIME_CENTROID':
             clean_time = "..."
             clean_time += str(obstable.getcol(column,i,i+1)[0])[-20:]
             row.append(clean_time)
