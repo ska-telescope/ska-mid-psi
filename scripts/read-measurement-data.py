@@ -8,7 +8,7 @@ columns_to_use = []
 columns_with_desc = []
 display_table = []
 
-# Get the obersvation file and open via TaQL
+# Get the observation file and open via TaQL
 obstable = tables.table(sys.argv[1])
 # If columns not specified in cmd, list cols in main table and get user input
 if len(sys.argv) < 3:
@@ -25,7 +25,7 @@ if "DATA" in columns_to_use:
     phase = int(input("Enter data phase to get:"))
 max_row = int(input("Enter number of rows to retrieve:"))
 
-#For each row the user requests get the revelant data
+#For each row the user requests get the relevant data
 for i in range(0,max_row):
     row = []
     for column in columns_to_use:
@@ -45,7 +45,7 @@ for i in range(0,max_row):
 # Print the description of each column for reference 
 print("--------------------------------")
 for column in columns_to_use:
-    desc = column + ": "+ obstable.getcoldesc(column)['comment']
+    desc = column + ": " + obstable.getcoldesc(column)['comment']
     print(desc)
 print("--------------------------------\n")
 # Use tabulate to print the data cleanly
