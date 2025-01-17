@@ -15,7 +15,7 @@ if len(sys.argv) < 3:
     print("Possible columns to use")
     cols = obstable.colnames()
     print(cols)
-    user_data = input("Enter comma separated list of columns to use:")
+    user_data = input("Enter comma separated list of columns to use (a, b, c, ...):")
     columns_to_use = user_data.split(", ")
 # Otherwise use args from command line
 else:
@@ -36,7 +36,7 @@ for i in range(0,max_row):
             row.append(clean_time)
         # If data, handle the complex number and phase filtering
         elif column == 'DATA':
-            full_number =((obstable.getcol(column,i,i+1)[0]))[phase][phase]
+            full_number = ((obstable.getcol(column,i,i+1)[0]))[phase][phase]
             row.append(str(full_number))
         else:
             row.append(obstable.getcol(column,i,i+1)[0])
