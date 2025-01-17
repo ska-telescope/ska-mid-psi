@@ -32,7 +32,7 @@ for i in range(0,max_row):
             clean_time += str(obstable.getcol(column,i,i+1)[0])[-20:]
             row.append(clean_time)
         elif column == 'DATA':
-            row.append(((obstable.getcol(column,i,i+1)[0]))[0,0])
+            row.append(((obstable.getcol(column,i,i+1)[0]))[phase,phase])
         else:
             row.append(obstable.getcol(column,i,i+1)[0])
     display_table.append(row)
