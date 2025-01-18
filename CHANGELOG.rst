@@ -13,6 +13,10 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 ***********
 * MAP-277 Add in shell script to retrieve measurement data from namespaces.
 
+2025-01-06
+***********
+* MAP-229 Bump dish-lmc to 6.0.1 
+
 2024-11-18
 ***********
 * MAP-200 Update and split Helm chart files to deploy dish-LMC first.
