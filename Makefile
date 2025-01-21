@@ -38,7 +38,7 @@ ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-DISH_ID ?= ska100
+DISH_ID ?= ska001
 
 DISH_LMC_ENABLED ?= true
 SPFRX_ENABLED ?= false
@@ -71,10 +71,10 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
-DISH_PARAMS = --set global.dishes=100 \
+DISH_PARAMS = --set global.dishes=001 \
 			  --set global.dish_id=$(DISH_ID) \
-			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska100/spfrxpu/controller \
-			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA100
+			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
+			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
 
 ifneq ($(MINIKUBE),)
 ifneq ($(MINIKUBE),true)

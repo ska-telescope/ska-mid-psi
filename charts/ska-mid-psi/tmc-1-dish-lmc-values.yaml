@@ -3,20 +3,20 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: ["100"]
+  dishes: ["001"]
 tmc-mid:
   enabled: true
   global:
     namespace_dish:
       dish_names:
-      - mid-dish/dish-manager/SKA100
+      - mid-dish/dish-manager/SKA001
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
   deviceServers:
     centralnode:
       DishIDs:
-      - SKA100
+      - SKA001
     mocks:
       enabled: false
       dish: false
@@ -25,7 +25,7 @@ tmc-mid:
     dishleafnode:
       enabled: true
       instances:
-      - '100'
+      - '001'
     subarraynode:
       DishIDs:
-      - SKA100
+      - SKA001
