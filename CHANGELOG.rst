@@ -28,7 +28,6 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 2024-11-14
 ***********
 * MAP-158 Bump MCS, leafnode, EC and DISH-LMC versions for ADR-99 testing.
->>>>>>> CHANGELOG.rst
 
 2024-11-08
 ***********
