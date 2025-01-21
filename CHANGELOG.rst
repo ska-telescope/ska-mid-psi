@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-01-21
+***********
+* MAP-245 Bump MCS and LeafNode from 1.1.0 to 1.1.1 Engineering Console from 1.0.0 to 1.0.1. Also adds .ms to git ignore to prevent diffing of measurement data folders.
+
 2024-11-08
 ***********
 * SKB-434 Bump ska-tmc-mid from 0.22.8-rc1 to 0.22.8 and ska-tango-archiver from 2.8.0 to 2.8.1, to resolve errors found in the arhiver when monitoring the sdpSubarrayObState + cspSubarrayObState attributes. Also removes `archiver/default.yaml` and `archiver/demo.yaml` files as no longer needed.
