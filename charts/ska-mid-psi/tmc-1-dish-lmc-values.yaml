@@ -25,7 +25,7 @@ tmc-mid:
     dishleafnode:
       enabled: true
       instances:
-      - '001'
+      - '100'
     subarraynode:
       DishIDs:
       - SKA100
