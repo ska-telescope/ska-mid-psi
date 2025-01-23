@@ -67,10 +67,10 @@ ska-mid-cbf-tdc-tmleafnode:
   enabled: true
 
 ska-mid-cbf-engineering-console:
-#  engineeringconsole:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      tag: 1.0.1
+  engineeringconsole:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+      tag: 1.0.1-dev.c1301b4b9
   enabled: true
 
 ## EDA
