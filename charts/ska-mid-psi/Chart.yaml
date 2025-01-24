@@ -25,8 +25,8 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-tdc-tmleafnode.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.0.1-dev.c1301b4b9
-    repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
+    version: 1.0.1
+    repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
