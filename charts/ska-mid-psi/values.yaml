@@ -74,6 +74,14 @@ ska-mid-cbf-engineering-console:
 ska-mid-cbf-tmleafnode:
   enabled: true
 
+## TMC
+ska-tmc-subarraynode:
+  subarraynode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-subarraynode
+      tag: 0.27.6
+  enabled: true
+
 ## EDA
 ska-tango-archiver:
   legacy_compatibility: true

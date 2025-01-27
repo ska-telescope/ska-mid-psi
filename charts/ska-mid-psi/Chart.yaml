@@ -61,10 +61,6 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
-  - name: ska-tmc-subarraynode
-    version: 0.27.2
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-tmc-mid.enabled
 
   # SDP
   - name: ska-sdp
