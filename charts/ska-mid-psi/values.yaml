@@ -63,9 +63,6 @@ ska-mid-cbf-tdc-mcs:
   global:
     minikube: false
 
-ska-mid-cbf-tdc-tmleafnode:
-  enabled: true
-
 ska-mid-cbf-engineering-console:
   # engineeringconsole:
   #   image:
