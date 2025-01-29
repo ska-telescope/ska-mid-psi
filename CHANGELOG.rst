@@ -9,6 +9,10 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 ***********
 * MAP-281 Bump SDP version from 0.21.0 to 0.24.1
 
+2025-01-21
+***********
+* MAP-245 Bump MCS and LeafNode from 1.1.0 to 1.1.1 Engineering Console from 1.0.0 to 1.0.1. Also adds .ms to git ignore to prevent diffing of measurement data folders.
+
 2025-01-17
 ***********
 * MAP-245 Add in python script to enable reading of measurement data.
