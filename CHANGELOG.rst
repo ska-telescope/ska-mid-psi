@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-01-29
+***********
+* MAP-281 Bump SDP version from 0.21.0 to 0.24.1
+
 2025-01-17
 ***********
 * MAP-245 Add in python script to enable reading of measurement data.
