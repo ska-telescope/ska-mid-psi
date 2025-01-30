@@ -5,13 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
-2025-01-30
-***********
-* MAP-281 Bump SDP version from 0.21.0 to 0.24.1
-
 2025-01-29
 ***********
 * MAP-282 Bump SPFRx to 0.4.0, switch to using TDC MCS 1.1.1, and remove CBF TmLeafNode
+* MAP-281 Bump SDP version from 0.21.0 to 0.24.1
 
 2025-01-21
 ***********
