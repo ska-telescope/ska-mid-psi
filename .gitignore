@@ -48,4 +48,4 @@ patch-metadata.sh
 
 manifests.yaml
 
-
+*.ms
