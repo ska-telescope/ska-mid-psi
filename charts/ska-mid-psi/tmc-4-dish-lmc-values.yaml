@@ -5,6 +5,9 @@ global:
   dishes: ["001", "036", "063", "100"]
 tmc-mid:
   enabled: true
+  dishleafnode:
+    image:
+      tag: 0.19.6
   global:
     namespace_dish:
       dish_names:
