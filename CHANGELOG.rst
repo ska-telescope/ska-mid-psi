@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-02-11
+***********
+* REL-1880 Bumping SPFRx from 0.4.0 to 0.4.1
+
 2025-01-29
 ***********
 * MAP-282 Bump SPFRx to 0.4.0, switch to using TDC MCS 1.1.1, and remove CBF TmLeafNode
