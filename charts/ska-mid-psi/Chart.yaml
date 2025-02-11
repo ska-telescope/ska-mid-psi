@@ -16,12 +16,16 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
 
   # MID CBF
-  - name: ska-mid-cbf-tdc-mcs
-    version: 1.1.1
+  - name: ska-mid-cbf-mcs
+    version: 1.1.0
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-mid-cbf-tdc-mcs.enabled
+    condition: ska-mid-cbf-mcs.enabled
+  - name: ska-mid-cbf-tmleafnode
+    version: 1.1.0
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-mid-cbf-tmleafnode.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.0.1
+    version: 1.0.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-engineering-console.enabled
 
@@ -60,13 +64,13 @@ dependencies:
 
   # SDP
   - name: ska-sdp
-    version: 0.24.1
+    version: 0.21.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-sdp.enabled
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 0.4.0-dev.c44c795c7
+    version: 0.4.0-dev.c3537bd71
     repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx
     condition: spfrx.enabled
