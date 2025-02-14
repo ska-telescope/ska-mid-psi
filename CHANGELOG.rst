@@ -5,9 +5,18 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-02-11
+***********
+* REL-1880 Bumping SPFRx from 0.4.0 to 0.4.1
+
+2025-01-29
+***********
+* MAP-282 Bump SPFRx to 0.4.0, switch to using TDC MCS 1.1.1, and remove CBF TmLeafNode
+* MAP-281 Bump SDP version from 0.21.0 to 0.24.1
+
 2025-01-21
 ***********
-* MAP-245 Bump MCS and LeafNode from 1.1.0 to 1.1.1 Engineering Console from 1.0.0 to 1.0.1. Also adds .ms to git ignore to prevent diffing of measurement data folders.
+* MAP-245 Bump MCS and TmLeafNode from 1.1.0 to 1.1.1 Engineering Console from 1.0.0 to 1.0.1. Also adds .ms to git ignore to prevent diffing of measurement data folders.
 
 2025-01-17
 ***********
