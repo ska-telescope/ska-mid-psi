@@ -136,6 +136,14 @@ ska-db-oda-umbrella:
     env: 
       listenAddress: 0.0.0.0
 
+## TMC
+ska-tmc-dishleafnode:
+  dishleafnode:
+    registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+    image: ska-tmc-dishleafnode
+    tag: 0.19.7-dev.ce03e190e
+  enabled: true
+
 # Dish LMC
 ska-dish-lmc:
   enabled: true
