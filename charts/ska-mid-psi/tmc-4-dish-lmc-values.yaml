@@ -20,7 +20,6 @@ tmc-mid:
     enabled: false
   deviceServers:
     centralnode:
-      LivelinessCheckPeriod: 1.0
       DishIDs:
       - SKA001
       - SKA036
@@ -44,3 +43,5 @@ tmc-mid:
       - SKA036
       - SKA063
       - SKA100
+    sdpmasterleafnode:
+      SDPMasterAdminModeEnabled: false
