@@ -45,7 +45,7 @@ ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
-ska-tango-tangogql:
+ska-tango-tangogql-ariadne:
   enabled: true
   ska-tango-base:
     enabled: false
