@@ -1,0 +1,22 @@
+apiVersion: v2
+name: ska-mid-psi-dish-lmc
+description: A Helm chart for deploying Dish LMC 
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+dependencies:
+  # TANGO
+  - name: ska-tango-base
+    version: 0.4.10
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-tango-base.enabled
+  - name: ska-tango-util
+    version: 0.4.11
+    repository: https://artefact.skao.int/repository/helm-internal
+  
+  # Dish LMC
+  ### NOTE: need to update the version also in ska-mid-psi/Chart.yaml
+  - name: ska-dish-lmc
+    version: 6.0.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-dish-lmc.enabled
