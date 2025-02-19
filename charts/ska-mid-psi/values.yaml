@@ -52,8 +52,8 @@ ska-tango-tangogql:
 
 #telescope control
 ## mid-cbf
-ska-mid-cbf-mcs:
-  num_subarrays: 3
+ska-mid-cbf-tdc-mcs:
+  num_subarrays: 1
   # midcbf:
   #   image:
   #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
