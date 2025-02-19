@@ -47,11 +47,5 @@ tmc-mid:
       SDPMasterAdminModeEnabled: false
   centralnode:
     image:
-      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-centralnode
-      tag: 0.17.5-dev.cfb92137e
-      pullPolicy: IfNotPresent
-  sdpleafnodes:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-sdpleafnodes
-      tag: 0.20.2-dev.ca4748277
+      tag: 0.17.2
       pullPolicy: IfNotPresent
