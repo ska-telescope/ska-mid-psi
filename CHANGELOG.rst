@@ -7,9 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
 2025-02-20
 ***********
-* MAP-294 Bump MCS to 1.1.2 and EC to 1.1.1 (which uses bitstream 1.0.1) 
-          which fixes SKB-729 issues where, when the CBF On sequence fails, 
-          the CBF can recover and be turned back Off and On.
+* MAP-294 Bump MCS to 1.1.2 and EC to 1.1.1 (which uses bitstream 1.0.1) which fixes SKB-729 issues where, when the CBF On sequence fails, the CBF can recover and be turned back Off and On.
 
 2025-02-18
 ***********
