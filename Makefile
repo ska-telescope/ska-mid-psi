@@ -33,7 +33,7 @@ endif
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
+ARCHIVING_ENABLED ?= true ## Set to true to deploy EDA
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
