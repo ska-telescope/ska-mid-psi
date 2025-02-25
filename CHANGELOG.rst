@@ -11,6 +11,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   - SKB-440: The Archviewer control system dropdown is sorted alphabetically
   - SKB-441: The Archviewer can display Enum data
   - SKB-445: The Archviewer and Archwizard are accessible via the Ingress IP
+* MAP-276 Bump TMC version from 0.22.8 to 0.24.0 to work with oso-scripting updates in notebooks.
 
 2025-02-24
 ***********
