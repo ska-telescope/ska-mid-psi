@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-02-25
+***********
+* MAP-237 Bump TMC version from 0.22.0 to 0.24.0 to work with oso-scripting updates in notebooks.
+
 2025-02-18
 ***********
 * MAP-213 Bump Taranta to 2.13.1 and replace TangoGQL with TangoGQL-Ariadne 1.0.1
