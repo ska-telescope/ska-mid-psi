@@ -5,6 +5,13 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
+2025-02-25
+***********
+* MAP-301 Bump EDA (ska-tangoo-archiver) to 2.9.0 which addresses the following
+  - SKB-440: The Archviewer control system dropdown is sorted alphabetically
+  - SKB-441: The Archviewer can display Enum data
+  - SKB-445: The Archviewer and Archwizard are accessible via the Ingress IP
+
 2025-02-20
 ***********
 * MAP-294 Bump MCS to 1.1.2 and EC to 1.1.1 (which uses bitstream 1.0.1) which fixes SKB-729 issues such that when the CBF On sequence fails, the CBF can recover and be turned back Off and On.
