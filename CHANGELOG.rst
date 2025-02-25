@@ -7,7 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-02-25
 ***********
-* MAP-301 Bump EDA (ska-tango-archiver) to 2.9.0 which addresses the following
+* MAP-301 Bump EDA (ska-tango-archiver) to 2.9.0 which addresses the following:
   - SKB-440: The Archviewer control system dropdown is sorted alphabetically
   - SKB-441: The Archviewer can display Enum data
   - SKB-445: The Archviewer and Archwizard are accessible via the Ingress IP
