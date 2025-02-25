@@ -9,6 +9,14 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 ***********
 * MAP-276 Bump TMC version from 0.22.8 to 0.24.0 to work with oso-scripting updates in notebooks.
 
+2025-02-24
+***********
+* REL-1881 Pulling in SPFRx 0.5.0
+
+2025-02-20
+***********
+* MAP-294 Bump MCS to 1.1.2 and EC to 1.1.1 (which uses bitstream 1.0.1) which fixes SKB-729 issues such that when the CBF On sequence fails, the CBF can recover and be turned back Off and On.
+
 2025-02-18
 ***********
 * MAP-213 Bump Taranta to 2.13.1 and replace TangoGQL with TangoGQL-Ariadne 1.0.1
