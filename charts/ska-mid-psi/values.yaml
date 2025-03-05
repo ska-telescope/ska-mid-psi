@@ -45,7 +45,7 @@ ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
-ska-tango-tangogql:
+ska-tango-tangogql-ariadne:
   enabled: true
   ska-tango-base:
     enabled: false
@@ -56,7 +56,7 @@ ska-mid-cbf-tdc-mcs:
   # midcbf:
   #   image:
   #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
-  #     tag: 1.1.1
+  #     tag: 1.1.2
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -67,7 +67,7 @@ ska-mid-cbf-engineering-console:
   # engineeringconsole:
   #   image:
   #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-  #     tag: 1.0.1
+  #     tag: 1.1.1
   enabled: true
 
 ## EDA

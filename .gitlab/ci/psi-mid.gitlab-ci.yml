@@ -5,7 +5,7 @@
     KUBE_NAMESPACE: "ci-$CI_PROJECT_NAME-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     ARCHIVING_ENABLED: false
-
+    
 .deploy:
   stage: deploy
   extends:
