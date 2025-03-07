@@ -3,7 +3,23 @@ Change Log
 ############
 
 All notable changes to this project will be documented in this file.
-This project adheres to `Semantic Versioning <http://semver.org/>`_.
+This project adheres to `Semantic Versioning <http://semver.org/>`.
+
+2025-03-03
+***********
+* MAP-300: Update dish-lmc in ska-mid-psi and ska-mid-psi-dish-lmc charts from 6.0.1 to 7.0.0
+
+2025-02-25
+***********
+* MAP-301 Bump EDA (ska-tango-archiver) to 2.9.0 which addresses the following:
+  - SKB-440: The Archviewer control system dropdown is sorted alphabetically
+  - SKB-441: The Archviewer can display Enum data
+  - SKB-445: The Archviewer and Archwizard are accessible via the Ingress IP
+* MAP-276 Bump TMC version from 0.22.8 to 0.24.0 to work with oso-scripting updates in notebooks.
+
+2025-02-24
+***********
+* REL-1881 Pulling in SPFRx 0.5.0
 
 2025-02-20
 ***********
