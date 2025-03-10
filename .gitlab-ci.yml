@@ -86,6 +86,9 @@ python-test:
 
 log-collector:
   stage: log-collector
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+      when: manual
   extends:
     - .mid
   tags:
