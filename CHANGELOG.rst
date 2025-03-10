@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-06
+***********
+* MAP-319: Update ska-tango-base from 0.4.10 to 0.4.17 and ska-tango-util from 0.4.11 to 0.4.17
+
 2025-03-03
 ***********
 * MAP-300: Update dish-lmc in ska-mid-psi and ska-mid-psi-dish-lmc charts from 6.0.1 to 7.0.0
