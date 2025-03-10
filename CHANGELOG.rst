@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-10
+***********
+* MAP-318: Update .gitlab-ci.yml to allow logs to be collected without depending on test to be run
+
 2025-03-03
 ***********
 * MAP-300: Update dish-lmc in ska-mid-psi and ska-mid-psi-dish-lmc charts from 6.0.1 to 7.0.0
