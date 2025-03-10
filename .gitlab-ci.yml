@@ -94,7 +94,7 @@ log-collector:
   tags:
     - $RUNNER_TAG
   needs:
-    - job: python-test
+    - job: psi-mid-on-demand-deploy
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
