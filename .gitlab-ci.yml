@@ -19,6 +19,7 @@ stages:
   - on_demand_psi
   - test
   - log-collector
+  - test-log-collector
   - join-reports
   - pages
   - publish
@@ -86,6 +87,24 @@ python-test:
 
 log-collector:
   stage: log-collector
+  when: manual
+  extends:
+    - .mid
+  tags:
+    - $RUNNER_TAG
+  needs:
+    - job: psi-mid-on-demand-deploy
+  script:
+    - mkdir -p logs
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+  artifacts:
+    paths:
+    - logs/*.log
+  allow_failure: true
+
+python-test-log-collector: 
+  stage: test-log-collector
   rules:
     - if: $CI_PIPELINE_SOURCE != "schedule"
       when: manual
@@ -94,7 +113,7 @@ log-collector:
   tags:
     - $RUNNER_TAG
   needs:
-    - job: psi-mid-on-demand-deploy
+    - job: python-test
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
