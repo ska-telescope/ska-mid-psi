@@ -5,9 +5,9 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2025-03-10
+2025-03-11
 ***********
-* MAP-318: Update .gitlab-ci.yml to allow logs to be collected without depending on test to be run
+* MAP-318: Update .gitlab-ci.yml to allow logs to be collected without depending on test to be run, create unique names for artifact files when run.
 
 2025-03-03
 ***********
