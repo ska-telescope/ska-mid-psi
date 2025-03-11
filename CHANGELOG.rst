@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-05
+***********
+* MAP-243: Update ska-tmc-mid from 0.24.0 to 0.25.0
+
 2025-03-03
 ***********
 * MAP-300: Update dish-lmc in ska-mid-psi and ska-mid-psi-dish-lmc charts from 6.0.1 to 7.0.0
