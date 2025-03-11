@@ -145,10 +145,10 @@ xray-publish:
     - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED
   dependencies:
     - python-test
-    - log-collector
+    - python-test-log-collector
   needs:
     - job: python-test
-    - job: log-collector
+    - job: python-test-log-collector
   rules:
     - exists:
         - build/reports/cucumber.json
