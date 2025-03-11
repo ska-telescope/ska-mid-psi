@@ -99,6 +99,7 @@ log-collector:
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
+    name: "MID-PSI-${CI_COMMIT_BRANCH}-Logs-${CI_JOB_STARTED_AT}"
     paths:
     - logs/*.log
   allow_failure: true
