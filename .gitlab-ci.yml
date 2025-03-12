@@ -113,10 +113,10 @@ python-test-log-collector:
     - .mid
   tags:
     - $RUNNER_TAG
-needs:
-  - job: python-test
-    optional: true
-when: manual
+  needs:
+    - job: python-test
+      optional: true
+  when: manual
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
