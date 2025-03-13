@@ -88,10 +88,12 @@ log-collector:
   stage: log-collector
   extends:
     - .mid
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_JOB_NAME == "python-test"
+  when: manual
   tags:
     - $RUNNER_TAG
-  needs:
-    - job: python-test
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
