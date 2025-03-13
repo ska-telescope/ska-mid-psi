@@ -88,10 +88,10 @@ log-collector:
   stage: log-collector
   extends:
     - .mid
+  when: manual
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
     - if: '$CI_JOB_NAME == "python-test"'
-  when: manual
   tags:
     - $RUNNER_TAG
   script:
