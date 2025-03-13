@@ -88,10 +88,9 @@ log-collector:
   stage: log-collector
   extends:
     - .mid
-  when: manual
-  rules:
-    - if: $CI_JOB_NAME == "python-test"
-      when: manual
+  needs:
+    - job: psi-mid-on-demand-deploy
+    - job: psi-mid-on-demand-redeploy
   tags:
     - $RUNNER_TAG
   script:
