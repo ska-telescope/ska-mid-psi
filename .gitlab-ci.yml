@@ -129,6 +129,7 @@ xray-publish:
   needs:
     - job: python-test
     - job: log-collector
+      optional: true
   rules:
     - exists:
         - build/reports/cucumber.json
