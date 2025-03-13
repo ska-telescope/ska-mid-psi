@@ -124,7 +124,6 @@ xray-publish:
     - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED
   dependencies:
     - python-test
-    - log-collector
   needs:
     - job: python-test
   rules:
