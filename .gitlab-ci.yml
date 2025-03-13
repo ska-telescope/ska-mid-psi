@@ -104,8 +104,8 @@ log-collector:
     - logs/*.log
   allow_failure: true
 
-python-test-log-collector: 
-  stage: test-log-collector
+auto-log-collector: 
+  stage: log-collector
   rules:
     - if: $CI_PIPELINE_SOURCE != "schedule"
       when: manual
@@ -115,8 +115,6 @@ python-test-log-collector:
     - $RUNNER_TAG
   needs:
     - job: python-test
-      optional: true
-  when: manual
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
@@ -148,10 +146,10 @@ xray-publish:
     - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED
   dependencies:
     - python-test
-    - python-test-log-collector
+    - auto-log-collector
   needs:
     - job: python-test
-    - job: python-test-log-collector
+    - job: auto-log-collector
   rules:
     - exists:
         - build/reports/cucumber.json
