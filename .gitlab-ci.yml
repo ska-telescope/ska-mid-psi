@@ -19,7 +19,6 @@ stages:
   - on_demand_psi
   - test
   - log-collector
-  - test-log-collector
   - join-reports
   - pages
   - publish
