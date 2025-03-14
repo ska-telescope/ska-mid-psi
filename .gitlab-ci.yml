@@ -99,16 +99,13 @@ log-collector:
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
-    name: "MID-PSI-${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}-Logs-${CI_JOB_STARTED_AT}"
+    name: "MID-PSI_${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_Logs_${CI_JOB_STARTED_AT}"
     paths:
     - logs/*.log
   allow_failure: true
 
 auto-log-collector: 
   stage: log-collector
-  rules:
-    - if: $CI_PIPELINE_SOURCE != "schedule"
-      when: manual
   extends:
     - .mid
   tags:
