@@ -17,7 +17,7 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.1.1-dev.c4ee88b0
+    version: 1.1.1-dev.c4ee88b03
     repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
