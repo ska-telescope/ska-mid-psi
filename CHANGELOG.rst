@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-20
+***********
+* MAP-326: Override CspScanInterfaceURL in the two TMC values files to use ska-csp-scan/2.2 to get past CBF Subarray failing to transition to Scanning when the Scan command is issued.
+
 2025-03-11
 ***********
 * MAP-318: Update .gitlab-ci.yml to allow logs to be collected without depending on test to be run, create unique names for artifact files when run.
