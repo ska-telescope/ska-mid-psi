@@ -65,6 +65,9 @@ ska-mid-cbf-tdc-mcs:
   signalVerificationVersion: 0.2.24-dev.c3ee03970
   svImageRegistry: registry.gitlab.com/ska-telescope/ska-mid-cbf-signal-verification
 
+ska-mid-cbf-tdc-tmleafnode:
+  enabled: true
+
 ska-mid-cbf-engineering-console:
   # engineeringconsole:
   #   image:
