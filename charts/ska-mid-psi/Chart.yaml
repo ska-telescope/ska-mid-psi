@@ -17,12 +17,12 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.2.0-dev.ce94b6095
+    version: 1.2.0-dev.c71b1af1c
     repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.1
-    repository: https://artefact.skao.int/repository/helm-internal
+    version: 1.1.2-dev.cec1317dc
+    repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
