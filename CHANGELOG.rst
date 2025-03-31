@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-28
+***********
+* MAP-307: Update ska-csp-lmc-mid from 0.24.0 to 1.0.1
+
 2025-03-25
 ***********
 * MAP-325: Update cbf-tdc-mcs to 1.2.0 and cbf-engineering-console to 1.1.2.
