@@ -5,6 +5,14 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-28
+***********
+* MAP-307: Update ska-csp-lmc-mid from 0.24.0 to 1.0.1
+
+2025-03-25
+***********
+* MAP-325: Update cbf-tdc-mcs to 1.2.0 and cbf-engineering-console to 1.1.2.
+
 2025-03-20
 ***********
 * MAP-326: Override CspScanInterfaceURL in the two TMC values files to use ska-csp-scan/2.2 to get past CBF Subarray failing to transition to Scanning when the Scan command is issued.
