@@ -9,7 +9,8 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 **********
 * MAP-306: Update TMC to 1.0.0-rc.2 which includes ADR-9 naming convention updates
 * MAP-308: Update SDP to 1.1.0 which uses vis-receive 0.5.0
-* MAP-308: Update TDC MCS to 1.2.1 and EC to 1.1.3 which enables VCC gain adjustments
+* MAP-310: Update TDC MCS to 1.2.1 and EC to 1.1.3 which enables VCC gain adjustments
+* MAP-327: Update DishLMC to 7.0.1 which resolves SPFRx incompatibility issues in SKB-809 and SKB-818
 
 2025-03-28
 ***********
