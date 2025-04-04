@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-04-03
+**********
+* MAP-335: Update SDP from 1.1.0 to 1.1.1
+
 2025-04-02
 **********
 * MAP-306: Update TMC to 1.0.0-rc.2 which includes ADR-9 naming convention updates
