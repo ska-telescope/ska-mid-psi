@@ -55,6 +55,7 @@ ska-tango-tangogql-ariadne:
 ska-mid-cbf-tdc-mcs:
   midcbf:
     image:
+    # Target dev deployment of mcs
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
       tag: 1.2.1-dev.c996e3ae5
   hostInfo:
