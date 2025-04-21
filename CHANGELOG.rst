@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-04-21
+**********
+* MAP-344: Update TMC to 1.0.0-rc.3 adds new DishVccCommandStatus attribute for monitoring DishVCC job status
+
 2025-04-03
 **********
 * MAP-335: Update SDP from 1.1.0 to 1.1.1
