@@ -92,7 +92,7 @@ ska-csp-lmc-mid:
 ## sdp
 ska-sdp:
   enabled: true
-  legacy_compatibility: true
+  legacycompatibility: true
   ska-tango-base:
     enabled: false
   helmdeploy:
