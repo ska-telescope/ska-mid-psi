@@ -98,6 +98,7 @@ ska-sdp:
     enableNADClusterRole: true
   lmc:
     prefix: mid
+    loadbalancer: true
   data-pvc:
     create:
       enabled: true
