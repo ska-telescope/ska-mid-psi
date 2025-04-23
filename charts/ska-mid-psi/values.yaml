@@ -92,13 +92,13 @@ ska-csp-lmc-mid:
 ## sdp
 ska-sdp:
   enabled: true
+  legacy_compatibility: true
   ska-tango-base:
     enabled: false
   helmdeploy:
     enableNADClusterRole: true
   lmc:
     prefix: mid
-    loadbalancer: true
   data-pvc:
     create:
       enabled: true
