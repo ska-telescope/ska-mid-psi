@@ -17,9 +17,6 @@ tmc-mid:
     enabled: false
   deviceServers:
     centralnode:
-      DishVccConfig:
-        DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.2.0-mid-itf#tmdata"
-        DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
       DishIDs:
       - SKA001
       - SKA036
