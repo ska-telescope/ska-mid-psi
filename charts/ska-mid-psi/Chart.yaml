@@ -17,7 +17,7 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.2.1
+    version: 1.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
@@ -73,7 +73,7 @@ dependencies:
 
   # PST
   - name: ska-pst
-    version: 0.12.1
+    version: 1.0.2
     repository: https://artefact.skao.int/repository/helm-internal
     alias: ska-pst
     condition: ska-pst.enabled
