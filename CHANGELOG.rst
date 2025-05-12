@@ -8,6 +8,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2025-05-12
 **********
 * MAP-352: Update TDC MCS to 1.3.0 which supports new tel model for AA1 PST simulation mode
+* MAP-351: Update TMC from 1.0.0-rc.3 to 1.0.0, prevents race condition from occurring on scan
 
 2025-04-21
 **********
