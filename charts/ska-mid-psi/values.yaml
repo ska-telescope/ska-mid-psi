@@ -45,19 +45,18 @@ ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
-ska-tango-tangogql:
+ska-tango-tangogql-ariadne:
   enabled: true
   ska-tango-base:
     enabled: false
 
 #telescope control
 ## mid-cbf
-ska-mid-cbf-mcs:
+ska-mid-cbf-tdc-mcs:
 #  midcbf:
 #    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-#      tag: 1.1.0-rc.2-dev.c0e6bfb3c
-  signalVerificationVersion: 0.2.24
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
+#      tag: 1.2.0-dev.c71b1af1c
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -68,10 +67,7 @@ ska-mid-cbf-engineering-console:
 #  engineeringconsole:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      tag: 0.10.12-dev.c1f957660
-  enabled: true
-
-ska-mid-cbf-tmleafnode:
+#      tag: 1.1.2-dev.cec1317dc
   enabled: true
 
 ## EDA
@@ -92,8 +88,6 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
-
-
 
 ## sdp
 ska-sdp:
@@ -119,7 +113,6 @@ spfrx:
   scripts_dir: scripts
   instance: spfrx-20
   logging_level: 4
-
 
 # PST
 ska-pst:
