@@ -5,6 +5,50 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-05-12
+**********
+* MAP-352: Update TDC MCS to 1.3.0 which supports new tel model for AA1 PST simulation mode
+* MAP-351: Update TMC from 1.0.0-rc.3 to 1.0.0, prevents race condition from occurring on scan
+
+2025-04-21
+**********
+* MAP-344: Update TMC to 1.0.0-rc.3 adds new DishVccCommandStatus attribute for monitoring DishVCC job status
+
+2025-04-03
+**********
+* MAP-335: Update SDP from 1.1.0 to 1.1.1
+
+2025-04-02
+**********
+* MAP-306: Update TMC to 1.0.0-rc.2 which includes ADR-9 naming convention updates
+* MAP-308: Update SDP to 1.1.0 which uses vis-receive 0.5.0
+* MAP-310: Update TDC MCS to 1.2.1 and EC to 1.1.3 which enables VCC gain adjustments
+* MAP-327: Update DishLMC to 7.0.1 which resolves SPFRx incompatibility issues in SKB-809 and SKB-818
+
+2025-03-28
+***********
+* MAP-307: Update ska-csp-lmc-mid from 0.24.0 to 1.0.1
+
+2025-03-25
+***********
+* MAP-325: Update cbf-tdc-mcs to 1.2.0 and cbf-engineering-console to 1.1.2.
+
+2025-03-20
+***********
+* MAP-326: Override CspScanInterfaceURL in the two TMC values files to use ska-csp-scan/2.2 to get past CBF Subarray failing to transition to Scanning when the Scan command is issued.
+
+2025-03-11
+***********
+* MAP-318: Update .gitlab-ci.yml to allow logs to be collected without depending on test to be run, create unique names for artifact files when run.
+
+2025-03-06
+***********
+* MAP-319: Update ska-tango-base from 0.4.10 to 0.4.17 and ska-tango-util from 0.4.11 to 0.4.17
+
+2025-03-05
+***********
+* MAP-243: Update ska-tmc-mid from 0.24.0 to 0.25.0
+
 2025-03-03
 ***********
 * MAP-300: Update dish-lmc in ska-mid-psi and ska-mid-psi-dish-lmc charts from 6.0.1 to 7.0.0
