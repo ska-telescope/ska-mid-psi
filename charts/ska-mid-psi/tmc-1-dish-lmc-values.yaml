@@ -29,3 +29,4 @@ tmc-mid:
     subarraynode:
       DishIDs:
       - SKA001
+      CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
