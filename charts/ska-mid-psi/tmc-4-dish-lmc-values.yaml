@@ -40,3 +40,4 @@ tmc-mid:
       - SKA036
       - SKA063
       - SKA100
+      CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"

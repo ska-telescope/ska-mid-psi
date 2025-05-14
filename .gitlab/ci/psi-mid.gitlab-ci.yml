@@ -5,7 +5,7 @@
     KUBE_NAMESPACE: "ci-$CI_PROJECT_NAME-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
     KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     ARCHIVING_ENABLED: false
-
+    
 .deploy:
   stage: deploy
   extends:
@@ -20,6 +20,7 @@
     - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
+    # Use overridden k8s-install-chart to allow for deployment of Dish LMC related pods before others.
     - |
       if [ "$K8S_INSTALL_FROM_CAR" != "true" ]; then
        echo "Install Skampi Charts"
