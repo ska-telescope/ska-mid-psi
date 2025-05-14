@@ -47,39 +47,29 @@ ska-tango-taranta:
   legacy_compatibility: true
   enabled: true
 
-ska-tango-tangogql:
+ska-tango-tangogql-ariadne:
   enabled: true
   ska-tango-base:
     enabled: false
 
 #telescope control
 ## mid-cbf
-ska-mid-cbf-mcs:
-  signalVerificationVersion: 0.2.24
+ska-mid-cbf-tdc-mcs:
+#  midcbf:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
+#      tag: 1.2.0-dev.c71b1af1c
   hostInfo:
     environment: "mid-psi"
   enabled: true
   global:
     minikube: false
-# Uncomment the section below to use custom MCS image
-  # midcbf:
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
-  #     image: ska-mid-cbf-mcs
-  #     tag: <Image tag from MCS pipeline>
-  #     pullPolicy: IfNotPresent
 
 ska-mid-cbf-engineering-console:
-  enabled: true
-# Uncomment the section below to use custom Engineering Console image
 #  engineeringconsole:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      image: ska-mid-cbf-engineering-console
-#      tag: <Image tag from EC pipeline>
-#      pullPolicy: IfNotPresent
-
-ska-mid-cbf-tmleafnode:
+#      tag: 1.1.2-dev.cec1317dc
   enabled: true
 
 ## EDA
@@ -123,7 +113,6 @@ spfrx:
   scripts_dir: scripts
   instance: spfrx-20
   logging_level: 4
-
 
 # PST
 ska-pst:

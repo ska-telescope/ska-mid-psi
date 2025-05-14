@@ -8,8 +8,11 @@ KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
-HELM_CHART ?= ska-mid-psi
-UMBRELLA_CHART_PATH ?= charts/$(HELM_CHART)/
+HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
+HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
+DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
+UMBRELLA_CHART_PATH ?= ./charts/ska-mid-psi/
+LMC_CHART_PATH ?= ./charts/ska-mid-psi-dish-lmc/
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -31,7 +34,7 @@ INGRESS_HOSTNAME = $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)
 
 EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enable Loadbalancer service)
 SKA_TANGO_OPERATOR ?= true
-SKA_TANGO_ARCHIVER ?= false ## Set to true to deploy EDA
+ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -87,7 +90,6 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
-
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
@@ -107,7 +109,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-dataproduct-dashboard.ingress.hostname=$(INGRESS_HOSTNAME) \
 	$(TARANTA_PARAMS)
 
-ifeq ($(SKA_TANGO_ARCHIVER),true)
+ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
 endif
@@ -127,6 +129,8 @@ ifeq ($(DISH_LMC_ENABLED),true)
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
+
+PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 
 
 ARCHIVE_CONFIG ?= "archiver/mid-telescope.yaml" # can override the default config file for archiving
 eda-add-attributes:
@@ -150,6 +154,26 @@ k8s-pre-install-chart-car:
 k8s-pre-uninstall-chart:
 	@echo "k8s-post-uninstall-chart: deleting the SDP namespace $(KUBE_NAMESPACE_SDP)"
 	@if [ "$(KEEP_NAMESPACE)" != "true" ]; then make k8s-delete-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP); fi
+	
+k8s-do-install-chart:
+	@echo "----------------------------------------------"
+	@echo "k8s-do-install-chart: starting Dish LMC first".
+	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@echo "Waiting for pods to start running..."
+	@echo "Getting resources"
+	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
+	@echo "Done installing Dish LMC chart"
+	@echo "----------------------------------------------"
+	@echo "k8s-do-install-chart: Installing umbrella chart".
+	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
+	helm upgrade --install $(HELM_RELEASE) \
+	$(K8S_CHART_PARAMS) \
+	$(UMBRELLA_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+	@echo "Waiting for rest of the pods to start running..."
+	@echo "Getting resources"
 
 run-pylint:
 	pylint --output-format=parseable tests/ test_parameters/ | tee build/code_analysis.stdout

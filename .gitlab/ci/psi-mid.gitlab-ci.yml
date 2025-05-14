@@ -1,23 +1,26 @@
 .mid:
   variables:
     CONFIG: mid
-
+    HELM_RELEASE: "test-$CI_PIPELINE_ID"
+    KUBE_NAMESPACE: "ci-$CI_PROJECT_NAME-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
+    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
+    ARCHIVING_ENABLED: false
+    
 .deploy:
   stage: deploy
+  extends:
+    - .mid
   variables:
-    HELM_RELEASE: "test-$CI_PIPELINE_ID"
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     K8S_AUTH_NAMESPACES: "$KUBE_NAMESPACE $KUBE_NAMESPACE_SDP"
     K8S_AUTH_SERVICE_ACCOUNT: "ci-svc-psi-$CI_PIPELINE_ID"
-    SKA_TANGO_ARCHIVER: false
     VALUES: values.yaml
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Deploying using the following arguments:"
-    - echo -e "    TANGO ARCHIVER ENABLED = $SKA_TANGO_ARCHIVER\n    DISH LMC ENABLED = $DISH_LMC_ENABLED\n    SPFRX ENABLED = $SPFRX_ENABLED"
+    - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
+    # Use overridden k8s-install-chart to allow for deployment of Dish LMC related pods before others.
     - |
       if [ "$K8S_INSTALL_FROM_CAR" != "true" ]; then
        echo "Install Skampi Charts"
@@ -30,8 +33,14 @@
     - make k8s-get
     - echo "Wait namespace resources"
     - make k8s-wait
+    - mkdir -p build/reports
+    - echo "DISH_LMC_ENABLED=$DISH_LMC_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "PST_ENABLED=$PST_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "ARCHIVING_ENABLED=$ARCHIVING_ENABLED" >> build/reports/deployment_variables.txt
+    - cat build/reports/deployment_variables.txt
     - |
-      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+      if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Add attributes to EDA for archiving"
         echo "make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE"
         make eda-add-attributes KUBE_NAMESPACE=$KUBE_NAMESPACE
@@ -44,16 +53,18 @@
           fi
         fi
       else
-        echo "SKA_TANGO_ARCHIVER is false"
+        echo "ARCHIVING_ENABLED is false"
       fi
+  artifacts:
+    paths:
+      - build/reports/deployment_variables.txt
 
 .info:
   stage: deploy
+  extends:
+    - .mid
   variables:
     K8S_CHART: "ska-$CONFIG"
-    HELM_RELEASE: "test-$CI_PIPELINE_ID"
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
   script:
     - echo "Get namespace resources"
     - make k8s-get
@@ -64,27 +75,33 @@
 
 .cleanup:
   stage: cleanup
+  extends:
+    - .mid
   variables:
     K8S_CHART: "ska-$CONFIG"
-    HELM_RELEASE: "test-$CI_PIPELINE_ID"
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
   script: &cleanup_script
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
     - echo "Make config dump" ; make vars
+    # TODO: when have time in the future make this work in the redeploy job
+    # - ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    # - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
     - |
-      if [ "$SKA_TANGO_ARCHIVER" == "true" ]; then
+      if [ "$ARCHIVING_ENABLED" == "true" ]; then
         echo "Remove attributes from being archived in EDA"
         echo "make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml"
         make eda-remove-attributes KUBE_NAMESPACE=${KUBE_NAMESPACE} OUTPUT_FILE=loaded_attributes.yaml
       else
-        echo "SKA_TANGO_ARCHIVER is false"
+        echo "ARCHIVING_ENABLED is false"
     - fi
     - make k8s-uninstall-chart || true
     - |
       if [ "$KEEP_NAMESPACE" != "true" ]; then
         make k8s-delete-namespace
       fi
+  # TODO: when have time in the future make this work in the redeploy job
+  # dependencies:
+  #   - psi-mid-on-demand-deploy
+  #   - psi-mid-on-demand-redeploy
 
 .redeploy:
   extends:
@@ -100,9 +117,6 @@
   variables:
     VALUES: "values.yml"
     INGRESS_HOST: "INGRESS.IP.ADDRESS"
-    HELM_RELEASE: "test-$CI_PIPELINE_ID"
-    KUBE_NAMESPACE: "ci-ska-mid-psi-$CI_PIPELINE_ID-$GITLAB_USER_LOGIN"
-    KUBE_NAMESPACE_SDP: "$KUBE_NAMESPACE-sdp"
     SERVICE_ACCOUNT: "ci-svc-psi-$CI_PIPELINE_ID"
 
 psi-mid-on-demand-deploy:
@@ -141,4 +155,3 @@ psi-mid-on-demand-redeploy:
     - .psi_mid_on_demand
   environment:
     name: psi-mid/ska-$CI_COMMIT_REF_NAME
-

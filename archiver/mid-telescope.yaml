@@ -94,7 +94,7 @@ configuration:
       kValueValidationResult:
         code_push_event: true
       kValue:
-        code_push_event: true
+        archive_abs_change: 1
 
 ### CSP.LMC ###
   - class: MidCspController
@@ -148,73 +148,59 @@ configuration:
       State:
         code_push_event: true
       FpgaDieTemperature:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       HumiditySensorTemperature:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       DIMMTemperatures:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboTxTemperatures:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboTxVccVoltages:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       MboRxVccVoltages:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
       FansFault:
-        archive_period: 6000
-        polling_period: 6000
+        archive_period: 60000
+        polling_period: 60000
 
 ### SDP ###
   - class: SDPSubarray
     attributes:
       versionId:
         code_push_event: true
-        archive_strategy: ALWAYS
       adminMode:
         code_push_event: true
-        archive_strategy: ALWAYS
       healthState:
         code_push_event: true
-        archive_strategy: ALWAYS
       obsState:
         code_push_event: true
-        archive_strategy: ALWAYS
       resources:
         code_push_event: true
-        archive_strategy: ALWAYS
       ebID:
         code_push_event: true
-        archive_strategy: ALWAYS
       receiveAddresses:
         code_push_event: true
-        archive_strategy: ALWAYS
       scanType:
         code_push_event: true
-        archive_strategy: ALWAYS
       scanID:
         code_push_event: true
         archive_abs_change: 1
-        archive_strategy: ALWAYS
 
   - class: SDPController
     attributes:
       versionId:
         code_push_event: true
-        archive_strategy: ALWAYS
       adminMode:
         code_push_event: true
-        archive_strategy: ALWAYS
       healthState:
         code_push_event: true
-        archive_strategy: ALWAYS
       components:
         code_push_event: true
-        archive_strategy: ALWAYS
       sdpVersion:
         code_push_event: true
-        archive_strategy: ALWAYS

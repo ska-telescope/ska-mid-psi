@@ -5,14 +5,36 @@ license = "BSD-3-Clause"
 readme = "README.md"
 repository = "https://gitlab.com/ska-telescope/ska-mid-psi"
 description = ""
-authors = ["Aditya Joshi", "Jared Murphy", "Mae Yee"]
+authors = ["Aditya Joshi", "Jared Murphy", "Alex Schell", "Mae Yee"]
 
 [[tool.poetry.source]]
 name = "nexus-internal"
 url = "https://artefact.skao.int/repository/pypi-internal/simple"
 
+
+[[tool.poetry.source]]
+name = "PyPI-public"
+url = 'https://pypi.org/simple'
+
 [tool.poetry.dependencies]
 python = "^3.10"
 ska-oso-pdm = { version = "^14.3.0", source = "nexus-internal" }
-ska-oso-scripting = { version = "8.0.0", python = ">=3.10,< 3.13", source = "nexus-internal" }
+ska-oso-scripting = { version = "^8.0.0", python = ">=3.10,< 3.13", source = "nexus-internal" }
 ska-tmc-cdm = { version = "^10.1.2", source = "nexus-internal" }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+pytest-bdd = ">=5.0.0,<6.0.0"
+pytest-cov = "^4.0.0"
+pytest-json-report = "^1.5.0"
+pytest-mock = "^3.10.0"
+pytest-repeat = "^0.9.1"
+pytest-timeout = "^2.1.0"
+pytest-xdist = "^2.5.0"
+pytest-ordering = "^0.6"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore::_pytest.warning_types.PytestUnknownMarkWarning"
+]
+addopts = "--show-capture=no"
