@@ -5,6 +5,11 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-05-20
+**********
+* MAP-356: Update TDC MCS to 1.3.2 which resolves SKB-909 CBF Off failure in simulation mode
+           Update EC to 1.1.4 which includes new bitstream v1.1.1
+
 2025-05-14
 **********
 * REL-2072: Update ska-mid-dish-spfrx-talondx-console to 1.0.0
