@@ -114,7 +114,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
         --set ska-oso.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
         --set ska-oso.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
         --set ska-oso.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
-        --set ska-oso.ska-oso-oet-ui.backendURLODA=$(ODA_URL)
+        --set ska-oso.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)
