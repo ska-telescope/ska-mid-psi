@@ -150,3 +150,5 @@ ska-dish-lmc:
 # OSO 
 ska-oso: 
   enabled: true
+  ska-oso-slt-services:
+    secretProvider: false
