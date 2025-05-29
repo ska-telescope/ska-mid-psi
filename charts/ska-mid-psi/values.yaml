@@ -132,9 +132,6 @@ ska-pst:
 # ODA
 ska-db-oda-umbrella:
   enabled: true
-  pgadmin4:
-    env: 
-      listenAddress: 0.0.0.0
 
 # Dish LMC
 ska-dish-lmc:
@@ -153,3 +150,7 @@ ska-dish-lmc:
 # OSO 
 ska-oso: 
   enabled: true
+  ska-db-oda-umbrella:
+    pgadmin4:
+      env: 
+        listenAddress: 0.0.0.0
