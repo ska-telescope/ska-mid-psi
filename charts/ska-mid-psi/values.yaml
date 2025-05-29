@@ -150,7 +150,3 @@ ska-dish-lmc:
 # OSO 
 ska-oso: 
   enabled: true
-  ska-db-oda-umbrella:
-    pgadmin4:
-      env: 
-        listenAddress: 0.0.0.0
