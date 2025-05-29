@@ -80,12 +80,6 @@ dependencies:
     alias: ska-pst
     condition: ska-pst.enabled
 
-  # ODA
-  - name: ska-db-oda-umbrella
-    version: 6.0.0
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-db-oda-umbrella.enabled
-
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
