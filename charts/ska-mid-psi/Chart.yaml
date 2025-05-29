@@ -89,8 +89,8 @@ dependencies:
     condition: ska-dish-lmc.enabled
 
 # OSO Integration Tooling
-  - name: ska-oso-integration
-    version: 0.1.0
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-oso.enabled
-    alias: ska-oso
+  #- name: ska-oso-integration
+  #  version: 0.1.0
+  #  repository: https://artefact.skao.int/repository/helm-internal
+  #  condition: ska-oso.enabled
+  #  alias: ska-oso
