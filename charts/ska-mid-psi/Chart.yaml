@@ -99,3 +99,4 @@ dependencies:
     version: 0.1.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-oso.enabled
+    alias: ska-oso
