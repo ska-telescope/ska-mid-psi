@@ -150,3 +150,6 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+# OSO 
+ska-oso: 
+  enabled: true
