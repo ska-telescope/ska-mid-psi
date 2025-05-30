@@ -153,3 +153,6 @@ ska-oso:
   ska-oso-slt-services:
     secretProvider:
       enabled: false
+  ska-db-oda-umbrella:
+    vault:
+      enabled: false
