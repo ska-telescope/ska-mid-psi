@@ -89,23 +89,24 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
+PTT_SERVICES_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/ptt/api/v1
+SLT_SERVICES_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/slt/api/v1
+OET_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/oet/api/v9
+ODA_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/oda/api/v8
+
+
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
-	--set global.tango_host=$(TANGO_HOST) \
-	--set global.cluster_domain=$(CLUSTER_DOMAIN) \
-	--set global.operator=$(SKA_TANGO_OPERATOR) \
-	--set ska-sdp.helmdeploy.namespace=$(KUBE_NAMESPACE_SDP) \
-	--set ska-sdp.ska-sdp-qa.zookeeper.clusterDomain=$(CLUSTER_DOMAIN) \
-	--set ska-sdp.ska-sdp-qa.kafka.clusterDomain=$(CLUSTER_DOMAIN) \
-	--set ska-sdp.ska-sdp-qa.redis.clusterDomain=$(CLUSTER_DOMAIN) \
-	--set global.labels.app=$(KUBE_APP) \
-	--set ska-dish-lmc.enabled=$(DISH_LMC_ENABLED) \
-	--set ska-pst.enabled=$(PST_ENABLED) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+        --set ska-oso.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
+        --set ska-oso.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
+        --set ska-oso.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
+        --set ska-oso.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	$(TARANTA_PARAMS)
+
 
 ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
