@@ -15,5 +15,5 @@ configuration:
         code_push_event: True
       b3CapabilityState:
         code_push_event: True
-      rxs123SurgeArresterVoltage
+      rxs123SurgeArresterVoltage:
         code_push_event: True
