@@ -17,5 +17,5 @@ configuration:
         code_push_event: True
       rxs123SurgeArresterVoltage:
         polling_period: 0
-        archive_abs_change: 1e-06
+        archive_abs_change: 0.0000001
         archive_period: 0
