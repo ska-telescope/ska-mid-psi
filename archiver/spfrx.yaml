@@ -16,4 +16,4 @@ configuration:
       b3CapabilityState:
         code_push_event: True
       rxs123SurgeArresterVoltage:
-        code_push_event: True
+        polling_period: 0
