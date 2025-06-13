@@ -18,3 +18,4 @@ configuration:
       rxs123SurgeArresterVoltage:
         polling_period: 0
         abs_change: 1e-06
+        archive_period: 0
