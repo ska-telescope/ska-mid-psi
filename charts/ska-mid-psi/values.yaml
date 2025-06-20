@@ -106,11 +106,11 @@ ska-sdp:
   kafka:
     kraft:
       clusterId: kafka_cluster_id_test1
-  # ska-sdp-qa:
-  #   enabled: true
-  #   display:
-  #     vault:
-  #       useVault: false
+  ska-sdp-qa:
+    enabled: true
+    display:
+      vault:
+        useVault: false
 
 # SPFRx
 spfrx:
