@@ -144,6 +144,9 @@ ska-db-oda-umbrella:
   pgadmin4:
     env: 
       listenAddress: 0.0.0.0
+  vault:
+    enabled: false
+
 
 # Dish LMC
 ska-dish-lmc:
