@@ -82,7 +82,7 @@ dependencies:
 
   # ODA
   - name: ska-db-oda-umbrella
-    version: 6.0.0
+    version: 7.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-db-oda-umbrella.enabled
 
