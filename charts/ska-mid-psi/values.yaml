@@ -146,7 +146,8 @@ ska-db-oda-umbrella:
   vault:
     enabled: false
   postgresql:
-    existingSecret: null
+    auth:
+      existingSecret: false
 
 # Dish LMC
 ska-dish-lmc:
