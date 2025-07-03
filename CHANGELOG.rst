@@ -5,8 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2025-06-12: 
-***********
+2025-06-20
+**********
+* MAP-368: Bump DishLMC to 8.0.0
+
+2025-06-12 
+**********
 * MAP-371: Update TMC to 1.1.0 which incorporates health state aggregation and resolves SKB-517
 
 
