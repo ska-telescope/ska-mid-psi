@@ -88,6 +88,7 @@ ska-tango-archiver:
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
+  numSubarrays: 1
 
 ## sdp
 ska-sdp:
