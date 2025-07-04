@@ -19,3 +19,11 @@ configuration:
         polling_period: 0
         archive_abs_change: 0.0000001
         archive_period: 0
+      rxs123OdlB12Supply33Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123OdlB3Supply33Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
