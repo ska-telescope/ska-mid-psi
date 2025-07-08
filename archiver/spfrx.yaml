@@ -27,3 +27,31 @@ configuration:
         polling_period: 0
         archive_abs_change: 0.0000001
         archive_period: 0
+      rxs123OdlPowerSupply5Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123OdlPowerSupply12Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123OdlB12Supply25Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123OdlB3Supply25Voltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123ClkPowerLevelVoltage:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123OdlTemperature:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
+      rxs123ODLHumidity:
+        polling_period: 0
+        archive_abs_change: 0.0000001
+        archive_period: 0
