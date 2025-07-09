@@ -141,13 +141,11 @@ ska-pst:
 ska-db-oda-umbrella:
   enabled: true
   pgadmin4:
-    env: 
-      listenAddress: 0.0.0.0
+    enabled: false
   vault:
     enabled: false
   postgresql:
-    auth:
-      existingSecret: false
+    enabled: false 
 
 # Dish LMC
 ska-dish-lmc:
