@@ -55,4 +55,3 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
-
