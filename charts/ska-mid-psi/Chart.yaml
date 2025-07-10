@@ -81,7 +81,7 @@ dependencies:
     condition: ska-pst.enabled
 
   # ODA
-  - name: sak-mid-psi-oda-odt
+  - name: ska-mid-psi-oda-odt
     version: 0.1.0
     repository: file://../ska-mid-psi-oda-odt
 
