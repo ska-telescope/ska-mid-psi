@@ -13,3 +13,4 @@ dependencies:
   - name: ska-oso-odt-ui-umbrella
     version: 3.0.0
     repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-oso-odt-ui-umbrella.enabled

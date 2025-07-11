@@ -6,4 +6,7 @@ ska-db-oda-umbrella:
   vault:
     enabled: false
   postgresql:
-    enabled: false 
+    enabled: false
+
+ska-oso-odt-ui-umbrella:
+  enabled: true
