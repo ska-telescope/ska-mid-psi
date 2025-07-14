@@ -89,6 +89,8 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
+BACKEND_URL ?= http://142.73.34.170/$(KUBE_NAMESPACE)
+
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.exposeAllDS=$(EXPOSE_All_DS) \
