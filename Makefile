@@ -107,6 +107,17 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	$(TARANTA_PARAMS)
 
+PTT_SERVICES_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/ptt/api/v0
+SLT_SERVICES_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/slt/api/v0
+OET_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/oet/api/v8
+ODA_URL ?= $(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/oda/api/v8
+
+K8S_CHART_PARAMS += --set global.ingress.host=$(LOADBALANCER_IP) \
+  --set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
+  --set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
+  --set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
+  --set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL)
+
 ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)

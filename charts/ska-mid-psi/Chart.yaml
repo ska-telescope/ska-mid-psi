@@ -85,8 +85,8 @@ dependencies:
     version: 0.1.0
     repository: file://../ska-mid-psi-oda-odt
 
-  - name: ska-db-oda-umbrella
-    version: 7.4.0
+  - name: ska-oso-integration
+    version: 0.1.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-db-oda-umbrella.enabled
 

@@ -137,16 +137,12 @@ ska-pst:
         - "-c"
         - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
 
-# ODA
-ska-db-oda-umbrella:
-  enabled: true
-  pgadmin4:
-    enabled: false
-  vault:
-    enabled: false
-  postgresql:
-    auth:
-      existingSecret: false
+# OSO
+ska-oso-integration:
+  ska-db-oda-umbrella:
+    vault:
+      enabled: false
+
 
 # Dish LMC
 ska-dish-lmc:
