@@ -132,6 +132,12 @@ ska-pst:
 # ODA
 ska-oso-integration-umbrella:
   enabled: true
+  ska-oso-pht-services:
+    secretProvider:
+      enabled: false
+  ska-ost-osd:
+    secretProvider:
+      enabled: false
   ska-oso-integration:
     ska-oso-slt-services:
       secretProvider:
