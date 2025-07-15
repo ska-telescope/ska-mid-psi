@@ -35,6 +35,9 @@ EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enab
 SKA_TANGO_OPERATOR ?= true
 ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
+OET_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/oet/api/v8
+ODA_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/oda/api/v8
+
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
@@ -89,7 +92,6 @@ TANGO_HOST ?= databaseds-tango-base:10000## TANGO_HOST connection to the Tango D
 TANGO_HOSTNAME ?= databaseds-tango-base
 CLUSTER_DOMAIN ?= cluster.local## Domain used for naming Tango Device Servers
 
-BACKEND_URL ?= http://142.73.34.170/$(KUBE_NAMESPACE)
 
 K8S_EXTRA_PARAMS ?=
 K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
@@ -107,6 +109,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
+ 	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL)
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)
