@@ -37,6 +37,8 @@ ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 OET_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/oet/api/v8
 ODA_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/oda/api/v8
+SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/slt/api/v1
+PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://$(INGRESS_HOST)/$(KUBE_NAMESPACE)/ptt/api/v0
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -111,6 +113,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
+	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
+	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)

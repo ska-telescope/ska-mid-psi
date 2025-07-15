@@ -132,6 +132,8 @@ ska-pst:
 # ODA
 ska-oso-integration:
   enabled: true
+  ska-oso-oet:
+      telescope: SKA-Mid
   ska-oso-slt-services:
     secretProvider:
       enabled: false
