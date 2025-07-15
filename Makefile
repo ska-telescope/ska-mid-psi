@@ -110,7 +110,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
- 	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL)
+ 	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)
