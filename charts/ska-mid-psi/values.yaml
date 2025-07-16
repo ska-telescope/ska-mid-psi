@@ -130,11 +130,12 @@ ska-pst:
         - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
 
 # ODA
-ska-oso-services:
-  enabled: true
-
 ska-oso-integration:
   enabled: true
+  ska-oso-services:
+    image:
+      registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
+      tag: 1.0.1
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
