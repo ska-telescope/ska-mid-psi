@@ -130,6 +130,9 @@ ska-pst:
         - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
 
 # ODA
+ska-oso-services:
+  enabled: true
+
 ska-oso-integration:
   enabled: true
   ska-oso-odt-ui:

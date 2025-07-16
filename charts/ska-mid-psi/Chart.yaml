@@ -81,6 +81,10 @@ dependencies:
     condition: ska-pst.enabled
 
   # ODA
+  - name: ska-oso-services
+    version: 1.0.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-oso-services.enabled
   - name: ska-oso-integration
     version: 0.1.1
     repository: https://artefact.skao.int/repository/helm-internal
