@@ -136,7 +136,7 @@ ska-oso-integration:
     rest:
       image:
         registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
-        tag: 2.1.0-dev.cbd36d4f1
+        tag: 1.1.0
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
