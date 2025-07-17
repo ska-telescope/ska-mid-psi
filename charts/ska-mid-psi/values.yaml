@@ -150,8 +150,6 @@ ska-oso-integration:
     enabled: true
     ska-db-oda:
       enabled: true
-      secretProvider:
-        enabled: false
     pgadmin4:
       enabled: false
     vault:
