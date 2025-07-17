@@ -149,6 +149,7 @@ ska-oso-integration:
   ska-db-oda-umbrella:
     enabled: true
     ska-db-oda:
+      enabled: true
       secretProvider:
         enabled: false
     pgadmin4:
