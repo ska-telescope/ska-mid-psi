@@ -133,9 +133,10 @@ ska-pst:
 ska-oso-integration:
   enabled: true
   ska-oso-services:
-    image:
-      registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
-      tag: 2.1.0-dev.cbd36d4f1
+    rest:
+      image:
+        registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
+        tag: 2.1.0-dev.cbd36d4f1
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
