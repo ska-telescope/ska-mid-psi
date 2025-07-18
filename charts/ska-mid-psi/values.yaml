@@ -155,7 +155,9 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: false
+      enabled: true
+      auth:
+        existingSecret: false
   ska-oso-pht-services:
     secretProvider:
       enabled: false
