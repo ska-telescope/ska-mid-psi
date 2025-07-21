@@ -162,7 +162,7 @@ ska-oso-integration:
     postgresql:
       enabled: true
       auth:
-        postgresPassword: pgadminpassword
+        postgresPassword: localpassword
         existingSecret: false
   ska-oso-pht-services:
     secretProvider:
