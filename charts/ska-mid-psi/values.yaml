@@ -91,7 +91,7 @@ ska-csp-lmc-mid:
 
 ## sdp
 ska-sdp:
-  enabled: true
+  enabled: false
   ska-tango-base:
     enabled: false
   helmdeploy:
@@ -160,7 +160,7 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: false
+      enabled: true
       auth:
         existingSecret: false
   ska-oso-pht-services:

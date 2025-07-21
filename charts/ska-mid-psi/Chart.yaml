@@ -60,12 +60,6 @@ dependencies:
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
 
-  # SDP
-  - name: ska-sdp
-    version: 1.1.1
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-sdp.enabled
-
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
     version: 1.0.0
