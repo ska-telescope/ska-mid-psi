@@ -91,7 +91,7 @@ ska-csp-lmc-mid:
 
 ## sdp
 ska-sdp:
-  enabled: false
+  enabled: true
   ska-tango-base:
     enabled: false
   helmdeploy:
