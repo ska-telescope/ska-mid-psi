@@ -91,7 +91,7 @@ ska-csp-lmc-mid:
 
 ## sdp
 ska-sdp:
-  enabled: true
+  enabled: false
   ska-tango-base:
     enabled: false
   helmdeploy:
@@ -138,15 +138,43 @@ ska-pst:
         - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
 
 # ODA
-ska-db-oda-umbrella:
+ska-oso-integration:
   enabled: true
-  pgadmin4:
-    enabled: false
-  vault:
-    enabled: false
-  postgresql:
-    auth:
-      existingSecret: false
+  ska-oso-services:
+    rest:
+      image:
+        registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
+        tag: 0.8.0
+  ska-oso-odt-ui:
+    image:
+      registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
+      tag: 2.1.0-dev.cbd36d4f1 
+  ska-oso-oet:
+    telescope: SKA-Mid
+  ska-oso-oet-ui:
+    image:
+      registry: registry.gitlab.com
+      image: ska-telescope/oso/ska-oso-oet-ui/ska-oso-oet-ui
+      tag:  0.2.0-dev.c0f747f09
+  ska-oso-slt-services:
+    secretProvider:
+      enabled: false
+  ska-db-oda-umbrella:
+    enabled: true
+    ska-db-oda:
+      enabled: true
+    pgadmin4:
+      enabled: false
+    vault:
+      enabled: false
+    postgresql:
+      enabled: true
+      auth:
+        postgresPassword: localpassword
+        existingSecret: false
+  ska-oso-pht-services:
+    secretProvider:
+      enabled: false
 
 # Dish LMC
 ska-dish-lmc:

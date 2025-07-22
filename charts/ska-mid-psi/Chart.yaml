@@ -60,12 +60,6 @@ dependencies:
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
 
-  # SDP
-  - name: ska-sdp
-    version: 1.1.1
-    repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-sdp.enabled
-
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
     version: 1.0.0
@@ -81,14 +75,10 @@ dependencies:
     condition: ska-pst.enabled
 
   # ODA
-  - name: ska-mid-psi-oda-odt
-    version: 0.1.0
-    repository: file://../ska-mid-psi-oda-odt
-
-  - name: ska-db-oda-umbrella
-    version: 7.4.0
+  - name: ska-oso-integration
+    version: 0.1.1
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-db-oda-umbrella.enabled
+    condition: ska-oso-integration.enabled
 
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
