@@ -4,7 +4,7 @@ archiver: mid-eda/es/01
 configuration:
 
 ### TMC ###
-  - class: CentralNodeMid
+  - class: MidTmcCentralNode
     attributes:
       state:
         code_push_event: true
@@ -19,7 +19,7 @@ configuration:
       telescopeAvailability:
         code_push_event: true
 
-  - class: SubarrayNodeMid
+  - class: MidTmcSubarray
     filtering:
       device:
       - ska_mid/tm_subarray_node/1
@@ -33,7 +33,7 @@ configuration:
       isSubarrayAvailable:
         code_push_event: true
 
-  - class: CspMasterLeafNodeMid
+  - class: MidTmcLeafNodeCspControl
     attributes:
       state:
         code_push_event: true
@@ -42,7 +42,7 @@ configuration:
       isSubsystemAvailable:
         code_push_event: true
 
-  - class: CspSubarrayLeafNodeMid
+  - class: MidTmcLeafNodeCspSubarray
     filtering:
       device:
       - ska_mid/tm_subarray_node/1
@@ -56,10 +56,9 @@ configuration:
       delayModel:
         code_push_event: true
       cspSubarrayObsState:
-        archive_period: 3000
-        polling_period: 3000
+        code_push_event: true
         
-  - class: SdpMasterLeafNode
+  - class: MidTmcLeafNodeSdp
     attributes:
       state:
         code_push_event: true
@@ -80,21 +79,8 @@ configuration:
       isSubsystemAvailable:
         code_push_event: true
       sdpSubarrayObsState:
-        archive_period: 3000
-        polling_period: 3000
+        code_push_event: true
 
-  - class: DishLeafNode
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
-      kValueValidationResult:
-        code_push_event: true
-      kValue:
-        archive_abs_change: 1
 
 ### CSP.LMC ###
   - class: MidCspController
@@ -272,6 +258,8 @@ configuration:
     attributes:
       versionId:
         code_push_event: true
+      State:
+        code_push_event: true
       adminMode:
         code_push_event: true
       healthState:
@@ -289,10 +277,14 @@ configuration:
       scanID:
         code_push_event: true
         archive_abs_change: 1
+      errorMessages:
+        code_push_event: true
 
   - class: SDPController
     attributes:
       versionId:
+        code_push_event: true
+      State:
         code_push_event: true
       adminMode:
         code_push_event: true
