@@ -174,26 +174,98 @@ configuration:
       SlimPllFault:
         code_push_event: true
       FpgaDieTemperature:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      FpgaDieVoltage0:
+        code_push_event: true
+      FpgaDieVoltage1:
+        code_push_event: true
+      FpgaDieVoltage2:
+        code_push_event: true
+      FpgaDieVoltage3:
+        code_push_event: true
+      FpgaDieVoltage4:
+        code_push_event: true
+      FpgaDieVoltage5:
+        code_push_event: true
+      FpgaDieVoltage6:
+        code_push_event: true
       HumiditySensorTemperature:
-        archive_period: 60000
-        polling_period: 60000
-      DIMMTemperatures:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      DimmTemperatures:
+        code_push_event: true
       MboTxTemperatures:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
       MboTxVccVoltages:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      MboTxFaultStatus:
+        code_push_event: true
+      MboTxLolStatus:
+        code_push_event: true
+      MboTxLosStatus:
+        code_push_event: true
       MboRxVccVoltages:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      MboRxLolStatus:
+        code_push_event: true
+      MboRxLosStatus:
+        code_push_event: true
+      HasFanControl:
+        code_push_event: true
+      FansPwm:
+        code_push_event: true
+      FansPwmEnable:
+        code_push_event: true
+      FansRpm:
+        code_push_event: true
       FansFault:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      LtmInputVoltage:
+        code_push_event: true
+      LtmOutputVoltage1:
+        code_push_event: true
+      LtmOutputVoltage2:
+        code_push_event: true
+      LtmInputCurrent:
+        code_push_event: true
+      LtmOutputCurrent1:
+        code_push_event: true
+      LtmOutputCurrent2:
+        code_push_event: true
+      LtmTemperature1:
+        code_push_event: true
+      LtmTemperature2:
+        code_push_event: true
+      LtmVoltageWarning:
+        code_push_event: true
+      LtmCurrentWarning:
+        code_push_event: true
+      LtmTemperatureWarning:
+        code_push_event: true
+      Eth100g0Counters:
+        code_push_event: true
+      Eth100g0ErrorCounters:
+        code_push_event: true
+      Eth100g0DataFlowActive:
+        code_push_event: true
+      Eth100g0HasDataError:
+        code_push_event: true
+      Eth100g0AllTxCounters:
+        code_push_event: true
+      Eth100g0AllRxCounters:
+        code_push_event: true
+      Eth100g1Counters:
+        code_push_event: true
+      Eth100g1ErrorCounters:
+        code_push_event: true
+      Eth100g1DataFlowActive:
+        code_push_event: true
+      Eth100g1HasDataError:
+        code_push_event: true
+      Eth100g1AllTxCounters:
+        code_push_event: true
+      Eth100g1AllRxCounters:
+        code_push_event: true
+
 
 ### SDP ###
   - class: SDPSubarray
