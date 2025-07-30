@@ -22,7 +22,7 @@ configuration:
   - class: MidTmcSubarray
     filtering:
       device:
-      - ska_mid/tm_subarray_node/1
+      - mid-tmc/subarray/01
     attributes:
       state:
         code_push_event: true
@@ -45,7 +45,7 @@ configuration:
   - class: MidTmcLeafNodeCspSubarray
     filtering:
       device:
-      - ska_mid/tm_subarray_node/1
+      - mid-tmc/subarray-leaf-node-csp/01
     attributes:
       state:
         code_push_event: true
@@ -70,7 +70,7 @@ configuration:
   - class: SdpSubarrayLeafNode
     filtering:
       device:
-      - ska_mid/tm_leaf_node/sdp_subarray01
+      - mid-tmc/subarray-leaf-node-sdp/01
     attributes:
       state:
         code_push_event: true
