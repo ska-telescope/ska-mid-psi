@@ -5,6 +5,13 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-01
+**********
+* MAP-366: Deploy ODA, OET and ODT. 
+           Bump SDP from 1.1.1 to 1.2.2
+           Pull oso-integration 0.1.1 + Customize deployment
+           Update Makefile with required OET/ODA args
+
 2025-07-09
 **********
 * MAP-394: Update TDC MCS to 1.3.3 and EC to 1.1.5 (DryFat versions)
