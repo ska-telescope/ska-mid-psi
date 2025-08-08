@@ -66,8 +66,7 @@ ska-mid-cbf-tdc-mcs:
 ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 1.1.5-dev.cf1b38471
+      tag: 1.1.5
   enabled: true
 
 ## EDA
