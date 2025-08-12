@@ -15,23 +15,6 @@ configuration:
         code_push_event: True
       b3CapabilityState:
         code_push_event: True
-      db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
-manager: mid-eda/cm/01
-archiver: mid-eda/es/01
-configuration:
-
-  - class: SkaMidSpfrxControllerDs
-    attributes:
-      operatingMode:
-        code_push_event: True
-      configuredBand:
-        code_push_event: True
-      b1CapabilityState:
-        code_push_event: True
-      b2CapabilityState:
-        code_push_event: True
-      b3CapabilityState:
-        code_push_event: True
       rxs123SurgeArresterVoltage:
         polling_period: 0
         archive_abs_change: 0.001
