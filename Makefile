@@ -35,6 +35,7 @@ EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enab
 SKA_TANGO_OPERATOR ?= true
 ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
+#  Arguments for ODA services. Currently targets a ODA deployed within the same namespace
 OET_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oet/api/v8
 ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oda/api/v8
 SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/slt/api/v0
