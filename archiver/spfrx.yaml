@@ -15,3 +15,59 @@ configuration:
         code_push_event: True
       b3CapabilityState:
         code_push_event: True
+      rxs123SurgeArresterVoltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlB12Supply33Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlB3Supply33Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlPowerSupply5Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlPowerSupply12Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlB12Supply25Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlB3Supply25Voltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123ClkPowerLevelVoltage:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123OdlTemperature:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      rxs123ODLHumidity:
+        polling_period: 0
+        archive_abs_change: 0.001
+        archive_period: 0
+      b123ProcCntlWrAlignStatus:
+        polling_period: 0
+        archive_abs_change: 1
+        archive_period: 0
+      b123ProcCntlWrFifoOvf:
+        polling_period: 0
+        archive_abs_change: 1
+        archive_period: 0
+      dataStreamBandChangeStatus:
+        polling_period: 0
+        archive_abs_change: 1
+        archive_period: 0
+      dataStreamCurrentBand:
+        polling_period: 0
+        archive_abs_change: 1
+        archive_period: 0
