@@ -151,6 +151,11 @@ ska-db-oda-umbrella:
       listenAddress: 0.0.0.0
   vault:
     enabled: false
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: localpassword
+      existingSecret: false
 
 # Dish LMC
 ska-dish-lmc:
