@@ -5,6 +5,27 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-12
+**********
+* MAP-376: Update TMC to 1.4.0 which now supports SDP Assign Resources 1.0
+
+2025-07-30
+**********
+* REL-2234: Update SPFRx from 1.0.0 to 1.1.1
+
+2025-07-09
+**********
+* MAP-394: Update TDC MCS to 1.3.3 and EC to 1.1.5 (DryFat versions)
+
+2025-07-08
+**********
+* MAP-369: Bump CSP LMC to 1.1.0
+
+2025-07-07
+**********
+* MAP-372: Bump TMC to 1.2.0
+
+
 2025-06-20
 **********
 * MAP-368: Bump DishLMC to 8.0.0
