@@ -123,30 +123,51 @@ configuration:
         code_push_event: true
 
 ### CBF ###
+## CBFController ##
+  - class: CbfController
+    attributes:
+      adminmode:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      simulationMode:
+        code_push_event: true
+      state:
+        code_push_event: true
+
+## CBFSubarray ##
+  - class: CbfSubarrayController
+    attributes:
+      adminmode:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      obsState:
+        code_push_event: true
+      state:
+        code_push_event: true
+
+### TalonBoard ###
   - class: TalonBoard
     attributes:
+      DishID:
+        code_push_event: true
+      PingResult:
+        code_push_event: true
       State:
         code_push_event: true
       SubarrayID:
         code_push_event: true
-      DishID:
-        code_push_event: true
       VccID:
         code_push_event: true
-      PingResult:
-        code_push_event: true
+      # BitstreamChecksum:
+      #   code_push_event: true
       BitstreamVersion:
-        code_push_event: true
-      BitstreamChecksum:
-        code_push_event: true
-      IopllLockedFault:
-        code_push_event: true
-      FsIopllLockedFault:
         code_push_event: true
       CommsIopllLockedFault:
         code_push_event: true
-      SystemClkFault:
-        code_push_event: true
+      # DimmTemperatures:
+      #   code_push_event: true
       EmifBrFault:
         code_push_event: true
       EmifBlFault:
@@ -157,99 +178,103 @@ configuration:
         code_push_event: true
       Ethernet1PllFault:
         code_push_event: true
-      SlimPllFault:
+      # Eth100g0Counters:
+      #   code_push_event: true
+      # Eth100g0ErrorCounters:
+      #   code_push_event: true
+      Eth100g0DataFlowActive:
         code_push_event: true
-      FpgaDieTemperature:
+      Eth100g0HasDataError:
         code_push_event: true
-      FpgaDieVoltage0:
+      # Eth100g0AllTxCounters:
+      #   code_push_event: true
+      # Eth100g0AllRxCounters:
+      #   code_push_event: true
+      # Eth100g1Counters:
+      #   code_push_event: true
+      # Eth100g1ErrorCounters:
+      #   code_push_event: true
+      Eth100g1DataFlowActive:
         code_push_event: true
-      FpgaDieVoltage1:
+      Eth100g1HasDataError:
         code_push_event: true
-      FpgaDieVoltage2:
+      # Eth100g1AllTxCounters:
+      #   code_push_event: true
+      # Eth100g1AllRxCounters:
+      #   code_push_event: true
+      # FansPwm:
+      #   code_push_event: true
+      # FansPwmEnable:
+      #   code_push_event: true
+      # FansRpm:
+      #   code_push_event: true
+      FansFault:
         code_push_event: true
-      FpgaDieVoltage3:
-        code_push_event: true
-      FpgaDieVoltage4:
-        code_push_event: true
-      FpgaDieVoltage5:
-        code_push_event: true
-      FpgaDieVoltage6:
-        code_push_event: true
-      HumiditySensorTemperature:
-        code_push_event: true
-      DimmTemperatures:
-        code_push_event: true
-      MboTxTemperatures:
-        code_push_event: true
-      MboTxVccVoltages:
-        code_push_event: true
-      MboTxFaultStatus:
-        code_push_event: true
-      MboTxLolStatus:
-        code_push_event: true
-      MboTxLosStatus:
-        code_push_event: true
-      MboRxVccVoltages:
-        code_push_event: true
-      MboRxLolStatus:
-        code_push_event: true
-      MboRxLosStatus:
+      # FpgaDieTemperature:
+      #   code_push_event: true
+      # FpgaDieVoltage0:
+      #   code_push_event: true
+      # FpgaDieVoltage1:
+      #   code_push_event: true
+      # FpgaDieVoltage2:
+      #   code_push_event: true
+      # FpgaDieVoltage3:
+      #   code_push_event: true
+      # FpgaDieVoltage4:
+      #   code_push_event: true
+      # FpgaDieVoltage5:
+      #   code_push_event: true
+      # FpgaDieVoltage6:
+      #   code_push_event: true
+      FsIopllLockedFault:
         code_push_event: true
       HasFanControl:
         code_push_event: true
-      FansPwm:
+      # HumiditySensorTemperature:
+      #   code_push_event: true
+      IopllLockedFault:
         code_push_event: true
-      FansPwmEnable:
-        code_push_event: true
-      FansRpm:
-        code_push_event: true
-      FansFault:
-        code_push_event: true
-      LtmInputVoltage:
-        code_push_event: true
-      LtmOutputVoltage1:
-        code_push_event: true
-      LtmOutputVoltage2:
-        code_push_event: true
-      LtmInputCurrent:
-        code_push_event: true
-      LtmOutputCurrent1:
-        code_push_event: true
-      LtmOutputCurrent2:
-        code_push_event: true
-      LtmTemperature1:
-        code_push_event: true
-      LtmTemperature2:
-        code_push_event: true
+      # LtmInputVoltage:
+      #   code_push_event: true
+      # LtmOutputVoltage1:
+      #   code_push_event: true
+      # LtmOutputVoltage2:
+      #   code_push_event: true
+      # LtmInputCurrent:
+      #   code_push_event: true
+      # LtmOutputCurrent1:
+      #   code_push_event: true
+      # LtmOutputCurrent2:
+      #   code_push_event: true
+      # LtmTemperature1:
+      #   code_push_event: true
+      # LtmTemperature2:
+      #   code_push_event: true
       LtmVoltageWarning:
         code_push_event: true
       LtmCurrentWarning:
         code_push_event: true
       LtmTemperatureWarning:
         code_push_event: true
-      Eth100g0Counters:
+      # MboTxTemperatures:
+      #   code_push_event: true
+      # MboTxVccVoltages:
+      #   code_push_event: true
+      MboTxFaultStatus:
         code_push_event: true
-      Eth100g0ErrorCounters:
+      MboTxLolStatus:
         code_push_event: true
-      Eth100g0DataFlowActive:
+      MboTxLosStatus:
         code_push_event: true
-      Eth100g0HasDataError:
+      # MboRxVccVoltages:
+      #   code_push_event: true
+      MboRxLolStatus:
         code_push_event: true
-      Eth100g0AllTxCounters:
+      MboRxLosStatus:
         code_push_event: true
-      Eth100g0AllRxCounters:
-        code_push_event: true
-      Eth100g1Counters:
-        code_push_event: true
-      Eth100g1ErrorCounters:
-        code_push_event: true
-      Eth100g1DataFlowActive:
-        code_push_event: true
-      Eth100g1HasDataError:
-        code_push_event: true
-      Eth100g1AllTxCounters:
-        code_push_event: true
-      Eth100g1AllRxCounters:
+      # SlimPllFault:
+      #   code_push_event: true
+      SystemClkFault:
         code_push_event: true
 
 
