@@ -136,7 +136,7 @@ configuration:
         code_push_event: true
 
 ## CBFSubarray ##
-  - class: CbfSubarrayController
+  - class: CbfSubarray
     attributes:
       adminmode:
         code_push_event: true
