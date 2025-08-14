@@ -5,6 +5,19 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-13
+**********
+* MAP-367: Update SDP to 1.2.3
+* MAP-175: Added values for data archiving to include SkaMidSpfrxControllerDs
+
+2025-08-12
+**********
+* MAP-376: Update TMC to 1.4.0 which now supports SDP Assign Resources 1.0
+
+2025-07-30
+**********
+* REL-2234: Update SPFRx from 1.0.0 to 1.1.1
+
 2025-07-09
 **********
 * MAP-394: Update TDC MCS to 1.3.3 and EC to 1.1.5 (DryFat versions)
