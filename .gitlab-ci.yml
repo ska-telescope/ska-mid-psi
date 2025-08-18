@@ -95,7 +95,7 @@ log-collector:
     - job: psi-mid-on-demand-deploy
   script:
     - mkdir -p logs
-    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
     name: "MID-PSI_${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_Logs_${CI_JOB_STARTED_AT}"
@@ -113,7 +113,7 @@ auto-log-collector:
     - job: python-test
   script:
     - mkdir -p logs
-    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --no-headers -o custom-columns=":metadata.name")
+    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
     - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
   artifacts:
     paths:
