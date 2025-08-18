@@ -94,7 +94,6 @@ ska-csp-lmc-mid:
 #      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
 #      tag: 1.1.0-dev.c44eff6a8
 
-
 ## sdp
 ska-sdp:
   enabled: true
@@ -117,7 +116,6 @@ ska-sdp:
     display:
       vault:
         useVault: false
-
 
 # SPFRx
 spfrx:
@@ -151,6 +149,13 @@ ska-db-oda-umbrella:
   pgadmin4:
     env: 
       listenAddress: 0.0.0.0
+  vault:
+    enabled: false
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: localpassword
+      existingSecret: false
 
 # Dish LMC
 ska-dish-lmc:
