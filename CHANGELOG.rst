@@ -14,6 +14,13 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 **********
 * MAP-376: Update TMC to 1.4.0 which now supports SDP Assign Resources 1.0
 
+2025-08-01
+**********
+* MAP-366: Deploy ODA, OET and ODT. 
+           Bump SDP from 1.1.1 to 1.2.2
+           Pull oso-integration 0.1.1 + Customize deployment
+           Update Makefile with required OET/ODA args
+
 2025-07-30
 **********
 * REL-2234: Update SPFRx from 1.0.0 to 1.1.1

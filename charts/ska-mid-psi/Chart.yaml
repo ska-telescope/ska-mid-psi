@@ -81,10 +81,10 @@ dependencies:
     condition: ska-pst.enabled
 
   # ODA
-  - name: ska-db-oda-umbrella
-    version: 7.3.0
+  - name: ska-oso-integration
+    version: 0.1.1
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-db-oda-umbrella.enabled
+    condition: ska-oso-integration.enabled
 
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
