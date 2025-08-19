@@ -165,6 +165,10 @@ ska-oso-integration:
   ska-oso-slt-services:
     secretProvider:
       enabled: false
+  ska-oso-slt-ui:
+    enabled: false
+  ska-oso-ptt:
+    enabled: false
   ska-db-oda-umbrella:
     enabled: true
     ska-db-oda:
