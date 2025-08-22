@@ -6,6 +6,7 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
+ODA_DB_NS ?= oda-db
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
@@ -37,7 +38,7 @@ ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 #  Arguments for ODA services. Currently targets a ODA deployed within the same namespace
 OET_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oet/api/v8
-ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oda/api/v8
+ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(ODA_DB_NS)/oda/api/v8
 SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/slt/api/v0
 PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/ptt/api/v0
 POSTGRES_PASSWORD ?= pgadminpassword
