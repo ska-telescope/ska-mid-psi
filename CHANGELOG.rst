@@ -9,6 +9,11 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 **********
 * MAP-404: Update TMC to 1.5.0 which only allows command execution if adminMode
            is ONLINE or ENGINEERING and disallows if OFFLINE or NOT_FITTED.
+* MAP-405: Updated the following:
+           - DishLMC to 8.4.0
+           - SPFRx to 1.2.0
+           - CSP.LMC to full released 1.2.0
+           - ska-tango-base and ska-tango-util to 0.4.23 
 
 2025-08-13
 **********
