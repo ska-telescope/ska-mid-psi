@@ -7,16 +7,16 @@ appVersion: 0.1.0
 dependencies:
   # TANGO
   - name: ska-tango-base
-    version: 0.4.22
+    version: 0.4.23
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-base.enabled
   - name: ska-tango-util
-    version: 0.4.22
+    version: 0.4.23
     repository: https://artefact.skao.int/repository/helm-internal
   
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi/Chart.yaml
   - name: ska-dish-lmc
-    version: 8.0.0
+    version: 8.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled

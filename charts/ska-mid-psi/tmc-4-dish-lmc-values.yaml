@@ -17,6 +17,9 @@ tmc-mid:
     enabled: false
   deviceServers:
     centralnode:
+      DishVccConfig:
+        DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.1.0-rc-mid-itf#tmdata"
+        DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
       DishIDs:
       - SKA001
       - SKA036
@@ -41,3 +44,8 @@ tmc-mid:
       - SKA063
       - SKA100
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
+      CommandTimeOut: 240
+    sdpsubarrayleafnode:
+      CommandTimeOut: 240
+    cspsubarrayleafnode:
+      CommandTimeOut: 240

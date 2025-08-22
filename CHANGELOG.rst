@@ -5,6 +5,16 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-19
+**********
+* MAP-404: Update TMC to 1.5.0 which only allows command execution if adminMode
+           is ONLINE or ENGINEERING and disallows if OFFLINE or NOT_FITTED.
+* MAP-405: Updated the following:
+           - DishLMC to 8.4.0
+           - SPFRx to 1.2.0
+           - CSP.LMC to full released 1.2.0
+           - ska-tango-base and ska-tango-util to 0.4.23 
+
 2025-08-13
 **********
 * MAP-367: Update SDP to 1.2.3
@@ -13,6 +23,13 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2025-08-12
 **********
 * MAP-376: Update TMC to 1.4.0 which now supports SDP Assign Resources 1.0
+
+2025-08-01
+**********
+* MAP-366: Deploy ODA, OET and ODT. 
+           Bump SDP from 1.1.1 to 1.2.2
+           Pull oso-integration 0.1.1 + Customize deployment
+           Update Makefile with required OET/ODA args
 
 2025-07-30
 **********

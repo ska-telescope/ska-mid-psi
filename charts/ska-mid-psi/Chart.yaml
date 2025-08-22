@@ -8,11 +8,11 @@ icon: https://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_201
 dependencies:
   # TANGO
   - name: ska-tango-base
-    version: 0.4.22
+    version: 0.4.23
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-base.enabled
   - name: ska-tango-util
-    version: 0.4.22
+    version: 0.4.23
     repository: https://artefact.skao.int/repository/helm-internal
 
   # MID CBF
@@ -49,13 +49,13 @@ dependencies:
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
-    version: 1.2.0-rc.1
+    version: 1.2.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-csp-lmc-mid.enabled
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.4.0
+    version: 1.5.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -68,7 +68,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 1.1.1
+    version: 1.2.0
     repository: https://artefact.skao.int/repository/helm-internal
     alias: spfrx
     condition: spfrx.enabled
@@ -81,15 +81,15 @@ dependencies:
     condition: ska-pst.enabled
 
   # ODA
-  - name: ska-db-oda-umbrella
-    version: 7.3.0
+  - name: ska-oso-integration
+    version: 0.1.1
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-db-oda-umbrella.enabled
+    condition: ska-oso-integration.enabled
 
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 8.0.0
+    version: 8.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled

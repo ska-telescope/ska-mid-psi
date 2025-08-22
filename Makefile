@@ -35,6 +35,13 @@ EXPOSE_All_DS ?= true ## Expose All Tango Services to the external network (enab
 SKA_TANGO_OPERATOR ?= true
 ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
+#  Arguments for ODA services. Currently targets a ODA deployed within the same namespace
+OET_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oet/api/v8
+ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oda/api/v8
+SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/slt/api/v0
+PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/ptt/api/v0
+POSTGRES_PASSWORD ?= pgadminpassword
+
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
@@ -105,6 +112,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
+ 	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
+	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
+	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)
