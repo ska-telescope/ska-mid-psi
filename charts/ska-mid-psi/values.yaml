@@ -170,7 +170,18 @@ ska-oso-integration:
   ska-oso-ptt:
     enabled: false
   ska-db-oda-umbrella:
-    enabled: false
+    enabled: true
+    ska-db-oda:
+      enabled: true
+    pgadmin4:
+      enabled: false
+    vault:
+      enabled: false
+    postgresql:
+      enabled: false
+      auth:
+        postgresPassword: localpassword
+        existingSecret: false
   ska-oso-pht-services:
     secretProvider:
       enabled: false
