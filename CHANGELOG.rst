@@ -7,7 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-08-25
 **********
-* MAP-408L Spin off ODA to separate NS, remove from this deployment and reference via chart args
+* MAP-408: Spin off ODA to separate NS, remove from PSI deployment and reference in db deployment via chart args
 
 2025-08-19
 **********
