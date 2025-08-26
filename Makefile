@@ -41,7 +41,6 @@ OET_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oet/api/v8
 ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(ODA_DB_NS)/oda/api/v8
 SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/slt/api/v0
 PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/ptt/api/v0
-POSTGRES_PASSWORD ?= pgadminpassword
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -117,6 +116,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
+	--set ska-oso-integration.ska-oso-services.rest.oda.postgres.host=psi-oda-db-postgresql.$(ODA_DB_NS) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(ARCHIVING_ENABLED),true)

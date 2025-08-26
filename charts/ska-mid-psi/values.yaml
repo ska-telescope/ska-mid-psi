@@ -151,9 +151,6 @@ ska-oso-integration:
       image:
         registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
         tag: 0.8.0
-      oda:
-        postgres:
-          host: psi-oda-db-postgresql.oda-db
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
