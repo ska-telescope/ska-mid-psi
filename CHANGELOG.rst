@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-25
+**********
+* MAP-408L Spin off ODA to separate NS, remove from this deployment and reference via chart args
+
 2025-08-19
 **********
 * MAP-404: Update TMC to 1.5.0 which only allows command execution if adminMode
