@@ -162,12 +162,14 @@ configuration:
         code_push_event: true
       BitstreamChecksum:
         code_push_event: true
+        archive_abs_change: 1
       BitstreamVersion:
         code_push_event: true
       CommsIopllLockedFault:
         code_push_event: true
       DimmTemperatures:
         code_push_event: true
+        archive_abs_change: 1.0
       EmifBrFault:
         code_push_event: true
       EmifBlFault:
@@ -180,76 +182,104 @@ configuration:
         code_push_event: true
       Eth100g0Counters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g0ErrorCounters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g0DataFlowActive:
         code_push_event: true
       Eth100g0HasDataError:
         code_push_event: true
       Eth100g0AllTxCounters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g0AllRxCounters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g1Counters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g1ErrorCounters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g1DataFlowActive:
         code_push_event: true
       Eth100g1HasDataError:
         code_push_event: true
       Eth100g1AllTxCounters:
         code_push_event: true
+        archive_abs_change: 1
       Eth100g1AllRxCounters:
         code_push_event: true
+        archive_abs_change: 1
       FansPwm:
         code_push_event: true
+        archive_abs_change: 5
       FansPwmEnable:
         code_push_event: true
+        archive_abs_change: 1
       FansRpm:
         code_push_event: true
+        archive_abs_change: 50
       FansFault:
         code_push_event: true
       FpgaDieTemperature:
         code_push_event: true
+        archive_abs_change: 1.0
       FpgaDieVoltage0:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage1:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage2:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage3:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage4:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage5:
         code_push_event: true
+        archive_abs_change: 0.05
       FpgaDieVoltage6:
         code_push_event: true
+        archive_abs_change: 0.05
       FsIopllLockedFault:
         code_push_event: true
       HasFanControl:
         code_push_event: true
       HumiditySensorTemperature:
         code_push_event: true
+        archive_abs_change: 1.0
       IopllLockedFault:
         code_push_event: true
       LtmInputVoltage:
         code_push_event: true
+        archive_abs_change: 0.05
       LtmOutputVoltage1:
         code_push_event: true
+        archive_abs_change: 0.05
       LtmOutputVoltage2:
         code_push_event: true
+        archive_abs_change: 0.05
       LtmInputCurrent:
         code_push_event: true
+        archive_abs_change: 0.1
       LtmOutputCurrent1:
         code_push_event: true
+        archive_abs_change: 0.05
       LtmOutputCurrent2:
         code_push_event: true
+        archive_abs_change: 0.05
       LtmTemperature1:
         code_push_event: true
+        archive_abs_change: 1.0
       LtmTemperature2:
         code_push_event: true
+        archive_abs_change: 1.0
       LtmVoltageWarning:
         code_push_event: true
       LtmCurrentWarning:
@@ -258,8 +288,10 @@ configuration:
         code_push_event: true
       MboTxTemperatures:
         code_push_event: true
+        archive_abs_change: 1.0
       MboTxVccVoltages:
         code_push_event: true
+        archive_abs_change: 0.5
       MboTxFaultStatus:
         code_push_event: true
       MboTxLolStatus:
@@ -268,6 +300,7 @@ configuration:
         code_push_event: true
       MboRxVccVoltages:
         code_push_event: true
+        archive_abs_change: 0.05
       MboRxLolStatus:
         code_push_event: true
       MboRxLosStatus:
