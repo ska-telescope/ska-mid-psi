@@ -29,6 +29,9 @@ global:
   tangodb_port: 10000
   raw_user_account: ""
   raw_user_pass: ""
+  oda:
+    postgres:
+      host: psi-oda-db-postgresql.oda-db
 
 ska-tango-base:
   enabled: true
@@ -187,6 +190,22 @@ ska-oso-integration:
   ska-oso-pht-services:
     secretProvider:
       enabled: false
+
+ska-db-oda-umbrella:
+  enabled: true
+  ska-db-oda:
+    enabled: true
+  pgadmin4:
+    enabled: true
+    env:
+      listenAddress: 0.0.0.0
+  vault:
+    enabled: false
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: localpassword
+      existingSecret: false
 
 # Dish LMC
 ska-dish-lmc:

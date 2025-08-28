@@ -93,3 +93,8 @@ dependencies:
     version: 8.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
+
+  - name: ska-db-oda-umbrella
+    version: 8.0.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    condition: ska-oso-umbrella.enabled
