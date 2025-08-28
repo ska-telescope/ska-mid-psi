@@ -5,6 +5,13 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-08-28
+**********
+* MAP-230: Bumped ska-tango-archiver to 2.10.0. Updates to the mid-telescope.yaml include:
+          - Updated class names and attributes for TMC, CSP.LMC, SDP
+          - Added CBF Controller and CBF Subarray attributes
+          - Updated/added TalonBoard attributes to use code_push_event and set archive_abs_change
+
 2025-08-19
 **********
 * MAP-404: Update TMC to 1.5.0 which only allows command execution if adminMode
