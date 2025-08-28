@@ -1,0 +1,6 @@
+dependencies:
+- name: ska-db-oda-umbrella
+  repository: https://artefact.skao.int/repository/helm-internal
+  version: 8.0.1
+digest: sha256:05abd0d1e1aab8be5f010b9e39c7a8e08cd91a3e014b6148c2ef2933cb734b77
+generated: "2025-08-26T20:13:29.009642323Z"

@@ -1,0 +1,26 @@
+display: ":0"
+xauthority: "~/.Xauthority"
+
+global:
+  cluster_domain: cluster.local
+  ingress:
+    host: 142.73.34.170
+  oda:
+    postgres:
+      host: psi-oda-db-postgresql.oda-db
+
+ska-db-oda-umbrella:
+  enabled: true
+  ska-db-oda:
+    enabled: true
+  pgadmin4:
+    enabled: true
+    env:
+      listenAddress: 0.0.0.0
+  vault:
+    enabled: false
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: localpassword
+      existingSecret: false
