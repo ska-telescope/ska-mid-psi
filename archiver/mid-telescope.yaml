@@ -4,7 +4,7 @@ archiver: mid-eda/es/01
 configuration:
 
 ### TMC ###
-  - class: CentralNodeMid
+  - class: MidTmcCentralNode
     attributes:
       state:
         code_push_event: true
@@ -19,10 +19,10 @@ configuration:
       telescopeAvailability:
         code_push_event: true
 
-  - class: SubarrayNodeMid
+  - class: MidTmcSubarray
     filtering:
       device:
-      - ska_mid/tm_subarray_node/1
+      - mid-tmc/subarray/01
     attributes:
       state:
         code_push_event: true
@@ -33,7 +33,7 @@ configuration:
       isSubarrayAvailable:
         code_push_event: true
 
-  - class: CspMasterLeafNodeMid
+  - class: MidTmcLeafNodeCspControl
     attributes:
       state:
         code_push_event: true
@@ -42,10 +42,10 @@ configuration:
       isSubsystemAvailable:
         code_push_event: true
 
-  - class: CspSubarrayLeafNodeMid
+  - class: MidTmcLeafNodeCspSubarray
     filtering:
       device:
-      - ska_mid/tm_subarray_node/1
+      - mid-tmc/subarray-leaf-node-csp/01
     attributes:
       state:
         code_push_event: true
@@ -56,10 +56,9 @@ configuration:
       delayModel:
         code_push_event: true
       cspSubarrayObsState:
-        archive_period: 3000
-        polling_period: 3000
+        code_push_event: true
         
-  - class: SdpMasterLeafNode
+  - class: MidTmcLeafNodeSdp
     attributes:
       state:
         code_push_event: true
@@ -71,7 +70,7 @@ configuration:
   - class: SdpSubarrayLeafNode
     filtering:
       device:
-      - ska_mid/tm_leaf_node/sdp_subarray01
+      - mid-tmc/subarray-leaf-node-sdp/01
     attributes:
       state:
         code_push_event: true
@@ -80,21 +79,8 @@ configuration:
       isSubsystemAvailable:
         code_push_event: true
       sdpSubarrayObsState:
-        archive_period: 3000
-        polling_period: 3000
+        code_push_event: true
 
-  - class: DishLeafNode
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
-      kValueValidationResult:
-        code_push_event: true
-      kValue:
-        archive_abs_change: 1
 
 ### CSP.LMC ###
   - class: MidCspController
@@ -137,42 +123,200 @@ configuration:
         code_push_event: true
 
 ### CBF ###
-  - class: TalonBoard
-    filtering:
-      device:
-      - mid_csp_cbf/talon_board/001
-      - mid_csp_cbf/talon_board/002
-      - mid_csp_cbf/talon_board/003
-      - mid_csp_cbf/talon_board/004
+## CBFController ##
+  - class: CbfController
     attributes:
+      adminmode:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      simulationMode:
+        code_push_event: true
+      state:
+        code_push_event: true
+
+## CBFSubarray ##
+  - class: CbfSubarray
+    attributes:
+      adminmode:
+        code_push_event: true
+      healthState:
+        code_push_event: true
+      obsState:
+        code_push_event: true
+      state:
+        code_push_event: true
+
+### TalonBoard ###
+  - class: TalonBoard
+    attributes:
+      DishID:
+        code_push_event: true
+      PingResult:
+        code_push_event: true
       State:
         code_push_event: true
-      FpgaDieTemperature:
-        archive_period: 60000
-        polling_period: 60000
-      HumiditySensorTemperature:
-        archive_period: 60000
-        polling_period: 60000
-      DIMMTemperatures:
-        archive_period: 60000
-        polling_period: 60000
-      MboTxTemperatures:
-        archive_period: 60000
-        polling_period: 60000
-      MboTxVccVoltages:
-        archive_period: 60000
-        polling_period: 60000
-      MboRxVccVoltages:
-        archive_period: 60000
-        polling_period: 60000
+      SubarrayID:
+        code_push_event: true
+      VccID:
+        code_push_event: true
+      BitstreamChecksum:
+        code_push_event: true
+        archive_abs_change: 1
+      BitstreamVersion:
+        code_push_event: true
+      CommsIopllLockedFault:
+        code_push_event: true
+      DimmTemperatures:
+        code_push_event: true
+        archive_abs_change: 1.0
+      EmifBrFault:
+        code_push_event: true
+      EmifBlFault:
+        code_push_event: true
+      EmifTrFault:
+        code_push_event: true
+      Ethernet0PllFault:
+        code_push_event: true
+      Ethernet1PllFault:
+        code_push_event: true
+      Eth100g0Counters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g0ErrorCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g0DataFlowActive:
+        code_push_event: true
+      Eth100g0HasDataError:
+        code_push_event: true
+      Eth100g0AllTxCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g0AllRxCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g1Counters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g1ErrorCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g1DataFlowActive:
+        code_push_event: true
+      Eth100g1HasDataError:
+        code_push_event: true
+      Eth100g1AllTxCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      Eth100g1AllRxCounters:
+        code_push_event: true
+        archive_abs_change: 1
+      FansPwm:
+        code_push_event: true
+        archive_abs_change: 5
+      FansPwmEnable:
+        code_push_event: true
+        archive_abs_change: 1
+      FansRpm:
+        code_push_event: true
+        archive_abs_change: 50
       FansFault:
-        archive_period: 60000
-        polling_period: 60000
+        code_push_event: true
+      FpgaDieTemperature:
+        code_push_event: true
+        archive_abs_change: 1.0
+      FpgaDieVoltage0:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage1:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage2:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage3:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage4:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage5:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FpgaDieVoltage6:
+        code_push_event: true
+        archive_abs_change: 0.05
+      FsIopllLockedFault:
+        code_push_event: true
+      HasFanControl:
+        code_push_event: true
+      HumiditySensorTemperature:
+        code_push_event: true
+        archive_abs_change: 1.0
+      IopllLockedFault:
+        code_push_event: true
+      LtmInputVoltage:
+        code_push_event: true
+        archive_abs_change: 0.05
+      LtmOutputVoltage1:
+        code_push_event: true
+        archive_abs_change: 0.05
+      LtmOutputVoltage2:
+        code_push_event: true
+        archive_abs_change: 0.05
+      LtmInputCurrent:
+        code_push_event: true
+        archive_abs_change: 0.1
+      LtmOutputCurrent1:
+        code_push_event: true
+        archive_abs_change: 0.05
+      LtmOutputCurrent2:
+        code_push_event: true
+        archive_abs_change: 0.05
+      LtmTemperature1:
+        code_push_event: true
+        archive_abs_change: 1.0
+      LtmTemperature2:
+        code_push_event: true
+        archive_abs_change: 1.0
+      LtmVoltageWarning:
+        code_push_event: true
+      LtmCurrentWarning:
+        code_push_event: true
+      LtmTemperatureWarning:
+        code_push_event: true
+      MboTxTemperatures:
+        code_push_event: true
+        archive_abs_change: 1.0
+      MboTxVccVoltages:
+        code_push_event: true
+        archive_abs_change: 0.5
+      MboTxFaultStatus:
+        code_push_event: true
+      MboTxLolStatus:
+        code_push_event: true
+      MboTxLosStatus:
+        code_push_event: true
+      MboRxVccVoltages:
+        code_push_event: true
+        archive_abs_change: 0.05
+      MboRxLolStatus:
+        code_push_event: true
+      MboRxLosStatus:
+        code_push_event: true
+      SlimPllFault:
+        code_push_event: true
+      SystemClkFault:
+        code_push_event: true
+
 
 ### SDP ###
   - class: SDPSubarray
     attributes:
       versionId:
+        code_push_event: true
+      State:
         code_push_event: true
       adminMode:
         code_push_event: true
@@ -191,10 +335,14 @@ configuration:
       scanID:
         code_push_event: true
         archive_abs_change: 1
+      errorMessages:
+        code_push_event: true
 
   - class: SDPController
     attributes:
       versionId:
+        code_push_event: true
+      State:
         code_push_event: true
       adminMode:
         code_push_event: true
