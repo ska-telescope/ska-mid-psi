@@ -29,9 +29,6 @@ global:
   tangodb_port: 10000
   raw_user_account: ""
   raw_user_pass: ""
-  oda:
-    postgres:
-      host: psi-oda-db-postgresql.oda-db
 
 ska-tango-base:
   enabled: true
@@ -159,7 +156,7 @@ ska-oso-integration:
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
-      tag: 2.1.0-dev.cbd36d4f1
+      tag: 2.1.0-dev.cbd36d4f1 
   ska-oso-oet:
     telescope: SKA-Mid
   ska-oso-oet-ui:
@@ -183,29 +180,13 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: false
+      enabled: true
       auth:
         postgresPassword: localpassword
         existingSecret: false
   ska-oso-pht-services:
     secretProvider:
       enabled: false
-
-ska-db-oda-umbrella:
-  enabled: true
-  ska-db-oda:
-    enabled: true
-  pgadmin4:
-    enabled: true
-    env:
-      listenAddress: 0.0.0.0
-  vault:
-    enabled: false
-  postgresql:
-    enabled: true
-    auth:
-      postgresPassword: localpassword
-      existingSecret: false
 
 # Dish LMC
 ska-dish-lmc:
