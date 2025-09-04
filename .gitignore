@@ -32,6 +32,8 @@ charts/ska-tango-examples/secrets/tls.*
 
 charts/ska-mid-psi/charts/*
 charts/ska-mid-psi/Chart.lock
+charts/ska-mid-psi-db-oda/charts/*
+charts/ska-mid-psi-db-oda/Chart.lock
 telepresence.log
 charts/ska-tango-examples/Chart.lock
 charts/ska-tango-examples/charts/*
