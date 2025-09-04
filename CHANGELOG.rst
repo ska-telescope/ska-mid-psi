@@ -12,6 +12,10 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
           - Added CBF Controller and CBF Subarray attributes
           - Updated/added TalonBoard attributes to use code_push_event and set archive_abs_change
 
+2025-08-25
+**********
+* MAP-408: Spin off ODA to separate NS, remove from PSI deployment and reference in db deployment via chart args
+
 2025-08-19
 **********
 * MAP-404: Update TMC to 1.5.0 which only allows command execution if adminMode
