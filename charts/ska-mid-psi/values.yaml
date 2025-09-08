@@ -180,7 +180,7 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: true
+      enabled: false
       auth:
         postgresPassword: localpassword
         existingSecret: false
