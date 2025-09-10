@@ -64,10 +64,10 @@ ska-mid-cbf-tdc-mcs:
     minikube: false
 
 ska-mid-cbf-engineering-console:
-  engineeringconsole:
-    image:
-      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 1.1.5-dev.c8bf03696
+#  engineeringconsole:
+#    image:
+#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+#      tag: 1.1.5-dev.c8bf03696
   enabled: true
 
 ## EDA
@@ -180,7 +180,7 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: true
+      enabled: false
       auth:
         postgresPassword: localpassword
         existingSecret: false
