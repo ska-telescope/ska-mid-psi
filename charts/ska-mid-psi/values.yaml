@@ -113,7 +113,7 @@ ska-sdp:
   kafka:
     kraft:
       clusterId: kafka_cluster_id_test1
-  ska-sdp-qa:
+  qa:
     enabled: true
     display:
       vault:
