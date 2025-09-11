@@ -116,7 +116,8 @@ ska-sdp:
     display:
       vault:
         useVault: false
-      
+
+## Kafka
 kafka:
   enabled: true
   image: apache/kafka
