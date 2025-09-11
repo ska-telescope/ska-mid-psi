@@ -110,14 +110,26 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  kafka:
-    kraft:
-      clusterId: kafka_cluster_id_test1
   qa:
     enabled: true
     display:
       vault:
         useVault: false
+      
+kafka:
+  enabled: true
+  image: apache/kafka
+  version: 3.8.0
+  imagePullPolicy: IfNotPresent
+  kraft:
+    clusterId: kafka_cluster_id_test1
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1024Mi
+    limits:
+      cpu: 2000m
+      memory: 4096Mi
 
 # SPFRx
 spfrx:
