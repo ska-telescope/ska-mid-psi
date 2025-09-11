@@ -29,6 +29,7 @@ global:
   tangodb_port: 10000
   raw_user_account: ""
   raw_user_pass: ""
+  kafka_host: ska-mid-psi-kafka
 
 ska-tango-base:
   enabled: true
