@@ -123,8 +123,6 @@ kafka:
   image: apache/kafka
   version: 3.8.0
   imagePullPolicy: IfNotPresent
-  kraft:
-    clusterId: kafka_cluster_id_test1
   resources:
     requests:
       cpu: 1000m
