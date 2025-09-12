@@ -102,6 +102,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.cluster_domain=$(CLUSTER_DOMAIN) \
 	--set global.operator=$(SKA_TANGO_OPERATOR) \
+	--set global.kafka_host=ska-mid-psi-kafka.$(KUBE_NAMESPACE) \
 	--set ska-sdp.helmdeploy.namespace=$(KUBE_NAMESPACE_SDP) \
 	--set ska-sdp.qa.zookeeper.clusterDomain=$(CLUSTER_DOMAIN) \
 	--set kafka.clusterDomain=$(CLUSTER_DOMAIN) \
