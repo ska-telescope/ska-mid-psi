@@ -7,6 +7,11 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-09-09
 **********
+* MAP-451: Bump SDP to 2.0.0
+          - Kafka is now deployed within namespace via a template
+
+2025-09-09
+**********
 * MAP-427: Bump MCS to 1.3.5, EC to 1.1.6, and TMC to 1.6.0.
 
 2025-08-28
