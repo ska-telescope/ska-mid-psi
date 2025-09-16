@@ -92,7 +92,7 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   enabled: true
   affinity: {"nodeAffinity":{"requiredDuringSchedulingIgnoredDuringExecution":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"node-type","operator":"In","values":["vcc-1"]}]}]}}}
-  tolerations: [{"key":"node-type","operator":"Equal","value":"mcs","effect":"NoSchedule"}]
+  tolerations: [{"key":"node-type","operator":"Equal","value":"vcc-1","effect":"NoSchedule"}]
   defaultAdminMode: 1
 #  midcsplmc:
 #    image:
