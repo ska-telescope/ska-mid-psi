@@ -60,9 +60,9 @@ ska-mid-cbf-tdc-mcs:
 #      tag: 1.3.4-dev.cddb01d23
   hostInfo:
     environment: "mid-psi"
-  enabled: false
+  enabled: true
   global:
-    minikube: true
+    minikube: false
 
 ska-mid-cbf-engineering-console:
   engineeringconsole:
