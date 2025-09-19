@@ -62,13 +62,13 @@ ska-mid-cbf-tdc-mcs:
     environment: "mid-psi"
   enabled: false
   global:
-    minikube: false
+    minikube: true
 
 ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 1.1.6-dev.ce1e75af3
+      tag: 1.1.6-dev.caa41a7e0
   enabled: true
 
 ## EDA
