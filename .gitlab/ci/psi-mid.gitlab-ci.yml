@@ -34,7 +34,7 @@
     - echo "Wait namespace resources"
     - make k8s-wait
     - echo "Copy images into deployer artifacts"
-    - kubectl exec -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- cp -a /app/src/ska_mid_cbf_engineering_console/deployer/temp-artifacts/ /app/src/ska_mid_cbf_engineering_console/deployer/artifacts/
+    - kubectl exec -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- cp -a /app/src/ska_mid_cbf_engineering_console/deployer/temp-artifacts/* /app/src/ska_mid_cbf_engineering_console/deployer/artifacts/
     - mkdir -p build/reports
     - echo "DISH_LMC_ENABLED=$DISH_LMC_ENABLED" >> build/reports/deployment_variables.txt
     - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
