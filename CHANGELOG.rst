@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-09-24
+**********
+* MAP-454: Bump SDP to 2.1.0 to get new QA signal display UI
+
 2025-09-16
 **********
 * REL-2384: Bumping up SPFRx from version 1.2.0 to 1.3.0
