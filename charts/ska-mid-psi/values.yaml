@@ -29,6 +29,7 @@ global:
   tangodb_port: 10000
   raw_user_account: ""
   raw_user_pass: ""
+  kafka_host: ska-mid-psi-kafka
 
 ska-tango-base:
   enabled: true
@@ -110,18 +111,32 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  kafka:
-    kraft:
-      clusterId: kafka_cluster_id_test1
-  ska-sdp-qa:
+  qa:
     enabled: true
     display:
       vault:
         useVault: false
 
+## Kafka
+kafka:
+  enabled: true
+  image: apache/kafka
+  version: 3.8.0
+  imagePullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1024Mi
+    limits:
+      cpu: 2000m
+      memory: 4096Mi
+
 # SPFRx
 spfrx:
   enabled: true
+#  console:
+#    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+#    version: <version>-dev.c<hash>
   address: 192.168.8.200
   bin: /usr/local/bin
   k_value: 1
@@ -180,7 +195,7 @@ ska-oso-integration:
     vault:
       enabled: false
     postgresql:
-      enabled: true
+      enabled: false
       auth:
         postgresPassword: localpassword
         existingSecret: false
