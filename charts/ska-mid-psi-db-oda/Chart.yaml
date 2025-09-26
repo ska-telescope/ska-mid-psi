@@ -6,6 +6,6 @@ version: 0.1.0
 appVersion: 0.1.0
 dependencies:
   - name: ska-db-oda-umbrella
-    version: 8.0.1
+    version: 11.7.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-oso-umbrella.enabled
