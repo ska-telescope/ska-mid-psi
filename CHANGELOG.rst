@@ -5,6 +5,23 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-09-24
+**********
+* MAP-454: Bump SDP to 2.1.0 to get new QA signal display UI
+
+2025-09-16
+**********
+* REL-2384: Bumping up SPFRx from version 1.2.0 to 1.3.0
+
+2025-09-09
+**********
+* MAP-451: Bump SDP to 2.0.0
+          - Kafka is now deployed within namespace via a template
+
+2025-09-09
+**********
+* MAP-427: Bump MCS to 1.3.5, EC to 1.1.6, and TMC to 1.6.0.
+
 2025-08-28
 **********
 * MAP-230: Bumped ska-tango-archiver to 2.10.0. Updates to the mid-telescope.yaml include:

@@ -8,23 +8,23 @@ icon: https://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_201
 dependencies:
   # TANGO
   - name: ska-tango-base
-    version: 0.4.23
+    version: 0.4.24
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-base.enabled
   - name: ska-tango-util
-    version: 0.4.23
+    version: 0.4.24
     repository: https://artefact.skao.int/repository/helm-internal
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.3.4
+    version: 1.3.5
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.5
-    repository: https://artefact.skao.int/repository/helm-internal
-    # repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
+    version: 1.1.6-dev.c5e2c74e6
+    #repository: https://artefact.skao.int/repository/helm-internal
+    repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
@@ -33,7 +33,7 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql-ariadne
-    version: 1.0.3
+    version: 1.0.4
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
@@ -55,21 +55,22 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.5.0
+    version: 1.6.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
 
   # SDP
   - name: ska-sdp
-    version: 1.2.3
+    version: 2.1.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-sdp.enabled
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 1.2.0
+    version: 1.3.0
     repository: https://artefact.skao.int/repository/helm-internal
+    # repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx
     condition: spfrx.enabled
 
