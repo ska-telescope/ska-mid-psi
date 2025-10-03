@@ -12,13 +12,6 @@ variables:
   SPFRX_ENABLED: false
   RUNNER_TAG: k8srunner-psi-mid
 
-helm-chart-lint:
-  tags:
-    - $RUNNER_TAG
-helm-chart-build:
-  tags:
-    - $RUNNER_TAG
-
 stages:
   - lint
   - build
