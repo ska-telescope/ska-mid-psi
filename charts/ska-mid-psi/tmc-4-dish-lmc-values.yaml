@@ -2,7 +2,7 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: ["001", "036", "063", "100"]
+  dishes: &dish_ids ["SKA001","SKA036","SKA063","SKA100"]
 tmc-mid:
   enabled: true
   global:
@@ -20,11 +20,7 @@ tmc-mid:
       DishVccConfig:
         DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.1.0-rc-mid-itf#tmdata"
         DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+      DishIDs: *dish_ids
     mocks:
       enabled: false
       dish: false
@@ -38,11 +34,7 @@ tmc-mid:
       - '063'
       - '100'
     subarraynode:
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+      DishIDs: *dish_ids
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
       CommandTimeOut: 240
     sdpsubarrayleafnode:
