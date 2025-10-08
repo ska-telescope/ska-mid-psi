@@ -2,7 +2,7 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: ["001","036","063","100"]
+  dishes: ["ska001","ska036","ska063","ska100"]
 tmc-mid:
   enabled: true
   global:
