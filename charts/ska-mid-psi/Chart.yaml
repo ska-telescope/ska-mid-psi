@@ -56,7 +56,7 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.8.0-rc.1-dev.c67366948
+    version: v1.8.0-rc.1-dev.c67366948
     # repository: https://artefact.skao.int/repository/helm-internal
     repository: https://gitlab.com/api/v4/projects/34728004/packages/helm/dev
     condition: ska-tmc-mid.enabled
