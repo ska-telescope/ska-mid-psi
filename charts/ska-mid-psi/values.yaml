@@ -5,7 +5,7 @@ global:
   minikube: false
   operator: true
   exposeAllDS: true
-  dish_suffix: "elt/master"
+  dish_suffix: "mid-dish/dish-manager"
   annotations:
     app.gitlab.com/app: ska-mid-psi
     app.gitlab.com/env: ska
