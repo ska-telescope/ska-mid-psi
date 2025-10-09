@@ -17,12 +17,12 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.3.5-dev.cf8776487
-    # repository: https://artefact.skao.int/repository/helm-internal
-    repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
+    version: 1.3.6-rc.1
+    repository: https://artefact.skao.int/repository/helm-internal
+    # repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.6
+    version: 1.1.7-rc.1
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
@@ -56,9 +56,9 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.8.0-rc.1-dev.c0ed2827f
-    # repository: https://artefact.skao.int/repository/helm-internal
-    repository: https://gitlab.com/api/v4/projects/34728004/packages/helm/dev
+    version: 1.8.0-rc.2
+    repository: https://artefact.skao.int/repository/helm-internal
+    # repository: https://gitlab.com/api/v4/projects/34728004/packages/helm/dev
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
 
