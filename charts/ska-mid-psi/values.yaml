@@ -163,11 +163,6 @@ ska-pst:
 # ODA
 ska-oso-integration:
   enabled: true
-  ska-oso-services:
-    rest:
-      image:
-        registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
-        tag: 0.8.0
   ska-oso-odt-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
