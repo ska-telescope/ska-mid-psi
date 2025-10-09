@@ -95,7 +95,7 @@ ska-csp-lmc-mid:
   midcsplmc:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
-      tag: 1.2.0-dev.c4469cf15
+      tag: 1.2.0-dev.c242368df
 
 ## sdp
 ska-sdp:
