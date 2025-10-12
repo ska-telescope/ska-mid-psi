@@ -28,9 +28,7 @@ tmc-mid:
       - '063'
       - '100'
     subarraynode:
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+      DishIDs: ["SKA001","SKA036","SKA063","SKA100"]
+      CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
+      CommandTimeOut: 240
 
