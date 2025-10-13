@@ -208,11 +208,6 @@ ska-dish-lmc:
   enabled: true
   ska-tango-base:
     enabled: false
-  ska-mid-dish-manager:
-    dishmanager:
-      image:
-        registry: registry.gitlab.com/ska-telescope/ska-mid-dish-manager
-        tag: 8.4.4-dev.c3d92edac
   ska-mid-dish-simulators:
     enabled: true
     deviceServers:
