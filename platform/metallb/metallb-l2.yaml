@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: psi-lb-layer2
+  namespace: metallb
+spec:
+  ipAddressPools:
+  - psi-lb-pool
+  interfaces:
+  - ens1f0np0
