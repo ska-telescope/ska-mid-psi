@@ -65,10 +65,10 @@ ska-mid-cbf-tdc-mcs:
     minikube: false
 
 ska-mid-cbf-engineering-console:
-#  engineeringconsole:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      tag: 1.1.5-dev.c8bf03696
+  engineeringconsole:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+      tag: 1.1.6-dev.ce0a8e366
   enabled: true
 
 ## EDA
