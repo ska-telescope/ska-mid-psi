@@ -57,7 +57,7 @@ ska-mid-cbf-tdc-mcs:
   midcbf:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
-      tag: 1.3.5-dev.cdcd32cfc
+      tag: 1.3.5-dev.cddfdcbba
   hostInfo:
     environment: "mid-psi"
   enabled: true
