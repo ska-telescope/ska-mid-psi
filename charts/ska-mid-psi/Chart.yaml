@@ -76,7 +76,7 @@ dependencies:
 
   # PST
   - name: ska-pst
-    version: 0.12.1
+    version: 1.3.1
     repository: https://artefact.skao.int/repository/helm-internal
     alias: ska-pst
     condition: ska-pst.enabled
