@@ -148,6 +148,7 @@ spfrx:
 # PST
 ska-pst:
   enabled: true
+  telescope: SKA-mid
   ska-pst-core:
     send:
       dpdApiIntegration: false
