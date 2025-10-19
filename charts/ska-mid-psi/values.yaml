@@ -92,6 +92,7 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   enabled: true
   defaultAdminMode: 1
+  numPstBeams: 1
 #  midcsplmc:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
