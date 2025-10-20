@@ -115,6 +115,9 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
+	--set ska-oso-integration.ska-oso-odt-ui.clientId=45ba692e-0594-4de7-9f8a-39484b319ec5 \
+	--set ska-oso-integration.ska-oso-odt-ui.apiId=e4d6bb9b-cdd0-46c4-b30a-d045091b501b \
+	--set ska-oso-integration.ska-oso-odt-ui.tenantId=78887040-bad7-494b-8760-88dcacfb3805 \
 	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-services.rest.oda.postgres.host=psi-$(ODA_DB_NS)-postgresql.$(ODA_DB_NS) \
