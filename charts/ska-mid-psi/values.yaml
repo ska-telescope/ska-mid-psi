@@ -150,7 +150,7 @@ spfrx:
 ska-pst:
   enabled: true
   telescope: SKA-mid
-  ska-pst-core:
+  core:
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
