@@ -63,6 +63,9 @@ ska-mid-cbf-tdc-mcs:
   enabled: true
   global:
     minikube: false
+  deviceServers:
+    tm-subarray-node:
+      enabled: true
 
 ska-mid-cbf-engineering-console:
 #  engineeringconsole:
