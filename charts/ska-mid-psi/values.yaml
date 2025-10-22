@@ -160,12 +160,12 @@ ska-pst:
       type: nfs
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
-    recv:
-      args:
-        - "-c"
-        - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
-      dataNic: "net1"
     applications:
+      recv:
+        args:
+          - "-c"
+          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+        dataNic: "net1"
       dsp_disk:
         args:
           - "-c"
