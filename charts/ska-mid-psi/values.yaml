@@ -154,6 +154,10 @@ ska-pst:
   enabled: true
   telescope: SKA-mid
   core:
+    podSecurityContext:
+      capabilities:
+        add:
+          - NET_ADMIN
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
