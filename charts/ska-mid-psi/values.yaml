@@ -158,6 +158,7 @@ ska-pst:
       capabilities:
         add:
           - NET_ADMIN
+	  - CAP_NET_RAW
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
