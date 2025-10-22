@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-10-22
+**********
+* MAP-477: Bump tangogql to 1.0.6
+
 2025-10-07
 **********
 * MAP-465: Bump SDP 2.1.1 for latest QA display fixes
