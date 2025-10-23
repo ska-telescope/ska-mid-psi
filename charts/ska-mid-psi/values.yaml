@@ -165,6 +165,11 @@ ska-oso-integration:
   enabled: true
   ska-oso-oet:
     telescope: SKA-Mid
+    vault:
+      enabled: false
+  ska-oso-services:
+    vault:
+      enabled: false
   ska-oso-slt-services:
     secretProvider:
       enabled: false
