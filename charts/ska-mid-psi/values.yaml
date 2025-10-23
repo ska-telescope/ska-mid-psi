@@ -63,6 +63,9 @@ ska-mid-cbf-tdc-mcs:
   enabled: true
   global:
     minikube: false
+  deviceServers:
+    tm-subarray-node:
+      enabled: true
 
 ska-mid-cbf-engineering-console:
 #  engineeringconsole:
@@ -92,6 +95,7 @@ ska-tango-archiver:
 ska-csp-lmc-mid:
   enabled: true
   defaultAdminMode: 1
+  numPstBeams: 1
 #  midcsplmc:
 #    image:
 #      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
@@ -148,17 +152,26 @@ spfrx:
 # PST
 ska-pst:
   enabled: true
-  ska-pst-core:
+  telescope: SKA-mid
+  core:
+    podSecurityContext:
+      privileged: true
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
       type: nfs
-    podAnnotations: 
+    podAnnotations:
       k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
-    recv:
-      args:
-        - "-c"
-        - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+    applications:
+      recv:
+        args:
+          - "-c"
+          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+        dataNic: "net1"
+      dsp_disk:
+        args:
+          - "-c"
+          - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT} -n"
 
 # ODA
 ska-oso-integration:
