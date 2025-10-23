@@ -172,10 +172,6 @@ ska-oso-integration:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
       tag: 4.3.0
-    auth:
-      clientId: '45ba692e-0594-4de7-9f8a-39484b319ec5'
-      apiId: 'e4d6bb9b-cdd0-46c4-b30a-d045091b501b'
-      tenantId: '78887040-bad7-494b-8760-88dcacfb3805'
   ska-oso-oet:
     telescope: SKA-Mid
   ska-oso-oet-ui:
