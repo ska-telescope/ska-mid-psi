@@ -17,19 +17,19 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.3.5
+    version: 1.3.7
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.6
+    version: 1.1.9
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
 
   # TARANTA SUITE
   - name: ska-tango-taranta
-    version: 2.15.0
+    version: 2.17.2
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql-ariadne
@@ -37,7 +37,7 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
-    version: 0.2.5
+    version: 0.2.7
     repository: https://artefact.skao.int/repository/helm-internal
     condition: global.taranta_auth_enabled
 
