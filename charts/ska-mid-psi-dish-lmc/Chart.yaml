@@ -17,6 +17,6 @@ dependencies:
   # Dish LMC
   ### NOTE: need to update the version also in ska-mid-psi/Chart.yaml
   - name: ska-dish-lmc
-    version: 8.4.0
+    version: 8.4.7
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
