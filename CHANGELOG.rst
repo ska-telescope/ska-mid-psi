@@ -5,6 +5,24 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-10-23:
+* MAP-478: 
+  * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
+  * Bumped CSP.LMC to 1.3.0_rc.1, TMC 1.8.0-rc.3 to be inline with Jupyter-notebook updates
+  * Bumped Taranta to 2.17.2 and Taranta-Auth to 0.2.7
+
+2025-10-22
+**********
+* MAP-477: Bump tangogql to 1.0.6
+
+2025-10-07
+**********
+* MAP-465: Bump SDP 2.1.1 for latest QA display fixes
+
+2025-09-24
+**********
+* MAP-454: Bump SDP to 2.1.0 to get new QA signal display UI
+
 2025-09-16
 **********
 * REL-2384: Bumping up SPFRx from version 1.2.0 to 1.3.0
