@@ -155,3 +155,35 @@ psi-mid-on-demand-redeploy:
     - .psi_mid_on_demand
   environment:
     name: psi-mid/ska-$CI_COMMIT_REF_NAME
+
+.persistent_psi:
+  tags:
+    - k8srunner-psi-mid
+  stage: persistent_psi
+  extends:
+    - .mid
+  variables:
+    VALUES: "values.yml"
+    INGRESS_HOST: "INGRESS.IP.ADDRESS"
+    SERVICE_ACCOUNT: "ci-svc-psi-staging"
+    HELM_RELEASE: "test-psi-staging"
+    KUBE_NAMESPACE: ska-mid-psi-staging
+    KUBE_NAMESPACE_SDP: ska-mid-psi-staging-SDP
+  
+psi-mid-staging-deploy:
+  extends:
+    - .deploy
+    - .persistent_psi
+  allow_failure: true
+  environment:
+    name: psi-mid/ska-mid-psi-staging
+
+psi-mid-staging-cleanup:
+  stage: cleanup
+  extends:
+    - .cleanup
+    - .persistent_psi
+  when: manual
+  environment:
+    name: psi-mid/ska-mid-psi-staging
+    action: stop

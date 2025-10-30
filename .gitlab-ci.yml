@@ -17,6 +17,7 @@ stages:
   - build
   - deploy
   - on_demand_psi
+  - persistent_psi
   - test
   - log-collector
   - join-reports

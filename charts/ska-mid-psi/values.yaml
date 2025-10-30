@@ -162,7 +162,7 @@ ska-pst:
 
 # ODA
 ska-oso-integration:
-  enabled: true
+  enabled: false
   ska-oso-services:
     rest:
       image:

@@ -120,6 +120,10 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set ska-oso-integration.ska-oso-services.rest.oda.postgres.host=psi-oda-db-postgresql.$(ODA_DB_NS) \
 	$(TARANTA_PARAMS)
 
+ifeq ($(KUBE_NAMESPACE),ska-mid-psi-staging)
+	K8S_CHART_PARAMS += --set ska-oso-integration.enabled=true 
+endif
+
 ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
