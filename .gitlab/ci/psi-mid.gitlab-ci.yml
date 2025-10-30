@@ -174,12 +174,12 @@ psi-mid-staging-deploy:
   extends:
     - .deploy
     - .persistent_psi
+  when: manual
   allow_failure: true
   environment:
     name: psi-mid/ska-mid-psi-staging
 
 psi-mid-staging-cleanup:
-  stage: cleanup
   extends:
     - .cleanup
     - .persistent_psi
