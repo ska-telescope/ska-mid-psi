@@ -170,9 +170,9 @@ psi-mid-on-demand-redeploy:
     KUBE_NAMESPACE: ska-mid-psi-staging
     KUBE_NAMESPACE_SDP: ska-mid-psi-staging-sdp
   
-psi-mid-staging-deploy:
+psi-mid-staging-redeploy:
   extends:
-    - .deploy
+    - .redeploy
     - .persistent_psi
   when: manual
   allow_failure: true
