@@ -163,22 +163,13 @@ ska-pst:
 # ODA
 ska-oso-integration:
   enabled: false
-  ska-oso-services:
-    rest:
-      image:
-        registry: registry.gitlab.com/ska-telescope/oso/ska-oso-services
-        tag: 0.8.0
-  ska-oso-odt-ui:
-    image:
-      registry: registry.gitlab.com/ska-telescope/oso/ska-oso-odt-ui
-      tag: 2.1.0-dev.cbd36d4f1 
   ska-oso-oet:
     telescope: SKA-Mid
-  ska-oso-oet-ui:
-    image:
-      registry: registry.gitlab.com
-      image: ska-telescope/oso/ska-oso-oet-ui/ska-oso-oet-ui
-      tag:  0.2.0-dev.c0f747f09
+    vault:
+      enabled: false
+  ska-oso-services:
+    vault:
+      enabled: false
   ska-oso-slt-services:
     secretProvider:
       enabled: false

@@ -83,7 +83,7 @@ dependencies:
 
   # ODA
   - name: ska-oso-integration
-    version: 0.1.1
+    version: 0.2.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-oso-integration.enabled
 
