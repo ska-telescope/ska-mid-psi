@@ -5,7 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-10-30:
+**********
+* REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
+
 2025-10-23:
+**********
 * MAP-478: 
   * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
   * Bumped CSP.LMC to 1.3.0_rc.1, TMC 1.8.0-rc.3 to be inline with Jupyter-notebook updates
