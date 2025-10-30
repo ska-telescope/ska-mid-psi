@@ -6,7 +6,7 @@ PROJECT = ska-mid-psi
 KUBE_NAMESPACE ?= ska-mid-psi
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
-ODA_DB_NS ?= oda-db
+ODA_DB_NS ?= ska-mid-psi-staging
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
