@@ -167,11 +167,21 @@ ska-pst:
       k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
     applications:
       recv:
+        resources:
+          limits:
+            memory: 16000Mi
+          requests:
+            memory: 16000Mi
         args:
           - "-c"
           - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
         dataNic: "net1"
       dsp_disk:
+        resources:
+          limits:
+            memory: 16000Mi
+          requests:
+            memory: 16000Mi
         args:
           - "-c"
           - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT} -n"
