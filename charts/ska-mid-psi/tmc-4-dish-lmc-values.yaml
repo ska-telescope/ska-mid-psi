@@ -8,7 +8,7 @@ tmc-mid:
   dishleafnode:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
-      tag: 0.25.1-dev.cc0fffaf2
+      tag: 0.24.5-dev.c650a08e6
   global:
     namespace_dish:
       dish_names:
