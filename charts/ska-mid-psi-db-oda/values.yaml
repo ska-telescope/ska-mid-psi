@@ -18,7 +18,10 @@ ska-db-oda-umbrella:
     env:
       listenAddress: 0.0.0.0
   vault:
-    enabled: false
+    enabled: true
+    mount: "kv-v2"
+    secretPath: "secret/oda"
+
   postgresql:
     enabled: true
     auth:
