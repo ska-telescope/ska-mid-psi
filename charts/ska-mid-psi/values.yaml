@@ -195,7 +195,9 @@ ska-oso-integration:
     pgadmin4:
       enabled: false
     vault:
-      enabled: false
+      enabled: true
+      mount: "kv-v2"
+      secretPath: "secret/oda"
     postgresql:
       enabled: false
       auth:
