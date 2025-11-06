@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-11-05:
+**********
+* REL-2487: Bump SPFRx from 1.4.0 to 1.4.1 and DishLMC from 8.4.0 to 8.4.6
+
 2025-10-30:
 **********
 * REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
