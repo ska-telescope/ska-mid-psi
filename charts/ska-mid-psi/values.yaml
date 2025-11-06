@@ -134,7 +134,7 @@ kafka:
 # SPFRx
 spfrx:
   enabled: true
-  console: 1.4.1-dev.cd2cf8700
+  console:
     registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
     version: 1.4.1-dev.c63be5a97
   address: 192.168.8.200
