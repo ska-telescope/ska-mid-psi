@@ -143,7 +143,7 @@ spfrx:
   local_dir: artifacts
   scripts_dir: scripts
   instance: spfrx-20
-  logging_level: 4
+  logging_level: 5
 
 # PST
 ska-pst:
