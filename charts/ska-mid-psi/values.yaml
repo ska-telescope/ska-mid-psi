@@ -137,7 +137,7 @@ spfrx:
   # console:
   #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
   #   version: 1.4.1-dev.c63be5a97
-  # address: 192.168.8.200
+  address: 192.168.8.200
   bin: /usr/local/bin
   k_value: 1
   local_dir: artifacts
