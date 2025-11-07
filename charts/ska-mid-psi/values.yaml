@@ -204,9 +204,6 @@ ska-oso-integration:
       secretPath: "secret/oda"
     postgresql:
       enabled: false
-      # auth:
-      #   postgresPassword: localpassword
-      #   existingSecret: false
   ska-oso-pht-services:
     secretProvider:
       enabled: false
