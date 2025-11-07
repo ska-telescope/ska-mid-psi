@@ -192,6 +192,10 @@ ska-oso-integration:
     enabled: true
     ska-db-oda:
       enabled: true
+      rest:
+        backend:
+          postgres:
+            host: psi-oda-db-postgresql.oda-db
     pgadmin4:
       enabled: false
     vault:
