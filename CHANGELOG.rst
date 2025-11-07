@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-11-06:
+**********
+* MAP-433: Enabled Vault for SDP QA Display and ODA.
+
 2025-10-30:
 **********
 * REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
