@@ -7,7 +7,9 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-11-06:
 **********
-* MAP-433: Enabled Vault for SDP QA Display and ODA.
+* MAP-433:
+  * Enabled Vault for SDP QA Display and ODA.
+  * Fixed bug where ODA Rest API couldn't connect to the ODA DB.
 
 2025-10-30:
 **********
