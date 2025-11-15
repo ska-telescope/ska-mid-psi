@@ -22,9 +22,9 @@ The instructions to set up Vault were taken from the Vault Tutorial: https://dev
 
 ### Insert secrets into Vault and verify they exist
 ```
-vault kv put -mount=kv-v2 secret/oda ADMIN_POSTGRES_PASSWORD="localpassword"
+vault kv put -mount=kv-v2 secret/oda ADMIN_POSTGRES_PASSWORD=<postgres password>
 vault kv get kv-v2/secret/oda
-vault kv put -mount=kv-v2 secret/sdp/qa REACT_APP_MSENTRA_TENANT_ID="1111" REACT_APP_MSENTRA_CLIENT_ID="1234"
+vault kv put -mount=kv-v2 secret/sdp/qa REACT_APP_MSENTRA_TENANT_ID=<tenant id> REACT_APP_MSENTRA_CLIENT_ID=<client id>
 vault kv get kv-v2/secret/sdp/qa
 ```
 
