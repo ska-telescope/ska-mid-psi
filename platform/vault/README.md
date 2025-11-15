@@ -2,11 +2,13 @@
 
 ## Create the Vault namespace
 
-`kubectl create namespace vault` 
+```
+kubectl create namespace vault
+``` 
 
 ## Set up Vault
 
-These instructions were taken from the Vault Tutorial: https://developer.skao.int/en/latest/tutorial/vault.html#deploy-the-vault-secrets-operator
+The instructions to set up Vault were taken from the Vault Tutorial: https://developer.skao.int/en/latest/tutorial/vault.html#deploy-the-vault-secrets-operator
 
 1. Clone the CICD Deploy Minikube repository: `git clone https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube.git`
 2. Navigate to the cloned repo
