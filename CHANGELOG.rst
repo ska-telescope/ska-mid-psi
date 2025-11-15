@@ -5,6 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-11-14
+**********
+* MAP-449:
+  * REL-2376: Bump MCS from 1.3.7 to 1.3.8
+  * REL-2377: Bump Engineering Console from 1.1.9 to 1.1.10
+
 2025-11-06:
 **********
 * MAP-433:
