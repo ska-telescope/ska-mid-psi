@@ -17,12 +17,12 @@ dependencies:
 
   # MID CBF
   - name: ska-mid-cbf-tdc-mcs
-    version: 1.3.7-dev.cadb83e18
-    # repository: https://artefact.skao.int/repository/helm-internal
-    repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
+    version: 1.3.8
+    repository: https://artefact.skao.int/repository/helm-internal
+    # repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.10-rc.1
+    version: 1.1.10
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
@@ -68,7 +68,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 1.3.0
+    version: 1.4.1
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx
@@ -92,6 +92,6 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 8.4.0
+    version: 8.4.6
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled

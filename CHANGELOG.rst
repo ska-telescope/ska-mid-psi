@@ -5,7 +5,28 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-11-14
+**********
+* MAP-449:
+  * REL-2376: Bump MCS from 1.3.7 to 1.3.8
+  * REL-2377: Bump Engineering Console from 1.1.9 to 1.1.10
+
+2025-11-06:
+**********
+* MAP-433:
+  * Enabled Vault for SDP QA Display and ODA.
+  * Fixed bug where ODA Rest API couldn't connect to the ODA DB.
+
+2025-11-05:
+**********
+* REL-2487: Bump SPFRx from 1.4.0 to 1.4.1 and DishLMC from 8.4.0 to 8.4.6
+
+2025-10-30:
+**********
+* REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
+
 2025-10-23:
+**********
 * MAP-478: 
   * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
   * Bumped CSP.LMC to 1.3.0_rc.1, TMC 1.8.0-rc.3 to be inline with Jupyter-notebook updates
