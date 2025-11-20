@@ -115,7 +115,9 @@ ska-sdp:
     enabled: true
     display:
       vault:
-        useVault: false
+        useVault: true
+        engine: "kv-v2"
+        pathToSecretVault: secret/sdp/qa
 
 ## Kafka
 kafka:
@@ -190,15 +192,18 @@ ska-oso-integration:
     enabled: true
     ska-db-oda:
       enabled: true
+      rest:
+        backend:
+          postgres:
+            host: psi-oda-db-postgresql.oda-db
     pgadmin4:
       enabled: false
     vault:
-      enabled: false
+      enabled: true
+      mount: "kv-v2"
+      secretPath: "secret/oda"
     postgresql:
       enabled: false
-      auth:
-        postgresPassword: localpassword
-        existingSecret: false
   ska-oso-pht-services:
     secretProvider:
       enabled: false

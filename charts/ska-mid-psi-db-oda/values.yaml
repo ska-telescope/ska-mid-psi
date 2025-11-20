@@ -5,20 +5,24 @@ global:
   cluster_domain: cluster.local
   ingress:
     host: 142.73.34.170
-  oda:
-    postgres:
-      host: psi-oda-db-postgresql.oda-db
 
 ska-db-oda-umbrella:
   enabled: true
   ska-db-oda:
     enabled: true
+    rest:
+      backend:
+        postgres:
+          host: psi-oda-db-postgresql.oda-db
   pgadmin4:
     enabled: true
     env:
       listenAddress: 0.0.0.0
   vault:
-    enabled: false
+    enabled: true
+    mount: "kv-v2"
+    secretPath: "secret/oda"
+
   postgresql:
     enabled: true
     auth:
