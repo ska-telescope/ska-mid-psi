@@ -119,6 +119,7 @@ ska-sdp:
         engine: "kv-v2"
         pathToSecretVault: secret/sdp/qa
 
+
 ## Kafka
 kafka:
   enabled: true
