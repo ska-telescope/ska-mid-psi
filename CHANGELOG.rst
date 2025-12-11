@@ -5,6 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-12-10
+**********
+* MAP-468: 
+  * Update SDP from 2.1.1 to 2.2.0
+  * Add in deployment of the Vault static secret for the SDP qa secret to be pulled from the Vault
+
 2025-11-14
 **********
 * MAP-449:
