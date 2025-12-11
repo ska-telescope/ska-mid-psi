@@ -5,6 +5,11 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-12-11
+**********
+* MAP-511:
+  * Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
+
 2025-12-10
 **********
 * MAP-468: 
