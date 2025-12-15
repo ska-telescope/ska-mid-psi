@@ -29,7 +29,7 @@ dependencies:
 
   # TARANTA SUITE
   - name: ska-tango-taranta
-    version: 2.17.2
+    version: 2.18.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql-ariadne
@@ -62,7 +62,7 @@ dependencies:
 
   # SDP
   - name: ska-sdp
-    version: 2.1.1
+    version: 2.2.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-sdp.enabled
 
