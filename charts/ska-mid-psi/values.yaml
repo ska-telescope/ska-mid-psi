@@ -115,13 +115,6 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  qa:
-    enabled: true
-    display:
-      vault:
-        useVault: true
-        engine: "kv-v2"
-        pathToSecretVault: secret/sdp/qa
 
 ## Kafka
 kafka:
