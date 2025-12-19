@@ -111,11 +111,6 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  qa:
-    enabled: true
-    display:
-      vault:
-        useVault: false
 
 ## Kafka
 kafka:
@@ -134,9 +129,9 @@ kafka:
 # SPFRx
 spfrx:
   enabled: true
-#  console:
-#    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-#    version: <version>-dev.c<hash>
+  # console:
+  #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+  #   version: <version>-dev.c<hash>
   address: 192.168.8.200
   bin: /usr/local/bin
   k_value: 1
@@ -181,12 +176,18 @@ ska-oso-integration:
     enabled: true
     ska-db-oda:
       enabled: true
+      rest:
+        backend:
+          postgres:
+            host: psi-oda-db-postgresql.oda-db
     pgadmin4:
       enabled: true
       env:
         listenAddress: 0.0.0.0
     vault:
-      enabled: false
+      enabled: true
+      mount: "kv-v2"
+      secretPath: "secret/oda"
     postgresql:
       enabled: true
       auth:

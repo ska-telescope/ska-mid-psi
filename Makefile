@@ -117,7 +117,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
-	--set ska-oso-integration.ska-oso-services.rest.oda.postgres.host=psi-$(ODA_DB_NS)-postgresql.$(ODA_DB_NS) \
+	--set ska-oso-integration.ska-db-oda-umbrella.ska-db-oda.rest.backend.postgres.host=psi-$(ODA_DB_NS)-postgresql.$(ODA_DB_NS) \
 	$(TARANTA_PARAMS)
 
 ifeq ($(KUBE_NAMESPACE),ska-mid-psi-staging)

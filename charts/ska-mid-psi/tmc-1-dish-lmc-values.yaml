@@ -3,6 +3,7 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
+  dishids: &dish_ids ["SKA001"]
   dishes: ["001"]
 tmc-mid:
   enabled: true
