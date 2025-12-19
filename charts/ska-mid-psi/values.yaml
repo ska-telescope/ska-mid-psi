@@ -111,13 +111,6 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
-  qa:
-    enabled: true
-    display:
-      vault:
-        useVault: true
-        engine: "kv-v2"
-        pathToSecretVault: secret/sdp/qa
 
 ## Kafka
 kafka:
@@ -136,9 +129,9 @@ kafka:
 # SPFRx
 spfrx:
   enabled: true
-  console:
-    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-    version: 1.4.4-dev.cba93ec7c
+  # console:
+  #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+  #   version: 1.4.4-dev.cba93ec7c
   address: 192.168.8.200
   bin: /usr/local/bin
   k_value: 1

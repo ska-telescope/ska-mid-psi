@@ -5,6 +5,21 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-12-18
+**********
+* MAP_453: Bump TMC to 1.12.0 (must use ska-tmc-configure/4.0 until new DishLMC release is available)
+
+2025-12-11
+**********
+* MAP-511:
+  * Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
+
+2025-12-10
+**********
+* MAP-468: 
+  * Update SDP from 2.1.1 to 2.2.0
+  * Add in deployment of the Vault static secret for the SDP qa secret to be pulled from the Vault
+
 2025-11-14
 **********
 * MAP-449:
