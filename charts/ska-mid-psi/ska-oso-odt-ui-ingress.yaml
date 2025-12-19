@@ -7,7 +7,7 @@ metadata:
     app: ska-oso-odt-ui
     release: test-psi-staging
   name: ska-oso-odt-ui-ingress
-  namespace: {{ .Release.Namespace }}
+  namespace: ska-mid-psi-staging
 spec:
   ingressClassName: nginx
   rules:
@@ -19,7 +19,7 @@ spec:
             name: ska-oso-odt-ui-service
             port:
               number: 80
-        path: /{{ .Release.Namespace }}/odt/(?!api)(.*)
+        path: /ska-mid-psi-staging/odt/(?!api)(.*)
         pathType: ImplementationSpecific
   tls:
   - hosts:
