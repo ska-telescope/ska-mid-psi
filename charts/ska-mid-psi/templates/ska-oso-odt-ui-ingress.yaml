@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  labels:
+    app: ska-oso-odt-ui
+    release: test-psi-staging
+  name: ska-oso-odt-ui-ingress
+  namespace: {{ .Release.Namespace }}
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rmdskadevdu011.mda.ca
+    http:
+      paths:
+      - backend:
+          service:
+            name: ska-oso-odt-ui-service
+            port:
+              number: 80
+        path: /{{ .Release.Namespace }}/odt/(?!api)(.*)
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - rmdskadevdu011.mda.ca
+    secretName: ssl-cert
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.103.140.27

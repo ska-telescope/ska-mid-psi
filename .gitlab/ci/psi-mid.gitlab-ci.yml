@@ -178,7 +178,9 @@ psi-mid-staging-redeploy:
   allow_failure: true
   environment:
     name: psi-mid/ska-mid-psi-staging
-
+  after_script:
+    - echo "Installing certificates as secret"
+    - pwd
 psi-mid-staging-cleanup:
   extends:
     - .cleanup
