@@ -12,7 +12,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-12-18
 **********
-* MAP_453: Bump TMC to 1.12.0 (must use ska-tmc-configure/4.0 until new DishLMC release is available)
+* MAP-453: Bump TMC to 1.12.0 (must use ska-tmc-configure/4.0 until new DishLMC release is available)
 
 2025-12-11
 **********
