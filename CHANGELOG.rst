@@ -7,6 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-12-22
 **********
+* REL-2601: Bump SPFRx.SW to 1.4.5
 * SKB-1103/MAP-524: Bump PST to 1.3.2 and CSP.LMC to 1.4.0-rc.1
 
 2025-12-18
