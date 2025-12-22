@@ -3,7 +3,7 @@ PROJECT = ska-mid-psi
 
 # KUBE_NAMESPACE defines the Kubernetes Namespace that will be deployed to
 # using Helm.  If this does not already exist it will be created
-KUBE_NAMESPACE ?= ska-mid-psi
+KUBE_NAMESPACE ?= ska-mid-psi-staging
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
 ODA_DB_NS ?= ska-mid-psi-staging

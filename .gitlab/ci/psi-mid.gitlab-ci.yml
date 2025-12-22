@@ -179,8 +179,9 @@ psi-mid-staging-redeploy:
   environment:
     name: psi-mid/ska-mid-psi-staging
   after_script:
-    - echo "Setting up Ingress"
-    - kubectl apply -f ./charts/ska-mid-psi/ska-oso-odt-ui-ingress.yaml -n ${KUBE_NAMESPACE}
+    - echo "Installing certificates as"
+    - pwd
+
 psi-mid-staging-cleanup:
   extends:
     - .cleanup
