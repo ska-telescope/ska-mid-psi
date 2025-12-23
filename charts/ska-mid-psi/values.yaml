@@ -179,7 +179,7 @@ ska-pst:
             memory: 16000Mi
         args:
           - "-c"
-          - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT} -n"
+          - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT}"
 
 # ODA
 ska-oso-integration:
