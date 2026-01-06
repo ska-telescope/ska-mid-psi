@@ -5,6 +5,13 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-01-05
+**********
+* MAP-438: 
+  * Update DishLMC to 9.0.0 and TMC to 1.13.0_rc.1
+  * Update Taranta Auth to 0.3.0 and TangoGQL Ariadne to 1.0.7
+  * Update ska-tango-util and ska-tango-base to 1.0.5
+
 2025-12-22
 **********
 * REL-2601: Bump SPFRx.SW to 1.4.5

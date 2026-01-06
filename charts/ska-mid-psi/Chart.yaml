@@ -8,11 +8,11 @@ icon: https://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_201
 dependencies:
   # TANGO
   - name: ska-tango-base
-    version: 0.4.24
+    version: 1.0.5
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-base.enabled
   - name: ska-tango-util
-    version: 0.4.24
+    version: 1.0.5
     repository: https://artefact.skao.int/repository/helm-internal
 
   # MID CBF
@@ -33,11 +33,11 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql-ariadne
-    version: 1.0.6
+    version: 1.0.7
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
-    version: 0.2.7
+    version: 0.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: global.taranta_auth_enabled
 
@@ -55,7 +55,7 @@ dependencies:
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.12.0
+    version: 1.13.0-rc.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
@@ -92,6 +92,6 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 8.4.6
+    version: 9.0.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
