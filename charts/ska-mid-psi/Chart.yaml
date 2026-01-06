@@ -49,8 +49,9 @@ dependencies:
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
-    version: 1.4.0-rc.1
-    repository: https://artefact.skao.int/repository/helm-internal
+    version: 1.4.0-dev.c1f8bbc23
+    repository: https://gitlab.com/api/v4/projects/25578388/packages/helm/dev
+    #repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-csp-lmc-mid.enabled
 
   # TMC

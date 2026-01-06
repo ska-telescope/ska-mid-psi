@@ -96,10 +96,10 @@ ska-csp-lmc-mid:
   enabled: true
   defaultAdminMode: 1
   numPstBeams: 1
-#  midcsplmc:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
-#      tag: 1.3.0-dev.ca971dfd9
+  midcsplmc:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
+      tag: 1.4.0-dev.c1f8bbc23
 
 ## sdp
 ska-sdp:
