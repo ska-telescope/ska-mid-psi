@@ -7,6 +7,7 @@ KUBE_NAMESPACE ?= ska-mid-psi-staging
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
 ODA_DB_NS ?= ska-mid-psi-staging
+BACKEND_URL ?= https://rmdskadevdu011.mda.ca/$(KUBE_NAMESPACE)
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
@@ -115,6 +116,7 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_port=10000 \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
+	--set ska-oso-integration.ska-oso-odt-ui.ingress.backendURL=$(BACKEND_URL) \
 	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
 	--set ska-oso-integration.ska-db-oda-umbrella.ska-db-oda.rest.backend.postgres.host=psi-$(ODA_DB_NS)-postgresql.$(ODA_DB_NS) \
