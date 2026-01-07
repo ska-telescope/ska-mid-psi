@@ -169,6 +169,7 @@ psi-mid-on-demand-redeploy:
     HELM_RELEASE: "test-psi-staging"
     KUBE_NAMESPACE: ska-mid-psi-staging
     KUBE_NAMESPACE_SDP: ska-mid-psi-staging-sdp
+    LOADBALANCER_IP: rmdskadevdu011.mda.ca
   
 psi-mid-staging-redeploy:
   extends:
@@ -178,9 +179,6 @@ psi-mid-staging-redeploy:
   allow_failure: true
   environment:
     name: psi-mid/ska-mid-psi-staging
-  after_script:
-    - echo "Installing certificates as"
-    - pwd
 
 psi-mid-staging-cleanup:
   extends:
