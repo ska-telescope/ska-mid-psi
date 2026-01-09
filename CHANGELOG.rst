@@ -5,6 +5,33 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-01-05
+**********
+* MAP-438: 
+  * Update DishLMC to 9.0.0 and TMC to 1.13.0_rc.1
+  * Update Taranta Auth to 0.3.0 and TangoGQL Ariadne to 1.0.7
+  * Update ska-tango-util and ska-tango-base to 1.0.5
+
+2025-12-22
+**********
+* REL-2601: Bump SPFRx.SW to 1.4.5
+* SKB-1103/MAP-524: Bump PST to 1.3.2 and CSP.LMC to 1.4.0-rc.1
+
+2025-12-18
+**********
+* MAP-453: Bump TMC to 1.12.0 (must use ska-tmc-configure/4.0 until new DishLMC release is available)
+
+2025-12-11
+**********
+* MAP-511:
+  * Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
+
+2025-12-10
+**********
+* MAP-468: 
+  * Update SDP from 2.1.1 to 2.2.0
+  * Add in deployment of the Vault static secret for the SDP qa secret to be pulled from the Vault
+
 2025-11-14
 **********
 * MAP-449:
