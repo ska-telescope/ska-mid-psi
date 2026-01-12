@@ -190,6 +190,10 @@ ska-oso-integration:
       secretPath: "secret/oda"
     postgresql:
       enabled: true
+      resources:
+        limits:
+          cpu: 300m
+          memory: 200Mi
       auth:
         postgresPassword: localpassword
         existingSecret: false
