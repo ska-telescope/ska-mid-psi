@@ -158,6 +158,9 @@ ska-pst:
 # ODA
 ska-oso-integration:
   enabled: false
+  ska-oso-oet-ui:
+    image:
+      tag: 1.1.2
   ska-oso-oet:
     telescope: SKA-Mid
     vault:
