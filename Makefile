@@ -9,6 +9,7 @@ CI_PIPELINE_ID ?= unknown
 ODA_DB_NS ?= oda-db
 
 OSO_ENABLED ?= false
+VAULT_ENABLED ?= true
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
@@ -115,6 +116,8 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-sdp.qa.display.vault.useVault=$(VAULT_ENABLED) \
+	--set ska-oso-integration.ska-db-oda-umbrella.vault.enabled=$(VAULT_ENABLED) \
 	--set ska-oso-integration.enabled=$(OSO_ENABLED) \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \

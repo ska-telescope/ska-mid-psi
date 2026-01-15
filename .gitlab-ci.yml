@@ -11,6 +11,8 @@ variables:
   PST_ENABLED: false
   SPFRX_ENABLED: false
   RUNNER_TAG: k8srunner-psi-mid
+  OSO_ENABLED: false
+  VAULT_ENABLED: true
 
 stages:
   - lint

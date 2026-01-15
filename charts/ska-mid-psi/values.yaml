@@ -115,6 +115,10 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
+  qa:
+    display:
+      vault:
+        useVault: true
 
 ## Kafka
 kafka:
