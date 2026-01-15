@@ -12,8 +12,8 @@
 2. Create the statefulset within the dedicated namespace using the command: `kubectl apply -f system-tests-sts.yaml -n system-tests-artifacts`
 
 ## Delete the resources
-1. Create the PVC within the dedicated namespace using the command: `kubectl delete pvc system-tests-pvc -n system-tests-artifacts`
-2. Create the statefulset within the dedicated namespace using the command: `kubectl delete sts artifacts-sts -n system-tests-artifacts`
+1. Delete the PVC within the dedicated namespace using the command: `kubectl delete pvc system-tests-pvc -n system-tests-artifacts`
+2. Delete the statefulset within the dedicated namespace using the command: `kubectl delete sts artifacts-sts -n system-tests-artifacts`
 
 ## Updating the storage capacity
 1. Delete statefulset using the command provided above
