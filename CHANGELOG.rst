@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-01-15
+**********
+* MAP-530: TEMPORARY: Revert SDP from 2.2.0 to 2.1.1 and enable CI options for not using the vault.
+
 2026-01-05
 **********
 * MAP-438: 

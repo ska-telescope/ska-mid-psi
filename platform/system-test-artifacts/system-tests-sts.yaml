@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: artifacts-svc
+spec:
+  selector:
+    app: artifacts
+  ports:
+    - port: 80
+      targetPort: 9876
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: artifacts-sts
+spec:
+  serviceName: artifacts-svc
+  selector:
+    matchLabels:
+      app: artifacts
+  template:
+    metadata:
+      labels:
+        app: artifacts
+    spec:
+      volumes:
+        - name: system-tests-volume
+          persistentVolumeClaim:
+            claimName: system-tests-pvc
+      containers:
+      - name: system-tests-artifacts-cont
+        image: ubuntu
+        command: ["/bin/bash","-c"]
+        args: ["tail -f /dev/null"]
+        volumeMounts:
+        - name: system-tests-volume
+          mountPath: "/app/artifacts"

@@ -115,6 +115,10 @@ ska-sdp:
       enabled: true
       size: 5Gi
       storageClassName: nfss1
+  qa:
+    display:
+      vault:
+        useVault: true
 
 ## Kafka
 kafka:
@@ -183,7 +187,7 @@ ska-pst:
 
 # ODA
 ska-oso-integration:
-  enabled: true
+  enabled: false
   ska-oso-services:
     rest:
       image:
