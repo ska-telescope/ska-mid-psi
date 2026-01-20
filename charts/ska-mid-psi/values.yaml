@@ -161,7 +161,7 @@ ska-oso-integration:
   ska-oso-oet-ui:
     image:
       registry: registry.gitlab.com/ska-telescope/oso/ska-oso-oet-ui
-      tag: 1.1.2-dev.c5b49b749
+      tag: 1.1.0-dev.c81532d66
   ska-oso-oet:
     telescope: SKA-Mid
     vault:
