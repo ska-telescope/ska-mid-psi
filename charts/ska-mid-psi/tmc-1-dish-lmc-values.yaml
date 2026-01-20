@@ -4,7 +4,7 @@ xauthority: "~/.Xauthority"
 
 global:
   dishids: &dish_ids ["SKA001"]
-  dishes: ["001"]
+  dishes: ["SKA001"]
 tmc-mid:
   enabled: true
   global:
