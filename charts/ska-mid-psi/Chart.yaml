@@ -91,6 +91,6 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 9.1.0
+    version: 9.0.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
