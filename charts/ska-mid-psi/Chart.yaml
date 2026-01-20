@@ -68,7 +68,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 1.4.5-dev.c67f5dc07
+    version: 1.4.5-dev.cfce03fc1
     repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx
     condition: spfrx.enabled
@@ -91,6 +91,6 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 9.0.0
+    version: 9.1.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
