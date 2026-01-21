@@ -9,6 +9,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 **********
 * MAP-479:
   * Add the option in the CI to deploy a namespace under a persistent name
+* MAP-513: 
   * For this persistent namespace, update the oso-integration to 0.2.1
   * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
   * Add in ingress patch YAML files
