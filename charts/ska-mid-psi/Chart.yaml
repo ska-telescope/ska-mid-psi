@@ -8,11 +8,11 @@ icon: https://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_201
 dependencies:
   # TANGO
   - name: ska-tango-base
-    version: 0.4.24
+    version: 1.0.5
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tango-base.enabled
   - name: ska-tango-util
-    version: 0.4.24
+    version: 1.0.5
     repository: https://artefact.skao.int/repository/helm-internal
 
   # MID CBF
@@ -33,11 +33,11 @@ dependencies:
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-tangogql-ariadne
-    version: 1.0.6
+    version: 1.0.7
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-taranta.enabled
   - name: ska-tango-taranta-auth
-    version: 0.2.7
+    version: 0.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: global.taranta_auth_enabled
 
@@ -49,26 +49,26 @@ dependencies:
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
-    version: 1.3.0
+    version: 1.4.0-rc.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-csp-lmc-mid.enabled
 
   # TMC
   - name: ska-tmc-mid
-    version: 1.12.0
+    version: 1.13.0-rc.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-tmc-mid.enabled
     alias: tmc-mid
 
   # SDP
   - name: ska-sdp
-    version: 2.2.0
+    version: 2.1.1
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-sdp.enabled
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 1.4.4
+    version: 1.4.5
     repository: https://artefact.skao.int/repository/helm-internal
     # repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx
@@ -76,7 +76,8 @@ dependencies:
 
   # PST
   - name: ska-pst
-    version: 0.12.1
+    version: 1.3.2
+    # repository: https://gitlab.com/api/v4/projects/37595790/packages/helm/dev
     repository: https://artefact.skao.int/repository/helm-internal
     alias: ska-pst
     condition: ska-pst.enabled
@@ -91,6 +92,6 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 8.4.6
+    version: 9.0.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled

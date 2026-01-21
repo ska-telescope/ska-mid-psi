@@ -9,6 +9,10 @@ CI_PIPELINE_ID ?= unknown
 ODA_DB_NS ?= ska-mid-psi-staging
 BACKEND_URL ?= https://rmdskadevdu011.mda.ca/$(KUBE_NAMESPACE)
 
+# Feature enablers for PSI deployment
+OSO_ENABLED ?= false
+VAULT_ENABLED ?= false
+
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
 HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
@@ -115,6 +119,9 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-sdp.qa.display.vault.useVault=$(VAULT_ENABLED) \
+	--set ska-oso-integration.ska-db-oda-umbrella.vault.enabled=$(VAULT_ENABLED) \
+	--set ska-oso-integration.enabled=$(OSO_ENABLED) \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
 	--set ska-oso-integration.ska-oso-odt-ui.backendURL=$(BACKEND_URL) \
@@ -146,6 +153,10 @@ ifeq ($(DISH_LMC_ENABLED),true)
 	endif
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
+endif
+
+ifeq ($(PST_ENABLED),true)
+	K8S_CHART_PARAMS += --set ska-csp-lmc-mid.numPstBeams=1
 endif
 
 PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 
