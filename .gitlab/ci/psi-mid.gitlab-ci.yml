@@ -164,7 +164,6 @@ psi-mid-on-demand-redeploy:
     - .mid
   variables:
     VALUES: "values.yml"
-    INGRESS_HOST: "INGRESS.IP.ADDRESS"
     SERVICE_ACCOUNT: "ci-svc-psi-staging"
     HELM_RELEASE: "test-psi-staging"
     KUBE_NAMESPACE: ska-mid-psi-staging
