@@ -163,7 +163,6 @@ psi-mid-on-demand-redeploy:
   extends:
     - .mid
   variables:
-    VALUES: "values.yaml"
     SERVICE_ACCOUNT: "ci-svc-psi-staging"
     HELM_RELEASE: "test-psi-staging"
     KUBE_NAMESPACE: ska-mid-psi-staging
