@@ -5,6 +5,15 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-01-20
+**********
+* MAP-479:
+  * Add the option in the CI to deploy a namespace under a persistent name
+* MAP-513: 
+  * For this persistent namespace, update the oso-integration to 0.2.1
+  * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
+  * Add in ingress patch YAML files
+  
 2026-01-15
 **********
 * MAP-530: TEMPORARY: Revert SDP from 2.2.0 to 2.1.1 and enable CI options for not using the vault.

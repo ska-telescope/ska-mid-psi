@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: test-psi-staging
+    meta.helm.sh/release-namespace: ska-mid-psi-staging
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  creationTimestamp: "2026-01-08T00:47:25Z"
+  generation: 1
+  labels:
+    app: ska-oso-oet-ui
+    app.kubernetes.io/managed-by: Helm
+    chart: ska-oso-oet-ui-1.1.0
+    release: test-psi-staging
+  name: ska-oso-oet-ui-ingress
+  namespace: ska-mid-psi-staging
+  resourceVersion: "513716192"
+  uid: 8c6036af-da02-4b53-9a9d-a29dde6f2479
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: ska-oso-oet-ui-service
+            port:
+              number: 80
+        path: /ska-mid-psi-staging/oet/(?!(?:[1-9[]|1[0-6[])/api)(.*)
+        pathType: ImplementationSpecific
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.103.140.27
