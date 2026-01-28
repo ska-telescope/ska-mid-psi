@@ -5,6 +5,30 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-01-27
+**********
+* MAP-357: Update DishLMC to 9.1.0 and SPFRx Console to 2.0.0
+
+2026-01-20
+**********
+* MAP-479:
+  * Add the option in the CI to deploy a namespace under a persistent name
+* MAP-513: 
+  * For this persistent namespace, update the oso-integration to 0.2.1
+  * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
+  * Add in ingress patch YAML files
+  
+2026-01-15
+**********
+* MAP-530: TEMPORARY: Revert SDP from 2.2.0 to 2.1.1 and enable CI options for not using the vault.
+
+2026-01-05
+**********
+* MAP-438: 
+  * Update DishLMC to 9.0.0 and TMC to 1.13.0_rc.1
+  * Update Taranta Auth to 0.3.0 and TangoGQL Ariadne to 1.0.7
+  * Update ska-tango-util and ska-tango-base to 1.0.5
+
 2025-12-22
 **********
 * REL-2601: Bump SPFRx.SW to 1.4.5

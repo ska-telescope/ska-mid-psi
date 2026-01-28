@@ -8,3 +8,4 @@ spec:
   - psi-lb-pool
   interfaces:
   - ens1f0np0
+  - enp2s0f0

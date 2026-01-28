@@ -11,12 +11,15 @@ variables:
   PST_ENABLED: false
   SPFRX_ENABLED: false
   RUNNER_TAG: k8srunner-psi-mid
+  OSO_ENABLED: false
+  VAULT_ENABLED: false
 
 stages:
   - lint
   - build
   - deploy
   - on_demand_psi
+  - persistent_psi
   - test
   - log-collector
   - join-reports

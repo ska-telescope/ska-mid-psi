@@ -3,10 +3,15 @@ PROJECT = ska-mid-psi
 
 # KUBE_NAMESPACE defines the Kubernetes Namespace that will be deployed to
 # using Helm.  If this does not already exist it will be created
-KUBE_NAMESPACE ?= ska-mid-psi
+KUBE_NAMESPACE ?= ska-mid-psi-staging
 KUBE_NAMESPACE_SDP ?= $(KUBE_NAMESPACE)-sdp
 CI_PIPELINE_ID ?= unknown
-ODA_DB_NS ?= oda-db
+ODA_DB_NS ?= ska-mid-psi-staging
+BACKEND_URL ?= https://rmdskadevdu011.mda.ca/$(KUBE_NAMESPACE)
+
+# Feature enablers for PSI deployment
+OSO_ENABLED ?= false
+VAULT_ENABLED ?= false
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
 HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
@@ -37,10 +42,10 @@ SKA_TANGO_OPERATOR ?= true
 ARCHIVING_ENABLED ?= false ## Set to true to deploy EDA
 
 #  Arguments for ODA services. Currently targets a ODA deployed within the same namespace
-OET_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/oet/api/v8
-ODA_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(ODA_DB_NS)/oda/api/v8
-SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/slt/api/v0
-PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://142.73.34.170/$(KUBE_NAMESPACE)/ptt/api/v0
+OET_URL ?= $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/oet/1/api/v10
+ODA_URL ?= $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)/$(ODA_DB_NS)/oda/api/v11
+SLT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/slt/api/v1
+PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/ptt/api/v1
 
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
@@ -78,7 +83,7 @@ TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
-DISH_PARAMS = --set global.dishes=001 \
+DISH_PARAMS = --set global.dishes="{001}" \
 			  --set global.dish_id=$(DISH_ID) \
 			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
 			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
@@ -113,13 +118,20 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
+	--set ska-sdp.qa.display.vault.useVault=$(VAULT_ENABLED) \
+	--set ska-oso-integration.ska-db-oda-umbrella.vault.enabled=$(VAULT_ENABLED) \
+	--set ska-oso-integration.enabled=$(OSO_ENABLED) \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
+	--set ska-oso-integration.ska-oso-odt-ui.backendURL=$(BACKEND_URL) \
 	--set ska-oso-integration.ska-oso-ptt.backendURL=$(PTT_SERVICES_URL) \
 	--set ska-oso-integration.ska-oso-slt-ui.backendURL=$(SLT_SERVICES_URL) \
-	--set ska-oso-integration.ska-oso-services.rest.oda.postgres.host=psi-oda-db-postgresql.$(ODA_DB_NS) \
-	--set ska-oso-integration.ska-db-oda-umbrella.ska-db-oda.rest.backend.postgres.host=psi-oda-db-postgresql.$(ODA_DB_NS) \
+	--set ska-oso-integration.ska-db-oda-umbrella.ska-db-oda.rest.backend.postgres.host=psi-$(ODA_DB_NS)-postgresql.$(ODA_DB_NS) \
 	$(TARANTA_PARAMS)
+
+ifeq ($(KUBE_NAMESPACE),ska-mid-psi-staging)
+	K8S_CHART_PARAMS += --set ska-oso-integration.enabled=true 
+endif
 
 ifeq ($(ARCHIVING_ENABLED),true)
 	include archiver/archiver.mk
@@ -140,6 +152,10 @@ ifeq ($(DISH_LMC_ENABLED),true)
 	endif
 else ifeq ($(DISH_LMC_ENABLED),false)
 	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
+endif
+
+ifeq ($(PST_ENABLED),true)
+	K8S_CHART_PARAMS += --set ska-csp-lmc-mid.numPstBeams=1
 endif
 
 PYTHON_VARS_AFTER_PYTEST = -s --cucumberjson=build/reports/cucumber.json --json-report --json-report-file=build/reports/report.json --namespace $(KUBE_NAMESPACE) -v -rpfs 

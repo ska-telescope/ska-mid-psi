@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: test-psi-staging
+    meta.helm.sh/release-namespace: ska-mid-psi-staging
+  labels:
+    app: ska-oso-oet
+    release: test-psi-staging
+  name: ska-oso-oet-rest-test-psi-staging-1
+  namespace: ska-mid-psi-staging
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rmdskadevdu011.mda.ca
+    http:
+      paths:
+      - backend:
+          service:
+            name: ska-oso-oet-rest-test-psi-staging-1
+            port:
+              number: 5000
+        path: /ska-mid-psi-staging/oet/1/api.*
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - rmdskadevdu011.mda.ca
+    secretName: ssl-cert
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.103.140.27
