@@ -71,7 +71,7 @@ ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 1.1.10-dev.cab0406db
+      tag: 1.1.10-dev.c6a451a23 
   enabled: true
 
 ## EDA
