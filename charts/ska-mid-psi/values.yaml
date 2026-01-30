@@ -74,29 +74,6 @@ ska-mid-cbf-engineering-console:
 #      tag: 1.1.5-dev.c8bf03696
   enabled: true
 
-## EDA
-ska-tango-archiver:
-  legacy_compatibility: true
-  enabled: false
-  telescope: SKA-mid
-  telescope_environment: MID_PSI
-  hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
-  dbname: default_timescaledb
-  dbuser: admin
-  dbpassword: TfqQuRxku4aYTRpk
-  pgappname: "mid-psi-eda"
-  port: 5432
-  configuration_manager: mid-eda/cm/01
-  event_subscriber: mid-eda/es/01
-  archwizard_config: MyHDB=tango://databaseds-tango-base.ska-tango-archiver.svc.cluster.local:10000/mid-eda/cm/01
-  vault:
-    enabled: true
-    secretPath: "secret/eda"
-    secretMount: kv-v2
-    name: db-secret
-  vaultaddress: "https://192.168.129.117:8200"
-  api_id: "api://8baac5d7-92ef-4adb-99b6-1e6e834245ad"
-
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
