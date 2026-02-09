@@ -30,6 +30,10 @@ global:
   raw_user_account: ""
   raw_user_pass: ""
   kafka_host: ska-mid-psi-kafka
+  bar:
+    secret:
+      vault:
+        enabled: false
 
 ska-tango-base:
   enabled: true
