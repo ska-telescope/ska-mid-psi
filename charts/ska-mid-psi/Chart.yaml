@@ -95,3 +95,10 @@ dependencies:
     version: 9.1.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
+
+  - name: ska-mid-cbf-fhs-vcc
+    version: 0.3.2
+    repository: https://artefact.skao.int/repository/helm-internal
+  - name: ska-mid-cbf-emulators
+    version: 0.7.4
+    repository: https://artefact.skao.int/repository/helm-internal

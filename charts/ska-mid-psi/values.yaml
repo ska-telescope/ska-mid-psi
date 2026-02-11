@@ -249,3 +249,90 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+ska-mid-cbf-fhs-vcc:
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  midcbf:
+    image:
+      registry: harbor.skao.int/production
+      image: ska-mid-cbf-fhs-vcc
+      tag: 0.3.2
+      pullPolicy: Always
+  standaloneSimulator: false
+  properties:
+    deviceVersionNum: "0.3.0"
+    deviceGitlabHash: "0"
+    simulationMode: "0"
+    emulatorBaseUrl: "ska-mid-cbf.svc.cluster.local:5001"
+    bitstreamPath: &bitstreamPath "/app/mnt/bitstream"
+    bitstreamId: &bitstreamId "agilex-vcc"
+    bitstreamVersion: &bitstreamVer "0.1.2"
+    emulatorId: &emulatorId "fhs-vcc-emulator-{{.deviceId}}"
+    emulatorIpBlockId: ""
+    firmwareIpBlockId: ""
+    healthMonitorPollInterval: "3"
+  numVccUnits: 2
+  VCCUnits:
+  - unitNum: 1
+    emulationMode: '1'
+    instancesRange: [1, 6]
+    networkSwitchId: 192.168.7.31
+    bmc_endpoint: 127.0.1.1
+  - unitNum: 2
+    emulationMode: '1'
+    instancesRange: [7, 12]
+    networkSwitchId: 192.168.7.31
+    bmc_endpoint: 127.0.1.1
+
+ska-mid-cbf-emulators:
+  enabled: true
+  emulator:
+    app_label: ska-mid-cbf-fhs-system-tests
+    image:
+      repository: registry.gitlab.com/ska-telescope/ska-mid-cbf-emulators/ska-mid-cbf-emulators-emulator
+      tag: 0.7.4
+      pullPolicy: Always
+    verbosity: 3
+  injector:
+    app_label: ska-mid-cbf-fhs-system-tests
+    image:
+      repository: registry.gitlab.com/ska-telescope/ska-mid-cbf-emulators/ska-mid-cbf-emulators-injector
+      tag: 0.7.4
+      pullPolicy: Always
+
+  properties:
+    bitstreamPath: *bitstreamPath
+    bitstreamId: *bitstreamId
+    bitstreamVersion: *bitstreamVer
+    emulatorId: *emulatorId
+
+  instances:
+  - name: fhs-vcc-1
+    deviceId: "1"
+  - name: fhs-vcc-2
+    deviceId: "2"
+  - name: fhs-vcc-3
+    deviceId: "3"
+  - name: fhs-vcc-4
+    deviceId: "4"
+  - name: fhs-vcc-5
+    deviceId: "5"
+  - name: fhs-vcc-6
+    deviceId: "6"
+  - name: fhs-vcc-1
+    deviceId: "7"
+  - name: fhs-vcc-2
+    deviceId: "8"
+  - name: fhs-vcc-3
+    deviceId: "9"
+  - name: fhs-vcc-4
+    deviceId: "10"
+  - name: fhs-vcc-5
+    deviceId: "11"
+  - name: fhs-vcc-6
+    deviceId: "12"
+
+  rabbitmq:
+    host: rabbitmq-service.ska-mid-cbf.svc.{{ .Values.global.cluster_domain }}
