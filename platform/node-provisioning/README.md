@@ -38,6 +38,14 @@ Remove the second argument added by kubeadm, should only have the --container-ru
 kubeadm reset
 ````
 
+Add the following to /etc/crictl.yaml and save the file:
+````
+runtime-endpoint: unix:///run/containerd/containerd.sock
+image-endpoint: unix:///run/containerd/containerd.sock
+timeout: 10
+debug: true
+````
+
 On Dev11 Run the following command:
 `kubeadm token create --print-join-command`
 
