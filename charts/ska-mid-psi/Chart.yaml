@@ -22,7 +22,7 @@ dependencies:
     # repository: https://gitlab.com/api/v4/projects/65335629/packages/helm/dev
     condition: ska-mid-cbf-tdc-mcs.enabled
   - name: ska-mid-cbf-engineering-console
-    version: 1.1.10-dev.c57641b05
+    version: 1.1.10-dev.cfd72778a
     # repository: https://artefact.skao.int/repository/helm-internal
     repository: https://gitlab.com/api/v4/projects/29657133/packages/helm/dev
     condition: ska-mid-cbf-engineering-console.enabled
@@ -68,7 +68,7 @@ dependencies:
 
   # SPFRX DEPLOYMENT
   - name: ska-mid-dish-spfrx-talondx-console
-    version: 2.0.0-dev.cd673f306
+    version: 2.0.0-dev.c165603d3
     # repository: https://artefact.skao.int/repository/helm-internal
     repository: https://gitlab.com/api/v4/projects/45166302/packages/helm/dev
     alias: spfrx

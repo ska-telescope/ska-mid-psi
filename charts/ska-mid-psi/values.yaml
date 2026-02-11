@@ -72,7 +72,7 @@ ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 1.1.10-dev.c57641b05
+      tag: 1.1.10-dev.cfd72778a
   bar:
     secret:
       vault:
@@ -143,7 +143,7 @@ spfrx:
   enabled: true
   console:
     registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-    version: 2.0.0-dev.cd673f306
+    version: 2.0.0-dev.c165603d3
   bar:
     secret:
       vault:
