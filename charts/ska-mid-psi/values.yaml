@@ -335,4 +335,4 @@ ska-mid-cbf-emulators:
     deviceId: "12"
 
   rabbitmq:
-    host: rabbitmq-service.ska-mid-cbf.svc.{{ .Values.global.cluster_domain }}
+    host: rabbitmq-service
