@@ -5,6 +5,9 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-02-11:
+* MAP-510: Adding documentation for node provisioning
+
 2026-01-27
 **********
 * MAP-357: Update DishLMC to 9.1.0 and SPFRx Console to 2.0.0
