@@ -11,6 +11,22 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * Remove ska-tango-archiver from ska-mid-psi charts and add it to its own subfolder
   * Update ska-tango-archiver from 2.10.0 to 5.0.1 and enable use of Vault
 
+2026-02-11:
+* MAP-510: Adding documentation for node provisioning
+
+2026-01-27
+**********
+* MAP-357: Update DishLMC to 9.1.0 and SPFRx Console to 2.0.0
+
+2026-01-20
+**********
+* MAP-479:
+  * Add the option in the CI to deploy a namespace under a persistent name
+* MAP-513: 
+  * For this persistent namespace, update the oso-integration to 0.2.1
+  * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
+  * Add in ingress patch YAML files
+  
 2026-01-15
 **********
 * MAP-530: TEMPORARY: Revert SDP from 2.2.0 to 2.1.1 and enable CI options for not using the vault.
