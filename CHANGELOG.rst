@@ -5,7 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-02-19
+**********
+* MAP-537: Update TDC-MCS to 1.4.0-rc.2 and EC to 1.2.0-rc.2
+
 2026-02-11:
+**********
 * MAP-510: Adding documentation for node provisioning
 
 2026-01-27
