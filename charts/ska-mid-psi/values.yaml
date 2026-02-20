@@ -92,7 +92,7 @@ ska-tango-archiver:
     enabled: false
 
 ## TMC
-ska-tmc-mid:
+tmc-mid:
   subarraynode:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-subarraynode
