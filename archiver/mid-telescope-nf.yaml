@@ -1,0 +1,75 @@
+tango_hosts:
+  - th1:
+      host: "databaseds-tango-base.ska-mid-psi-staging.svc.cluster.local"
+      port: "10000"
+  - th2:
+      host: "tango-host-databaseds-test.ska-tango-archiver.svc.cluster.local"
+      port: "10000"
+configuration_managers:
+  - cm1:
+      trl: mid-eda/cm/01
+      th: th2
+  - cm2:
+      trl: mid-eda/cm/02
+      th: th2
+
+event_subscribers:
+  - es1:
+      trl: mid-eda/es/01
+      th: th2
+  - es2:
+      trl: mid-eda/es/02
+      th: th2
+
+defaults:
+  - th: th1
+  - cm: cm1
+  - es: es1
+
+attributes:
+
+### TMC ###
+  - trl: mid-tmc/central-node/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/DishVccValidationStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeAvailability
+    th: th1
+    configuration:
+      code_push_event: true
+
+  - trl: mid-tmc/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/isSubarrayAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+
+
+
