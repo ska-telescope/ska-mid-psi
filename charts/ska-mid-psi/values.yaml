@@ -91,6 +91,12 @@ ska-tango-archiver:
   vault:
     enabled: false
 
+## TMC
+ska-tmc-mid:
+  subarraynode:
+    image:
+      tag: 1.0.0-dev.c04e04ad7
+
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
