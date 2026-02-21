@@ -142,11 +142,11 @@ ska-pst:
     - effect: NoSchedule
       key: node-type
       value: "pst-gpu"
+  nodeSelector:
+    kubernetes.io/hostname=rm2skapstdu01.mda.ca
   core:
     selftest:
       enabled: true
-    nodeSelector:
-      kubernetes.io/hostname=rm2skapstdu01.mda.ca
     podSecurityContext:
       privileged: true
     send:
