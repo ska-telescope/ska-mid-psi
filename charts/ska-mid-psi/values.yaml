@@ -143,7 +143,7 @@ ska-pst:
       key: node-type
       value: "pst-gpu"
   nodeSelector:
-    kubernetes.io/hostname=rm2skapstdu01.mda.ca
+    kubernetes.io/hostname: rm2skapstdu01.mda.ca
   core:
     selftest:
       enabled: true
