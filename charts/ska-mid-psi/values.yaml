@@ -152,8 +152,8 @@ ska-pst:
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
-      name: ska-pst-lfs-pvc
-      type: nfs
+      hostPath: /data
+      type: local-storage
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: "kube-system/sdn-pst"
     applications:
