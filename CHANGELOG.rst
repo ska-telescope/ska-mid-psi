@@ -5,13 +5,13 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-02-23
+**********
+* MAP-537: Update TDC-MCS to 1.4.0 and EC to 1.2.0
+
 2026-02-20
 **********
 * MAP-507: Update SPFRx Console to 2.1.0
-
-2026-02-19
-**********
-* MAP-537: Update TDC-MCS to 1.4.0-rc.2 and EC to 1.2.0-rc.2
 
 2026-02-17
 **********
