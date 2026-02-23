@@ -5,9 +5,19 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-02-20
+**********
+* MAP-507: Update SPFRx Console to 2.1.0
+
 2026-02-19
 **********
 * MAP-537: Update TDC-MCS to 1.4.0-rc.2 and EC to 1.2.0-rc.2
+
+2026-02-17
+**********
+* MAP-422:
+  * Remove ska-tango-archiver from ska-mid-psi charts and add it to its own subfolder
+  * Update ska-tango-archiver from 2.10.0 to 5.0.1 and enable use of Vault
 
 2026-02-11:
 **********
