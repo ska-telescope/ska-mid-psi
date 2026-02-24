@@ -142,6 +142,9 @@ ska-pst:
     - effect: NoSchedule
       key: node-type
       value: "pst-gpu"
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      value: "present"
   nodeSelector:
     kubernetes.io/hostname: rm2skapstdu01.mda.ca
   core:
