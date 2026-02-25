@@ -148,6 +148,7 @@ ska-pst:
   nodeSelector:
     kubernetes.io/hostname: rm2skapstdu01.mda.ca
   core:
+    runtimeClassName: nvidia
     selftest:
       enabled: true
     podSecurityContext:
