@@ -5,6 +5,9 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-02-25:
+* MAP-510: Updated documentation for node provisioning specific to PST GPU server
+
 2026-02-23
 **********
 * MAP-537: Update TDC-MCS to 1.4.0 and EC to 1.2.0

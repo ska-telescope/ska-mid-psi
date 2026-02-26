@@ -138,15 +138,28 @@ ska-pst:
 #    registry: registry.gitlab.com/ska-telescope/pst/ska-pst
 #    tag: 1.3.1-dev.cc27a29dc
   telescope: SKA-mid
+  tolerations:
+    - effect: NoSchedule
+      key: node-type
+      value: "pst-gpu"
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      value: "present"
+  nodeSelector:
+    kubernetes.io/hostname: rm2skapstdu01.mda.ca
   core:
+    runtimeClassName: nvidia
+    selftest:
+      enabled: false
     podSecurityContext:
       privileged: true
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
-      type: nfs
+      hostPath: /data
+      type: local-storage
     podAnnotations:
-      k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
+      k8s.v1.cni.cncf.io/networks: "kube-system/sdn-pst"
     applications:
       recv:
         resources:
