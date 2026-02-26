@@ -150,7 +150,7 @@ ska-pst:
   core:
     runtimeClassName: nvidia
     selftest:
-      enabled: true
+      enabled: false
     podSecurityContext:
       privileged: true
     send:
