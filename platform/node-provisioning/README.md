@@ -1,7 +1,8 @@
 # Provisioning a new node to the MID.PSI
 
-Log into the worker node you're attempting to join the cluster and run the following commands as root:
+## Worker Node
 
+### Installing and configuring packages
 ````
 ## Installing packages required
 apt-get install -y apt-transport-https ca-certificates curl gpg
@@ -38,13 +39,25 @@ Remove the second argument added by kubeadm, should only have the --container-ru
 kubeadm reset
 ````
 
-Add the following to /etc/crictl.yaml and save the file:
+### Add the following to /etc/crictl.yaml and save the file:
 ````
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
 timeout: 10
 debug: true
 ````
+###  Only for the PST GPU Server
+````
+## Setup containerd to use the nvidia container runtime
+sudo nvidia-ctk runtime configure --runtime=containerd
+
+## Update the nvidia persistence service to setup the GPUs in persistence mode
+vi /usr/lib/systemd/system/nvidia-persistenced.service
+Ensure that the following flag is set in the ExecStart: --persistence-mode
+Restart the following service: sudo systemctl restart nvidia-persistenced
+
+````
+## Master Node
 
 On Dev11 Run the following command:
 `kubeadm token create --print-join-command`
@@ -60,3 +73,16 @@ Save and close the file
 Optional: If you don't want any new pods to be assigned to your node, you can immediately cordon by running the following command on Dev11: `kubectl cordon <node-name>`
 
 Optional: If you don't want your new node to be used for metallb broadcasting, you can run the following command on Dev11: `kubectl label node <node-name> node.kubernetes.io/exclude-from-external-load-balancers=true` 
+
+### Only if a PST GPU server exists in the cluster
+```
+## Create the NVIDIA runtime class
+kubectl apply -f nvidia-runtime-class.yaml
+
+## Add the nvidia device plugin helm repo
+helm repo add nvdp https://nvidia.github.io/k8s-device-plugin
+helm repo update
+
+## Install the nvidia device plugin
+helm upgrade -i nvdp nvdp/nvidia-device-plugin --namespace nvidia-device-plugin --create-namespace --version 0.17.1 -f nvdp-values.yaml
+````
