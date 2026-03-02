@@ -5,6 +5,14 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-03-02
+**********
+* MAP-522:
+  * Update ska-dish-lmc from 9.1.0 to 9.3.0-rc.5
+  * Update tango-base and -util from 1.0.5 to 1.0.6
+  * Update to full release of ska-csp-lmc-mid 1.4.0
+  * Update to full release of ska-tmc-mid 1.13.0
+
 2026-02-23
 **********
 * MAP-537: Update TDC-MCS to 1.4.0 and EC to 1.2.0
