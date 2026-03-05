@@ -71,5 +71,104 @@ attributes:
     configuration:
       code_push_event: true
 
+  - trl: mid-tmc/leaf-node-csp/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
 
+  - tlr: mid-tmc/leaf-node-sdp/0
+      th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
 
+  - tlr: mid-tmc/subarray-leaf-node-sdp/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-tmc/subarray-leaf-node-sdp/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-tmc/subarray-leaf-node-sdp/01/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-tmc/subarray-leaf-node-sdp/01/sdpSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
+ 
+### CSP.LMC ###
+  - tlr: mid-csp/control/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/control/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/control/0/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/control/0/cspCbfState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/control/0/cspCbfHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/control/0/cspCbfAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
+
+  - tlr: mid-csp/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/cbfSubarrayState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/cbfSubarrayHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/cbfSubarrayAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - tlr: mid-csp/subarray/01/cbfSubarrayAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
