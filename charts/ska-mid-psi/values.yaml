@@ -42,206 +42,105 @@ ska-tango-base:
   tangodb:
     use_pv: true
 
-ska-tango-taranta:
-  legacy_compatibility: true
-  enabled: true
-
-ska-tango-tangogql-ariadne:
+ska-mid-cbf-fhs-vcc:
   enabled: true
   ska-tango-base:
     enabled: false
-
-#telescope control
-## mid-cbf
-ska-mid-cbf-tdc-mcs:
-#  midcbf:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
-#      tag: 1.3.7-dev.cadb83e18
-  hostInfo:
-    environment: "mid-psi"
-  enabled: true
-  global:
-    minikube: false
-  deviceServers:
-    tm-subarray-node:
-      enabled: true
-
-ska-mid-cbf-engineering-console:
-#  engineeringconsole:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      tag: 1.1.5-dev.c8bf03696
-  enabled: true
-
-## mid-csp
-ska-csp-lmc-mid:
-  enabled: true
-  defaultAdminMode: 1
-  numPstBeams: 0
-#  midcsplmc:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-csp-lmc-mid
-#      tag: 1.3.0-dev.ca971dfd9
-
-## sdp
-ska-sdp:
-  enabled: true
-  ska-tango-base:
-    enabled: false
-  helmdeploy:
-    enableNADClusterRole: true
-  lmc:
-    prefix: mid
-  data-pvc:
-    create:
-      enabled: true
-      size: 5Gi
-      storageClassName: nfss1
-  qa:
-    display:
-      vault:
-        useVault: true
-
-## Kafka
-kafka:
-  enabled: true
-  image: apache/kafka
-  version: 3.8.0
-  imagePullPolicy: IfNotPresent
-  resources:
-    requests:
-      cpu: 1000m
-      memory: 1024Mi
-    limits:
-      cpu: 2000m
-      memory: 4096Mi
-
-# SPFRx
-spfrx:
-  enabled: true
-  # console:
-  #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-  #   version: <version>-dev.c<hash>
-  address: 192.168.8.200
-  bin: /usr/local/bin
-  k_value: 1
-  local_dir: artifacts
-  scripts_dir: scripts
-  instance: spfrx-20
-  logging_level: 4
-
-# PST
-ska-pst:
-  enabled: true
-#  image:
-#    registry: registry.gitlab.com/ska-telescope/pst/ska-pst
-#    tag: 1.3.1-dev.cc27a29dc
-  telescope: SKA-mid
-  tolerations:
-    - effect: NoSchedule
-      key: node-type
-      value: "pst-gpu"
-    - effect: NoSchedule
-      key: nvidia.com/gpu
-      value: "present"
-  nodeSelector:
-    kubernetes.io/hostname: rm2skapstdu01.mda.ca
-  core:
-    runtimeClassName: nvidia
-    selftest:
-      enabled: false
-    podSecurityContext:
-      privileged: true
-    send:
-      dpdApiIntegration: false
-    primaryVolumeMount:
-      hostPath: /data
-      type: local-storage
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: "kube-system/sdn-pst"
-    applications:
-      recv:
-        resources:
-          limits:
-            memory: 16000Mi
-          requests:
-            memory: 16000Mi
-        args:
-          - "-c"
-          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
-        dataNic: "net1"
-      dsp_disk:
-        resources:
-          limits:
-            memory: 16000Mi
-          requests:
-            memory: 16000Mi
-        args:
-          - "-c"
-          - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT} -n"
-
-# ODA
-ska-oso-integration:
-  enabled: false
-  ska-oso-oet-ui:
+  midcbf:
     image:
-      registry: registry.gitlab.com/ska-telescope/oso/ska-oso-oet-ui
-      tag: 1.1.0-dev.c81532d66
-  ska-oso-oet:
-    telescope: SKA-Mid
-    vault:
-      enabled: false
-  ska-oso-services:
-    vault:
-      enabled: false
-  ska-oso-slt-services:
-    secretProvider:
-      enabled: false
-  ska-oso-slt-ui:
-    enabled: false
-  ska-oso-ptt:
-    enabled: false
-  ska-db-oda-umbrella:
-    enabled: true
-    ska-db-oda:
-      enabled: true
-      rest:
-        backend:
-          postgres:
-            host: psi-oda-db-postgresql.oda-db
-    pgadmin4:
-      enabled: true
-      env:
-        listenAddress: 0.0.0.0
-    vault:
-      enabled: true
-      mount: "kv-v2"
-      secretPath: "secret/oda"
-    postgresql:
-      enabled: true
-      resources:
-        limits:
-          cpu: 300m
-          memory: 200Mi
-      auth:
-        postgresPassword: localpassword
-        existingSecret: false
-  ska-oso-pht-services:
-    secretProvider:
-      enabled: false
+      registry: harbor.skao.int/production
+      image: ska-mid-cbf-fhs-vcc
+      tag: 0.3.2
+      pullPolicy: Always
+  standaloneSimulator: false
+  properties:
+    deviceVersionNum: "0.3.0"
+    deviceGitlabHash: "0"
+    simulationMode: "0"
+    emulatorBaseUrl: "ska-mid-cbf.svc.cluster.local:5001"
+    bitstreamPath: &bitstreamPath "/app/mnt/bitstream"
+    bitstreamId: &bitstreamId "agilex-vcc"
+    bitstreamVersion: &bitstreamVer "0.1.2"
+    emulatorId: &emulatorId "fhs-vcc-emulator-{{.deviceId}}"
+    emulatorIpBlockId: ""
+    firmwareIpBlockId: ""
+    healthMonitorPollInterval: "3"
+  numVccUnits: 2
+  VCCUnits:
+  - unitNum: 1
+    emulationMode: '1'
+    instancesRange: [1, 6]
+    networkSwitchId: 192.168.7.31
+    bmc_endpoint: 127.0.1.1
+  - unitNum: 2
+    emulationMode: '1'
+    instancesRange: [7, 12]
+    networkSwitchId: 192.168.7.31
+    bmc_endpoint: 127.0.1.1
 
-# Dish LMC
-ska-dish-lmc:
+ska-mid-cbf-emulators:
+  enabled: true
+  emulator:
+    app_label: ska-mid-cbf-fhs-system-tests
+    image:
+      repository: registry.gitlab.com/ska-telescope/ska-mid-cbf-emulators/ska-mid-cbf-emulators-emulator
+      tag: 0.7.4
+      pullPolicy: Always
+    verbosity: 3
+  injector:
+    app_label: ska-mid-cbf-fhs-system-tests
+    image:
+      repository: registry.gitlab.com/ska-telescope/ska-mid-cbf-emulators/ska-mid-cbf-emulators-injector
+      tag: 0.7.4
+      pullPolicy: Always
+
+  properties:
+    bitstreamPath: *bitstreamPath
+    bitstreamId: *bitstreamId
+    bitstreamVersion: *bitstreamVer
+    emulatorId: *emulatorId
+
+  instances:
+  - name: fhs-vcc-1
+    deviceId: "1"
+  - name: fhs-vcc-2
+    deviceId: "2"
+  - name: fhs-vcc-3
+    deviceId: "3"
+  - name: fhs-vcc-4
+    deviceId: "4"
+  - name: fhs-vcc-5
+    deviceId: "5"
+  - name: fhs-vcc-6
+    deviceId: "6"
+  - name: fhs-vcc-1
+    deviceId: "7"
+  - name: fhs-vcc-2
+    deviceId: "8"
+  - name: fhs-vcc-3
+    deviceId: "9"
+  - name: fhs-vcc-4
+    deviceId: "10"
+  - name: fhs-vcc-5
+    deviceId: "11"
+  - name: fhs-vcc-6
+    deviceId: "12"
+
+  rabbitmq:
+    host: rabbitmq-service
+
+ska-mid-cbf-mcs:
   enabled: true
   ska-tango-base:
     enabled: false
-  ska-mid-dish-simulators:
-    enabled: true
-    deviceServers:
-      spfdevice:
-        enabled: true
-      spfrxdevice:
-        enabled: false
-    dsOpcuaSimulator:
-      enabled: true
+  midcbf:
+    image:
+      registry: harbor.skao.int/production
+      image: ska-mid-cbf-mcs
+      tag: 1.5.0
+      pullPolicy: Always
+  subarrays: 16
+  vcc:
+    units: 2
+  fsp:
+    units: 1
