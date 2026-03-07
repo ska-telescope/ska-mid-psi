@@ -30,11 +30,11 @@ dependencies:
 #  - name: ska-mid-cbf-fhs-vcc
 #    version: 0.3.2
 #    repository: https://artefact.skao.int/repository/helm-internal
-  - name: ska-mid-cbf-emulators
-    version: 0.7.4
-    repository: https://artefact.skao.int/repository/helm-internal
+#  - name: ska-mid-cbf-emulators
+#    version: 0.7.4
+#    repository: https://artefact.skao.int/repository/helm-internal
   - name: ska-mid-cbf-mcs
-    version: 1.5.0-dev.c5266611b
+    version: 1.5.0-dev.cb06dc9cc
     repository: https://gitlab.com/api/v4/projects/12488466/packages/helm/dev
   - name: ska-mid-cbf-terabox-mgmt
     version: 0.0.1-dev.c94a4c10e
