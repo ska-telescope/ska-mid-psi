@@ -148,9 +148,9 @@ ska-mid-cbf-mcs:
 ska-mid-cbf-terabox-mgmt:
   # the default tango properties in each device. optionally provide a default, global value
   properties:
-    deviceId: "000"
+    deviceId: "0"
     deviceVersionNum: "0.0.1"
-    simulationMode: "0"
+    simulationMode: "1"
     emulationMode: "{{ .emulationMode }}"
     prometheus: "{{ .prometheus }}"
     nodeExporter: "{{ .nodeExporter }}"
@@ -173,6 +173,7 @@ ska-mid-cbf-terabox-mgmt:
   teraBoxMgmtInstances:
     - fhsName: "vcc-01"
       emulationMode: "1"
+    - fhsName: "vcc-02"
+      emulationMode: "1"
 
   prometheusUrl: "http://0.0.0.0:9090"
-
