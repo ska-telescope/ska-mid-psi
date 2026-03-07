@@ -144,3 +144,35 @@ ska-mid-cbf-mcs:
     units: 2
   fsp:
     units: 1
+
+ska-mid-cbf-terabox-mgmt:
+  # the default tango properties in each device. optionally provide a default, global value
+  properties:
+    deviceId: "000"
+    deviceVersionNum: "0.0.1"
+    simulationMode: "0"
+    emulationMode: "{{ .emulationMode }}"
+    prometheus: "{{ .prometheus }}"
+    nodeExporter: "{{ .nodeExporter }}"
+    fhsPrometheusExporter: "{{ .fhsPrometheusExporter }}"
+
+  # the devices in each stack. optionally override any property defined in `properties`. to add extra properties, provide a `properties` dict
+  deviceCommand: "FhsTeraboxMgmtDeviceServer"
+  devices: []
+
+  # the FHSMonitor device
+  teraboxMgmtDevice:
+    name: "FhsMonitorDevice"
+    path: "fhs-monitor/fhs-{{.fhsName}}/0"
+    properties:
+      - name: logging_level
+        values:
+          - "INFO"
+
+  # the top-level stacks, one for every device id. optionally override any property defined in `properties` (if it hasn't been overridden at the device level)
+  teraBoxMgmtInstances:
+    - fhsName: "vcc-01"
+      emulationMode: "1"
+
+  prometheusUrl: "http://0.0.0.0:9090"
+
