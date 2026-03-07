@@ -165,17 +165,17 @@ ska-mid-cbf-terabox-mgmt:
     name: "FhsMonitorDevice"
     path: "fhs-monitor/fhs-{{.fhsName}}/0"
     properties:
-      - name: logging_level
-        values:
-          - "INFO"
+    - name: logging_level
+      values:
+        - "INFO"
 
   # the top-level stacks, one for every device id. optionally override any property defined in `properties` (if it hasn't been overridden at the device level)
   teraBoxMgmtInstances:
-    - fhsName: "vcc-01"
-      emulationMode: "1"
-    - fhsName: "vcc-02"
-      emulationMode: "1"
-    - fhsName: "fsp-01"
-      emulationMode: "1"
+  - fhsName: "vcc-01"
+    emulationMode: "1"
+  - fhsName: "vcc-02"
+    emulationMode: "1"
+  - fhsName: "fsp-01"
+    emulationMode: "1"
 
   prometheusUrl: "http://0.0.0.0:9090"
