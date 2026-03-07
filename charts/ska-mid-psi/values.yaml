@@ -175,5 +175,7 @@ ska-mid-cbf-terabox-mgmt:
       emulationMode: "1"
     - fhsName: "vcc-02"
       emulationMode: "1"
+    - fhsName: "fsp-01"
+      emulationMode: "1"
 
   prometheusUrl: "http://0.0.0.0:9090"
