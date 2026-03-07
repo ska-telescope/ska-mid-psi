@@ -135,9 +135,9 @@ ska-mid-cbf-mcs:
     enabled: false
   midcbf:
     image:
-      registry: harbor.skao.int/production
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-mcs
       image: ska-mid-cbf-mcs
-      tag: 1.5.0
+      tag: 1.5.0-dev.c5266611b
       pullPolicy: Always
   subarrays: 16
   vcc:
