@@ -71,5 +71,244 @@ attributes:
     configuration:
       code_push_event: true
 
+  - trl: mid-tmc/leaf-node-csp/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
 
+  - trl: mid-tmc/subarray-leaf-node-csp/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/delayModel
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/cspSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
 
+  - trl: mid-tmc/leaf-node-sdp/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/sdpSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
+
+### CSP.LMC ###
+### CSP Controller ###
+  - trl: mid-csp/control/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/cspCbfState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/cspCbfHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/cspCbfAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
+
+### CSP Subarray ###
+  - trl: mid-csp/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/obsstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayHealthState
+    th: th1
+    configuration:
+      code_push_event: 
+  - trl: mid-csp/subarray/01/cbfSubarrayAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/assignedResources
+    th: th1
+    configuration:
+      code_push_event: true
+
+## CBF ##
+## CBFController ##
+  - trl: mid_csp_cbf/sub_elt/controller/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/state
+    th: th1
+    configuration:
+      code_push_event: true
+
+## CBFSubarray ##
+  - trl: mid_csp_cbf/sub_elt/subarray_01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+
+### TalonBoard ###
+
+## TODO: find if we can have a way for talon board config apply to all boards
+
+### SDP ###
+### SDP Subarray ###
+  - trl: mid-sdp/subarray/01/versionId
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/resources
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/ebID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/receiveAddresses
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/scanType
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/scanID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/errorMessages
+    th: th1
+    configuration:
+      code_push_event: true
+### SDP Controller ###
+  - trl: mid-sdp/control/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/versionId
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/components
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/sdpVersion
+    th: th1
+    configuration:
+      code_push_event: true
