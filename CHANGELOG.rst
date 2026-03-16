@@ -5,7 +5,12 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-16:
+**********
+* MAP-541: Update PST to 2.0.0, along with some minor naming changes in the values file. Also adds bootstrap values for pst to the values file.
+
 2026-02-25:
+**********
 * MAP-510: Updated documentation for node provisioning specific to PST GPU server
 
 2026-02-23
