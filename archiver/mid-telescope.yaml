@@ -1,10 +1,11 @@
 tango_hosts:
   - th1:
-      host: "databaseds-tango-base.ska-mid-psi-staging.svc.cluster.local"
+      host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
       port: "10000"
   - th2:
       host: "tango-host-databaseds-test.ska-tango-archiver.svc.cluster.local"
       port: "10000"
+
 configuration_managers:
   - cm1:
       trl: mid-eda/cm/01
