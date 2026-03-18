@@ -249,3 +249,12 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+# Weather Simulator
+ska-mid-wms:
+  legacy_compatibility: true
+  dev-name: "mid/wms/0"
+  ska-tango-base:
+    enabled: false
+    itango:
+      enabled: false
