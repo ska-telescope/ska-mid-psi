@@ -5,13 +5,17 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2026-03-02
+2026-03-19
 **********
 * MAP-522:
-  * Update ska-dish-lmc from 9.1.0 to 9.3.0-rc.5
+  * Update ska-dish-lmc from 9.1.0 to 9.3.0
   * Update tango-base and -util from 1.0.5 to 1.0.6
   * Update to full release of ska-csp-lmc-mid 1.4.0
   * Update to full release of ska-tmc-mid 1.13.0
+
+2026-03-16:
+**********
+* MAP-541: Update PST to 2.0.0, along with some minor naming changes in the values file. Also adds bootstrap values for pst to the values file.
 
 2026-02-25:
 **********
