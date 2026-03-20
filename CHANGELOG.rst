@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2025-03-20:
+**********
+* MAP-254: Bump TMC to 1.18.0-rc.2 to support PST mode testing and add Weather Simulator 1.0.1 to charts
+
 2026-03-19
 **********
 * MAP-522:
