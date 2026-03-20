@@ -43,7 +43,7 @@ dependencies:
 
   # CSP LMC
   - name: ska-csp-lmc-mid 
-    version: 1.4.0-rc.1
+    version: 1.4.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-csp-lmc-mid.enabled
 
@@ -86,7 +86,7 @@ dependencies:
   ### NOTE: need to update the version also in ska-mid-psi-dish-lmc/Chart.yaml
   ### This needs to be included here, otherwise the DishLMC pods will be killed when this chart is deployed
   - name: ska-dish-lmc
-    version: 9.1.0
+    version: 9.3.0
     repository: https://artefact.skao.int/repository/helm-internal
     condition: ska-dish-lmc.enabled
 

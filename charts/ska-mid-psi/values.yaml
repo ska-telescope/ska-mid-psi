@@ -264,3 +264,4 @@ mid_wms:
     enabled: false
   simulator:
     enabled: false
+      enabled: true
