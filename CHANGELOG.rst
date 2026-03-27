@@ -5,7 +5,11 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2025-03-20:
+2025-03-28
+**********
+* MAP-558: Bump SPFRx to 2.1.1 which fixes the labelling in the SPFRx plotter tool
+
+2025-03-20
 **********
 * MAP-254: Bump TMC to 1.18.0-rc.2 to support PST mode testing and add Weather Simulator 1.0.1 to charts
 
@@ -17,15 +21,15 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * Update to full release of ska-csp-lmc-mid 1.4.0
   * Update to full release of ska-tmc-mid 1.13.0
 
-2026-03-16:
+2026-03-16
 **********
 * MAP-541: Update PST to 2.0.0, along with some minor naming changes in the values file. Also adds bootstrap values for pst to the values file.
 
-2026-02-25:
+2026-02-25
 **********
 * MAP-510: Updated documentation for node provisioning specific to PST GPU server
 
-2026-02-25:
+2026-02-25
 **********
 * MAP-510: Updated documentation for node provisioning specific to PST GPU server
 
@@ -43,7 +47,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * Remove ska-tango-archiver from ska-mid-psi charts and add it to its own subfolder
   * Update ska-tango-archiver from 2.10.0 to 5.0.1 and enable use of Vault
 
-2026-02-11:
+2026-02-11
 **********
 * MAP-510: Adding documentation for node provisioning
 
@@ -97,21 +101,21 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * REL-2376: Bump MCS from 1.3.7 to 1.3.8
   * REL-2377: Bump Engineering Console from 1.1.9 to 1.1.10
 
-2025-11-06:
+2025-11-06
 **********
 * MAP-433:
   * Enabled Vault for SDP QA Display and ODA.
   * Fixed bug where ODA Rest API couldn't connect to the ODA DB.
 
-2025-11-05:
+2025-11-05
 **********
 * REL-2487: Bump SPFRx from 1.4.0 to 1.4.1 and DishLMC from 8.4.0 to 8.4.6
 
-2025-10-30:
+2025-10-30
 **********
 * REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
 
-2025-10-23:
+2025-10-23
 **********
 * MAP-478: 
   * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
