@@ -7,7 +7,12 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-03-28
 **********
-* MAP-558: Bump SPFRx to 2.1.1 which fixes the labelling in the SPFRx plotter tool
+* MAP-558:
+   
+  * Bump SPFRx to 2.1.1 which fixes the labelling in the SPFRx plotter tool
+  * TEMP downgrade TMC to 1.13.0 to get past Configure Scan issues with 1.18.0-rc.2
+  * Bump ska-tango-util and ska-tango-base to 1.0.7
+  * Bump Taranta to 2.18.5 and TangoGQL-Ariadne to 1.0.10
 
 2025-03-20
 **********
