@@ -21,6 +21,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2026-03-19
 **********
 * MAP-522:
+
   * Update ska-dish-lmc from 9.1.0 to 9.3.0
   * Update tango-base and -util from 1.0.5 to 1.0.6
   * Update to full release of ska-csp-lmc-mid 1.4.0
@@ -49,6 +50,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2026-02-17
 **********
 * MAP-422:
+
   * Remove ska-tango-archiver from ska-mid-psi charts and add it to its own subfolder
   * Update ska-tango-archiver from 2.10.0 to 5.0.1 and enable use of Vault
 
@@ -63,8 +65,10 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2026-01-20
 **********
 * MAP-479:
+
   * Add the option in the CI to deploy a namespace under a persistent name
 * MAP-513: 
+
   * For this persistent namespace, update the oso-integration to 0.2.1
   * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
   * Add in ingress patch YAML files
@@ -76,6 +80,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2026-01-05
 **********
 * MAP-438: 
+
   * Update DishLMC to 9.0.0 and TMC to 1.13.0_rc.1
   * Update Taranta Auth to 0.3.0 and TangoGQL Ariadne to 1.0.7
   * Update ska-tango-util and ska-tango-base to 1.0.5
@@ -91,24 +96,26 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2025-12-11
 **********
-* MAP-511:
-  * Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
+* MAP-511: Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
 
 2025-12-10
 **********
 * MAP-468: 
+
   * Update SDP from 2.1.1 to 2.2.0
   * Add in deployment of the Vault static secret for the SDP qa secret to be pulled from the Vault
 
 2025-11-14
 **********
 * MAP-449:
+
   * REL-2376: Bump MCS from 1.3.7 to 1.3.8
   * REL-2377: Bump Engineering Console from 1.1.9 to 1.1.10
 
 2025-11-06
 **********
 * MAP-433:
+
   * Enabled Vault for SDP QA Display and ODA.
   * Fixed bug where ODA Rest API couldn't connect to the ODA DB.
 
@@ -123,6 +130,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2025-10-23
 **********
 * MAP-478: 
+
   * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
   * Bumped CSP.LMC to 1.3.0_rc.1, TMC 1.8.0-rc.3 to be inline with Jupyter-notebook updates
   * Bumped Taranta to 2.17.2 and Taranta-Auth to 0.2.7
