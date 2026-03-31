@@ -18,5 +18,5 @@ dependencies:
     
   # EDA
   - name: ska-tango-archiver
-    version: 5.0.1
+    version: 5.0.2-rc.2
     repository: https://artefact.skao.int/repository/helm-internal
