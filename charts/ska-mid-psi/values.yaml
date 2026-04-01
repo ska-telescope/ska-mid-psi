@@ -220,8 +220,8 @@ ska-oso-integration:
         listenAddress: 0.0.0.0
     vault:
       enabled: true
-      mount: "kv-v2"
-      secretPath: "secret/oda"
+      mount: "psi-mid"
+      secretPath: "production/oda"
     postgresql:
       enabled: true
       resources:
