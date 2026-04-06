@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: archwizard-ingress-ska-tango-archiver-test
+  namespace: ska-tango-archiver
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: "nginx"
+  rules:
+    - host: rmdskadevdu011.mda.ca
+      http:
+        paths:
+          - path: /ska-tango-archiver/archwizard/(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: archwizard
+                port:
+                  number: 8000
+  tls:
+  - hosts:
+    - rmdskadevdu011.mda.ca
+    secretName: ssl-cert
