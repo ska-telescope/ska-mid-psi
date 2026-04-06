@@ -4,7 +4,7 @@ CLUSTER_DOMAIN ?= cluster.local
 ARCHIVER_INGRESS_HOST = rmdskadevdu011.mda.ca#Default ingress host
 
 VAULT_ENABLED ?= true
-VAULT_ADDRESS ?= "https://192.168.129.117:8200
+VAULT_ADDRESS ?= "https://192.168.129.117:8200"
 VAULT_SECRET_PATH ?= "secret/eda"
 VAULT_SECRET_MOUNT ?= "dev"
 API_ID ?= "api://8baac5d7-92ef-4adb-99b6-1e6e834245ad"
