@@ -173,7 +173,7 @@ ska-pst:
             memory: 16000Mi
         args:
           - "-c"
-          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT} -o 0"
         dataNic: "net1"
       dsp:
         resources:
@@ -220,8 +220,8 @@ ska-oso-integration:
         listenAddress: 0.0.0.0
     vault:
       enabled: true
-      mount: "kv-v2"
-      secretPath: "secret/oda"
+      mount: "psi-mid"
+      secretPath: "production/oda"
     postgresql:
       enabled: true
       resources:

@@ -5,7 +5,7 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2025-03-28
+UNRELEASED
 **********
 * MAP-558:
    
@@ -14,7 +14,11 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * Bump ska-tango-util and ska-tango-base to 1.0.7
   * Bump Taranta to 2.18.5 and TangoGQL-Ariadne to 1.0.10
 
-2025-03-20
+2025-03-31:
+**********
+* MAP-547: Update paths and mounts for vault secrets, which are now stored in the SKAO Vault instead of locally deployed vault.
+
+2025-03-20:
 **********
 * MAP-254: Bump TMC to 1.18.0-rc.2 to support PST mode testing and add Weather Simulator 1.0.1 to charts
 

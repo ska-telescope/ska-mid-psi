@@ -14,8 +14,8 @@ ska-tango-archiver:
   archwizard_config: MyHDB=tango://databaseds-tango-base.ska-tango-archiver.svc.cluster.local:10000/mid-eda/cm/01
   vault:
     enabled: true
-    secretPath: "secret/eda"
-    secretMount: dev
+    secretPath: "production/eda"
+    secretMount: psi-mid
     name: db-secret
-  vaultaddress: "https://192.168.129.117:8200"
+  vaultaddress: "https://vault.skao.int"
   api_id: "api://8baac5d7-92ef-4adb-99b6-1e6e834245ad"
