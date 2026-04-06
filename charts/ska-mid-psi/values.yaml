@@ -251,9 +251,9 @@ ska-dish-lmc:
       enabled: true
   ska-mid-dish-manager:
     enabled: true
-  dishmanager:
-    actions:
-    timeout_seconds: "300"
+    dishmanager:
+      actions:
+        timeout_seconds: "300"
 
 # Weather Simulator
 mid_wms:
