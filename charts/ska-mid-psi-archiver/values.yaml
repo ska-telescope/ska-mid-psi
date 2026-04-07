@@ -1,4 +1,29 @@
 ## EDA
+global:
+  minikube: false
+  operator: true
+  exposeAllDS: true
+  annotations:
+    app.gitlab.com/app: ska-mid-psi
+    app.gitlab.com/env: ska
+  taranta_auth_enabled: false
+  taranta_dashboard_enabled: true
+  sub-system:
+    tango-base:
+      enabled: false
+    ska-tango-base:
+      enabled: false
+    ska-taranta:
+      enabled: false
+  retry:
+    - "--sleep=3"
+    - "--tries=100"
+  tango_host: databaseds-tango-base:10000
+  device_server_port: 45450
+  cluster_domain: cluster.local
+  tangodb_fqdn: localhost
+  tangodb_port: 10000
+
 ska-tango-archiver:
   legacy_compatibility: true
   telescope: SKA-mid
@@ -17,5 +42,6 @@ ska-tango-archiver:
     secretPath: "production/eda"
     secretMount: psi-mid
     name: db-secret
-  vaultaddress: "https://vault.skao.int"
+  ingress_host: rmdskadevdu011.mda.ca
+  vaultAddress: "https://vault.skao.int"
   api_id: "api://8baac5d7-92ef-4adb-99b6-1e6e834245ad"
