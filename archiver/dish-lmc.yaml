@@ -1,163 +1,334 @@
-db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
-manager: mid-eda/cm/01
-archiver: mid-eda/es/01
+tango_hosts:
+  - th1:
+      host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
+      port: "10000"
+  - th2:
+      host: "tango-host-databaseds-test.ska-tango-archiver.svc.cluster.local"
+      port: "10000"
 
-configuration:
+configuration_managers:
+  - cm1:
+      trl: mid-eda/cm/01
+      th: th2
+  # - cm2:
+  #     trl: mid-eda/cm/02
+  #     th: th2
 
-- class: DishManager
-  attributes:
-    achievedpointing:
-      code_push_event: True
-    achievedtargetlock:
-      code_push_event: True
-    actStaticOffsetValueEl:
-      code_push_event: True
-    actStaticOffsetValueXel:
-      code_push_event: True
-    attenuationpolh:
-      code_push_event: True
-    attenuationpolv:
-      code_push_event: True
-    azimuthOverWrap:
-      code_push_event: True
-    b1capabilitystate:
-      code_push_event: True
-    b2capabilitystate:
-      code_push_event: True
-    b3capabilitystate:
-      code_push_event: True
-    b4capabilitystate:
-      code_push_event: True
-    b5acapabilitystate:
-      code_push_event: True
-    b5bcapabilitystate:
-      code_push_event: True
-    band1pointingmodelparams:
-      code_push_event: True
-    band1SamplerFrequency:
-      code_push_event: True
-    band2pointingmodelparams:
-      code_push_event: True
-    band2SamplerFrequency:
-      code_push_event: True
-    band3pointingmodelparams:
-      code_push_event: True
-    band3SamplerFrequency:
-      code_push_event: True
-    band4pointingmodelparams:
-      code_push_event: True
-    band4SamplerFrequency:
-      code_push_event: True
-    band5aSamplerFrequency:
-      code_push_event: True
-    band5bSamplerFrequency:
-      code_push_event: True
-    buildstate:
-      code_push_event: True
-    capturing:
-      code_push_event: True
-    configuredband:
-      code_push_event: True
-    configureTargetLock:
-      code_push_event: True
-    desiredPointingAz:
-      code_push_event: True
-    desiredPointingEl:
-      code_push_event: True
-    dishmode:
-      code_push_event: True
-    dshMaxShortTermPower:
-      code_push_event: True
-    dshPowerCurtailment:
-      code_push_event: True
-    dsConnectionState:
-      code_push_event: True
-    frequencyResponse:
-      code_push_event: True
-    healthstate:
-      code_push_event: True
-    ignoreSpf:
-      code_push_event: True
-    ignoreSpfrx:
-      code_push_event: True
-    kvalue:
-      code_push_event: True
-    lastCommandedMode:
-      code_push_event: True
-    noiseDiodeConfig:
-      code_push_event: True
-    noiseDiodeMode:
-      code_push_event: True
-    periodicNoiseDiodePars:
-      code_push_event: True
-    pointingBufferSize:
-      code_push_event: True
-    pointingstate:
-      code_push_event: True
-    polyTrack:
-      code_push_event: True
-    programTrackTable:
-      code_push_event: True
-    pseudoRandomNoiseDiodePars:
-      code_push_event: True
-    scanID:
-      code_push_event: True
-    spfConnectionState:
-      code_push_event: True
-    spfrxConnectionState:
-      code_push_event: True
-    trackInterpolationMode:
-      code_push_event: True
-    trackProgramMode:
-      code_push_event: True
-    trackTableLoadMode:
-      code_push_event: True
+event_subscribers:
+  - es1:
+      trl: mid-eda/es/01
+      th: th2
+  # - es2:
+  #     trl: mid-eda/es/02
+  #     th: th2
 
-- class: DSManager
-  attributes:
-    achievedpointing:
-      code_push_event: True
-    achievedTargetLock:
-      code_push_event: True
-    actStaticOffsetValueEl:
-      code_push_event: True
-    actStaticOffsetValueXel:
-      code_push_event: True
-    azimuthSpeed:
-      code_push_event: True
-    band1pointingmodelparams:
-      code_push_event: True
-    band2pointingmodelparams:
-      code_push_event: True
-    band3pointingmodelparams:
-      code_push_event: True
-    band4pointingmodelparams:
-      code_push_event: True
-    buildstate:
-      code_push_event: True
-    configureTargetLock:
-      code_push_event: True
-    currentPointing:
-      code_push_event: True
-    desiredpointingAz:
-      code_push_event: True
-    desiredpointingEl:
-      code_push_event: True
-    dscstate:
-      code_push_event: True
-    elevationSpeed:
-      code_push_event: True
-    healthstate:
-      code_push_event: True
-    indexerposition:
-      code_push_event: True
-    operatingmode:
-      code_push_event: True
-    pointingstate:
-      code_push_event: True
-    powerstate:
-      code_push_event: True
-    trackInterpolationMode:
-      code_push_event: True
-    trackProgramMode:
-      code_push_event: True
+defaults:
+  - th: th1
+  - cm: cm1
+  - es: es1
+
+attributes:
+
+### Dish Manager ###
+  - trl: mid-dish/dish-manager/ska001/achievedpointing
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/achievedtargetlock
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/actStaticOffsetValueEl
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/actStaticOffsetValueXel
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuationpolh
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuationpolv
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/azimuthOverWrap
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b1capabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b2capabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b3capabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b4capabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b5acapabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/b5bcapabilitystate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band1pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band1SamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band2pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band2SamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band3pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band3SamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band4pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band4SamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band5aSamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/band5bSamplerFrequency
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/buildstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/capturing
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/configuredband
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/configureTargetLock
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/desiredPointingAz
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/desiredPointingEl
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/dishmode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/dshMaxShortTermPower
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/dshPowerCurtailment
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/dsConnectionState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/frequencyResponse
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/healthstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/ignoreSpf
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/ignoreSpfrx
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/kvalue
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/lastCommandedMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/noiseDiodeConfig
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/noiseDiodeMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/periodicNoiseDiodePars
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/pointingBufferSize
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/pointingstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/polyTrack
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/programTrackTable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/pseudoRandomNoiseDiodePars
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/spfConnectionState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/spfrxConnectionState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/trackInterpolationMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/trackProgramMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/trackTableLoadMode
+    th: th1
+    configuration:
+      code_push_event: true
+
+### DS Manager ###
+  - trl: mid-dish/ds-manager/ska001/achievedpointing
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/achievedTargetLock
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/actStaticOffsetValueEl
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/actStaticOffsetValueXel
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/azimuthSpeed
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/band1pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/band2pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/band3pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/band4pointingmodelparams
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/buildstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/configureTargetLock
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/currentPointing
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/desiredpointingAz
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/desiredpointingEl
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/dscstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/elevationSpeed
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/healthstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/indexerposition
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/operatingmode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/pointingstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/powerstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/trackInterpolationMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/ds-manager/ska001/trackProgramMode
+    th: th1
+    configuration:
+      code_push_event: true
