@@ -10,17 +10,17 @@ configuration_managers:
   - cm1:
       trl: mid-eda/cm/01
       th: th2
-  - cm2:
-      trl: mid-eda/cm/02
-      th: th2
+  # - cm2:
+  #     trl: mid-eda/cm/02
+  #     th: th2
 
 event_subscribers:
   - es1:
       trl: mid-eda/es/01
       th: th2
-  - es2:
-      trl: mid-eda/es/02
-      th: th2
+  # - es2:
+  #     trl: mid-eda/es/02
+  #     th: th2
 
 defaults:
   - th: th1
