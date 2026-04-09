@@ -34,6 +34,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: ska001/spfrxpu/controller/configuredBand
     th: th1
     configuration:
@@ -46,10 +47,12 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/currentGainVY
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/dataFiberCheck
     th: th1
     configuration:
@@ -66,18 +69,22 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/rxpuFanSpeed2
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/rxpuFanSpeed3
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/rxpuFPGACoreFabricTemp
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/rxpuHealthState
     th: th1
     configuration:
@@ -86,10 +93,12 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.001
   - trl: ska001/spfrxpu/controller/rxpuTemperature
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.001
   - trl: ska001/spfrxpu/controller/rxs123HealthState
     th: th1
     configuration:
@@ -98,20 +107,10 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.001
   - trl: ska001/spfrxpu/controller/rxs123RfofRefPowerLevel
     th: th1
     configuration:
       code_push_event: true
-  - trl: ska001/spfrxpu/controller/satMcuDieTemp
-    th: th1
-    configuration:
-      code_push_event: true
-  - trl: ska001/spfrxpu/controller/satMicrowaveMixerVoltage
-    th: th1
-    configuration:
-      code_push_event: true
-  - trl: ska001/spfrxpu/controller/satOpticalInputSignalCurrent
-    th: th1
-    configuration:
-      code_push_event: true
+      archive_abs_change: 0.001
 
