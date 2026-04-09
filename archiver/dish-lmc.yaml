@@ -46,11 +46,27 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-dish/dish-manager/ska001/attenuationpolh
+  - trl: mid-dish/dish-manager/ska001/attenuation1polhx
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-dish/dish-manager/ska001/attenuationpolv
+  - trl: mid-dish/dish-manager/ska001/attenuation1polvy
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuation2polhx
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuation2polvy
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuationpolhx
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-dish/dish-manager/ska001/attenuationpolvy
     th: th1
     configuration:
       code_push_event: true
