@@ -84,7 +84,6 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-
   - trl: mid-tmc/subarray-leaf-node-csp/01/state
     th: th1
     configuration:
@@ -105,7 +104,6 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-
   - trl: mid-tmc/leaf-node-sdp/0/state
     th: th1
     configuration:
