@@ -249,10 +249,6 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid_csp_cbf/talon_board/001/PingResult
-    th: th1
-    configuration:
-      code_push_event: true
   - trl: mid_csp_cbf/talon_board/001/State
     th: th1
     configuration:
@@ -273,10 +269,6 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid_csp_cbf/talon_board/001/BitstreamVersion
-    th: th1
-    configuration:
-      code_push_event: true
   - trl: mid_csp_cbf/talon_board/001/CommsIopllLockedFault
     th: th1
     configuration:
@@ -290,10 +282,6 @@ attributes:
     configuration:
       code_push_event: true
   - trl: mid_csp_cbf/talon_board/001/EmifBlFault
-    th: th1
-    configuration:
-      code_push_event: true
-  - trl: mid_csp_cbf/talon_board/001/EmifTrFault
     th: th1
     configuration:
       code_push_event: true
