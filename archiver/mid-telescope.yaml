@@ -211,7 +211,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid_csp_cbf/sub_elt/controller/obsState
+  - trl: mid_csp_cbf/sub_elt/controller/simulationMode
     th: th1
     configuration:
       code_push_event: true
