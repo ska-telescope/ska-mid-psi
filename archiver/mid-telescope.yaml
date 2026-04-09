@@ -239,7 +239,6 @@ attributes:
       code_push_event: true
 
 ### TalonBoard ###
-
 ## TODO: find if we can have a way for talon board config apply to all boards
   - trl: mid_csp_cbf/talon_board/001/DishID
     th: th1
@@ -265,6 +264,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/BitstreamVersion
     th: th1
     configuration:
@@ -277,6 +277,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/EmifBrFault
     th: th1
     configuration:
@@ -301,10 +302,12 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g0ErrorCounters
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g0DataFlowActive
     th: th1
     configuration:
@@ -317,18 +320,22 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g0AllRxCounters
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g1Counters
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g1ErrorCounters
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g1DataFlowActive
     th: th1
     configuration:
@@ -341,22 +348,27 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/Eth100g1AllRxCounters
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/FansPwm
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 5
   - trl: mid_csp_cbf/talon_board/001/FansPwmEnable
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid_csp_cbf/talon_board/001/FansRpm
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 50
   - trl: mid_csp_cbf/talon_board/001/FansFault
     th: th1
     configuration:
@@ -365,34 +377,42 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage0
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage1
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage2
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage3
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage4
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage5
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage6
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/FsIopllLockedFault
     th: th1
     configuration:
@@ -405,6 +425,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/IopllLockedFault
     th: th1
     configuration:
@@ -413,34 +434,42 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/LtmOutputVoltage1
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/LtmOutputVoltage2
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/LtmInputCurrent
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.1
   - trl: mid_csp_cbf/talon_board/001/LtmOutputCurrent1
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/LtmOutputCurrent2
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/LtmTemperature1
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/LtmTemperature2
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/LtmVoltageWarning
     th: th1
     configuration:
@@ -457,10 +486,12 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1.0
   - trl: mid_csp_cbf/talon_board/001/MboTxVccVoltages
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/MboTxFaultStatus
     th: th1
     configuration:
@@ -477,6 +508,7 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 0.05
   - trl: mid_csp_cbf/talon_board/001/MboRxLolStatus
     th: th1
     configuration:
@@ -536,10 +568,12 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+      archive_abs_change: 1
   - trl: mid-sdp/subarray/01/errorMessages
     th: th1
     configuration:
       code_push_event: true
+
 ### SDP Controller ###
   - trl: mid-sdp/control/0/state
     th: th1
