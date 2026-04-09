@@ -3,7 +3,7 @@ tango_hosts:
       host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
       port: "10000"
   - th2:
-      host: "tango-host-databaseds-test.ska-tango-archiver.svc.cluster.local"
+      host: "databaseds-tango-base.ska-tango-archiver.svc.cluster.local"
       port: "10000"
 
 configuration_managers:
