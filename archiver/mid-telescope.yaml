@@ -138,27 +138,27 @@ attributes:
 
 ### CSP.LMC ###
 ### CSP Controller ###
-  - trl: mid-csp/control/state
+  - trl: mid-csp/control/0/state
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-csp/control/healthState
+  - trl: mid-csp/control/0/healthState
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-csp/control/adminMode
+  - trl: mid-csp/control/0/adminMode
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-csp/control/cspCbfState
+  - trl: mid-csp/control/0/cspCbfState
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-csp/control/cspCbfHealthState
+  - trl: mid-csp/control/0/cspCbfHealthState
     th: th1
     configuration:
       code_push_event: true
-  - trl: mid-csp/control/cspCbfAdminMode
+  - trl: mid-csp/control/0/cspCbfAdminMode
     th: th1
     configuration:
       code_push_event: true
