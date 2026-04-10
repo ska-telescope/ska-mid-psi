@@ -5,7 +5,7 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2026-04-09:
+2026-04-10:
 **********
 * MAP-536: 
 
@@ -14,9 +14,16 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
   * Update EDA configs in archiver directory to the new format, keeping the old format ones as well
   * Add ingress yamls for the EDA GUIs that accept TLS certificate
 
+* MAP-558:
+   
+  * Bump SPFRx to 2.1.1 which fixes the labelling in the SPFRx plotter tool
+  * TEMP downgrade TMC to 1.13.0 to get past Configure Scan issues with 1.18.0-rc.2
+  * Bump ska-tango-util and ska-tango-base to 1.0.7
+  * Bump Taranta to 2.18.5 and TangoGQL-Ariadne to 1.0.10
+
 2026-03-31:
 **********
-Update paths and mounts for vault secrets, which are now stored in the SKAO Vault instead of locally deployed vault.
+* MAP-547: Update paths and mounts for vault secrets, which are now stored in the SKAO Vault instead of locally deployed vault.
 
 2026-03-20:
 **********
@@ -25,20 +32,21 @@ Update paths and mounts for vault secrets, which are now stored in the SKAO Vaul
 2026-03-19
 **********
 * MAP-522:
+
   * Update ska-dish-lmc from 9.1.0 to 9.3.0
   * Update tango-base and -util from 1.0.5 to 1.0.6
   * Update to full release of ska-csp-lmc-mid 1.4.0
   * Update to full release of ska-tmc-mid 1.13.0
 
-2026-03-16:
+2026-03-16
 **********
 * MAP-541: Update PST to 2.0.0, along with some minor naming changes in the values file. Also adds bootstrap values for pst to the values file.
 
-2026-02-25:
+2026-02-25
 **********
 * MAP-510: Updated documentation for node provisioning specific to PST GPU server
 
-2026-02-25:
+2026-02-25
 **********
 * MAP-510: Updated documentation for node provisioning specific to PST GPU server
 
@@ -53,10 +61,11 @@ Update paths and mounts for vault secrets, which are now stored in the SKAO Vaul
 2026-02-17
 **********
 * MAP-422:
+
   * Remove ska-tango-archiver from ska-mid-psi charts and add it to its own subfolder
   * Update ska-tango-archiver from 2.10.0 to 5.0.1 and enable use of Vault
 
-2026-02-11:
+2026-02-11
 **********
 * MAP-510: Adding documentation for node provisioning
 
@@ -67,8 +76,10 @@ Update paths and mounts for vault secrets, which are now stored in the SKAO Vaul
 2026-01-20
 **********
 * MAP-479:
+
   * Add the option in the CI to deploy a namespace under a persistent name
 * MAP-513: 
+
   * For this persistent namespace, update the oso-integration to 0.2.1
   * Enable AAA validation and Ingress for HTTPS access to the ODT and OET UIs
   * Add in ingress patch YAML files
@@ -80,6 +91,7 @@ Update paths and mounts for vault secrets, which are now stored in the SKAO Vaul
 2026-01-05
 **********
 * MAP-438: 
+
   * Update DishLMC to 9.0.0 and TMC to 1.13.0_rc.1
   * Update Taranta Auth to 0.3.0 and TangoGQL Ariadne to 1.0.7
   * Update ska-tango-util and ska-tango-base to 1.0.5
@@ -95,38 +107,41 @@ Update paths and mounts for vault secrets, which are now stored in the SKAO Vaul
 
 2025-12-11
 **********
-* MAP-511:
-  * Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
+* MAP-511: Update Taranta from 2.17.2 to 2.18.1 to fix SVG offset errors on dashboards
 
 2025-12-10
 **********
 * MAP-468: 
+
   * Update SDP from 2.1.1 to 2.2.0
   * Add in deployment of the Vault static secret for the SDP qa secret to be pulled from the Vault
 
 2025-11-14
 **********
 * MAP-449:
+
   * REL-2376: Bump MCS from 1.3.7 to 1.3.8
   * REL-2377: Bump Engineering Console from 1.1.9 to 1.1.10
 
-2025-11-06:
+2025-11-06
 **********
 * MAP-433:
+
   * Enabled Vault for SDP QA Display and ODA.
   * Fixed bug where ODA Rest API couldn't connect to the ODA DB.
 
-2025-11-05:
+2025-11-05
 **********
 * REL-2487: Bump SPFRx from 1.4.0 to 1.4.1 and DishLMC from 8.4.0 to 8.4.6
 
-2025-10-30:
+2025-10-30
 **********
 * REL-2359: Bump SPFRx from 1.3.0 to 1.4.0
 
-2025-10-23:
+2025-10-23
 **********
 * MAP-478: 
+
   * Bumped TDC MCS to 1.3.7, EC to 1.1.9 for validation
   * Bumped CSP.LMC to 1.3.0_rc.1, TMC 1.8.0-rc.3 to be inline with Jupyter-notebook updates
   * Bumped Taranta to 2.17.2 and Taranta-Auth to 0.2.7
