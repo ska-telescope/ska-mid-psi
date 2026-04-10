@@ -133,11 +133,6 @@ ifeq ($(KUBE_NAMESPACE),ska-mid-psi-staging)
 	K8S_CHART_PARAMS += --set ska-oso-integration.enabled=true 
 endif
 
-# ifeq ($(ARCHIVING_ENABLED),true)
-# 	include archiver/archiver.mk
-# 	K8S_CHART_PARAMS += $(SKA_TANGO_ARCHIVER_PARAMS)
-# endif
-
 ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
