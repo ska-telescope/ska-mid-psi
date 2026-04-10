@@ -43,16 +43,18 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
-  - trl: ska001/spfrxpu/controller/currentGainHX
-    th: th1
-    configuration:
-      code_push_event: true
-      archive_abs_change: 0.01
-  - trl: ska001/spfrxpu/controller/currentGainVY
-    th: th1
-    configuration:
-      code_push_event: true
-      archive_abs_change: 0.01
+  ### code push events not implemented yet for the Gain attributes
+  ### this will be resolved in MAP-569. Commenting them out for now.
+  # - trl: ska001/spfrxpu/controller/currentGainHX
+  #   th: th1
+  #   configuration:
+  #     code_push_event: true
+  #     archive_abs_change: 0.01
+  # - trl: ska001/spfrxpu/controller/currentGainVY
+  #   th: th1
+  #   configuration:
+  #     code_push_event: true
+  #     archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/dataFiberCheck
     th: th1
     configuration:
