@@ -5,11 +5,20 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
-2025-03-31:
+2026-04-09:
+**********
+* MAP-536: 
+
+  * Update to EDA 5.0.2-rc.2
+  * Add README instructions in platform/eda directory on how to upgrade when newer EDA versions available
+  * Update EDA configs in archiver directory to the new format, keeping the old format ones as well
+  * Add ingress yamls for the EDA GUIs that accept TLS certificate
+
+2026-03-31:
 **********
 Update paths and mounts for vault secrets, which are now stored in the SKAO Vault instead of locally deployed vault.
 
-2025-03-20:
+2026-03-20:
 **********
 * MAP-254: Bump TMC to 1.18.0-rc.2 to support PST mode testing and add Weather Simulator 1.0.1 to charts
 
