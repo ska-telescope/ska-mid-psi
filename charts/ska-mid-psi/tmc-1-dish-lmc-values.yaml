@@ -16,7 +16,6 @@ tmc-mid:
     enabled: false
   deviceServers:
     centralnode:
-      LoggingLevel: "5"
       DishIDs:
       - SKA001
     mocks:
@@ -26,11 +25,9 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      LoggingLevel: "5"
       instances:
       - '001'
     subarraynode:
-      LoggingLevel: "5"
       DishIDs:
       - SKA001
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
