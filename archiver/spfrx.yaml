@@ -1,73 +1,112 @@
-db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
-manager: mid-eda/cm/01
-archiver: mid-eda/es/01
-configuration:
+tango_hosts:
+  - th1:
+      host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
+      port: "10000"
+  - th2:
+      host: "databaseds-tango-base.ska-tango-archiver.svc.cluster.local"
+      port: "10000"
 
-  - class: SkaMidSpfrxControllerDs
-    attributes:
-      operatingMode:
-        code_push_event: True
-      configuredBand:
-        code_push_event: True
-      b1CapabilityState:
-        code_push_event: True
-      b2CapabilityState:
-        code_push_event: True
-      b3CapabilityState:
-        code_push_event: True
-      rxs123SurgeArresterVoltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlB12Supply33Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlB3Supply33Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlPowerSupply5Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlPowerSupply12Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlB12Supply25Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlB3Supply25Voltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123ClkPowerLevelVoltage:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123OdlTemperature:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      rxs123ODLHumidity:
-        polling_period: 0
-        archive_abs_change: 0.001
-        archive_period: 0
-      b123ProcCntlWrAlignStatus:
-        polling_period: 0
-        archive_abs_change: 1
-        archive_period: 0
-      b123ProcCntlWrFifoOvf:
-        polling_period: 0
-        archive_abs_change: 1
-        archive_period: 0
-      dataStreamBandChangeStatus:
-        polling_period: 0
-        archive_abs_change: 1
-        archive_period: 0
-      dataStreamCurrentBand:
-        polling_period: 0
-        archive_abs_change: 1
-        archive_period: 0
+configuration_managers:
+  - cm1:
+      trl: mid-eda/cm/01
+      th: th2
+
+event_subscribers:
+  - es1:
+      trl: mid-eda/es/01
+      th: th2
+
+defaults:
+  - th: th1
+  - cm: cm1
+  - es: es1
+
+attributes:
+
+### SPFRx Controller ###
+  - trl: ska001/spfrxpu/controller/b1ppsDeviation
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: ska001/spfrxpu/controller/configuredBand
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/controlFiberCheck
+    th: th1
+    configuration:
+      code_push_event: true
+  ### code push events not implemented yet for the Gain attributes
+  ### this will be resolved in MAP-569. Commenting them out for now.
+  # - trl: ska001/spfrxpu/controller/currentGainHX
+  #   th: th1
+  #   configuration:
+  #     code_push_event: true
+  #     archive_abs_change: 0.01
+  # - trl: ska001/spfrxpu/controller/currentGainVY
+  #   th: th1
+  #   configuration:
+  #     code_push_event: true
+  #     archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/dataFiberCheck
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/isKLocked
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/operatingMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/rxpuFanSpeed1
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuFanSpeed2
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuFanSpeed3
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuFPGACoreFabricTemp
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/rxpuHumidity
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxpuTemperature
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxs123HealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/rxs123Rfof1ppsPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxs123RfofRefPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+
