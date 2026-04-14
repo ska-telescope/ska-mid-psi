@@ -1,354 +1,593 @@
-db: databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local:10000
-manager: mid-eda/cm/01
-archiver: mid-eda/es/01
-configuration:
+tango_hosts:
+  - th1:
+      host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
+      port: "10000"
+  - th2:
+      host: "databaseds-tango-base.ska-tango-archiver.svc.cluster.local"
+      port: "10000"
+
+configuration_managers:
+  - cm1:
+      trl: mid-eda/cm/01
+      th: th2
+
+event_subscribers:
+  - es1:
+      trl: mid-eda/es/01
+      th: th2
+
+defaults:
+  - th: th1
+  - cm: cm1
+  - es: es1
+
+attributes:
 
 ### TMC ###
-  - class: MidTmcCentralNode
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      telescopeState:
-        code_push_event: true
-      telescopeHealthState:
-        code_push_event: true
-      DishVccValidationStatus:
-        code_push_event: true
-      telescopeAvailability:
-        code_push_event: true
+  - trl: mid-tmc/central-node/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/DishVccValidationStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/central-node/0/telescopeAvailability
+    th: th1
+    configuration:
+      code_push_event: true
 
-  - class: MidTmcSubarray
-    filtering:
-      device:
-      - mid-tmc/subarray/01
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      obsState:
-        code_push_event: true
-      isSubarrayAvailable:
-        code_push_event: true
+  - trl: mid-tmc/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray/01/isSubarrayAvailable
+    th: th1
+    configuration:
+      code_push_event: true
 
-  - class: MidTmcLeafNodeCspControl
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-csp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/delayModel
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-csp/01/cspSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/leaf-node-sdp/0/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
 
-  - class: MidTmcLeafNodeCspSubarray
-    filtering:
-      device:
-      - mid-tmc/subarray-leaf-node-csp/01
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
-      delayModel:
-        code_push_event: true
-      cspSubarrayObsState:
-        code_push_event: true
-        
-  - class: MidTmcLeafNodeSdp
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
-
-  - class: SdpSubarrayLeafNode
-    filtering:
-      device:
-      - mid-tmc/subarray-leaf-node-sdp/01
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      isSubsystemAvailable:
-        code_push_event: true
-      sdpSubarrayObsState:
-        code_push_event: true
-
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/isSubsystemAvailable
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-tmc/subarray-leaf-node-sdp/01/sdpSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
 
 ### CSP.LMC ###
-  - class: MidCspController
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      adminmode:
-        code_push_event: true
-      cspCbfState:
-        code_push_event: true
-      cspCbfHealthState:
-        code_push_event: true
-      cspCbfAdminMode:
-        code_push_event: true
+### CSP Controller ###
+  - trl: mid-csp/control/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/0/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/0/cspCbfState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/0/cspCbfHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/control/0/cspCbfAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
 
-  - class: MidCspSubarray
-    filtering:
-      device:
-      - mid-csp/subarray/01
-    attributes:
-      state:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      adminmode:
-        code_push_event: true
-      obsstate:
-        code_push_event: true
-      cbfSubarrayState:
-        code_push_event: true
-      cbfSubarrayHealthState:
-        code_push_event: true
-      cbfSubarrayAdminMode:
-        code_push_event: true
-      cbfSubarrayObsState:
-        code_push_event: true
-      assignedResources:
-        code_push_event: true
+### CSP Subarray ###
+  - trl: mid-csp/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/obsstate
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayHealthState
+    th: th1
+    configuration:
+      code_push_event: 
+  - trl: mid-csp/subarray/01/cbfSubarrayAdminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/cbfSubarrayObsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-csp/subarray/01/assignedResources
+    th: th1
+    configuration:
+      code_push_event: true
 
-### CBF ###
+## CBF ##
 ## CBFController ##
-  - class: CbfController
-    attributes:
-      adminmode:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      simulationMode:
-        code_push_event: true
-      state:
-        code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/simulationMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/controller/state
+    th: th1
+    configuration:
+      code_push_event: true
 
 ## CBFSubarray ##
-  - class: CbfSubarray
-    attributes:
-      adminmode:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      obsState:
-        code_push_event: true
-      state:
-        code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/sub_elt/subarray_01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
 
 ### TalonBoard ###
-  - class: TalonBoard
-    attributes:
-      DishID:
-        code_push_event: true
-      PingResult:
-        code_push_event: true
-      State:
-        code_push_event: true
-      SubarrayID:
-        code_push_event: true
-      VccID:
-        code_push_event: true
-      BitstreamChecksum:
-        code_push_event: true
-        archive_abs_change: 1
-      BitstreamVersion:
-        code_push_event: true
-      CommsIopllLockedFault:
-        code_push_event: true
-      DimmTemperatures:
-        code_push_event: true
-        archive_abs_change: 1.0
-      EmifBrFault:
-        code_push_event: true
-      EmifBlFault:
-        code_push_event: true
-      EmifTrFault:
-        code_push_event: true
-      Ethernet0PllFault:
-        code_push_event: true
-      Ethernet1PllFault:
-        code_push_event: true
-      Eth100g0Counters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g0ErrorCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g0DataFlowActive:
-        code_push_event: true
-      Eth100g0HasDataError:
-        code_push_event: true
-      Eth100g0AllTxCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g0AllRxCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g1Counters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g1ErrorCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g1DataFlowActive:
-        code_push_event: true
-      Eth100g1HasDataError:
-        code_push_event: true
-      Eth100g1AllTxCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      Eth100g1AllRxCounters:
-        code_push_event: true
-        archive_abs_change: 1
-      FansPwm:
-        code_push_event: true
-        archive_abs_change: 5
-      FansPwmEnable:
-        code_push_event: true
-        archive_abs_change: 1
-      FansRpm:
-        code_push_event: true
-        archive_abs_change: 50
-      FansFault:
-        code_push_event: true
-      FpgaDieTemperature:
-        code_push_event: true
-        archive_abs_change: 1.0
-      FpgaDieVoltage0:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage1:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage2:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage3:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage4:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage5:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FpgaDieVoltage6:
-        code_push_event: true
-        archive_abs_change: 0.05
-      FsIopllLockedFault:
-        code_push_event: true
-      HasFanControl:
-        code_push_event: true
-      HumiditySensorTemperature:
-        code_push_event: true
-        archive_abs_change: 1.0
-      IopllLockedFault:
-        code_push_event: true
-      LtmInputVoltage:
-        code_push_event: true
-        archive_abs_change: 0.05
-      LtmOutputVoltage1:
-        code_push_event: true
-        archive_abs_change: 0.05
-      LtmOutputVoltage2:
-        code_push_event: true
-        archive_abs_change: 0.05
-      LtmInputCurrent:
-        code_push_event: true
-        archive_abs_change: 0.1
-      LtmOutputCurrent1:
-        code_push_event: true
-        archive_abs_change: 0.05
-      LtmOutputCurrent2:
-        code_push_event: true
-        archive_abs_change: 0.05
-      LtmTemperature1:
-        code_push_event: true
-        archive_abs_change: 1.0
-      LtmTemperature2:
-        code_push_event: true
-        archive_abs_change: 1.0
-      LtmVoltageWarning:
-        code_push_event: true
-      LtmCurrentWarning:
-        code_push_event: true
-      LtmTemperatureWarning:
-        code_push_event: true
-      MboTxTemperatures:
-        code_push_event: true
-        archive_abs_change: 1.0
-      MboTxVccVoltages:
-        code_push_event: true
-        archive_abs_change: 0.5
-      MboTxFaultStatus:
-        code_push_event: true
-      MboTxLolStatus:
-        code_push_event: true
-      MboTxLosStatus:
-        code_push_event: true
-      MboRxVccVoltages:
-        code_push_event: true
-        archive_abs_change: 0.05
-      MboRxLolStatus:
-        code_push_event: true
-      MboRxLosStatus:
-        code_push_event: true
-      SlimPllFault:
-        code_push_event: true
-      SystemClkFault:
-        code_push_event: true
-
+## TODO: find if we can have a way for talon board config apply to all boards
+  - trl: mid_csp_cbf/talon_board/001/DishID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/PingResult
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/State
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/SubarrayID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/VccID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/BitstreamChecksum
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/BitstreamVersion
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/CommsIopllLockedFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/DimmTemperatures
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/EmifBrFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/EmifBlFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/EmifTrFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Ethernet0PllFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Ethernet1PllFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0Counters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0ErrorCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0DataFlowActive
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0HasDataError
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0AllTxCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g0AllRxCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1Counters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1ErrorCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1DataFlowActive
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1HasDataError
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1AllTxCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/Eth100g1AllRxCounters
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/FansPwm
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 5
+  - trl: mid_csp_cbf/talon_board/001/FansPwmEnable
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid_csp_cbf/talon_board/001/FansRpm
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 50
+  - trl: mid_csp_cbf/talon_board/001/FansFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieTemperature
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage0
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage1
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage2
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage3
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage4
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage5
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FpgaDieVoltage6
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/FsIopllLockedFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/HasFanControl
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/HumiditySensorTemperature
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/IopllLockedFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/LtmInputVoltage
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/LtmOutputVoltage1
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/LtmOutputVoltage2
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/LtmInputCurrent
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.1
+  - trl: mid_csp_cbf/talon_board/001/LtmOutputCurrent1
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/LtmOutputCurrent2
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/LtmTemperature1
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/LtmTemperature2
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/LtmVoltageWarning
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/LtmCurrentWarning
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/LtmTemperatureWarning
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/MboTxTemperatures
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1.0
+  - trl: mid_csp_cbf/talon_board/001/MboTxVccVoltages
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/MboTxFaultStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/MboTxLolStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/MboTxLosStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/MboRxVccVoltages
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.05
+  - trl: mid_csp_cbf/talon_board/001/MboRxLolStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/MboRxLosStatus
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/SlimPllFault
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid_csp_cbf/talon_board/001/SystemClkFault
+    th: th1
+    configuration:
+      code_push_event: true
 
 ### SDP ###
-  - class: SDPSubarray
-    attributes:
-      versionId:
-        code_push_event: true
-      State:
-        code_push_event: true
-      adminMode:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      obsState:
-        code_push_event: true
-      resources:
-        code_push_event: true
-      ebID:
-        code_push_event: true
-      receiveAddresses:
-        code_push_event: true
-      scanType:
-        code_push_event: true
-      scanID:
-        code_push_event: true
-        archive_abs_change: 1
-      errorMessages:
-        code_push_event: true
+### SDP Subarray ###
+  - trl: mid-sdp/subarray/01/versionId
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/obsState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/resources
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/ebID
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/receiveAddresses
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/scanType
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/subarray/01/scanID
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 1
+  - trl: mid-sdp/subarray/01/errorMessages
+    th: th1
+    configuration:
+      code_push_event: true
 
-  - class: SDPController
-    attributes:
-      versionId:
-        code_push_event: true
-      State:
-        code_push_event: true
-      adminMode:
-        code_push_event: true
-      healthState:
-        code_push_event: true
-      components:
-        code_push_event: true
-      sdpVersion:
-        code_push_event: true
+### SDP Controller ###
+  - trl: mid-sdp/control/0/state
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/versionId
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/adminMode
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/healthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/components
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: mid-sdp/control/0/sdpVersion
+    th: th1
+    configuration:
+      code_push_event: true

@@ -22,7 +22,8 @@ check_namespace() {
 
 # Function to check if the configurator svc is running and get its IP
 configurator_deployed() {
-    configurator_ip=$(kubectl get svc -n $KUBE_NAMESPACE | grep configurator | awk '{print $4}')
+    ARCHIVER_NAMESPACE="ska-tango-archiver"
+    configurator_ip=$(kubectl get svc -n $ARCHIVER_NAMESPACE | grep configurator | awk '{print $4}')
 
     if [ -z "${configurator_ip}" ]; then
         false

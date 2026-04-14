@@ -1,4 +1,17 @@
 ## EDA
+global:
+  minikube: false
+  operator: true
+  exposeAllDS: true
+  retry:
+    - "--sleep=3"
+    - "--tries=100"
+  tango_host: databaseds-tango-base:10000
+  device_server_port: 45450
+  cluster_domain: cluster.local
+  tangodb_fqdn: localhost
+  tangodb_port: 10000
+
 ska-tango-archiver:
   legacy_compatibility: true
   telescope: SKA-mid
@@ -12,10 +25,11 @@ ska-tango-archiver:
   configuration_manager: mid-eda/cm/01
   event_subscriber: mid-eda/es/01
   archwizard_config: MyHDB=tango://databaseds-tango-base.ska-tango-archiver.svc.cluster.local:10000/mid-eda/cm/01
+  ingress_host: rmdskadevdu011.mda.ca
   vault:
     enabled: true
     secretPath: "production/eda"
     secretMount: psi-mid
     name: db-secret
-  vaultaddress: "https://vault.skao.int"
+  vaultAddress: "https://vault.skao.int"
   api_id: "api://8baac5d7-92ef-4adb-99b6-1e6e834245ad"

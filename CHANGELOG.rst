@@ -7,6 +7,13 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2026-04-10:
 **********
+* MAP-536: 
+
+  * Update to EDA 5.0.2-rc.2
+  * Add README instructions in platform/eda directory on how to upgrade when newer EDA versions available
+  * Update EDA configs in archiver directory to the new format, keeping the old format ones as well
+  * Add ingress yamls for the EDA GUIs that accept TLS certificate
+
 * MAP-558:
    
   * Bump SPFRx to 2.1.1 which fixes the labelling in the SPFRx plotter tool
