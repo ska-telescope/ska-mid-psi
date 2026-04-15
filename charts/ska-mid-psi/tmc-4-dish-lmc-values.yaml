@@ -15,6 +15,13 @@ tmc-mid:
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
+  dishleafnode:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+      image: ska-tmc-dishleafnode
+      tag: 0.44.0-dev.c0c657535
+      pullPolicy: IfNotPresent
+
   deviceServers:
     centralnode:
       DishVccConfig:
@@ -25,6 +32,7 @@ tmc-mid:
       - SKA036
       - SKA063
       - SKA100
+      LoggingLevel: "5"
     mocks:
       enabled: false
       dish: false
@@ -37,6 +45,7 @@ tmc-mid:
       - '036'
       - '063'
       - '100'
+      LoggingLevel: "5"
     subarraynode:
       DishIDs:
       - SKA001
@@ -45,7 +54,10 @@ tmc-mid:
       - SKA100
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
       CommandTimeOut: 240
+      LoggingLevel: "5"
     sdpsubarrayleafnode:
       CommandTimeOut: 240
+      LoggingLevel: "5"
     cspsubarrayleafnode:
       CommandTimeOut: 240
+      LoggingLevel: "5"
