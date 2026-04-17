@@ -1,0 +1,22 @@
+runtimeClassName: nvidia
+nfd:
+  enabled: true
+  worker:
+    tolerations:
+    - key: "nvidia.com/gpu"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "node-type"
+      operator: "Equal"
+      value: "pst-gpu"
+      effect: "NoSchedule"
+gfd:
+  enabled: true
+tolerations:
+- key: "nvidia.com/gpu"
+  operator: "Exists"
+  effect: "NoSchedule"
+- key: "node-type"
+  operator: "Equal"
+  value: "pst-gpu"
+  effect: "NoSchedule"

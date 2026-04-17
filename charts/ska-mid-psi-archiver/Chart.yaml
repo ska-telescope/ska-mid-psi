@@ -1,9 +1,11 @@
 apiVersion: v2
-name: ska-mid-psi-dish-lmc
-description: A Helm chart for deploying Dish LMC 
+name: ska-mid-psi-archiver
+description: A Helm chart for deploying ska-tango-archiver pods  
 type: application
 version: 0.1.0
 appVersion: 0.1.0
+icon: https://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_2014.png
+
 dependencies:
   # TANGO
   - name: ska-tango-base
@@ -13,10 +15,8 @@ dependencies:
   - name: ska-tango-util
     version: 1.0.7
     repository: https://artefact.skao.int/repository/helm-internal
-  
-  # Dish LMC
-  ### NOTE: need to update the version also in ska-mid-psi/Chart.yaml
-  - name: ska-dish-lmc
-    version: 9.3.0
+    
+  # EDA
+  - name: ska-tango-archiver
+    version: 5.0.2-rc.2
     repository: https://artefact.skao.int/repository/helm-internal
-    condition: ska-dish-lmc.enabled

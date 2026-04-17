@@ -78,23 +78,6 @@ ska-mid-cbf-engineering-console:
       vault:
         enabled: true
 
-## EDA
-ska-tango-archiver:
-  legacy_compatibility: true
-  enabled: false
-  telescope: SKA-mid
-  telescope_environment: MID_PSI
-  hostname: timescaledb.ska-eda-mid-db.svc.cluster.local
-  dbname: default_timescaledb
-  dbuser: admin
-  dbpassword: TfqQuRxku4aYTRpk
-  port: 5432
-  configuration_manager: mid-eda/cm/01
-  event_subscriber: mid-eda/es/01
-  archwizard_config: MyHDB=tango://databaseds-tango-base.{{.Release.Name}}.svc.cluster.local:10000/mid-eda/cm/01
-  vault:
-    enabled: false
-
 ## mid-csp
 ska-csp-lmc-mid:
   enabled: true
@@ -163,15 +146,32 @@ ska-pst:
 #    registry: registry.gitlab.com/ska-telescope/pst/ska-pst
 #    tag: 1.3.1-dev.cc27a29dc
   telescope: SKA-mid
+  bootstrap:
+    annotations:
+      helm.sh/hook: post-install, post-upgrade
+      helm.sh/hook-delete-policy: before-hook-creation
+  tolerations:
+    - effect: NoSchedule
+      key: node-type
+      value: "pst-gpu"
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      value: "present"
+  nodeSelector:
+    kubernetes.io/hostname: rm2skapstdu01.mda.ca
   core:
+    runtimeClassName: nvidia
+    selftest:
+      enabled: false
     podSecurityContext:
       privileged: true
     send:
       dpdApiIntegration: false
     primaryVolumeMount:
-      type: nfs
+      hostPath: /data
+      type: local-storage
     podAnnotations:
-      k8s.v1.cni.cncf.io/networks: "kube-system/sdn"
+      k8s.v1.cni.cncf.io/networks: "kube-system/sdn-pst"
     applications:
       recv:
         resources:
@@ -181,9 +181,9 @@ ska-pst:
             memory: 16000Mi
         args:
           - "-c"
-          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT}"
+          - "ska_pst_recv_udpdb -i ${POD_IP} -p ${RECV_DATASTREAM_PORT} -c ${RECV_MGMT_PORT} -o 0"
         dataNic: "net1"
-      dsp_disk:
+      dsp:
         resources:
           limits:
             memory: 16000Mi
@@ -191,7 +191,7 @@ ska-pst:
             memory: 16000Mi
         args:
           - "-c"
-          - "ska_pst_dsp_disk -d ${PST_DSP_MOUNT} -c ${DSP_DISK_MGMT_PORT} -n"
+          - "ska_pst_dsp_core -d ${PST_DSP_MOUNT} ${DSP_MGMT_PORT}"
 
 # ODA
 ska-oso-integration:
@@ -228,8 +228,8 @@ ska-oso-integration:
         listenAddress: 0.0.0.0
     vault:
       enabled: true
-      mount: "kv-v2"
-      secretPath: "secret/oda"
+      mount: "psi-mid"
+      secretPath: "production/oda"
     postgresql:
       enabled: true
       resources:
@@ -257,3 +257,18 @@ ska-dish-lmc:
         enabled: false
     dsOpcuaSimulator:
       enabled: true
+
+# Weather Simulator
+mid_wms:
+  deviceServers:
+    wms:
+      station_ids: ["s1", "s2"]
+      modbus_server_hostnames: ["wms-sim-s1", "wms-sim-s2"]
+      modbus_server_ports: ["1502", "1502"]
+  labels:
+    app: ska-tmc-integration
+  enabled: true
+  ska-tango-base:
+    enabled: false
+  simulator:
+    enabled: false
