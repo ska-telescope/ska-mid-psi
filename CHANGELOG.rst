@@ -7,7 +7,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 
 2026-04-21:
-* MAP-558: Create tmdata directory to hold the tagged init sys param files used for testing in the Mid PSI
+* MAP-558: Create tmdata directory to hold the init sys param files used for testing in the Mid PSI
 
 2026-04-10:
 **********
