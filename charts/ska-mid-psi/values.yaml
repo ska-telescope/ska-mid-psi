@@ -73,6 +73,10 @@ ska-mid-cbf-engineering-console:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
 #      tag: 1.1.5-dev.c8bf03696
   enabled: true
+  bar:
+    secret:
+      vault:
+        enabled: true
 
 ## mid-csp
 ska-csp-lmc-mid:
