@@ -73,6 +73,10 @@ ska-mid-cbf-engineering-console:
 #      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
 #      tag: 1.1.5-dev.c8bf03696
   enabled: true
+  bar:
+    secret:
+      vault:
+        enabled: true
 
 ## mid-csp
 ska-csp-lmc-mid:
@@ -123,6 +127,10 @@ spfrx:
   # console:
   #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
   #   version: <version>-dev.c<hash>
+  bar:
+    secret:
+      vault:
+        enabled: true
   address: 192.168.8.200
   bin: /usr/local/bin
   k_value: 1
