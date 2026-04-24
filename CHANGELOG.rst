@@ -9,7 +9,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 * MAP-535: Use SPFRx and EC releases that download the bitstreams from BAR
 
     * Bump SPFRx to 3.0.0
-    * Bump EC to 2.0.0-rc.1 and TDC MCS to 1.4.1-rc.1 
+    * Bump EC to 2.0.0 and TDC MCS to 1.4.1 
 
 2026-04-21:
 * MAP-558: Create tmdata directory to hold the init sys param files used for testing in the Mid PSI
