@@ -5,6 +5,7 @@ global:
   dishes: ["001", "036", "063", "100", "081", "046", "077", "048" ]
 tmc-mid:
   enabled: true
+  subarray_count: 1
   global:
     namespace_dish:
       dish_names:
