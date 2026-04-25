@@ -3,6 +3,7 @@ xauthority: "~/.Xauthority"
 
 global:
   dishes: ["001", "036", "063", "100", "081", "046", "077", "048" ]
+  dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100", "SKA081", "SKA046", "SKA077", "SKA048"]
 tmc-mid:
   enabled: true
   subarray_count: 1
@@ -25,15 +26,7 @@ tmc-mid:
       DishVccConfig:
         DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.1.0-rc-mid-itf#tmdata"
         DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
-      - SKA081
-      - SKA046
-      - SKA077
-      - SKA048
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
     mocks:
       enabled: false
       dish: false
@@ -51,18 +44,12 @@ tmc-mid:
       - '077'
       - '048'
     subarraynode:
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
-      - SKA081
-      - SKA046
-      - SKA077
-      - SKA048
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
       CommandTimeOut: 240
     sdpsubarrayleafnode:
       CommandTimeOut: 240
     cspsubarrayleafnode:
       CommandTimeOut: 240
+    resourcemonitor:
+      MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
