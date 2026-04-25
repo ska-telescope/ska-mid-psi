@@ -53,3 +53,4 @@ tmc-mid:
       CommandTimeOut: 240
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
+      DishIDs: *dish_ids
