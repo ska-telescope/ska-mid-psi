@@ -24,8 +24,8 @@ tmc-mid:
   deviceServers:
     centralnode:
       DishVccConfig:
-        DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?map-553-test-full-aa1#tmdata"
-        DishVccFilePath: "instrument/ska1_mid_psi/aa1/ska-mid-cbf-system-parameters-psi.json"
+        DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.1.0-rc-mid-itf#tmdata"
+        DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
     mocks:
       enabled: false
