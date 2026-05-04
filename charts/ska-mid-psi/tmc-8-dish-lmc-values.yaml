@@ -2,7 +2,7 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: ["001", "036", "063", "100", "081", "046", "077", "048" ]
+  dishes: &dishes ["001", "036", "063", "100", "081", "046", "077", "048" ]
   dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100", "SKA081", "SKA046", "SKA077", "SKA048"]
 tmc-mid:
   enabled: true
@@ -40,24 +40,13 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      instances:
-      - '001'
-      - '036'
-      - '063'
-      - '100'
-      - '081'
-      - '046'
-      - '077'
-      - '048'
-      CommandTimeOutDefault: 600
+      instances: *dishes # use the dish_ids list defined under global instead of repeating here
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
-      CommandTimeOutDefault: 600
     sdpsubarrayleafnode:
-      CommandTimeOutDefault: 600
     cspsubarrayleafnode:
-      CommandTimeOutDefault: 600
+      CommandTimeOutDefault: 300
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
-      DishIDs: *dish_ids
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here

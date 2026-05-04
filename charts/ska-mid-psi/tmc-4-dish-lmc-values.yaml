@@ -2,9 +2,11 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: ["001", "036", "063", "100"]
+  dishes: &dishes ["001", "036", "063", "100"]
+  dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100"]
 tmc-mid:
   enabled: true
+  subarray_count: 1
   global:
     namespace_dish:
       dish_names:
@@ -18,13 +20,9 @@ tmc-mid:
   deviceServers:
     centralnode:
       DishVccConfig:
-        DishVccUri: "car://gitlab.com/ska-telescope/ska-telmodel-data?0.1.0-rc-mid-itf#tmdata"
-        DishVccFilePath: "instrument/ska1_mid_itf/ska-mid-cbf-system-parameters.json"
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+        DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?main#tmdata"
+        DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters-itf.json"
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
     mocks:
       enabled: false
       dish: false
@@ -32,20 +30,15 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      instances:
-      - '001'
-      - '036'
-      - '063'
-      - '100'
+      instances: *dishes # use the dishes list defined under global instead of repeating here
     subarraynode:
-      DishIDs:
-      - SKA001
-      - SKA036
-      - SKA063
-      - SKA100
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
       CommandTimeOut: 240
     sdpsubarrayleafnode:
       CommandTimeOut: 240
     cspsubarrayleafnode:
       CommandTimeOut: 240
+    resourcemonitor:
+      MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
+      DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here

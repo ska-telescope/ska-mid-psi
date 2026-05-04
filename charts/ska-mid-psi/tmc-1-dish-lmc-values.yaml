@@ -7,6 +7,7 @@ global:
   dishes: ["001"]
 tmc-mid:
   enabled: true
+  subarray_count: 1
   global:
     namespace_dish:
       dish_names:
@@ -16,6 +17,9 @@ tmc-mid:
     enabled: false
   deviceServers:
     centralnode:
+      DishVccConfig:
+        DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?main#tmdata"
+        DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters-itf.json"
       DishIDs:
       - SKA001
     mocks:
