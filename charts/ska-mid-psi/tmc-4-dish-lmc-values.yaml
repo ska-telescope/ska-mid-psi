@@ -34,11 +34,11 @@ tmc-mid:
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
-      CommandTimeOut: 240
+      CommandTimeOutDefault: 240
     sdpsubarrayleafnode:
-      CommandTimeOut: 240
+      CommandTimeOutDefault: 240
     cspsubarrayleafnode:
-      CommandTimeOut: 240
+      CommandTimeOutDefault: 240
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
