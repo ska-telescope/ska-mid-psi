@@ -13,21 +13,25 @@ variables:
     options:
       - "true"
       - "false"
+    description: "Deploy DishLMC if true"
   PST_ENABLED:
     value: "false"
     options:
       - "true"
       - "false"
+    description: "Deploy PST if true"
   SPFRX_ENABLED:
     value: "false"
     options:
       - "true"
       - "false"
+    description: "Deploy SPFRx if true"
   OSO_ENABLED:
     value: "false"
     options:
       - "true"
       - "false"
+    description: "Deploy OSO if true"
   FULL_AA1:
     value: "false"
     options:
