@@ -22,6 +22,7 @@ tmc-mid:
   ska-tango-base:
     enabled: false
   dishleafnode:
+    ## Use dev build for DishLeafNode to temporary get around SKB-1306
     image:
       registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
       image: ska-tmc-dishleafnode
