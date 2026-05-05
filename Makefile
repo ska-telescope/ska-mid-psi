@@ -14,9 +14,8 @@ OSO_ENABLED ?= false
 VAULT_ENABLED ?= false
 
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
-HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
-HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
-DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
+HELM_CHARTS ?= ska-mid-psi/
+HELM_CHART ?= ska-mid-psi/
 UMBRELLA_CHART_PATH ?= ./charts/ska-mid-psi/
 LMC_CHART_PATH ?= ./charts/ska-mid-psi-dish-lmc/
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
@@ -141,16 +140,18 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
-ifeq ($(DISH_LMC_ENABLED),true)
-	ifeq ($(SPFRX_ENABLED),true)
-		K8S_CHART_PARAMS += --set spfrx.enabled=true \
-							$(DISH_PARAMS) \
-							-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
-	else ifeq ($(SPFRX_ENABLED),false)
-		K8S_CHART_PARAMS += --set spfrx.enabled=false --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true -f charts/ska-mid-psi/tmc-8-dish-lmc-values.yaml
+ifeq ($(SPFRX_ENABLED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true \
+						$(DISH_PARAMS) \
+						-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
+else ifeq ($(SPFRX_ENABLED),false)
+	K8S_CHART_PARAMS += --set spfrx.enabled=false \
+						--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true
+	ifeq ($(AA1),true)
+		K8S_CHART_PARAMS += -f charts/ska-mid-psi/tmc-8-dish-lmc-values.yaml
+	else 
+		K8S_CHART_PARAMS += -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
 	endif
-else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
 ifeq ($(PST_ENABLED),true)
@@ -184,16 +185,16 @@ k8s-pre-uninstall-chart:
 	
 k8s-do-install-chart:
 	@echo "----------------------------------------------"
-	@echo "k8s-do-install-chart: starting Dish LMC first".
-	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
-	helm upgrade --install $(HELM_RELEASE) \
-	$(K8S_CHART_PARAMS) \
-	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
-	@echo "Waiting for pods to start running..."
-	@echo "Getting resources"
-	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-	@echo "Done installing Dish LMC chart"
-	@echo "----------------------------------------------"
+# 	@echo "k8s-do-install-chart: starting Dish LMC first".
+# 	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
+# 	helm upgrade --install $(HELM_RELEASE) \
+# 	$(K8S_CHART_PARAMS) \
+# 	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
+# 	@echo "Waiting for pods to start running..."
+# 	@echo "Getting resources"
+# 	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
+# 	@echo "Done installing Dish LMC chart"
+# 	@echo "----------------------------------------------"
 	@echo "k8s-do-install-chart: Installing umbrella chart".
 	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"
 	helm upgrade --install $(HELM_RELEASE) \
