@@ -28,16 +28,12 @@ variables:
     options:
       - "true"
       - "false"
-  VAULT_ENABLED:
-    value: "false"
-    options:
-      - "true"
-      - "false"
   FULL_AA1:
     value: "false"
     options:
       - "true"
       - "false"
+    description: "For testing full AA1 configuration with 8-receptors"
 
 stages:
   - lint
@@ -160,11 +156,15 @@ xray-publish:
     - export DISH_LMC_ENABLED=$(grep '^DISH_LMC_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
     - export SPFRX_ENABLED=$(grep '^SPFRX_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
     - export PST_ENABLED=$(grep '^PST_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export FULL_AA1=$(grep '^FULL_AA1=' build/reports/deployment_variables.txt | cut -d'=' -f2)
+    - export OSO_ENABLED=$(grep '^OSO_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
     - export ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
   script:
     - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
     - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
     - echo "PST_ENABLED = ${PST_ENABLED}"
+    - echo "FULL_AA1 = ${FULL_AA1}"
+    - echo "OSO_ENABLED = ${OSO_ENABLED}"
     - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
     - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
     - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED

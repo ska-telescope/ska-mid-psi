@@ -48,7 +48,6 @@ K8S_CHARTS ?= $(K8S_CHART)
 DISH_LMC_ENABLED ?= true
 SPFRX_ENABLED ?= false
 OSO_ENABLED ?= false
-VAULT_ENABLED ?= false
 FULL_AA1 ?= false
 
 # include OCI Images support
@@ -118,8 +117,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
-	--set ska-sdp.qa.display.vault.useVault=$(VAULT_ENABLED) \
-	--set ska-oso-integration.ska-db-oda-umbrella.vault.enabled=$(VAULT_ENABLED) \
 	--set ska-oso-integration.enabled=$(OSO_ENABLED) \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
