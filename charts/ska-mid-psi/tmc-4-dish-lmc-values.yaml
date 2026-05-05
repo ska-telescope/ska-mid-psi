@@ -21,7 +21,7 @@ tmc-mid:
     centralnode:
       DishVccConfig:
         DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?main#tmdata"
-        DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters-itf.json"
+        DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters.json"
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
     mocks:
       enabled: false
