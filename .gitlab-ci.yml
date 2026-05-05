@@ -120,7 +120,7 @@ log-collector:
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
-    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --all-containers=true --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --all-containers=true --since=3h &> logs/${pod}.log ; done
   artifacts:
     name: "MID-PSI_${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_Logs_${CI_JOB_STARTED_AT}"
     paths:
@@ -138,7 +138,7 @@ auto-log-collector:
   script:
     - mkdir -p logs
     - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
-    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod --all-containers=true -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --all-containers=true --since=3h &> logs/${pod}.log ; done
   artifacts:
     paths:
     - logs/*.log
