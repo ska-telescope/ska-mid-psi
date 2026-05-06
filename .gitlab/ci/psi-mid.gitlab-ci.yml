@@ -33,13 +33,12 @@
     - make k8s-wait
     - mkdir -p build/reports
     - echo "" > build/reports/deployment_variables.txt
-    - echo "Deploying using the following arguments:"
     - DEPLOYMENT_VARS="DISH_LMC_ENABLED SPFRX_ENABLED PST_ENABLED FULL_AA1 OSO_ENABLED"
     - for var in $DEPLOYMENT_VARS; do
         value="${!var}";
-        echo "    $var = $value";
         echo "$var=$value" >> build/reports/deployment_variables.txt;
       done
+    - echo "Deploying using the following arguments:"
     - cat build/reports/deployment_variables.txt
     - |
       if [ "$ARCHIVING_ENABLED" == "true" ]; then
