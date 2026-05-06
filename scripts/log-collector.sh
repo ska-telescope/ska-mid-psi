@@ -16,8 +16,8 @@ echo "Collecting logs from namespace: $KUBE_NAMESPACE"
 POD_LIST=$(kubectl get pods -n "$KUBE_NAMESPACE" --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
 
 for pod in $POD_LIST; do
-    echo "kubectl logs $pod -n $KUBE_NAMESPACE &> $OUTPUT_DIR/${pod}.log"
-    kubectl logs "$pod" -n "$KUBE_NAMESPACE" &> "$OUTPUT_DIR/${pod}.log"
+    echo "kubectl logs $pod -n $KUBE_NAMESPACE --all-containers=true --since=3h &> $OUTPUT_DIR/${pod}.log"
+    kubectl logs "$pod" -n "$KUBE_NAMESPACE" --all-containers=true --since=3h &> "$OUTPUT_DIR/${pod}.log"
 done
 
 echo "Log collection complete. Logs saved to: $OUTPUT_DIR"
