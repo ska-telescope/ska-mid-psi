@@ -150,6 +150,15 @@ xray-publish:
     - .mid
   tags:
     - $RUNNER_TAG
+  rules:
+    - exists:
+        - tests/xray-config.json
+      when: on_success
+  needs:
+    - job: psi-mid-on-demand-deploy
+      artifacts: true
+    - job: python-test
+    - job: auto-log-collector
   before_script:
     - echo "Loading deployment variables"
     - set -a
@@ -157,16 +166,3 @@ xray-publish:
     - set +a
   script:
     - make xray-publish
-  dependencies:
-    - python-test
-    - auto-log-collector
-  needs:
-    - job: python-test
-    - job: auto-log-collector
-  rules:
-    - exists:
-        - build/reports/cucumber.json
-        - build/reports/report.json
-        - build/reports/deployment_variables.txt
-        - tests/xray-config.json
-      when: on_success
