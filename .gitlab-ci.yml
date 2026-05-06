@@ -101,7 +101,7 @@ python-test:
   before_script:
     - mkdir -p build/reports
     - poetry config virtualenvs.create false
-    - poetry install
+    - poetry install --no-root
   script:
     - make python-test KUBE_NAMESPACE=$KUBE_NAMESPACE
   artifacts:
@@ -158,6 +158,7 @@ xray-publish:
     - job: psi-mid-on-demand-deploy
       artifacts: true
     - job: python-test
+      artifacts: true
     - job: auto-log-collector
   before_script:
     - echo "Loading deployment variables"
