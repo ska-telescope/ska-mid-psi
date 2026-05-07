@@ -4,6 +4,7 @@ xauthority: "~/.Xauthority"
 global:
   dishes: &dishes ["001", "036", "063", "100"]
   dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100"]
+
 tmc-mid:
   enabled: true
   subarray_count: 1
