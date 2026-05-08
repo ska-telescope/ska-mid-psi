@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 
+2026-05-08:
+***********
+* MAP-570: Bump CSP.LMC to 1.6.0, DishLMC to 9.4.0, and SDP to 2.3.0
+
 2026-05-07:
 ***********
 * MAP-553:
