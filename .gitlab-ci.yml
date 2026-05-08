@@ -2,17 +2,41 @@ image: $SKA_K8S_TOOLS_BUILD_DEPLOY
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
+  RUNNER_TAG: k8srunner-psi-mid
   MINIKUBE: false
   TANGO_HOST: databaseds-tango-base:10000
   CLUSTER_DOMAIN: cluster.local
   K8S_TIMEOUT: 800s
-  DISH_ID: ska001
-  DISH_LMC_ENABLED: true
-  PST_ENABLED: false
-  SPFRX_ENABLED: false
-  RUNNER_TAG: k8srunner-psi-mid
-  OSO_ENABLED: false
-  VAULT_ENABLED: false
+  DISH_LMC_ENABLED:
+    value: "true"
+    options:
+      - "true"
+      - "false"
+    description: "Deploy DishLMC if true"
+  PST_ENABLED:
+    value: "false"
+    options:
+      - "true"
+      - "false"
+    description: "Deploy PST if true"
+  FULL_AA1:
+    value: "false"
+    options:
+      - "true"
+      - "false"
+    description: "For testing full AA1 configuration with 8-receptors"
+  SPFRX_ENABLED:
+    value: "false"
+    options:
+      - "true"
+      - "false"
+    description: "Deploy SPFRx if true"
+  OSO_ENABLED:
+    value: "false"
+    options:
+      - "true"
+      - "false"
+    description: "Deploy OSO if true"
 
 stages:
   - lint
@@ -77,7 +101,7 @@ python-test:
   before_script:
     - mkdir -p build/reports
     - poetry config virtualenvs.create false
-    - poetry install
+    - poetry install --no-root
   script:
     - make python-test KUBE_NAMESPACE=$KUBE_NAMESPACE
   artifacts:
@@ -98,8 +122,7 @@ log-collector:
     - job: psi-mid-on-demand-deploy
   script:
     - mkdir -p logs
-    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
-    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+    - bash scripts/log-collector.sh "$KUBE_NAMESPACE" logs
   artifacts:
     name: "MID-PSI_${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_Logs_${CI_JOB_STARTED_AT}"
     paths:
@@ -116,8 +139,7 @@ auto-log-collector:
     - job: python-test
   script:
     - mkdir -p logs
-    - POD_LIST=$(kubectl get pods -n $KUBE_NAMESPACE --field-selector=status.phase=Running --no-headers -o custom-columns=":metadata.name")
-    - for pod in ${POD_LIST[@]}; do echo "kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log" ; kubectl logs $pod -n $KUBE_NAMESPACE --since=3h &> logs/${pod}.log ; done
+    - bash scripts/log-collector.sh "$KUBE_NAMESPACE" logs
   artifacts:
     paths:
     - logs/*.log
@@ -128,31 +150,20 @@ xray-publish:
     - .mid
   tags:
     - $RUNNER_TAG
-  before_script:
-    - ls build/reports/deployment_variables.txt
-    - cat build/reports/deployment_variables.txt
-    - export FPGA_BITSTREAM_VER=$(kubectl exec -i -n $KUBE_NAMESPACE ds-deployer-deployer-0 -- bash -c "cat src/ska_mid_cbf_engineering_console/deployer/talondx_config/talondx_boardmap.json | python -c \"import sys, json; print(json.load(sys.stdin)['fpga_bitstreams'][0]['version'])\"")
-    - export DISH_LMC_ENABLED=$(grep '^DISH_LMC_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
-    - export SPFRX_ENABLED=$(grep '^SPFRX_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
-    - export PST_ENABLED=$(grep '^PST_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
-    - export ARCHIVING_ENABLED=$(grep '^ARCHIVING_ENABLED=' build/reports/deployment_variables.txt | cut -d'=' -f2)
-  script:
-    - echo "DISH_LMC_ENABLED = ${DISH_LMC_ENABLED}"
-    - echo "SPFRX_ENABLED = ${SPFRX_ENABLED}"
-    - echo "PST_ENABLED = ${PST_ENABLED}"
-    - echo "ARCHIVING_ENABLED = ${ARCHIVING_ENABLED}"
-    - echo "FPGA_BITSTREAM_VER = ${FPGA_BITSTREAM_VER}"
-    - make xray-publish DISH_LMC_ENABLED=$DISH_LMC_ENABLED SPFRX_ENABLED=$SPFRX_ENABLED PST_ENABLED=$PST_ENABLED ARCHIVING_ENABLED=$ARCHIVING_ENABLED
-  dependencies:
-    - python-test
-    - auto-log-collector
-  needs:
-    - job: python-test
-    - job: auto-log-collector
   rules:
     - exists:
-        - build/reports/cucumber.json
-        - build/reports/report.json
-        - build/reports/deployment_variables.txt
         - tests/xray-config.json
       when: on_success
+  needs:
+    - job: psi-mid-on-demand-deploy
+      artifacts: true
+    - job: python-test
+      artifacts: true
+    - job: auto-log-collector
+  before_script:
+    - echo "Loading deployment variables"
+    - set -a
+    - source build/reports/deployment_variables.txt
+    - set +a
+  script:
+    - make xray-publish

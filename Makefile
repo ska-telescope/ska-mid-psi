@@ -9,16 +9,10 @@ CI_PIPELINE_ID ?= unknown
 ODA_DB_NS ?= ska-mid-psi-staging
 BACKEND_URL ?= https://rmdskadevdu011.mda.ca/$(KUBE_NAMESPACE)
 
-# Feature enablers for PSI deployment
-OSO_ENABLED ?= false
-VAULT_ENABLED ?= false
-
 # UMBRELLA_CHART_PATH Path of the umbrella chart to work with
-HELM_CHARTS ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
-HELM_CHART ?= ska-mid-psi/ ska-mid-psi-dish-lmc/
-DISH_LMC_CHART ?= ska-mid-psi-dish-lmc
+HELM_CHARTS ?= ska-mid-psi/
+HELM_CHART ?= ska-mid-psi/
 UMBRELLA_CHART_PATH ?= ./charts/ska-mid-psi/
-LMC_CHART_PATH ?= ./charts/ska-mid-psi-dish-lmc/
 # RELEASE_NAME is the release that all Kubernetes resources will be labelled
 # with
 RELEASE_NAME = $(HELM_CHART)
@@ -50,10 +44,11 @@ PTT_SERVICES_URL ?= $(INGRESS_PROTOCOL)://$(LOADBALANCER_IP)/$(KUBE_NAMESPACE)/p
 # Chart for testing
 K8S_CHART ?= $(HELM_CHART)
 K8S_CHARTS ?= $(K8S_CHART)
-DISH_ID ?= ska001
 
 DISH_LMC_ENABLED ?= true
 SPFRX_ENABLED ?= false
+OSO_ENABLED ?= false
+FULL_AA1 ?= false
 
 # include OCI Images support
 include .make/oci.mk
@@ -79,12 +74,16 @@ include .make/xray.mk
 # include your own private variables for custom deployment configuration
 -include PrivateRules.mak
 
+# include Telescope Model targets
+include .make/tmdata.mk
+
+
 TARANTA_PARAMS = --set ska-taranta.enabled=$(TARANTA) \
 				 --set global.taranta_auth_enabled=$(TARANTA_AUTH) \
 				 --set global.taranta_dashboard_enabled=$(TARANTA)
 
 DISH_PARAMS = --set global.dishes="{001}" \
-			  --set global.dish_id=$(DISH_ID) \
+			  --set global.dish_id="ska001" \
 			  --set ska-dish-lmc.ska-mid-dish-manager.dishmanager.spfrx.fqdn=$(TANGO_HOST)/ska001/spfrxpu/controller \
 			  --set ska-tmc-mid.global.namespace_dish.dish_names[0]=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN)/mid-dish/dish-manager/SKA001
 
@@ -118,8 +117,6 @@ K8S_CHART_PARAMS = --set global.minikube=$(MINIKUBE) \
 	--set global.tangodb_fqdn=$(TANGO_HOSTNAME).$(KUBE_NAMESPACE).svc.$(CLUSTER_DOMAIN) \
 	--set global.tango_host=$(TANGO_HOST) \
 	--set global.tangodb_port=10000 \
-	--set ska-sdp.qa.display.vault.useVault=$(VAULT_ENABLED) \
-	--set ska-oso-integration.ska-db-oda-umbrella.vault.enabled=$(VAULT_ENABLED) \
 	--set ska-oso-integration.enabled=$(OSO_ENABLED) \
 	--set ska-oso-integration.ska-oso-oet-ui.backendURLOET=$(OET_URL) \
  	--set ska-oso-integration.ska-oso-oet-ui.backendURLODA=$(ODA_URL) \
@@ -137,16 +134,18 @@ ifneq (,$(wildcard $(VALUES)))
 	K8S_CHART_PARAMS += $(foreach f,$(wildcard $(VALUES)),--values $(f))
 endif
 
-ifeq ($(DISH_LMC_ENABLED),true)
-	ifeq ($(SPFRX_ENABLED),true)
-		K8S_CHART_PARAMS += --set spfrx.enabled=true \
-							$(DISH_PARAMS) \
-							-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
-	else ifeq ($(SPFRX_ENABLED),false)
-		K8S_CHART_PARAMS += --set spfrx.enabled=false --set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
+ifeq ($(SPFRX_ENABLED),true)
+	K8S_CHART_PARAMS += --set spfrx.enabled=true \
+						$(DISH_PARAMS) \
+						-f charts/ska-mid-psi/tmc-1-dish-lmc-values.yaml
+else ifeq ($(SPFRX_ENABLED),false)
+	K8S_CHART_PARAMS += --set spfrx.enabled=false \
+						--set ska-dish-lmc.ska-mid-dish-simulators.deviceServers.spfrxdevice.enabled=true
+	ifeq ($(FULL_AA1),true)
+		K8S_CHART_PARAMS += -f charts/ska-mid-psi/tmc-8-dish-lmc-values.yaml
+	else 
+		K8S_CHART_PARAMS += -f charts/ska-mid-psi/tmc-4-dish-lmc-values.yaml
 	endif
-else ifeq ($(DISH_LMC_ENABLED),false)
-	K8S_CHART_PARAMS += --set spfrx.enabled=false -f charts/ska-mid-psi/tmc-mock-values.yaml
 endif
 
 ifeq ($(PST_ENABLED),true)
@@ -179,16 +178,6 @@ k8s-pre-uninstall-chart:
 	@if [ "$(KEEP_NAMESPACE)" != "true" ]; then make k8s-delete-namespace KUBE_NAMESPACE=$(KUBE_NAMESPACE_SDP); fi
 	
 k8s-do-install-chart:
-	@echo "----------------------------------------------"
-	@echo "k8s-do-install-chart: starting Dish LMC first".
-	@echo "Installing $(LMC_CHART_PATH) into $(KUBE_NAMESPACE)"
-	helm upgrade --install $(HELM_RELEASE) \
-	$(K8S_CHART_PARAMS) \
-	$(LMC_CHART_PATH) --namespace $(KUBE_NAMESPACE)
-	@echo "Waiting for pods to start running..."
-	@echo "Getting resources"
-	@make k8s-wait HELM_RELEASE=$(HELM_RELEASE) KUBE_NAMESPACE=$(KUBE_NAMESPACE)
-	@echo "Done installing Dish LMC chart"
 	@echo "----------------------------------------------"
 	@echo "k8s-do-install-chart: Installing umbrella chart".
 	@echo "Installing $(UMBRELLA_CHART_PATH) into $(KUBE_NAMESPACE)"

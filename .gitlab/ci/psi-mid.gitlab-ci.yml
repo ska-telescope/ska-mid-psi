@@ -16,8 +16,6 @@
     VALUES: values.yaml
   script:
     - echo $CI_JOB_NAME - $CI_JOB_STAGE
-    - echo "Deploying using the following arguments:"
-    - echo -e "    ARCHIVING_ENABLED = $ARCHIVING_ENABLED\n    DISH_LMC_ENABLED = $DISH_LMC_ENABLED\n    SPFRX_ENABLED = $SPFRX_ENABLED"
     - echo "Make config dump"
     - make vars
     # Use overridden k8s-install-chart to allow for deployment of Dish LMC related pods before others.
@@ -34,10 +32,13 @@
     - echo "Wait namespace resources"
     - make k8s-wait
     - mkdir -p build/reports
-    - echo "DISH_LMC_ENABLED=$DISH_LMC_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "SPFRX_ENABLED=$SPFRX_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "PST_ENABLED=$PST_ENABLED" >> build/reports/deployment_variables.txt
-    - echo "ARCHIVING_ENABLED=$ARCHIVING_ENABLED" >> build/reports/deployment_variables.txt
+    - echo "" > build/reports/deployment_variables.txt
+    - DEPLOYMENT_VARS="DISH_LMC_ENABLED SPFRX_ENABLED PST_ENABLED FULL_AA1 OSO_ENABLED ARCHIVING_ENABLED"
+    - for var in $DEPLOYMENT_VARS; do
+        value="${!var}";
+        echo "$var=$value" >> build/reports/deployment_variables.txt;
+      done
+    - echo "Deploying using the following arguments:"
     - cat build/reports/deployment_variables.txt
     - |
       if [ "$ARCHIVING_ENABLED" == "true" ]; then
@@ -169,7 +170,6 @@ psi-mid-on-demand-redeploy:
     KUBE_NAMESPACE_SDP: ska-mid-psi-staging-sdp
     LOADBALANCER_IP: rmdskadevdu011.mda.ca
     OSO_ENABLED: true
-    VAULT_ENABLED: true
   
 psi-mid-staging-redeploy:
   extends:

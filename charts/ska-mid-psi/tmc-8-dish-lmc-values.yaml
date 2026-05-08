@@ -2,9 +2,8 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: &dishes ["001", "036", "063", "100"]
-  dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100"]
-
+  dishes: &dishes ["001", "036", "063", "100", "081", "046", "077", "048" ]
+  dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100", "SKA081", "SKA046", "SKA077", "SKA048"]
 tmc-mid:
   enabled: true
   subarray_count: 1
@@ -15,14 +14,25 @@ tmc-mid:
       - mid-dish/dish-manager/SKA036
       - mid-dish/dish-manager/SKA063
       - mid-dish/dish-manager/SKA100
+      - mid-dish/dish-manager/SKA081
+      - mid-dish/dish-manager/SKA046
+      - mid-dish/dish-manager/SKA077
+      - mid-dish/dish-manager/SKA048
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
+  # dishleafnode:
+  #   ## Use dev build for DishLeafNode to temporary get around SKB-1306
+  #   image:
+  #     registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
+  #     image: ska-tmc-dishleafnode
+  #     tag: 0.40.1-dev.cc05b937c
+  #     pullPolicy: IfNotPresent
   deviceServers:
     centralnode:
       DishVccConfig:
-        DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?main#tmdata"
-        DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters.json"
+        DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?map-553-test-full-aa1#tmdata"
+        DishVccFilePath: "instrument/ska1_mid_psi/aa1/ska-mid-cbf-system-parameters.json"
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
     mocks:
       enabled: false
@@ -31,15 +41,15 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      instances: *dishes # use the dishes list defined under global instead of repeating here
+      instances: *dishes # use the dish_ids list defined under global instead of repeating here
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
-      CommandTimeOutDefault: 240
+      CommandTimeOutDefault: 300
     sdpsubarrayleafnode:
-      CommandTimeOutDefault: 240
+      CommandTimeOutDefault: 300
     cspsubarrayleafnode:
-      CommandTimeOutDefault: 240
+      CommandTimeOutDefault: 300
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
