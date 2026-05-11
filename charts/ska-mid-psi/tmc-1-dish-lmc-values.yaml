@@ -21,6 +21,7 @@ tmc-mid:
         DishVccUri: "gitlab://gitlab.com/ska-telescope/ska-mid-psi?main#tmdata"
         DishVccFilePath: "instrument/ska1_mid_psi/aa05/ska-mid-cbf-system-parameters-itf.json"
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
+      LoggingLevel: "5"
     mocks:
       enabled: false
       dish: false
@@ -29,9 +30,16 @@ tmc-mid:
     dishleafnode:
       enabled: true
       instances: *dishes # use the dishes list defined under global instead of repeating here
+      LoggingLevel: "5"
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
+      LoggingLevel: "5"
+    sdpsubarrayleafnode:
+      CommandTimeOutDefult: 300
+      LoggingLevel: "5"
+    cspsubarrayleafnode:
+      LoggingLevel: "5"
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
