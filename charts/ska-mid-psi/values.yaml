@@ -115,8 +115,8 @@ kafka:
   imagePullPolicy: IfNotPresent
   resources:
     requests:
-      cpu: 1000m
-      memory: 1024Mi
+      cpu: 2000m
+      memory: 2048Mi
     limits:
       cpu: 2000m
       memory: 4096Mi
