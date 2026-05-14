@@ -91,6 +91,10 @@ spec:
           value: "1"
         - name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
           value: "1"
+        - name: KAFKA_MESSAGE_MAX_BYTES
+          value: "125829120"
+        - name: KAFKA_SOCKET_REQUEST_MAX_BYTES
+          value: "125829120"
         {{- if .Values.kafka.resources }}
         resources: {{ toYaml .Values.kafka.resources | nindent 10 }}
         {{- end }}

@@ -5,6 +5,8 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-05-12:
+* MAP-553: Increase resourcing and max bytes for Kafka to get visibilities to appear in SDP QA Display UI.
 
 2026-05-08:
 ***********
