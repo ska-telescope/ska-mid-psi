@@ -2,8 +2,8 @@ display: ":0"
 xauthority: "~/.Xauthority"
 
 global:
-  dishes: &dishes ["001"]
-  dishids: &dish_ids ["SKA001"]
+  dishes: &dishes ["500"]
+  dishids: &dish_ids ["SKA500"]
 
 tmc-mid:
   enabled: true
@@ -11,7 +11,7 @@ tmc-mid:
   global:
     namespace_dish:
       dish_names:
-      - mid-dish/dish-manager/SKA001
+      - mid-dish/dish-manager/SKA500
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
