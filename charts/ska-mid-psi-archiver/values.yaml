@@ -26,6 +26,8 @@ ska-tango-archiver:
   event_subscriber: mid-eda/es/01
   archwizard_config: MyHDB=tango://databaseds-tango-base.ska-tango-archiver.svc.cluster.local:10000/mid-eda/cm/01
   ingress_host: rmdskadevdu011.mda.ca
+  event_subscriber_count: 2
+  configuration_manager_count: 2
   vault:
     enabled: true
     secretPath: "production/eda"
