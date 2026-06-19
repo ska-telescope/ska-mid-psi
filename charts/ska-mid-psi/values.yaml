@@ -124,9 +124,9 @@ kafka:
 # SPFRx
 spfrx:
   enabled: true
-  # console:
-  #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-  #   version: <version>-dev.c<hash>
+  console:
+    registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
+    version: 3.0.0-dev.ca9371ec2
   bar:
     secret:
       vault:
