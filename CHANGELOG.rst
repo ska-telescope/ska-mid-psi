@@ -5,6 +5,15 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-06-23:
+**********
+* MAP-580: 
+
+  * Validate SKB-1352 is no longer an issue
+  * Bump TMC to 1.22.0-rc.2
+  * Bump CSP.LMC to 1.7.0
+  * Bump SDP to 2.4.1
+
 2026-06-18:
 ***********
 * Remove `image` from .gitlab-ci.yml, which was blocking pipelines
