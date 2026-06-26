@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cisco-sandbox-ingress
+  namespace: fhs-prometheus-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header Referer "";
+      proxy_set_header Accept-Encoding "";
+      
+      sub_filter '/ins' '/cisco/sandbox/ins';
+      sub_filter_types text/html text/css application/javascript;
+      sub_filter_once off; # Replaces all occurrences instead of just the first
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rmdskadevdu011.mda.ca
+    http:
+      paths:
+      - path: /cisco/sandbox(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: cisco-sandbox-service
+            port:
+              number: 80
