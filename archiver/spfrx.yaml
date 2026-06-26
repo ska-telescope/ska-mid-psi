@@ -1,6 +1,6 @@
 tango_hosts:
   - th1:
-      host: "databaseds-tango-base.ci-ska-mid-psi-2623793759-jaredmda.svc.cluster.local"
+      host: "databaseds-tango-base.{{Release.Namespace}}.svc.cluster.local"
       port: "10000"
   - th2:
       host: "databaseds-tango-base.ska-tango-archiver.svc.cluster.local"
