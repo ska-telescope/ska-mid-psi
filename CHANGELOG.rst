@@ -11,6 +11,11 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 
 2026-06-23:
 **********
+* MAP-568:
+  * Update SPFRx.SW to 3.1.0
+  * Update all EDA configurations for multiple cm/es
+  * Update SPFRx EDA configuration to align with what is defined in its' repo
+
 * MAP-580: 
 
   * Validate SKB-1352 is no longer an issue

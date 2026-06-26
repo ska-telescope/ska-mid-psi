@@ -10,10 +10,16 @@ configuration_managers:
   - cm1:
       trl: mid-eda/cm/01
       th: th2
+  - cm2:
+      trl: mid-eda/cm/02
+      th: th2
 
 event_subscribers:
   - es1:
       trl: mid-eda/es/01
+      th: th2
+  - es2:
+      trl: mid-eda/es/02
       th: th2
 
 defaults:
@@ -33,22 +39,29 @@ attributes:
     th: th1
     configuration:
       code_push_event: true
+  - trl: ska001/spfrxpu/controller/noiseDiodeMode
+    th: th1
+    configuration:
+      code_push_event: true
   - trl: ska001/spfrxpu/controller/controlFiberCheck
     th: th1
     configuration:
       code_push_event: true
-  ### code push events not implemented yet for the Gain attributes
-  ### this will be resolved in MAP-569. Commenting them out for now.
-  # - trl: ska001/spfrxpu/controller/currentGainHX
-  #   th: th1
-  #   configuration:
-  #     code_push_event: true
-  #     archive_abs_change: 0.01
-  # - trl: ska001/spfrxpu/controller/currentGainVY
-  #   th: th1
-  #   configuration:
-  #     code_push_event: true
-  #     archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/attenuationPolHX
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/attenuationPolVY
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/saturationThreshold
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
   - trl: ska001/spfrxpu/controller/dataFiberCheck
     th: th1
     configuration:
@@ -81,7 +94,27 @@ attributes:
     configuration:
       code_push_event: true
       archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/spfrxHealthState
+    th: th1
+    configuration:
+      code_push_event: true
   - trl: ska001/spfrxpu/controller/rxpuHealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/b1HealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/b2HealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/rxs123HealthState
+    th: th1
+    configuration:
+      code_push_event: true
+  - trl: ska001/spfrxpu/controller/satRMHealthState
     th: th1
     configuration:
       code_push_event: true
@@ -95,18 +128,74 @@ attributes:
     configuration:
       code_push_event: true
       archive_abs_change: 0.001
-  - trl: ska001/spfrxpu/controller/rxs123HealthState
+  - trl: ska001/spfrxpu/controller/rxpuSupplyVoltage
     th: th1
     configuration:
       code_push_event: true
-  - trl: ska001/spfrxpu/controller/rxs123Rfof1ppsPowerLevel
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuSupplyCurrent
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuClkRxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpuClkRfofRxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpu1PPSrxs123RfofTxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxpu1PPSrxs45RfofTxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/rxs123Temperature
     th: th1
     configuration:
       code_push_event: true
       archive_abs_change: 0.001
-  - trl: ska001/spfrxpu/controller/rxs123RfofRefPowerLevel
+  - trl: ska001/spfrxpu/controller/rxs123Humidity
     th: th1
     configuration:
       code_push_event: true
       archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxs123Rfof1ppsRxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxs123RfofClkTxPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/rxs123ClkPowerLevel
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.001
+  - trl: ska001/spfrxpu/controller/satMicrowaveInputSignalPower
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/satMicrowaveMixerVoltage
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
+  - trl: ska001/spfrxpu/controller/satOpticalInputSignalCurrent
+    th: th1
+    configuration:
+      code_push_event: true
+      archive_abs_change: 0.01
 
