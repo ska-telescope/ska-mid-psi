@@ -126,7 +126,7 @@ spfrx:
   enabled: true
   # console:
   #   registry: registry.gitlab.com/ska-telescope/ska-mid-dish-spfrx-talondx-console
-  #   version: 3.0.0-dev.c72e487bc
+  #   version: <version>-dev.c<hash>
   bar:
     secret:
       vault:
