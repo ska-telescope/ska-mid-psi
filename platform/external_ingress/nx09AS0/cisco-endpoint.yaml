@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cisco-sandbox-service
+  namespace: fhs-prometheus-ingress
+spec:
+  ports:
+    - protocol: TCP
+      port: 80         # The port your Ingress will target inside the cluster
+      targetPort: 80 # The actual port the external VM is listening on
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: cisco-sandbox-service # Must exactly match the Service name
+  namespace: fhs-prometheus-ingress
+subsets:
+  - addresses:
+      - ip: 192.168.8.50   # The IP address of your non-K8s server
+    ports:
+      - port: 80         # Must match targetPort above

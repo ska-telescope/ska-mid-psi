@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sys1389-prometheus-ingress
+  namespace: fhs-prometheus-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rmdskadevdu011.mda.ca
+    http:
+      paths:
+      - path: /sys1389/prometheus(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sys1389-prometheus-service
+            port:
+              number: 80

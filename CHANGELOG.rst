@@ -5,6 +5,10 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-06-26
+**********
+* Adding sample files for setting up the external ingress for access to FHS prometheus using our MDA browsers
+
 2026-06-23:
 **********
 * MAP-580: 
