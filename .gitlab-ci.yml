@@ -45,7 +45,6 @@ stages:
   - test
   - log-collector
   - join-reports
-  - pages
   - publish
   - scan
   - cleanup
@@ -74,8 +73,8 @@ include:
     file: 'gitlab-ci/includes/xray-publish.gitlab-ci.yml'
 
   # Docs pages
-  - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/docs-pages.gitlab-ci.yml'
+#  - project: 'ska-telescope/templates-repository'
+#    file: 'gitlab-ci/includes/docs-pages.gitlab-ci.yml'
 
   # .post step finalisers eg: badges
   - project: 'ska-telescope/templates-repository'
