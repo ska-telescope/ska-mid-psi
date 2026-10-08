@@ -81,9 +81,9 @@ include:
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
 
-pages:
-  rules:
-    - when: never
+#pages:
+#  rules:
+#    - when: never
 
 python-test:
   image: $SKA_K8S_TOOLS_BUILD_DEPLOY
