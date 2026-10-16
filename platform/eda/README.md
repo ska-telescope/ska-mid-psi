@@ -20,18 +20,18 @@ helm dependency build
 
 ## 3. Deploy new EDA version 
 
-If the `ska-tango-archiver` namespace does not yet exist, create it first
+If the `ska-tango-archiver` namespace does not yet exist, create it first.
 ```
 kubectl create ns ska-tango-archiver
 ```
-Run the following command to install/upgrade the EDA.
+Run the following command to install/upgrade the EDA
 
 ```
 helm upgrade --install test . --namespace ska-tango-archiver
 ```
-where `test` is the name of the release
+where `test` is the name of the release.
 
-Monitor via `k9s` the `ska-tango-archiver` namespace to check that the following pods have been deployed/updated:
+Monitor via `k9s` the `ska-tango-archiver` namespace to check that the following pods have been deployed/updated.
 
 ```
 kubectl get pods -n ska-tango-archiver
@@ -69,7 +69,7 @@ ds-tangotest-test                          LoadBalancer   10.110.220.243   192.1
 
 Each of the GUIs have ingresses, however these ingresses don't currently support TLS. They need to first be deleted and then create new ones that do support TLS.
 
-First examine what ingresses are existing. The expected output is shown below:
+First examine what ingresses are existing. The expected output is shown below.
 ```
 kubectl get ingress -n ska-tango-archiver
 
@@ -79,7 +79,7 @@ archwizard-ingress-ska-tango-archiver-test     nginx   *       10.103.140.27   8
 configurator-ingress-ska-tango-archiver-test   nginx   *       10.103.140.27   80        5m
 ```
 
-Then delete each ingress:
+Then delete each ingress.
 ```
 kubectl delete ingress <ingress name> -n ska-tango-archiver 
 ```
@@ -103,9 +103,9 @@ configurator-ingress-ska-tango-archiver-test   nginx   rmdskadevdu011.mda.ca   1
 
 ```
 
-## 5. Verify that the Secret and VaultStaticSecret is Setup
+## 5. Verify that the Secret and VaultStaticSecret are set up
 
-Expected output is shown below:
+Expected output is shown below.
 ```
 kubectl get secret,vaultstaticsecret -n ska-tango-archiver
 
