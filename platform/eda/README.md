@@ -4,14 +4,14 @@ The EDA (ska-tango-archiver) resides in a separate chart within the ska-mid-psi 
 
 To deploy a new EDA, execute the following steps manually in the Mid PSI environment.
 
-## 1. Update the version in the Charts
+## 1. Update the version in the Charts (if needed)
 
 Navigate to `charts/ska-mid-psi-archiver` and update the version in `Chart.yaml` as well as any values that might need to be changed in `values.yaml`. The rest of the steps are executed within this folder.
 
 
 ## 2. Update Helm dependencies
 
-Run the following commands to first delete the Chart.lock file and then update the helm dependencies.
+Run the following commands to first delete the Chart.lock file and then update the helm dependencies if the version was updated above.
 
 ```
 rm Chart.lock
@@ -19,6 +19,12 @@ helm dependency build
 ```
 
 ## 3. Deploy new EDA version 
+
+If the `ska-tango-archiver` namespace does not yet exist, create it first
+```
+kubectl create ns ska-tango-archiver
+```
+Run the following command to install/upgrade the EDA.
 
 ```
 helm upgrade --install test . --namespace ska-tango-archiver
