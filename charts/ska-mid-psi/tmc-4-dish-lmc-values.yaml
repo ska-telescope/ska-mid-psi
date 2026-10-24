@@ -39,6 +39,7 @@ tmc-mid:
       CommandTimeOutDefault: 240
     cspsubarrayleafnode:
       CommandTimeOutDefault: 240
+      DelayModelTimeInAdvance: 5
     resourcemonitor:
       MidSubarrayNodeFQDNs: ["mid-tmc/subarray/01"]
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
