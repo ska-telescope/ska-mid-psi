@@ -31,7 +31,6 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      instances: *dishes # use the dishes list defined under global instead of repeating here
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
