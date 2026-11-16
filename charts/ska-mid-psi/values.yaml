@@ -54,10 +54,10 @@ ska-tango-tangogql-ariadne:
 #telescope control
 ## mid-cbf
 ska-mid-cbf-tdc-mcs:
-  # midcbf:
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
-  #     tag: 1.4.1-dev.c917b0a18
+  midcbf:
+    image:
+      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
+      tag: 1.4.2-dev.c66baaded
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -68,10 +68,10 @@ ska-mid-cbf-tdc-mcs:
       enabled: false
 
 ska-mid-cbf-engineering-console:
-#  engineeringconsole:
-#    image:
-#      registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-#      tag: 1.1.5-dev.c8bf03696
+ engineeringconsole:
+   image:
+     registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
+     tag: 2.0.3-dev.c2de488e2
   enabled: true
   bar:
     secret:
