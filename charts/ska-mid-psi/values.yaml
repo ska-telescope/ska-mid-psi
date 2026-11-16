@@ -68,8 +68,8 @@ ska-mid-cbf-tdc-mcs:
       enabled: false
 
 ska-mid-cbf-engineering-console:
- engineeringconsole:
-   image:
+  engineeringconsole:
+    image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
       tag: 2.0.3-dev.c2de488e2
   enabled: true
