@@ -57,7 +57,7 @@ ska-mid-cbf-tdc-mcs:
   midcbf:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-tdc-mcs
-      tag: 1.4.2-dev.c66baaded
+      tag: 1.4.3-dev.cdb079a18
   hostInfo:
     environment: "mid-psi"
   enabled: true
@@ -71,7 +71,7 @@ ska-mid-cbf-engineering-console:
   engineeringconsole:
     image:
       registry: registry.gitlab.com/ska-telescope/ska-mid-cbf-engineering-console
-      tag: 2.0.3-dev.c2de488e2
+      tag: 2.0.3-dev.cbe58c3c3
   enabled: true
   bar:
     secret:
