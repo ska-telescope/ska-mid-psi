@@ -5,7 +5,7 @@ global:
   dishes: &dishes ["001", "036", "063", "100"]
   dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100"]
   namespace_dish:
-    dish_names: &dish_names
+    dish_names:
     - mid-dish/dish-manager/SKA001
     - mid-dish/dish-manager/SKA036
     - mid-dish/dish-manager/SKA063
@@ -31,7 +31,6 @@ tmc-mid:
     dishleafnode:
       enabled: true
       instances: *dishes # use the dishes list defined under global instead of repeating here
-      namespace_dish: *dish_names
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
