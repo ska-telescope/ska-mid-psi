@@ -8,12 +8,13 @@ global:
 tmc-mid:
   enabled: true
   subarray_count: 1
-  namespace_dish:
-    dish_names:
-    - mid-dish/dish-manager/SKA001
-    - mid-dish/dish-manager/SKA036
-    - mid-dish/dish-manager/SKA063
-    - mid-dish/dish-manager/SKA100
+  global:
+    namespace_dish:
+      dish_names:
+      - mid-dish/dish-manager/SKA001
+      - mid-dish/dish-manager/SKA036
+      - mid-dish/dish-manager/SKA063
+      - mid-dish/dish-manager/SKA100
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
