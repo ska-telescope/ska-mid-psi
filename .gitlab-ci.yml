@@ -113,7 +113,25 @@ log-collector:
     - mkdir -p logs
     - bash scripts/log-collector.sh "$KUBE_NAMESPACE" logs
   artifacts:
-    name: "MID-PSI_${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_Logs_${CI_JOB_STARTED_AT}"
+    name: "${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_logs_${CI_JOB_STARTED_AT}"
+    paths:
+    - logs/*.log
+  allow_failure: true
+
+sdp-ns-log-collector:
+  stage: log-collector
+  when: manual
+  extends:
+    - .mid
+  tags:
+    - $RUNNER_TAG
+  needs:
+    - job: psi-mid-on-demand-deploy
+  script:
+    - mkdir -p logs
+    - bash scripts/log-collector.sh "$KUBE_NAMESPACE-sdp" logs
+  artifacts:
+    name: "${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME}_sdp_ns_logs_${CI_JOB_STARTED_AT}"
     paths:
     - logs/*.log
   allow_failure: true

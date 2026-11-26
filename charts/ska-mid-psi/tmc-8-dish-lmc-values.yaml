@@ -4,30 +4,23 @@ xauthority: "~/.Xauthority"
 global:
   dishes: &dishes ["001", "036", "063", "100", "081", "046", "077", "048" ]
   dishids: &dish_ids ["SKA001", "SKA036", "SKA063", "SKA100", "SKA081", "SKA046", "SKA077", "SKA048"]
+  namespace_dish:
+    dish_names:
+    - mid-dish/dish-manager/SKA001
+    - mid-dish/dish-manager/SKA036
+    - mid-dish/dish-manager/SKA063
+    - mid-dish/dish-manager/SKA100
+    - mid-dish/dish-manager/SKA081
+    - mid-dish/dish-manager/SKA046
+    - mid-dish/dish-manager/SKA077
+    - mid-dish/dish-manager/SKA048
+
 tmc-mid:
   enabled: true
   subarray_count: 1
-  global:
-    namespace_dish:
-      dish_names:
-      - mid-dish/dish-manager/SKA001
-      - mid-dish/dish-manager/SKA036
-      - mid-dish/dish-manager/SKA063
-      - mid-dish/dish-manager/SKA100
-      - mid-dish/dish-manager/SKA081
-      - mid-dish/dish-manager/SKA046
-      - mid-dish/dish-manager/SKA077
-      - mid-dish/dish-manager/SKA048
   telescope: SKA-mid
   ska-tango-base:
     enabled: false
-  # dishleafnode:
-  #   ## Use dev build for DishLeafNode to temporary get around SKB-1306
-  #   image:
-  #     registry: registry.gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode
-  #     image: ska-tmc-dishleafnode
-  #     tag: 0.40.1-dev.cc05b937c
-  #     pullPolicy: IfNotPresent
   deviceServers:
     centralnode:
       DishVccConfig:
@@ -41,7 +34,6 @@ tmc-mid:
       sdp: false
     dishleafnode:
       enabled: true
-      instances: *dishes # use the dish_ids list defined under global instead of repeating here
     subarraynode:
       DishIDs: *dish_ids # use the dish_ids list defined under global instead of repeating here
       CspScanInterfaceURL: "https://schema.skao.int/ska-csp-scan/2.2"
