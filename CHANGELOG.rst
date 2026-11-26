@@ -5,6 +5,18 @@ Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`.
 
+2026-11-26
+**********
+* MAP-575 & MAP-581:
+
+  * Update SPFRx.SW to 4.0.1
+  * Update DishLMC to 12.0.1
+  * Update TMC to 1.27.2 and update the tmc values files accordingly
+  * Update CSP.LMC to 1.11.1
+  * Update TDC MCS to 1.5.0 and EC to 2.1.0
+  * Update SDP to 2.10.0
+  * Add a manual log-collector job for the -sdp namespace to retrieve vis-receive logs
+
 2026-06-26
 **********
 * Adding sample files for setting up the external ingress for access to FHS prometheus using our MDA browsers
@@ -12,6 +24,7 @@ This project adheres to `Semantic Versioning <http://semver.org/>`.
 2026-06-23:
 **********
 * MAP-568:
+
   * Update SPFRx.SW to 3.1.0
   * Update all EDA configurations for multiple cm/es
   * Update SPFRx EDA configuration to align with what is defined in its' repo
